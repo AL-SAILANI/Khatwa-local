@@ -118,7 +118,7 @@ export function Navbar() {
         </div>
 
         {isMenuOpen && (
-          <div className="hidden border-t border-border/60 bg-background/95 backdrop-blur-md lg:hidden">
+          <div className="border-t border-border/60 bg-background/95 backdrop-blur-md lg:hidden">
             <nav className="mx-auto max-w-6xl space-y-1 px-6 py-4" aria-label={t("ariaLabel")}>
             {links.map((link) => (
                 <Link
