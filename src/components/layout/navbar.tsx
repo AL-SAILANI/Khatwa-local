@@ -7,6 +7,7 @@ import { Logo } from "@/components/brand/logo";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { NightShiftToggle } from "@/components/theme/night-shift-toggle";
 import { LanguageToggle } from "@/components/theme/language-toggle";
+import { PWAInstallButton } from "@/components/pwa/pwa-install-button";
 import { Mail, Menu, X } from "lucide-react";
 import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { cn } from "@/lib/utils/cn";
@@ -90,6 +91,7 @@ export function Navbar() {
           <div className="flex items-center gap-2.5 sm:gap-3">
             <LanguageToggle />
             <NightShiftToggle />
+            <PWAInstallButton />
             <ThemeToggle />
             <Link
               href="/login"
