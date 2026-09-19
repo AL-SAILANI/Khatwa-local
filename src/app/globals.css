@@ -1,0 +1,326 @@
+@import "tailwindcss";
+
+/* Class-based dark mode: toggling `.dark` on <html> switches the theme,
+   independent of the OS `prefers-color-scheme`. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Syllabus Theme — Cream paper editorial aesthetic */
+  --background: #fffcf7;
+  --foreground: #0d0129;
+  --surface: #ffffff;
+  --surface-muted: #f9f6f2;
+  --border: #0d0129;
+
+  /* Muted text: ink violet soft */
+  --muted: #5a5054;
+
+  /* Roobert for body and headings */
+  --font-family-body: var(--font-sans);
+  --font-family-heading: var(--font-sans);
+}
+
+/* Syllabus is a single-typeface system — "do not introduce additional
+   typefaces" — so English headings use the same geometric sans as the body
+   rather than the serif display face. Roobert itself is commercial and not
+   bundled here; Rubik stands in as the free geometric sans. */
+html[lang="en"] {
+  --font-family-body: var(--font-sans);
+  --font-family-heading: var(--font-sans);
+}
+
+.dark {
+  --background: #1a1420;
+  --foreground: #faf8f5;
+  --surface: #242022;
+  --surface-muted: #2d2a2a;
+  --border: #3d3a3a;
+  --muted: #a39f99;
+}
+
+@theme inline {
+  --font-sans: var(--font-family-body);
+  --font-heading: var(--font-family-heading);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+
+  /* Brand primary — Butter Yellow (#fae59b) for CTA buttons and accents */
+  --color-primary-50: #fffbf0;
+  --color-primary-100: #fef8e8;
+  --color-primary-200: #fcedb3;
+  --color-primary-300: #fbe09f;
+  --color-primary-400: #fae59b;
+  --color-primary-500: #f9e589;
+  --color-primary-600: #f5db6b;
+  --color-primary-700: #e6c856;
+  --color-primary-800: #d4ae3d;
+  --color-primary-900: #b89830;
+  --color-primary-950: #9a7e25;
+
+  /* Secondary — Ink Violet (#0d0129) for text and borders */
+  --color-secondary-50: #f4f2f8;
+  --color-secondary-100: #ebe7f5;
+  --color-secondary-200: #d4cfe7;
+  --color-secondary-300: #b8adcf;
+  --color-secondary-400: #4a3d5c;
+  --color-secondary-500: #1f1830;
+  --color-secondary-600: #0d0129;
+  --color-secondary-700: #0a0020;
+  --color-secondary-800: #070018;
+  --color-secondary-900: #050010;
+  --color-secondary-950: #030008;
+
+  /* Syllabus named tokens — use these when a surface needs the palette by
+     name (e.g. a full-bleed teal band) rather than a ramp step. */
+  --color-ink-violet: #0d0129;
+  --color-butter-yellow: #fae59b;
+  --color-deep-teal: #19615c;
+  --color-cream-paper: #fffcf7;
+  --color-pure-white: #ffffff;
+  --color-shadow-black: #000000;
+
+  /* Violet — kept as a soft tertiary accent alongside primary. */
+  --color-violet-50: #f4f2ff;
+  --color-violet-100: #e8e4ff;
+  --color-violet-300: #b9adfd;
+  --color-violet-400: #9481fb;
+  --color-violet-500: #7c5cf5;
+  --color-violet-600: #6a44e0;
+  --color-violet-700: #5330c4;
+  --color-violet-900: #2c1d75;
+
+  /* Amber — kept for warmth/success accents that reference it across the
+     app (streaks, achievements); the theme's primary accent is `secondary`. */
+  --color-amber-50: #fff8ec;
+  --color-amber-100: #ffedc7;
+  --color-amber-300: #fbbf24;
+  --color-amber-400: #ffb648;
+  --color-amber-500: #fa9c1f;
+  --color-amber-600: #e0800a;
+  --color-amber-700: #b45309;
+  --color-amber-900: #6b3d05;
+
+  /* Mint — the green stop for progress/achievement. */
+  --color-mint-50: #ecfdf5;
+  --color-mint-400: #34d399;
+  --color-mint-500: #10b981;
+  --color-mint-600: #059669;
+
+  /* Ink — matches slate-900 / slate-950, used for text and dark surfaces. */
+  --color-ink: #0f172a;
+  --color-ink-950: #020617;
+
+  /* Theme gray ramp — warm neutrals from the theme's `$grays` SCSS map.
+     gray-600 mirrors `surface-muted` (theme `$light`) and gray-900 is the
+     theme's body text (`$gray-900`). */
+  --color-gray-100: #fcfcfc;
+  --color-gray-200: #f5f5f5;
+  --color-gray-300: #eeeeee;
+  --color-gray-400: #e0e0e0;
+  --color-gray-500: #bdbdbd;
+  --color-gray-600: #f0f4f9;
+  --color-gray-700: #757575;
+  --color-gray-800: #616161;
+  --color-gray-900: #402b2b;
+  --color-gray-1000: #23242a;
+
+  /* Theme accents — the theme's `$orange` (active nav-tab tint) and its
+     `$cyan` / `$info` value. */
+  --color-orange: #f17228;
+  --color-cyan: #00b2b2;
+  --color-info: #00b2b2;
+
+  /* Dark — the theme's near-black surface (its `$dark` / gray-1000). */
+  --color-dark: #23242a;
+
+  --color-success: #22c55e;
+  --color-success-600: #0f7a47;
+  --color-warning: #f59e0b;
+  --color-warning-600: #d97706;
+  --color-warning-300: #fbbf24;
+  --color-bronze: #cd7f32;
+  --color-error: #ee4d47;
+  --color-error-600: #c52f2f;
+  --color-error-300: #f9a0a0;
+
+
+  /* Theme xxl tier — breakpoint 1540px, container 1480px (from `$grid-*`
+     maps); Tailwind's default 2xl is 1536px / container is unset. */
+  --breakpoint-xxl: 1540px;
+  --container-xxl: 1480px;
+
+  /* Syllabus: every container is sharp-cornered. Zeroing the named radius
+     scale retires rounding app-wide; `rounded-full` is untouched so avatars
+     and pills stay circular. */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-4xl: 0px;
+
+  /* The system's only shadow: a hard offset behind Butter Yellow CTAs. */
+  --shadow-hard: 1px 1px 3px 0px #000000;
+
+  --animate-fade-in: fade-in 0.5s ease-out;
+  --animate-fade-up: fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+/* Slim, on-brand scrollbar — rounded thumb in the signature yellow,
+   subtle track, and a matching dark-mode variant. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-secondary-300) transparent;
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  background-color: var(--color-secondary-300);
+}
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-secondary-500);
+}
+.dark * {
+  scrollbar-color: var(--color-secondary-800) transparent;
+}
+.dark *::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary-800);
+}
+.dark *::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-secondary-600);
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+  }
+}
+
+/* Keep anchored sections clear of the sticky navbar when jumped to. */
+[data-anchor] {
+  scroll-margin-top: 6rem;
+}
+
+/* Theme signature — navy-tinted panel, used behind the FAQ accordion
+   (`bg-primary-gradient`). */
+/* Theme signature — warm panel, used behind the FAQ accordion */
+.bg-primary-gradient {
+  background: var(--color-pure-white);
+  border: 1px solid var(--color-secondary-600);
+}
+.dark .bg-primary-gradient {
+  background: #242022;
+  border: 1px solid #3d3a3a;
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Headline face applied to every heading, site-wide */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* Syllabus is entirely flat colour — these three utilities keep their names so
+   existing call sites stay valid, but no longer paint a gradient. */
+.text-gradient-brand {
+  color: var(--color-secondary-600);
+}
+
+/* Syllabus signature — hard offset shadow on yellow buttons */
+.hover-top-shadow {
+  transform: translateY(0) translateZ(0);
+  transition: all 0.25s ease-out;
+}
+.hover-top-shadow:hover,
+.hover-top-shadow:focus {
+  transform: translateY(-0.25rem) translateZ(0);
+  border-color: rgba(13, 1, 41, 0.4) !important;
+  box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Primary CTA buttons hard offset shadow (Syllabus style) */
+/* Kept for the three call sites that still reference it; the name predates
+   Syllabus, but it now paints the system's one legal shadow. */
+.btn-glow {
+  position: relative;
+  box-shadow: 1px 1px 3px 0px #000000;
+}
+
+/* Brand mark mirrors in Arabic (RTL) so the climb reads right-to-left,
+   matching the reading direction of the brand's native script. */
+[dir="rtl"] .khatwa-mark {
+  transform: scaleX(-1);
+}
+
+/* Theme signature — orange-to-yellow gradient text for big accents. */
+.text-gradient-warm {
+  color: var(--color-secondary-600);
+}
+
+/* Comfortable focus ring that respects both RTL and dark mode. */
+:focus-visible {
+  outline: 2px solid var(--color-primary-500);
+  outline-offset: 2px;
+}
+
+/* Night Shift — a warm, blue-light-reducing overlay (like iOS Night Shift).
+   Toggled via the `.night-shift` class on <html>; fades in/out gradually
+   and works over both themes. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background: rgb(255 166 66 / 0.18);
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.night-shift body::after {
+  opacity: 1;
+}

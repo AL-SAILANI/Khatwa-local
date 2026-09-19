@@ -1,0 +1,1552 @@
+{
+  "nav": {
+    "features": "الميزات",
+    "courses": "الدورات",
+    "steps": "كيف تعمل",
+    "testimonials": "آراء الطلاب",
+    "whyUs": "لماذا نحن",
+    "pricing": "الأسعار",
+    "mockExams": "الاختبارات التجريبية",
+    "faq": "الأسئلة الشائعة",
+    "login": "تسجيل الدخول",
+    "getStarted": "ابدأ مجانًا",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة",
+    "ariaLabel": "التنقل الرئيسي"
+  },
+  "theme": {
+    "nightShift": "الوضع الليلي الدافئ",
+    "toggleTheme": "تبديل المظهر الفاتح/الداكن"
+  },
+  "hero": {
+    "eyebrow": "منصة الاستعداد رقم 1 لاختبار STEP",
+    "title": "خطوتك الأولى نحو إتقان اللغة والنجاح في اختبار STEP",
+    "subtitle": "منصة تعلّم ذكية تبني خطة دراسية شخصية، وتتابع تقدمك أولًا بأول، وتحاكي اختبار STEP بدقة — حتى تصل لهدفك بثقة.",
+    "ctaPrimary": "ابدأ رحلتك مجانًا",
+    "ctaSecondary": "تعرف على المميزات",
+    "trustedBy": "يثق بها آلاف الطلاب والطالبات في المملكة",
+    "rating": "بتقييم 4.9/5 من تقييمات آلاف الطلاب"
+  },
+  "stats": {
+    "students": "طالب وطالبة",
+    "questions": "سؤال تدريبي",
+    "avgImprovement": "متوسط تحسّن الدرجة",
+    "satisfaction": "نسبة رضا الطلاب والطالبات"
+  },
+  "features": {
+    "title": "كل ما تحتاجه في مكان واحد",
+    "subtitle": "بُنيت خطوة حول أسلوب دراسة STEP الفعلي، لا نسخة عامة من منصات تعلّم اللغة",
+    "items": {
+      "placementTest": {
+        "title": "اختبار تحديد مستوى دقيق",
+        "description": "يحلل النحو والقراءة والاستماع والمفردات ليعرف نقطة انطلاقك الحقيقية."
+      },
+      "smartPlan": {
+        "title": "خطة دراسية ذكية",
+        "description": "خطة مبنية على هدفك وساعات دراستك، تتجدد تلقائيًا مع تقدمك."
+      },
+      "mockExams": {
+        "title": "اختبارات تجريبية مطابقة",
+        "description": "اختبارات تدريبية كاملة تتبع بنية ووقت اختبار STEP الحقيقي."
+      },
+      "analytics": {
+        "title": "تحليلات تفصيلية",
+        "description": "تعرف نقاط ضعفك بدقة بعد كل اختبار، مع توصيات لما تدرسه بعدها."
+      },
+      "vocabulary": {
+        "title": "بطاقات مفردات ذكية",
+        "description": "نظام تكرار متباعد يثبّت الكلمات الجديدة في ذاكرتك طويلة المدى."
+      },
+      "gamification": {
+        "title": "تحفيز مستمر",
+        "description": "نقاط، مستويات، وتحديات يومية تجعل الاستمرار في الدراسة أسهل."
+      }
+    },
+    "eyebrow": "لماذا خطوة؟"
+  },
+  "showcase": {
+    "studyPlan": {
+      "eyebrow": "خطة دراسية تتكيف معك",
+      "title": "لا خطة عامة، خطتك أنت",
+      "description": "خطوة تبني جدولاً يومياً من هدفك وساعات دراستك المتاحة، وتعيد توزيعه تلقائياً كل ما أنجزت درساً أو فوّت يوماً — بدل جدول ثابت تعيد ضبطه بنفسك."
+    },
+    "vocabulary": {
+      "eyebrow": "تكرار متباعد علمي",
+      "title": "كلمات تثبت في ذاكرتك، لا تتبخر بعد الاختبار",
+      "description": "كل كلمة تراجعها تُجدول تلقائياً بخوارزمية SM-2 حسب مدى تذكرك لها — الكلمات الصعبة ترجع أسرع، والسهلة تبتعد، فتراجع فقط ما تحتاج مراجعته فعلاً."
+    }
+  },
+  "steps": {
+    "title": "كيف تبدأ رحلتك مع خطوة؟",
+    "subtitle": "ثلاث خطوات بسيطة تفصلك عن هدفك — بدون تعقيد",
+    "items": [
+      {
+        "title": "سجّل حسابك",
+        "description": "أنشئ حسابك المجاني في دقيقة واحدة وابدأ دون أي التزامات."
+      },
+      {
+        "title": "اختر مسارك",
+        "description": "حدد هدفك ودرجتك المستهدفة، ونبني لك خطة دراسية شخصية تناسب وقتك."
+      },
+      {
+        "title": "ابدأ التعلم وتطوّر",
+        "description": "ادرس دروسًا تفاعلية، وتدرّب على اختبارات مطابقة، وتابع تقدمك أولًا بأول."
+      }
+    ]
+  },
+  "whyUs": {
+    "title": "لماذا خطوة؟",
+    "items": {
+      "arabic": {
+        "title": "مصممة لاختبار STEP في السعودية",
+        "description": "محتوى وتحليلات مصممة خصيصًا لاختبار STEP، بلغتك."
+      },
+      "data": {
+        "title": "قرارات مبنية على بياناتك",
+        "description": "كل توصية تراها مبنية على أدائك الفعلي، لا تخمين."
+      },
+      "design": {
+        "title": "تجربة هادئة ومركّزة",
+        "description": "تصميم بسيط لا يشتت انتباهك عن هدف واحد: رفع درجتك."
+      }
+    }
+  },
+  "testimonials": {
+    "title": "ماذا يقول الطلاب؟",
+    "items": [
+      {
+        "name": "سارة أحمد",
+        "role": "طالبة ثانوي — الرياض",
+        "score": "+14 نقطة",
+        "avatarEmoji": "👩‍🎓",
+        "quote": "الخطة اليومية صدق أنقذتني من التشتت؛ صرت أفتح المنصة وأنا عارفة بالضبط وش عندي وخلصت العشوائية."
+      },
+      {
+        "name": "عمر خالد",
+        "role": "جامعي — جدة",
+        "score": "92/100",
+        "avatarEmoji": "🧑‍🎓",
+        "quote": "أكثر شي فرق معي الاختبارات التجريبية، دخلت الاختبار وأنا أحس إني ممر عليها من قبل، نفس الجواء بالضبط."
+      },
+      {
+        "name": "نورة سعد",
+        "role": "خريجة — الدمام",
+        "score": "+18 درجة",
+        "avatarEmoji": "👩‍💻",
+        "quote": "أحلى مافي الموضوع التقييم بعد كل اختبار، يعلمك بالضبط وش نقطة ضعفك بدل ما تضيع وقتك تراجع كل المنهج من جديد."
+      }
+    ]
+  },
+  "faq": {
+    "title": "الأسئلة الشائعة",
+    "items": [
+      {
+        "question": "كيف تبني خطوة الخطة الدراسية الخاصة بي؟",
+        "answer": "بعد اختبار تحديد المستوى، يحلل النظام نتائجك في كل مهارة ويأخذ بعين الاعتبار هدفك وعدد ساعات دراستك المتاحة، ثم يبني خطة يومية مقسّمة على 40 أو 60 أو 90 يومًا."
+      },
+      {
+        "question": "إلى أي مدى تقارب الاختبارات التجريبية اختبار STEP الحقيقي؟",
+        "answer": "كل اختبار تجريبي يتبع نفس بنية ووقت اختبار STEP: 100 سؤال في 150 دقيقة، موزعة بين القراءة والنحو والاستماع والتحليل الكتابي — لتعرف ما تتوقعه في يوم الاختبار."
+      },
+      {
+        "question": "هل أحتاج اشتراك لأبدأ؟",
+        "answer": "لا، يمكنك إنشاء حساب مجاني وأخذ اختبار تحديد المستوى والبدء بالخطة الأساسية مباشرة. باقات Pro وPremium تفتح محتوى ومزايا إضافية."
+      },
+      {
+        "question": "هل يمكنني استخدام المنصة من الجوال؟",
+        "answer": "المنصة متجاوبة بالكامل مع جميع الأجهزة، وتعمل كتطبيق ويب يمكن تثبيته على شاشة جوالك."
+      }
+    ]
+  },
+  "cta": {
+    "title": "جاهز تبدأ خطوتك الأولى؟",
+    "subtitle": "أنشئ حسابك مجانًا وابدأ اختبار تحديد المستوى الآن.",
+    "button": "أنشئ حسابك المجاني",
+    "eyebrow": "جاهز للانطلاق؟",
+    "placeholder": "اكتب بريدك الإلكتروني",
+    "success": "تم الإرسال — تفقد صندوق الوارد!"
+  },
+  "footer": {
+    "tagline": "منصتك الذكية للاستعداد لاختبار STEP.",
+    "product": "المنتج",
+    "company": "الشركة",
+    "legal": "قانوني",
+    "rights": "جميع الحقوق محفوظة"
+  },
+  "aboutPage": {
+    "title": "عن خطوة",
+    "body": "خطوة منصة تعلّم ذكية صُممت للطلاب والطالبات المستعدين لاختبار STEP في السعودية. تجمع بين اختبار تحديد المستوى وخطة دراسية شخصية واختبارات تجريبية واقعية وأدوات مفردات وتحليلات واضحة — لتعرف دائمًا ما تذاكره بعد ذلك.",
+    "body2": "هدفنا بسيط: إتاحة الاستعداد لاختبار STEP بشكل احترافي لكل طالب، بتجربة هادئة تبقيك مركّزًا على رفع درجتك."
+  },
+  "contactPage": {
+    "title": "تواصل معنا",
+    "body": "لديك سؤال أو ملاحظة؟ يسعدنا أن نسمع منك.",
+    "emailLabel": "راسلنا على"
+  },
+  "privacyPage": {
+    "title": "سياسة الخصوصية",
+    "body": "نجمع فقط المعلومات اللازمة لتقديم الخدمة — مثل اسمك وبريدك الإلكتروني عند إنشاء الحساب.",
+    "body2": "تُستخدم بياناتك لتخصيص خطتك الدراسية ومتابعة تقدمك وتحسين المنصة. لا نبيع معلوماتك الشخصية أبدًا.",
+    "body3": "يمكنك طلب نسخة من بياناتك أو حذفها في أي وقت من صفحة الإعدادات."
+  },
+  "termsPage": {
+    "title": "شروط الاستخدام",
+    "body": "بإنشاء حسابك، توافق على استخدام خطوة لأغراض الدراسة الشخصية غير التجارية فقط.",
+    "body2": "يُقدَّم محتوى المنصة لأغراض تعليمية، ولا تتبع المنصة الجهة الرسمية المشرفة على اختبار STEP أو تعمل بترخيص منها.",
+    "body3": "قد نحدّث هذه الشروط من وقت لآخر. استمرارك في استخدام المنصة بعد أي تغيير يعني قبولك للشروط المحدّثة."
+  },
+  "auth": {
+    "showPassword": "إظهار كلمة المرور",
+    "hidePassword": "إخفاء كلمة المرور",
+    "login": {
+      "title": "مرحبًا بعودتك",
+      "subtitle": "سجّل الدخول لمتابعة خطتك الدراسية",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "rememberMe": "تذكرني",
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "submit": "تسجيل الدخول",
+      "orContinueWith": "أو تابع عبر",
+      "continueWithGoogle": "المتابعة باستخدام Google",
+      "noAccount": "ليس لديك حساب؟",
+      "createAccount": "أنشئ حسابًا",
+      "errors": {
+        "emailRequired": "أدخل بريدك الإلكتروني",
+        "emailInvalid": "بريد إلكتروني غير صالح",
+        "passwordRequired": "أدخل كلمة المرور"
+      }
+    },
+    "register": {
+      "title": "ابدأ رحلتك مع خطوة",
+      "subtitle": "خطوات بسيطة تفصلك عن خطتك الدراسية",
+      "name": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "goalLabel": "ما هي درجتك المستهدفة؟",
+      "submit": "إنشاء الحساب",
+      "haveAccount": "لديك حساب بالفعل؟",
+      "login": "تسجيل الدخول",
+      "errors": {
+        "nameMin": "الاسم يجب أن يكون حرفين على الأقل",
+        "emailRequired": "أدخل بريدك الإلكتروني",
+        "emailInvalid": "بريد إلكتروني غير صالح",
+        "passwordMin": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
+        "goalRequired": "اختر هدفك الدراسي",
+        "passwordMismatch": "كلمتا المرور غير متطابقتين",
+        "ageRequired": "أدخل عمرك",
+        "ageRange": "العمر يجب أن يكون بين 13 و 80",
+        "genderRequired": "اختر جنسك"
+      },
+      "nameOptional": "الاسم (اختياري)",
+      "namePlaceholder": "اسمك الكريم",
+      "orContinueWith": "أو المتابعة باستخدام",
+      "avatarLabel": "اختر شخصيتك",
+      "avatarDescription": "اختر شخصية تعبّر عنك — يمكنك تغييرها لاحقاً من الإعدادات في أي وقت.",
+      "avatarOptional": "(اختياري)",
+      "ageLabel": "العمر",
+      "agePlaceholder": "مثال: 16",
+      "ageHelp": "سيُستخدم لتخصيص خطتك لاحقاً",
+      "genderLabel": "الجنس",
+      "genderMale": "ذكر",
+      "genderFemale": "أنثى",
+      "genderOther": "أخرى",
+      "examLabel": "هل سجّلت في اختبار STEP؟",
+      "examRegistered": "نعم، سجّلت",
+      "examNotRegistered": "لم أسجّل بعد",
+      "examDateHelp": "ستُستخدم لتحديد موعد اختبارك في لوحة التحكم ويمكنك تعديله لاحقاً",
+      "examDateLabel": "موعد الاختبار"
+    },
+    "resetPassword": {
+      "title": "إنشاء كلمة مرور جديدة",
+      "subtitle": "أدخل كلمة المرور الجديدة لحسابك",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "submit": "تحديث كلمة المرور",
+      "successTitle": "تم تحديث كلمة المرور",
+      "successNote": "يمكنك الآن تسجيل الدخول بكلمة المرور الجديدة.",
+      "login": "تسجيل الدخول",
+      "requestNewLink": "طلب رابط جديد",
+      "errors": {
+        "passwordMin": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
+        "passwordMismatch": "كلمتا المرور غير متطابقتين",
+        "missingCodeTitle": "رابط غير صالح",
+        "missingCode": "الرابط الذي فتحته غير مكتمل أو منتهي الصلاحية. اطلب رابطًا جديدًا."
+      }
+    },
+    "continueWithGoogle": "المتابعة باستخدام Google"
+  },
+  "dashboard": {
+    "welcome": "مرحبًا",
+    "lastActive": "آخر نشاط لك كان {time}",
+    "currentPlan": "الخطة الحالية",
+    "studyPath": {
+      "title": "مساري الدراسي",
+      "createTitle": "ابدأ مسارك الدراسي",
+      "createDescription": "خطة يومية متسلسلة تفتح دروسها تدريجياً حسب مستواك وهدفك.",
+      "create": "أنشئ خطتك",
+      "progressLabel": "{completed} من {total, plural, one {درس واحد} two {درسان} few {# دروس} many {# درسًا} other {# درسًا}}",
+      "resume": "أكمل",
+      "viewAll": "عرض المسار",
+      "complete": "أكملت جميع دروس مسارك",
+      "emptyDay": "لا توجد دروس لهذا اليوم"
+    },
+    "currentLevel": "المستوى الحالي",
+    "studyHours": "ساعات الدراسة",
+    "testsTaken": "عدد الاختبارات",
+    "lastScore": "آخر درجة",
+    "goal": "الهدف",
+    "completion": "نسبة الإنجاز",
+    "streak": "أيام متتالية",
+    "planNotCreatedYet": "لم تُنشأ بعد",
+    "planDuration": "{days, plural, one {يوم واحد} two {يومان} few {# أيام} many {# يومًا} other {# يومًا}}",
+    "levelNotDetermined": "غير محدد بعد",
+    "levels": {
+      "beginner": "مبتدئ",
+      "intermediate": "متوسط",
+      "advanced": "متقدم"
+    },
+    "studyHoursValue": "{hours} ساعة",
+    "noScore": "—",
+    "pathTo": "الطريق إلى {goal}",
+    "currentScoreNote": "درجتك الحالية {current} من أصل {goal} — استمر على نفس الوتيرة!",
+    "streakDays": "{count, plural, one {يوم واحد متتالي} two {يومان متتاليان} few {# أيام متتالية} many {# يومًا متتاليًا} other {# يومًا متتاليًا}}",
+    "keepGoing": "حافظ على استمراريتك!",
+    "achievementsTitle": "الإنجازات",
+    "viewAll": "عرض الكل",
+    "notStartedYet": "لم يبدأ بعد",
+    "achievementPreviewTitles": {
+      "firstExam": "أول اختبار",
+      "weekStreak": "أسبوع كامل",
+      "words100": "100 كلمة",
+      "score90": "درجة 90+"
+    },
+    "startPlacementCta": {
+      "title": "ابدأ باختبار تحديد المستوى",
+      "description": "يحلل النظام مستواك في النحو والقراءة والاستماع، ويبني خطتك الدراسية الشخصية بناءً على النتيجة.",
+      "button": "ابدأ الآن"
+    },
+    "studyCoach": {
+      "title": "مدرّبك الذكي يقترح",
+      "defaultReason": "الخطوة التالية في خطتك الدراسية",
+      "weaknessReason": "دقتك في قسم {track} كانت {percent}% في آخر اختباراتك"
+    },
+    "continueLearning": {
+      "title": "أكمل من حيث توقفت",
+      "resume": "استئناف"
+    },
+    "calendar": {
+      "title": "خريطة نشاطك",
+      "prevMonth": "الشهر السابق",
+      "nextMonth": "الشهر التالي",
+      "runLabel": "يوم {count} من سلسلة متتالية",
+      "singleDay": "يوم دراسة منفرد",
+      "closeDetail": "إغلاق التفاصيل",
+      "monthlyTotal": "{count} من {total, plural, one {يوم واحد} two {يومان} few {# أيام} many {# يومًا} other {# يومًا}} نشاط هذا الشهر",
+      "bestRun": "أطول سلسلة: {count, plural, one {يوم واحد} two {يومان} few {# أيام} many {# يومًا} other {# يومًا}}"
+    },
+    "dailyChallenge": {
+      "title": "تحدي اليوم السريع",
+      "subtitle": "أجب على سؤال اليوم واكسب 30 نقطة XP إضافية!",
+      "start": "ابدأ التحدي",
+      "completed": "تم إنجاز تحدي اليوم",
+      "miniChallengeTitle": "سؤال تحدي اليوم:",
+      "correctAnswer": "إجابة صحيحة!",
+      "incorrectAnswer": "إجابة غير صحيحة، حاول مجدداً غداً!",
+      "claimReward": "استلام الجائزة (+30 XP)",
+      "fromSection": "سؤال اليوم من قسم {section}",
+      "noQuestion": "لا يوجد سؤال متاح الآن — حاول لاحقاً",
+      "tryAgain": "حاول مجدداً",
+      "studyConceptLink": "ادرس المفهوم"
+    },
+    "eyebrow": "لوحة التحكم",
+    "dailyMotivation": {
+      "label": "رسالة اليوم",
+      "phrases": [
+        "كل دقيقة تدرسها اليوم تقرّبك خطوة من هدفك في STEP",
+        "لا تقارن تقدمك بأحد — قارنه بنسختك من أمس",
+        "الاجتهاد اليوم هو حصيلة الثقة في يوم الاختبار",
+        "لا يوجد طريق مختصر للنجاح، لكن كل يوم خطوة ثابتة تكفي",
+        "الاستمرار الصغير يهزم التوقف الكبير",
+        "أنت تبني عادتك اليوم، وغداً تبنيك عادتك",
+        "خطأ اليوم درس يمنع خطأ الغد",
+        "القوة ليست في الجهد يوم الاختبار، بل في الالتزام كل يوم",
+        "التقدم الصغير الثابت أفضل من القفزة المؤقتة",
+        "عندما تريد أن تستسلم، تذكر لماذا بدأت",
+        "كل سؤال تتدرب عليه اليوم سؤال أنت أهله في الاختبار",
+        "طموحك أكبر من تعب اليوم — واصل",
+        "الدرجة التي تحلم بها تُصنع من ساعات الدراسة الصامتة",
+        "اجعل الدراسة اليوم عادة، والنجاح سيكون نتيجتها",
+        "التكرار اليومي يصنع المتميز",
+        "لا تحتاج قوة خارقة، بل خطوة إضافية واحدة كل يوم",
+        "التركيز على الهدف يجعلك ترى الطريق أسهل",
+        "كل يوم يمر بتعلم شيء جديد، أنت أقرب إلى هدفك",
+        "من يبدأ مبكراً يصل مرتاحاً",
+        "المراجعة اليومية تمنحك ثقة لا يتزعزع",
+        "النجاح ليس صدفة، بل سلسلة قرارات صغيرة صحيحة",
+        "عقلك يتعلم كل يوم — خذ وقتك ولا تتعجل",
+        "اسأل، اتدرب، اخطئ، وعدل — هذه وصفة التفوق",
+        "اليوم الذي تدرس فيه جيداً، هو أفضل استثمار في غدك",
+        "الانتظام على المدى الطويل يبني المستوى العالي",
+        "عندما يزداد التحدي، تزداد قيمة إنجازك",
+        "ثقتك بنفسك تكبر مع كل إجابة صحيحة تتدرب عليها",
+        "وفر جهداً اليوم ليوفّر عليك القلق يوم الاختبار",
+        "أنت تستطيع أكثر مما تعتقد — جرّب اليوم مرة أخرى",
+        "حلمك يستحق كل هذه الدقائق — استمر"
+      ]
+    },
+    "examCountdown": {
+      "eyebrow": "الاختبار القادم",
+      "title": "العد التنازلي لاختبار STEP",
+      "subtitle": "حدّد موعد اختبارك من التقويم لتعرف كم تبقّى لك بالضبط",
+      "setLabel": "موعد اختبارك:",
+      "saving": "جارٍ الحفظ…",
+      "saved": "تم الحفظ",
+      "pickLabel": "حدّد موعد اختبارك",
+      "pickSave": "حفظ",
+      "yourDate": "موعدك: {date}",
+      "noDate": "اضغط على الأيقونة لتحديد يوم وساعة اختبارك",
+      "passed": "مضى موعد اختبارك — راجع تقدمك واستعد للاختبار القادم",
+      "passedCta": "مراجعة المسار",
+      "ariaLabel": "الوقت المتبقي على اختبار STEP",
+      "units": {
+        "days": "يوم",
+        "hours": "ساعة",
+        "minutes": "دقيقة",
+        "seconds": "ثانية"
+      },
+      "dateLabel": "تاريخ الامتحان",
+      "timeLabel": "وقت الامتحان"
+    },
+    "performance": {
+      "title": "أداؤك حسب الأقسام",
+      "noData": "لا توجد بيانات",
+      "practice": "تدرب الآن"
+    },
+    "loading": "جاري التحميل..."
+  },
+  "trackNames": {
+    "grammar": "القواعد",
+    "reading": "القراءة",
+    "listening": "الاستماع",
+    "writingAnalysis": "تحليل الكتابة",
+    "vocabulary": "المفردات",
+    "tips": "نصائح",
+    "strategies": "استراتيجيات",
+    "revision": "المراجعة"
+  },
+  "sidebar": {
+    "home": "الرئيسية",
+    "courses": "الدورات",
+    "studyPath": "المسار الدراسي",
+    "mockExams": "الاختبارات التجريبية",
+    "vocabulary": "المفردات",
+    "achievements": "الإنجازات",
+    "leaderboard": "المتصدرون",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج",
+    "ariaLabel": "القائمة الرئيسية",
+    "more": "المزيد"
+  },
+  "topbar": {
+    "streakDay": "{count, plural, one {يوم واحد متتالي} two {يومان متتاليان} few {# أيام متتالية} many {# يومًا متتاليًا} other {# يومًا متتاليًا}}",
+    "userMenuAria": "قائمة المستخدم",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج"
+  },
+  "exam": {
+    "reviewAndSubmit": "مراجعة وتسليم",
+    "finishSection": "إنهاء هذا القسم",
+    "sectionOfTotal": "القسم {current} من {total}",
+    "questionCounter": "سؤال {current} من {total}",
+    "flagForReview": "تعليم للمراجعة",
+    "previous": "السابق",
+    "next": "التالي",
+    "finishAndReview": "إنهاء ومراجعة",
+    "transcriptNote": "نص المحادثة (مؤقت، إلى حين رفع الملف الصوتي)",
+    "review": {
+      "title": "مراجعة الإجابات",
+      "unanswered": "لديك {count, plural, one {سؤال واحد} two {سؤالان} few {# أسئلة} many {# سؤالًا} other {# سؤالًا}} بدون إجابة.",
+      "allAnswered": "أجبت على جميع الأسئلة.",
+      "questionLabel": "سؤال {index} — {section}",
+      "backToExam": "العودة للاختبار",
+      "submitting": "جارٍ التسليم...",
+      "submitExam": "تسليم الاختبار",
+      "expand": "عرض التفاصيل",
+      "collapse": "إخفاء التفاصيل",
+      "questionPrompt": "نص السؤال",
+      "readingPassage": "نص القراءة",
+      "yourAnswer": "إجابتك",
+      "correctAnswer": "الإجابة الصحيحة",
+      "explanation": "الشرح",
+      "tags": "الوسوم",
+      "notAnswered": "لم تُجب",
+      "optionLabel": "إجابتك: {option}"
+    },
+    "results": {
+      "estimatedScore": "نتيجتك التقديرية",
+      "timeSpentMinutes": "{minutes} دقيقة",
+      "timeSpent": "الوقت المستغرق",
+      "errorRate": "نسبة الخطأ",
+      "sectionBreakdown": "تفصيل الأقسام",
+      "recommendations": "توصيات مبنية على أدائك",
+      "newWords": "كلمات جديدة واجهتك",
+      "newWordsPlaceholder": "سيتم ربط هذا القسم بمراجعة المفردات الذكية قريبًا.",
+      "createStudyPlan": "أنشئ خطتي الدراسية",
+      "backToMockExams": "العودة للاختبارات التجريبية",
+      "reviewTitle": "مراجعة الأسئلة",
+      "reviewIntro": "تفاصيل الأسئلة التي أجبت عليها مع شرح لكل سؤال.",
+      "yourAnswer": "إجابتك",
+      "correctAnswer": "الإجابة الصحيحة",
+      "explanation": "الشرح",
+      "studyConcept": "ادرس هذا المفهوم",
+      "correct": "إجابة صحيحة",
+      "incorrect": "إجابة خاطئة",
+      "notAnswered": "لم تُجب",
+      "noAnsweredQuestions": "لم تجب على أي سؤال.",
+      "shareScore": "مشاركة النتيجة",
+      "copiedScore": "تم نسخ النتيجة إلى الحافظة!",
+      "shareText": "حققت درجة {score} في اختبار STEP على منصة خطوة! 🚀",
+      "shareTitle": "نتيجة اختبار خطوة",
+      "scoreTrend": "اتجاه درجاتك",
+      "attemptCount": "{count, plural, one {محاولة واحدة} two {محاولتان} few {# محاولات} other {# محاولة}}",
+      "secondsPerQuestion": "{seconds} ثانية لكل سؤال",
+      "weakSkills": "مهارات تحتاج إلى تقوية"
+    },
+    "audioNote": "استمع إلى المقطع الصوتي ثم أجب عن السؤال",
+    "sectionTime": "{minutes} دقيقة",
+    "showPalette": "إظهار جدول الأسئلة",
+    "hidePalette": "إخفاء جدول الأسئلة",
+    "unflagForReview": "إلغاء علامة المراجعة"
+  },
+  "placementTest": {
+    "pageTitle": "اختبار تحديد المستوى",
+    "title": "اختبار تحديد المستوى",
+    "description": "يحلل هذا الاختبار مستواك في النحو والقراءة والاستماع والتحليل الكتابي، ليبني النظام خطتك الدراسية الشخصية بناءً على نقاط قوتك وضعفك الحقيقية.",
+    "questionUnit": "سؤال",
+    "minuteUnit": "دقيقة",
+    "preparing": "جارٍ التحضير...",
+    "startNow": "ابدأ الاختبار الآن",
+    "eyebrow": "اختبار تحديد المستوى"
+  },
+  "mockExams": {
+    "pageTitle": "الاختبار التجريبي الكامل",
+    "title": "الاختبار التجريبي الكامل",
+    "description": "يحاكي اختبار STEP بالكامل: {total, plural, one {سؤال واحد} two {سؤالان} few {# أسئلة} many {# سؤالًا} other {# سؤالًا}} في {minutes, plural, one {دقيقة واحدة} two {دقيقتان} few {# دقائق} many {# دقيقة} other {# دقيقة}}، بنفس توزيع الأقسام (قراءة 40%، نحو 30%، استماع 20%، تحليل كتابي 10%).",
+    "questionCount": "{count, plural, one {سؤال واحد} two {سؤالان} few {# أسئلة} many {# سؤالًا} other {# سؤالًا}}",
+    "minuteCount": "{count} دقيقة",
+    "upgradeForUnlimited": "ترقّ للحصول على اختبارات غير محدودة",
+    "usedFreeAttempt": "استخدمت اختبارك التجريبي المجاني. اشترك في خطة برو أو بريميوم لاختبارات غير محدودة.",
+    "preparing": "جارٍ التحضير...",
+    "startNewExam": "ابدأ اختبارًا جديدًا",
+    "fewerQuestionsNote": "قد يحتوي الاختبار حاليًا على عدد أسئلة أقل من {total} حسب بنك الأسئلة المتاح.",
+    "distributionTitle": "توزيع أقسام الاختبار",
+    "distributionNote": "نفس التوزيع الرسمي لاختبار STEP: القراءة {reading}%، القواعد {grammar}%، الاستماع {listening}%، التحليل الكتابي {writing}%.",
+    "sectionCountLabel": "{count} سؤال",
+    "sectionMinutesLabel": "{count} دقيقة",
+    "previousAttempts": "اختباراتك السابقة",
+    "attemptsCount": "إجمالي الاختبارات",
+    "bestScore": "أعلى درجة",
+    "averageScore": "متوسط الدرجة",
+    "errorRate": "معدل الخطأ",
+    "retake": "إعادة الاختبار",
+    "noAttemptsYet": "لم تخض أي اختبار تجريبي بعد.",
+    "noAttemptsDescription": "ابدأ أول اختبار تجريبي لمحاكاة اختبار STEP الحقيقي وتتبّع تقدمك هنا.",
+    "scoreLabel": "الدرجة: {score}",
+    "noDate": "—",
+    "eyebrow": "الاختبارات التجريبية"
+  },
+  "courses": {
+    "pageTitle": "الدورات",
+    "description": "محتوى مقسّم حسب مهارات اختبار STEP الأربع، مع دروس نصائح ومراجعة.",
+    "lessonSummary": "{lessonCount} درس · {minutes} دقيقة",
+    "openPdf": "فتح ملف PDF",
+    "finishLesson": "أنهيت الدرس",
+    "lessonCompleted": "تم إكمال الدرس",
+    "backToCourse": "العودة للدورة",
+    "checkAnswers": "تحقق من إجاباتك",
+    "quizScoreNote": "نتيجتك في اختبار هذا الدرس",
+    "eyebrow": "الدورات",
+    "allTracks": "كل المسارات",
+    "noCoursesYet": "لا توجد دورات بعد",
+    "noResults": "لا توجد نتائج مطابقة",
+    "searchLabel": "البحث في الدورات",
+    "searchPlaceholder": "ابحث عن دورة أو مهارة…",
+    "clearFilters": "مسح الفلاتر",
+    "lockedLessonNotice": "هذا الدرس مقفل — أكمل الدرس السابق ليفتح",
+    "goToCurrentLesson": "الذهاب إلى الدرس الحالي",
+    "lessonPosition": "{position} من {total, plural, one {درس واحد} two {درسان} few {# دروس} many {# درسًا} other {# درسًا}}",
+    "listenToDialogue": "استمع إلى الحوار",
+    "nextLesson": "الدرس التالي",
+    "prevLesson": "الدرس السابق",
+    "completeToContinue": "أكمل هذا الدرس للانتقال إلى التالي",
+    "filterByTrack": "التصفية حسب المسار"
+  },
+  "vocabulary": {
+    "pageTitle": "المفردات",
+    "description": "نظام تكرار متباعد يثبّت الكلمات الجديدة في ذاكرتك طويلة المدى.",
+    "tabs": {
+      "review": "مراجعة اليوم",
+      "browse": "تصفح الكل",
+      "favorites": "المفضلة",
+      "sets": "المجموعات",
+      "label": "أقسام المفردات"
+    },
+    "favoritesEmpty": "لا توجد كلمات مفضلة بعد",
+    "favoritesEmptyDescription": "اضغط على علامة النجمة في تبويب تصفح الكل لإضافة كلماتك المفضلة.",
+    "favoritesStartReview": "ابدأ مراجعة الكلمات المفضلة ({count})",
+    "favoritesDoneNote": "راجعت {total, plural, one {كلمة مفضلة} two {كلمتين مفضلتين} few {# كلمات مفضلة} many {# كلمة مفضلة} other {# كلمة مفضلة}}.",
+    "removeFavorite": "إزالة من المفضلة",
+    "noWordsToReview": "لا توجد كلمات للمراجعة الآن",
+    "noWordsToReviewDescription": "عد لاحقاً لمراجعة كلمات جديدة أو تصفّح المفردات لبدء التعلم.",
+    "reviewDoneTitle": "أحسنت! أنهيت مراجعة اليوم",
+    "reviewDoneNote": "راجعت {total, plural, one {كلمة واحدة} two {كلمتين} few {# كلمات} many {# كلمة} other {# كلمة}}. عد غدًا لمزيد من الكلمات.",
+    "remainingCounter": "{remaining} من {total} متبقية",
+    "dontKnow": "لا أعرفها",
+    "hard": "صعبة",
+    "easy": "سهلة",
+    "searchPlaceholder": "ابحث عن كلمة...",
+    "browseNoResults": "لا توجد نتائج مطابقة",
+    "browseNoResultsHint": "جرّب كلمة أخرى أو غيّر فلتر المستوى.",
+    "browseClearFilters": "مسح الفلاتر",
+    "flipHint": "اضغط لرؤية المعنى",
+    "flipAria": "اقلب البطاقة لرؤية المعنى",
+    "flipBackAria": "أعد البطاقة للوجه الأمامي",
+    "pronounceWord": "نطق الكلمة",
+    "pronounceExample": "نطق المثال",
+    "setsEmpty": "لم تُنشئ أي مجموعات بعد",
+    "setsEmptyDescription": "أنشئ مجموعة الآن أو أضف كلمات من تبويب تصفح الكل.",
+    "setsNamePlaceholder": "اسم المجموعة (مثال: كلمات المستشفى)...",
+    "setsCreateButton": "إنشاء مجموعة",
+    "setsDelete": "حذف المجموعة",
+    "setsDeleteConfirm": "هل تريد حذف هذه المجموعة؟",
+    "setsReviewButton": "راجع هذه المجموعة ({count})",
+    "setsReviewDoneNote": "راجعت {total, plural, one {كلمة واحدة} two {كلمتين} few {# كلمات} many {# كلمة} other {# كلمة}} من هذه المجموعة.",
+    "setsBackToList": "العودة إلى المجموعات",
+    "setsCuratedTitle": "مجموعات موصى بها",
+    "setsMyTitle": "مجموعاتك",
+    "setsCuratedBadge": "مجموعة منهجية",
+    "setsWordCount": "{count, plural, one {كلمة واحدة} two {كلمتين} few {# كلمات} many {# كلمة} other {# كلمة}}",
+    "setsEmptySet": "لا توجد كلمات في هذه المجموعة بعد. أضف كلمات من تبويب تصفح الكل.",
+    "addToSet": "أضف إلى مجموعة",
+    "addToSetEmpty": "لا توجد مجموعات بعد. أنشئ مجموعة من تبويب المجموعات.",
+    "bookmarkWord": "إضافة إلى المفضلة",
+    "eyebrow": "المفردات",
+    "levelAll": "كل المستويات",
+    "medium": "متوسط",
+    "recallPrompt": "ما الكلمة الإنجليزية؟",
+    "modeRecall": "استرجاع نشط: معنى ← كلمة",
+    "modeRecognize": "تعرف سريع: كلمة ← معنى",
+    "spacedLine": "الخوارزمية ترتب مراجعتك بذكاء",
+    "nextReviewSoon": "ستُعرض بعد قليل لتثبيتها",
+    "nextReviewTomorrow": "ستُعرض غدًا",
+    "nextReviewInDays": "ستُعرض بعد {days, plural, one {يوم واحد} two {يومين} few {# أيام} many {# يوم} other {# يوم}}",
+    "sessionHint": "F اقلب البطاقة · 1 لا أعرفها · 2 صعبة · 3 سهلة",
+    "doneTitle": "أحسنت! أنهيت مراجعة اليوم",
+    "doneNote": "راجعت {total, plural, one {كلمة واحدة} two {كلمتين} few {# كلمات} many {# كلمة} other {# كلمة}} اليوم. الاسترجاع النشط يقوّي ذاكرتك طويلة المدى.",
+    "retentionTitle": "نسبة الاستبقاء",
+    "retentionNote": "ما عرّفته دون نسيان خلال الجلسة",
+    "statMastered": "أتقنتها",
+    "statHard": "بحاجة تثبيت",
+    "statAgain": "سأعيد تثبيتها",
+    "statNew": "جديدة تعلمتها",
+    "curveTitle": "منحنى النسيان (إبنجهاوس)",
+    "curveToday": "اليوم",
+    "curveWithoutReview": "بدون مراجعة",
+    "curveWithReview": "مع المراجعة المتباعدة",
+    "scheduleTitle": "جدولك القادم",
+    "scheduleAgain": "غدًا — {count, plural, one {كلمة نسيتها} two {كلمتان نسيتهما} few {# كلمات نسيتها} many {# كلمة نسيتها} other {# كلمة نسيتها}}",
+    "scheduleHard": "بفاصل قصير — {count, plural, one {كلمة صعبة} two {كلمتان صعبتان} few {# كلمات صعبة} many {# كلمة صعبة} other {# كلمة صعبة}}",
+    "scheduleEasy": "بفاصل أطول — {count, plural, one {كلمة سهلة} two {كلمتان سهلتان} few {# كلمات سهلة} many {# كلمة سهلة} other {# كلمة سهلة}}",
+    "scheduleNew": "ستدخل المنحنى — {count, plural, one {كلمة جديدة} two {كلمتان جديدتان} few {# كلمات جديدة} many {# كلمة جديدة} other {# كلمة جديدة}}",
+    "tipRetrieval": "الاسترجاع النشط أقوى من إعادة القراءة: محاولة تذكّر المعنى قبل كشفه تضاعف الاحتفاظ به (Roediger & Karpicke, 2006).",
+    "tipSpacing": "التباعد يفوق الحشو: المراجعة على فترات متزايدة تُثبّت الذاكرة طويلة المدى بجهد أقل (Cepeda et al., 2006).",
+    "tipLeitner": "الكلمات التي نسيتها عادت إلى الطابور لتراها الآن — إعادة التثبيت داخل الجلسة الواحدة تسرّع الحفظ (نظام Leitner).",
+    "xpEarned": "+{xp} XP أُضيفت إلى رصيدك",
+    "favoritesBack": "العودة إلى المفضلة",
+    "dueToday": "مستحقة اليوم: {count, plural, one {كلمة واحدة} two {كلمتين} few {# كلمات} many {# كلمة} other {# كلمة}}",
+    "newWords": "جديدة: {count, plural, one {كلمة واحدة} two {كلمتين} few {# كلمات} many {# كلمة} other {# كلمة}}",
+    "statusNew": "جديدة",
+    "statusDue": "مستحقة اليوم",
+    "statusNext": "بعد {days, plural, one {يوم واحد} two {يومين} few {# أيام} many {# يوم} other {# يوم}}",
+    "curriculumDay": "اليوم {day} من {total}",
+    "dailyNewWords": "{count, plural, one {كلمة جديدة اليوم} two {كلمتان جديدتان اليوم} few {# كلمات جديدة اليوم} many {# كلمة جديدة اليوم} other {# كلمة جديدة اليوم}}",
+    "curriculumNote": "تتدرّج الصعوبة وترتبط كلماتك بدروسك يوماً بيوم — كلما تقدمت زاد التحدي.",
+    "fromLesson": "من درس: {title}",
+    "key1": "1",
+    "key2": "2",
+    "key3": "3",
+    "keyFlip": "F",
+    "flipShortcut": "اقلب البطاقة",
+    "keyboardHint": "يمكنك استخدام الكيبورد:",
+    "sessionProgress": "تقدم الجلسة",
+    "filterLabel": "تصفية حسب المستوى",
+    "removeBookmark": "إزالة من المفضلة"
+  },
+  "studyPlan": {
+    "title": "خطتك الدراسية",
+    "recommendationNote": "بناءً على هدفك ({goal}) ونتيجتك الحالية ({lastScore})، نوصي بخطة {recommended} يومًا.",
+    "noValue": "—",
+    "durationLabel": "مدة الخطة",
+    "durationOption": "{days, plural, one {يوم واحد} two {يومان} few {# أيام} many {# يومًا} other {# يومًا}}",
+    "weeklyHoursLabel": "كم ساعة تقدر تذاكر أسبوعيًا؟",
+    "weeklyHoursValue": "{hours} ساعة أسبوعيًا",
+    "creating": "جارٍ الإنشاء...",
+    "createButton": "أنشئ خطتي",
+    "pathTitle": "المسار الدراسي",
+    "pathDescription": "خطتك اليومية بتسلسل متدرج الصعوبة — أكمل كل درس لفتح الذي يليه.",
+    "planMeta": "خطة {days, plural, one {يوم واحد} two {يومان} few {# أيام} many {# يومًا} other {# يومًا}}",
+    "progressLabel": "{completed} من {total, plural, one {درس واحد} two {درسان} few {# دروس} many {# درسًا} other {# درسًا}}",
+    "continuePath": "أكمل مسارك",
+    "nextLesson": "الدرس التالي",
+    "dayLabel": "اليوم {day}",
+    "weekLabel": "الأسبوع {week}",
+    "pathComplete": "أكملت جميع دروس مسارك بنجاح.",
+    "difficulty": {
+      "easy": "مبتدئ",
+      "medium": "متوسط",
+      "hard": "متقدم"
+    },
+    "pathNote": "سيتم ترتيب دروسك في مسار يومي متسلسل يتداخل فيه أكثر من مهارة في اليوم الواحد، مع نصائح ومراجعة أسبوعية — وكل درس يفتح الدرس الذي يليه.",
+    "eyebrow": "المسار الدراسي"
+  },
+  "settings": {
+    "pageTitle": "الإعدادات",
+    "profile": {
+      "goalLabel": "الهدف",
+      "planLabel": "الباقة",
+      "freePlan": "مجانية",
+      "noValue": "—",
+      "avatarLabel": "شخصيتك",
+      "changeAvatar": "تغيير الشخصية",
+      "avatarSave": "حفظ الشخصية",
+      "avatarCancel": "إلغاء",
+      "avatarSaved": "تم تحديث شخصيتك بنجاح",
+      "avatarHint": "اختر من مجموعة الشخصيات المتنوعة — يمكنك التغيير في أي وقت.",
+      "upgradePlan": "ترقية الباقة",
+      "errors": {
+        "nameRequired": "أدخل اسمك",
+        "nameTooLong": "الاسم طويل جداً"
+      },
+      "nameLabel": "الاسم",
+      "namePlaceholder": "اكتب اسمك",
+      "changeName": "تغيير الاسم",
+      "nameSave": "حفظ الاسم",
+      "nameCancel": "إلغاء",
+      "nameSaved": "تم تحديث اسمك بنجاح"
+    },
+    "preferences": {
+      "darkMode": "الوضع الليلي",
+      "darkModeDescription": "بدّل بين الوضع الفاتح والداكن",
+      "notifications": "الإشعارات",
+      "notificationsDescription": "تذكيرات الاستمرارية وملخصات الأداء الأسبوعية",
+      "language": "اللغة"
+    },
+    "installApp": {
+      "title": "تثبيت التطبيق على جهازك",
+      "description": "ثبّت خطوة لوصول سريع من الشاشة الرئيسية واستخدام بدون إنترنت.",
+      "install": "تثبيت",
+      "installed": "مثبّت"
+    },
+    "examDate": {
+      "title": "موعد اختبار STEP",
+      "description": "حدّد موعد اختبارك ليظهر عدّاد التنازلي في لوحة التحكم.",
+      "registeredLabel": "هل سجّلت في الاختبار؟",
+      "registered": "نعم، سجّلت",
+      "notRegistered": "لم أسجّل في الاختبار بعد",
+      "dateLabel": "موعد الاختبار:",
+      "save": "حفظ",
+      "saved": "تم الحفظ",
+      "saving": "جارٍ الحفظ...",
+      "registerLater": "يمكنك العودة إلى الإعدادات لتحديد موعدك عند التسجيل في الاختبار.",
+      "currentDate": "موعدك الحالي: {date}",
+      "timeLabel": "الوقت"
+    },
+    "changePassword": {
+      "title": "تغيير كلمة المرور",
+      "currentPassword": "كلمة المرور الحالية",
+      "newPassword": "كلمة المرور الجديدة",
+      "confirmPassword": "تأكيدها",
+      "success": "تم تحديث كلمة المرور بنجاح.",
+      "saving": "جارٍ الحفظ...",
+      "save": "حفظ كلمة المرور",
+      "errors": {
+        "currentPasswordRequired": "أدخل كلمة المرور الحالية",
+        "newPasswordMin": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
+        "mismatch": "كلمتا المرور غير متطابقتين"
+      }
+    },
+    "deleteAccount": {
+      "title": "حذف الحساب",
+      "warning": "هذا الإجراء نهائي ولا يمكن التراجع عنه. سيتم حذف حسابك وبياناتك الأساسية.",
+      "passwordLabel": "كلمة المرور",
+      "confirmLabel": "اكتب \"{word}\" للتأكيد",
+      "confirmWord": "حذف",
+      "deleting": "جارٍ الحذف...",
+      "deleteButton": "حذف حسابي نهائيًا",
+      "errors": {
+        "passwordRequired": "أدخل كلمة المرور لتأكيد الحذف",
+        "confirmationMismatch": "اكتب \"{word}\" لتأكيد العملية"
+      }
+    },
+    "eyebrow": "الإعدادات",
+    "loading": "جارٍ التحميل"
+  },
+  "levelTitles": {
+    "1": "مبتدئ",
+    "2": "متحمس",
+    "3": "مثابر",
+    "4": "منضبط",
+    "5": "متمكن",
+    "6": "محترف",
+    "7": "خبير",
+    "8": "متقن",
+    "9": "نخبة",
+    "10": "أسطورة"
+  },
+  "levelCard": {
+    "levelLabel": "المستوى {level} · {title}",
+    "xpAndCoins": "{xp} نقطة خبرة · {coins} عملة",
+    "xpToNextLevel": "{current} / {total} نقطة للمستوى التالي"
+  },
+  "achievements": {
+    "pageTitle": "الإنجازات",
+    "unlockedCount": "{unlocked} من {total} إنجاز مُحقق",
+    "xpReward": "+{xp} نقطة خبرة",
+    "eyebrow": "الإنجازات",
+    "progressLabel": "التقدّم",
+    "totalXpLabel": "إجمالي النقاط",
+    "unlockedOn": "تم الإنجاز في {date}",
+    "lockedLabel": "لم يُحقق بعد",
+    "nextTip": "أكمل المزيد لفتح الإنجازات المتبقية",
+    "categories": {
+      "streak": "المثابرة",
+      "vocabulary": "المفردات",
+      "exams": "الاختبارات",
+      "lessons": "الدروس",
+      "focus": "ساعات الدراسة",
+      "daily": "التحدي اليومي"
+    },
+    "loading": "جاري تحميل الإنجازات..."
+  },
+  "leaderboard": {
+    "pageTitle": "المتصدرون",
+    "description": "قارن تقدمك مع باقي الطلاب والطالبات على منصة خطوة.",
+    "notEnoughData": "لا توجد بيانات كافية بعد.",
+    "points": "{xp} نقطة",
+    "pointsShort": "نقاط",
+    "rank": "الترتيب",
+    "player": "اللاعب",
+    "xp": "نقاط الخبرة",
+    "you": "أنت",
+    "periodFilter": "تصفية حسب الفترة",
+    "periods": {
+      "all": "كل الوقت",
+      "weekly": "هذا الأسبوع",
+      "monthly": "هذا الشهر"
+    },
+    "loading": "جاري التحميل...",
+    "tryAllTime": "جرب عرض \"كل الوقت\" لرؤية المزيد من اللاعبين",
+    "levelFilter": "تصفية حسب المستوى",
+    "levels": {
+      "all": "الكل",
+      "beginner": "مبتدئ",
+      "intermediate": "متوسط",
+      "advanced": "متقدم"
+    },
+    "noLevelMatches": "لا يوجد متسابقون بهذا المستوى بعد.",
+    "eyebrow": "المتصدرون",
+    "streakDays": "{count} يوم متتالي",
+    "yourRank": "ترتيبك الحالي",
+    "behindNext": "تحتاج {xp} نقطة للتفوق على المركز التالي",
+    "aheadNext": "تتقدم بـ {xp} نقطة على المركز التالي",
+    "noStreak": "ابدأ يومك الأول",
+    "topScore": "أعلى النقاط"
+  },
+  "onboarding": {
+    "goalQuestion": "ما هي درجتك المستهدفة؟",
+    "goalDescription": "نبني خطتك الدراسية بناءً على هدفك",
+    "continue": "متابعة"
+  },
+  "admin": {
+    "nav": {
+      "overview": "نظرة عامة",
+      "users": "المستخدمون",
+      "courses": "الدورات والدروس",
+      "questions": "بنك الأسئلة",
+      "navLabel": "التنقل"
+    },
+    "overview": {
+      "title": "لوحة تحكم المشرف",
+      "description": "نظرة عامة على المنصة.",
+      "users": "المستخدمون",
+      "examAttempts": "محاولات الاختبارات",
+      "courses": "الدورات",
+      "questions": "الأسئلة",
+      "loading": "جارٍ التحميل"
+    },
+    "users": {
+      "title": "المستخدمون",
+      "description": "إدارة باقات المستخدمين (آخر 50 مستخدم).",
+      "xp": "{xp} نقطة",
+      "testsTaken": "{count} اختبار",
+      "tierLabel": "خطة المستخدم: {name}",
+      "loading": "جارٍ التحميل"
+    },
+    "courses": {
+      "title": "الدورات والدروس",
+      "description": "إدارة محتوى الدورات ورفع الوسائط (فيديو / صوت / PDF) مباشرة عبر Storage.",
+      "addCourseTitle": "إضافة دورة جديدة",
+      "titleLabel": "العنوان",
+      "descriptionLabel": "الوصف",
+      "trackLabel": "المسار",
+      "minutesLabel": "المدة (دقيقة)",
+      "saving": "جارٍ الحفظ...",
+      "addCourse": "إضافة الدورة",
+      "addLessonTitle": "إضافة درس جديد",
+      "courseLabel": "الدورة",
+      "chooseCourse": "اختر دورة...",
+      "lessonTitleLabel": "عنوان الدرس",
+      "lessonNotesLabel": "محتوى الدرس",
+      "lessonQuestionsLabel": "معرّفات أسئلة الاختبار (مفصولة بفاصلة)",
+      "resourcesLabel": "مرفقات الدرس (فيديو / صوت / PDF)",
+      "chooseCourseFirst": "اختر الدورة أولًا قبل رفع الملف.",
+      "unsupportedFormat": "الصيغة غير مدعومة — الرجاء رفع فيديو أو صوت أو PDF.",
+      "uploadFailed": "فشل رفع الملف. حاول مرة أخرى.",
+      "addLesson": "إضافة الدرس",
+      "currentCoursesTitle": "الدورات الحالية",
+      "uploadProgress": "تقدم الرفع",
+      "removeResource": "إزالة {title}",
+      "loading": "جارٍ التحميل"
+    },
+    "questions": {
+      "title": "بنك الأسئلة",
+      "countLabel": "{count, plural, one {سؤال واحد} two {سؤالان} few {# أسئلة} many {# سؤالًا} other {# سؤالًا}} حاليًا في البنك.",
+      "addQuestionTitle": "إضافة سؤال جديد",
+      "sectionLabel": "القسم",
+      "difficultyLabel": "الصعوبة",
+      "promptLabel": "نص السؤال",
+      "optionsLabel": "الخيارات (اختر الإجابة الصحيحة)",
+      "explanationLabel": "الشرح",
+      "tagsLabel": "الوسوم (مفصولة بفاصلة)",
+      "saving": "جارٍ الحفظ...",
+      "addQuestion": "إضافة السؤال",
+      "currentQuestionsTitle": "الأسئلة الحالية",
+      "correctOptionLabel": "الإجابة الصحيحة",
+      "optionLabel": "الخيار {option}",
+      "loading": "جارٍ التحميل"
+    },
+    "loading": "جارٍ التحميل"
+  },
+  "pricing": {
+    "title": "خطط الاشتراك",
+    "subtitle": "اختر الخطة التي تناسب رحلتك نحو STEP",
+    "checkoutStartFailed": "تعذر بدء الدفع.",
+    "connectionFailed": "تعذر الاتصال بالخادم.",
+    "currentPlan": "خطتك الحالية",
+    "freeForEveryone": "مجاني للجميع",
+    "createAccountFirst": "أنشئ حسابًا أولًا",
+    "redirecting": "جارٍ التحويل...",
+    "subscribeNow": "اشترك الآن",
+    "tiers": {
+      "free": {
+        "name": "مجاني",
+        "priceLabel": "٠ ريال",
+        "description": "للتجربة والانطلاق",
+        "features": [
+          "اختبار تحديد المستوى",
+          "خطة دراسية شخصية",
+          "اختبار تجريبي كامل واحد",
+          "بطاقات المفردات"
+        ],
+        "yearlyPriceLabel": "٠ ريال"
+      },
+      "pro": {
+        "name": "برو",
+        "priceLabel": "٤٩ ريال / شهريًا",
+        "description": "للمتدربين الجادين على اختبار STEP",
+        "features": [
+          "كل ما في الخطة المجانية",
+          "اختبارات تجريبية كاملة غير محدودة",
+          "كل الدورات والدروس",
+          "تقارير تحليل أداء مفصّلة"
+        ],
+        "yearlyPriceLabel": "٤٩٢ ريال / سنويًا"
+      },
+      "premium": {
+        "name": "بريميوم",
+        "priceLabel": "٩٩ ريال / شهريًا",
+        "description": "لأعلى درجة ممكنة",
+        "features": [
+          "كل ما في خطة برو",
+          "مدرّب ذكي أولوية في التوصيات",
+          "دعم أولوية",
+          "شارة بريميوم في المتصدرين"
+        ],
+        "yearlyPriceLabel": "٩٥٤ ريال / سنويًا"
+      }
+    },
+    "billingToggle": "تبديل الفوترة الشهرية والسنوية",
+    "monthly": "شهري",
+    "yearly": "سنوي",
+    "save": "وفّر ٢٠٪"
+  },
+  "forgotPassword": {
+    "errors": {
+      "emailRequired": "أدخل بريدك الإلكتروني",
+      "emailInvalid": "بريد إلكتروني غير صالح"
+    },
+    "checkEmailTitle": "تحقق من بريدك الإلكتروني",
+    "checkEmailNote": "أرسلنا رابط إعادة تعيين كلمة المرور، اتبع التعليمات فيه لإنشاء كلمة مرور جديدة.",
+    "checkSpam": "لم يصلك البريد؟ تحقق من مجلد الرسائل غير المرغوب فيها (Spam)، وتأكد أن البريد مسجّل بالفعل في المنصة.",
+    "backToLogin": "العودة لتسجيل الدخول",
+    "title": "استعادة كلمة المرور",
+    "subtitle": "أدخل بريدك الإلكتروني وسنرسل لك رابط إعادة التعيين",
+    "emailLabel": "البريد الإلكتروني",
+    "submit": "إرسال رابط إعادة التعيين"
+  },
+  "footerLinks": {
+    "about": "من نحن",
+    "contact": "تواصل معنا",
+    "privacy": "الخصوصية",
+    "terms": "الشروط"
+  },
+  "meta": {
+    "titleDefault": "خطوة — منصتك الذكية للاستعداد لاختبار STEP"
+  },
+  "errorBoundary": {
+    "title": "حدث خطأ ما",
+    "description": "واجه التطبيق مشكلة غير متوقعة. يمكنك المحاولة مرة أخرى أو العودة للصفحة الرئيسية.",
+    "details": "تفاصيل الخطأ",
+    "reload": "إعادة تحميل",
+    "goHome": "الصفحة الرئيسية",
+    "devNote": "معلومات المطور:"
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "description": "عذراً، الصفحة التي تبحث عنها غير متوفرة أو تم نقلها.",
+    "goHome": "العودة للرئيسية"
+  },
+  "emptyState": {
+    "noTests": {
+      "title": "لم تخض أي اختبار بعد",
+      "description": "ابدأ باختبار تحديد المستوى لتحليل مستواك وبناء خطتك الدراسية.",
+      "action": "ابدأ الاختبار"
+    },
+    "noCourses": {
+      "title": "لا توجد دورات متاحة",
+      "description": "محتوى الدورات قيد الإعداد. تفضل بالعودة لاحقاً.",
+      "action": "تصفح الدورات"
+    },
+    "noVocabulary": {
+      "title": "لا توجد كلمات للمراجعة",
+      "description": "جميع الكلمات مُراجعة لليوم. عد غداً للمزيد!",
+      "action": "تصفح المفردات"
+    },
+    "noAchievements": {
+      "title": "لا توجد إنجازات بعد",
+      "description": "اكمل اختبارات ودروس لفتح الإنجازات واكتساب نقاط الخبرة.",
+      "action": "عرض الإنجازات"
+    },
+    "noLeaderboardData": {
+      "title": "لا توجد بيانات للمتصدرين",
+      "description": "كن أول من يتصدر القائمة بالبدء في رحلتك الدراسية!"
+    },
+    "noExamHistory": {
+      "title": "لا يوجد تاريخ اختبارات",
+      "description": "اخض اختبارات تجريبية لرؤية تقدمك هنا.",
+      "action": "اختبار تجريبي"
+    },
+    "noStudyPlan": {
+      "title": "لم تُنشأ خطة دراسية بعد",
+      "description": "بعد إكمال اختبار تحديد المستوى، ستحصل على خطة مخصصة لهدفك.",
+      "action": "إنشاء خطة"
+    },
+    "generic": {
+      "title": "لا توجد بيانات للعرض",
+      "description": "يبدو أن هذه القسم فارغ حالياً."
+    }
+  },
+  "content": {
+    "courses": {
+      "course-grammar": {
+        "title": "أساسيات النحو",
+        "description": "القواعد الأكثر شيوعًا في اختبار STEP: تطابق الفعل والفاعل، الأزمنة، والجمل الشرطية."
+      },
+      "course-reading": {
+        "title": "استراتيجيات القراءة",
+        "description": "كيف تقرأ نصًا أكاديميًا بسرعة وتستخرج الفكرة الرئيسية والتفاصيل الداعمة."
+      },
+      "course-listening": {
+        "title": "مهارات الاستماع",
+        "description": "تقنيات لمتابعة المحادثات المسموعة واستخراج المعلومة الدقيقة المطلوبة."
+      },
+      "course-writingAnalysis": {
+        "title": "تحليل الأخطاء الكتابية",
+        "description": "كيف تكتشف الخطأ النحوي في جملة مكتوبة بسرعة ودقة."
+      },
+      "course-vocabulary": {
+        "title": "بناء المفردات",
+        "description": "أساليب فعّالة لحفظ وتثبيت مفردات جديدة على المدى الطويل."
+      },
+      "course-tips": {
+        "title": "نصائح عامة للاختبار",
+        "description": "عادات صغيرة ترفع درجتك دون مذاكرة إضافية."
+      },
+      "course-strategies": {
+        "title": "إدارة الوقت أثناء الاختبار",
+        "description": "كيف توزّع 150 دقيقة على 100 سؤال دون الشعور بالضغط."
+      },
+      "course-revision": {
+        "title": "مراجعة شاملة",
+        "description": "تثبيت ما تعلمته هذا الأسبوع بأسئلة من جميع الأقسام."
+      }
+    },
+    "lessons": {
+      "lesson-grammar-1": {
+        "title": "تطابق الفعل مع الفاعل والأزمنة",
+        "notes": "القاعدة الأهم: الفعل يتبع الفاعل في العدد، لا الاسم الأقرب له في الجملة. عبارات مثل \"Neither of\"، \"Each of\"، و\"The number of\" تُعامل كفاعل مفرد دائمًا. أما الأزمنة، فالماضي التام (had + past participle) يُستخدم لحدث سابق لحدث ماضٍ آخر مذكور في الجملة."
+      },
+      "lesson-reading-1": {
+        "title": "قراءة الفكرة الرئيسية والتفاصيل",
+        "notes": "اقرأ الجملة الأولى والأخيرة من كل فقرة أولًا لتكوين فكرة عامة عن الموضوع قبل قراءة التفاصيل. عند الإجابة على سؤال تفصيلي، ابحث عن الكلمات المفتاحية في السؤال داخل النص، ولا تعتمد على الحفظ."
+      },
+      "lesson-listening-1": {
+        "title": "متابعة المحادثات القصيرة",
+        "notes": "في محادثات الاستماع، غالبًا يعطي المتحدث الثاني تصحيحًا أو تفصيلًا مهمًا بعد \"No\" أو \"Actually\". انتبه لهذه الكلمات لأنها تشير لمعلومة تُسأل عنها غالبًا."
+      },
+      "lesson-writingAnalysis-1": {
+        "title": "اكتشاف الخطأ النحوي بسرعة",
+        "notes": "ابدأ بفحص تطابق الفعل مع الفاعل أولًا، فهو الخطأ الأكثر تكرارًا. ثم افحص حروف الجر، وأخيرًا العبارات الافتتاحية المعلّقة (dangling modifiers) التي لا تصف الفاعل الصحيح."
+      },
+      "lesson-vocabulary-1": {
+        "title": "التكرار المتباعد لحفظ المفردات",
+        "notes": "مراجعة كلمة جديدة بعد يوم، ثم بعد 3 أيام، ثم بعد أسبوع تثبّتها في الذاكرة طويلة المدى أفضل من مراجعتها 10 مرات في يوم واحد. استخدم قسم المفردات في المنصة لتتبع هذا تلقائيًا."
+      },
+      "lesson-tips-1": {
+        "title": "عادات صغيرة، فرق كبير",
+        "notes": "اقرأ كل الخيارات الأربعة قبل اختيار إجابتك حتى لو بدا الخيار الأول صحيحًا. علّم الأسئلة التي تشك فيها وارجع لها بعد إنهاء الاختبار، فالضغط الزمني يقل بعد الإجابة على الأسئلة الأسهل أولًا."
+      },
+      "lesson-strategies-1": {
+        "title": "توزيع 150 دقيقة على 100 سؤال",
+        "notes": "خصص وقتًا تقريبيًا لكل قسم حسب عدد أسئلته: القراءة والنحو يحتاجان وقتًا أطول لكل سؤال من الاستماع. لا تتجاوز دقيقة ونصف في المتوسط لكل سؤال نحو أو تحليل كتابي."
+      },
+      "lesson-revision-1": {
+        "title": "مراجعة أسبوعية شاملة",
+        "notes": "أسئلة مختارة من جميع الأقسام لمراجعة ما تعلمته هذا الأسبوع."
+      },
+      "lesson-grammar-2": {
+        "title": "الصوت المبني للمجهول والاستنتاج بالأفعال الناقصة",
+        "notes": "الصوت المبني للمجهول (passive voice) يُستخدم عندما يكون الفاعل غير معروف أو غير مهم: \"will be announced\" وليس \"will announce\". أما الأفعال الناقصة، فـ\"must\" تدل على استنتاج منطقي قوي بناءً على أدلة متوفرة، بينما \"might\" تدل على احتمال أضعف. وفي الكلام المنقول (reported speech)، يتراجع \"will\" إلى \"would\" عندما يكون فعل النقل في الماضي."
+      },
+      "lesson-reading-2": {
+        "title": "استخراج المعلومة الضمنية والصريحة",
+        "notes": "بعض الأسئلة تطلب معلومة صريحة مذكورة حرفيًا في النص (اسأل: أين هذه الجملة بالضبط؟)، بينما أسئلة أخرى تطلب استنتاجًا (اسأل: ما الذي يلمّح إليه الكاتب دون أن يقوله مباشرة؟). ميّز بين النوعين قبل اختيار إجابتك."
+      },
+      "lesson-listening-2": {
+        "title": "محادثات في سياقات رسمية",
+        "notes": "في المحادثات الرسمية (حجوزات، استشارات أكاديمية)، انتبه للتفاصيل الرقمية (الوقت، العدد) لأنها غالبًا محور السؤال، وانتبه أيضًا للسبب الذي يذكره المتحدث لتفضيل خيار على آخر."
+      },
+      "lesson-writingAnalysis-2": {
+        "title": "أخطاء التوازي وحالة الضمير",
+        "notes": "عند وجود قائمة أفعال معطوفة بـ\"and\"، يجب أن تكون جميعها بنفس الصيغة النحوية (توازي/parallel structure). وتذكّر أن ضمائر الفاعل (I, he, she) لا تُستخدم بعد حروف الجر مثل \"between\"، بل تُستخدم ضمائر المفعول (me, him, her)."
+      },
+      "lesson-vocabulary-2": {
+        "title": "مفردات أكاديمية شائعة في القراءة",
+        "notes": "كلمات مثل infrastructure وcurriculum وsustained تتكرر كثيرًا في نصوص القراءة الأكاديمية. احفظها ضمن جملة كاملة لا ككلمة منفردة، فهذا يثبّتها في الذاكرة بشكل أفضل ويساعدك على التعرف عليها في سياقات مختلفة."
+      },
+      "lesson-tips-2": {
+        "title": "قبل الاختبار بيوم",
+        "notes": "تجنب مذاكرة مواد جديدة في آخر يوم؛ ركّز بدلًا من ذلك على مراجعة الأخطاء المتكررة في اختباراتك السابقة. تأكد من مكان الاختبار والوقت مسبقًا، وخذ قسطًا كافيًا من النوم — التعب يؤثر على سرعة القراءة والانتباه أكثر مما يظن معظم الطلاب والطالبات."
+      },
+      "lesson-strategies-2": {
+        "title": "متى تتجاوز سؤالاً صعبًا",
+        "notes": "إذا استغرق سؤال أكثر من دقيقتين دون تقدّم، علّمه وانتقل للتالي بدل أن تخسر وقتًا يمكن استثماره في أسئلة أسهل. ارجع للأسئلة المؤجلة في وقت المراجعة النهائي، فغالبًا ستراها بمنظور أوضح بعد إنهاء بقية الاختبار."
+      },
+      "lesson-revision-2": {
+        "title": "مراجعة أسبوعية ٢",
+        "notes": "جولة ثانية من الأسئلة المختارة من جميع الأقسام لتثبيت ما تعلمته."
+      },
+      "lesson-grammar-3": {
+        "title": "تراكيب متقدمة: السببية والانقلاب والجمل الاسمية",
+        "notes": "التركيب السببي \"have something done\" يُستخدم عندما يقوم شخص آخر بالفعل نيابة عنك، ويأتي الفعل بصيغة اسم المفعول: \"have my car repaired\". أما الانقلاب (inversion)، فيحدث بعد الظروف السلبية مثل \"Rarely\" في بداية الجملة: \"Rarely do we see...\". وتذكّر أن \"whether\" يمكن أن يبدأ جملة اسمية في موضع الفاعل، بخلاف \"if\"."
+      },
+      "lesson-reading-3": {
+        "title": "قراءة نصوص الرأي والجدل",
+        "notes": "في نصوص الجدل (مثل الجدل حول الاختبارات المعيارية)، ابحث دائمًا عن رأي الطرفين: المؤيدين والمعارضين، فالأسئلة غالبًا تختبر قدرتك على التمييز بين حجة كل طرف دون خلطها بحجة الطرف الآخر."
+      },
+      "lesson-listening-3": {
+        "title": "محادثات في الفنادق والجامعات",
+        "notes": "في محادثات الخدمات (فنادق، حجوزات، مواعيد أكاديمية)، انتبه للحل النهائي الذي يقترحه المتحدث الثاني بعد الاعتذار أو التوضيح، فهو غالبًا ما يكون محور السؤال الرئيسي."
+      },
+      "lesson-writingAnalysis-3": {
+        "title": "أخطاء الفاصلة والملكية والنفي المزدوج",
+        "notes": "وصل جملتين مستقلتين بفاصلة فقط دون حرف عطف يُسمى \"comma splice\" وهو خطأ شائع. وتذكّر أن صيغة الملكية للاسم المفرد تكون بإضافة 's وليس s' فقط. أما النفي المزدوج مثل \"don't have no\"، فهو خطأ يجب تصحيحه إلى \"don't have any\"."
+      },
+      "lesson-vocabulary-3": {
+        "title": "مفردات من نصوص القراءة الجديدة",
+        "notes": "كلمات مثل benchmark وarable وentrepreneur تتكرر في نصوص القراءة الأكاديمية الحديثة عن التعليم والتقنية والزراعة الحضرية. راجعها ضمن سياقها في قسم المفردات لتثبيتها بشكل أفضل."
+      },
+      "lesson-tips-3": {
+        "title": "يوم الاختبار: نصائح أخيرة",
+        "notes": "اقرأ التعليمات كاملة قبل بدء كل قسم حتى لو كانت مألوفة لك، فبعض الاختبارات تُدخل تعديلات بسيطة على التعليمات. حافظ على تنفّس هادئ إذا شعرت بالتوتر، فالقلق الزائد يبطئ سرعة القراءة أكثر من أي شيء آخر."
+      },
+      "lesson-strategies-3": {
+        "title": "التعامل مع القلق أثناء الاختبار",
+        "notes": "إذا شعرت بالقلق في منتصف الاختبار، توقف لخمس ثوانٍ فقط وخذ نفسًا عميقًا بدل أن تتابع القراءة دون استيعاب. تذكير نفسك أنك درست الأنماط نفسها من قبل يقلل التوتر ويعيد التركيز بسرعة."
+      },
+      "lesson-revision-3": {
+        "title": "مراجعة أسبوعية ٣",
+        "notes": "جولة ثالثة من الأسئلة المختارة من جميع الأقسام، تركّز على التراكيب والمفردات الأحدث."
+      },
+      "lesson-grammar-4": {
+        "title": "الجمل الشرطية المتقدمة والانقلاب",
+        "notes": "عندما يبدأ الشرط بكلمة Had بدلًا من If (Had I known)، يُحذف If وتنعكس الجملة. وأدوات مثل \"No sooner...than\" و\"Only after...\" تُجبر الجملة على الانقلاب أيضًا، فيتقدم الفعل المساعد على الفاعل."
+      },
+      "lesson-reading-4": {
+        "title": "قراءة نصوص البيئة والتلوث",
+        "notes": "نصوص البيئة تتكرر في الاختبار: تلوث المحيطات، البلاستيك الدقيق، إعادة التدوير. ركّز على السبب والنتيجة بين الجمل، فالأسئلة غالبًا تسأل \"لماذا\" أو \"ماذا يقترح الباحثون\"، وهي تجيبها عادة جملة واحدة في وسط النص."
+      },
+      "lesson-listening-4": {
+        "title": "الاشتراكات والعروض الترويجية",
+        "notes": "في محادثات الاشتراكات (نوادي رياضية، خدمات)، انتبه لما يضيفه الخيار الأغلى مقابل الأساسي، ولماذا يختار المتحدث في النهاية — السبب غالبًا سعر أو ميزة ذُكرت مرة واحدة فقط."
+      },
+      "lesson-writingAnalysis-4": {
+        "title": "أخطاء الوصل: الفاصلة المقطوعة",
+        "notes": "عندما ترى جملتين كاملتين بينهما فاصلة فقط دون حرف عطف (comma splice)، هذا هو الخطأ. الحل الصحيح يكون إما بفصل الجملتين أو إضافة أداة ربط مثل \"because\" أو \"and\"."
+      },
+      "lesson-vocabulary-4": {
+        "title": "مفردات نصوص البيئة والعلوم",
+        "notes": "كلمات مثل decompose وingest وmicroplastic وcompound تظهر باستمرار في نصوص البيئة. اربط كل كلمة بالسياق الذي تظهر فيه (البلاستيك يتحلل، الحيوانات تبتلع) بدل حفظها منفردة."
+      },
+      "lesson-grammar-5": {
+        "title": "التفضيلات المترابطة وso/such",
+        "notes": "تركيب \"The + صيغة تفضيل، the + صيغة تفضيل\" يعبر عن علاقة طردية (The more you practice, the better you become). أما \"So + صفة + that\" فتعبر عن نتيجة: (so long that)."
+      },
+      "lesson-reading-5": {
+        "title": "الاستدلال من النصوص العلمية",
+        "notes": "أسئلة الاستدلال (inference) لا تجد إجابتها حرفيًا في النص، بل تستنتجها من مجموع الجمل. اقرأ الجملة الأخيرة في الفقرة بتمعن، فالكثير من الاستنتاجات تُبنى على الاستنتاج الختامي للكاتب."
+      },
+      "lesson-listening-5": {
+        "title": "عمليات الشراء والإرجاع",
+        "notes": "في محادثات الشراء والإرجاع، اسمع نوع الحل الذي يختاره المتحدث في النهاية (استرداد نقدي، استبدال، رصيد متجري). وسماع سؤال البائع مثل \"Do you have the receipt?\" يدل على شرط في سياسة الإرجاع."
+      },
+      "lesson-writingAnalysis-5": {
+        "title": "الكلمات المتشابهة: affect/effect وamount/number",
+        "notes": "فرّق بين affect (فعل: يؤثر) وeffect (اسم: أثر). وكذلك amount للمواد غير المعدودة وnumber للمعدودة. هذه الأخطاء تأتي في السؤال بشكل متعمد لخداع من لا يفرق بينها."
+      },
+      "lesson-vocabulary-5": {
+        "title": "مفردات محادثات الاستماع اليومية",
+        "notes": "محادثات الاستماع تدور حول الاشتراكات والمواعيد والمطارات. احفظ المرادفات العملية: membership وexchange وconnecting flight وboarding pass، واربطها بالسيناريو الذي تسمعه."
+      },
+      "lesson-grammar-6": {
+        "title": "المبني للمجهول عبر الأزمنة",
+        "notes": "المبني للمجهول يكون دائمًا: فعل be بالزمن المطلوب + اسم المفعول. المستقبل: will be published، والماضي: was published. افحص أولًا من يقوم بالفعل: إن لم يُذكر، فالجملة غالبًا مجهولة."
+      },
+      "lesson-reading-6": {
+        "title": "نصوص الصحة والسلوك",
+        "notes": "نصوص الصحة والسلوك (النوم، العادات، التركيز) تقدّم غالبًا مفهومًا عامًا ثم تدعمه بنتائج دراسات. ميّز بين المفهوم النظري والنتيجة العملية، فالسؤال قد يطلب أيًا منهما."
+      },
+      "lesson-listening-6": {
+        "title": "السفر وتأجيل الرحلات",
+        "notes": "في محادثات السفر، انتبه لثلاثة تفاصيل: سبب التأخير، الحل الذي يقدمه الموظف، وكيف سيستلم المسافر المعلومات الجديدة (بريد إلكتروني، رسالة). هذه الثلاثة هي محور الأسئلة غالبًا."
+      },
+      "lesson-writingAnalysis-6": {
+        "title": "اتفاق الضمير مع مرجعه",
+        "notes": "كلمات مثل Each وEveryone وAnybody مفردة نحويًا، فيجب أن يتبعها ضمير مفرد (his or her). راقب دائمًا الفاعل قبل اختيار حكمك على الضمير في الجملة."
+      },
+      "lesson-vocabulary-6": {
+        "title": "كلمات مترادفة ترفع درجتك",
+        "notes": "المرادفات تمنحك مرونة في القراءة والكتابة: consolidate بدل strengthen، وcompound بدل accumulate، وingest بدل swallow. كل مرادف تضيفه يوسّع فهمك لنصوص جديدة."
+      },
+      "lesson-grammar-7": {
+        "title": "الجمل الاسمية والفعل بعد الاقتراح",
+        "notes": "بعد أفعال مثل suggest وrecommend مع that، يأتي الفعل بصيغة المصدر المجرد (base form): suggest that the report be submitted. وتذكّر أن بعض الأفعال تتطلب مصدرًا -ing بعد حرف الجر مثل object to having."
+      },
+      "lesson-reading-7": {
+        "title": "نصوص الخدمات العامة والمجتمع",
+        "notes": "نصوص الخدمات العامة (المكتبات، النقل، المرافق) تقارن عادة بين الماضي والحاضر، أو تعرض تحدٍّ ماليًا. ابحث عن الجماعة المستفيدة الأكثر، وعن التهديد الرئيسي، فهما سؤالان متكرران."
+      },
+      "lesson-listening-7": {
+        "title": "المكالمات الرسمية والمقابلات",
+        "notes": "في المكالمات الرسمية (موارد بشرية، مواعيد عمل)، اسمع الموعد المقترح أولًا ثم ما يفعله المتحدث بعد الاتصال (يرسل بريدًا، يؤكد حضورًا). ترتيب الأحداث هو مفتاح الإجابة الصحيحة."
+      },
+      "lesson-writingAnalysis-7": {
+        "title": "العبارات المعلّقة والتوازي",
+        "notes": "عبارة افتتاحية مثل Walking down the street يجب أن تصف الفاعل التالي لها مباشرة. وإن لم تفعل فهي معلقة (dangling). وعند تعدّد الأفعال في قائمة واحدة، اجعل صيغها متوازية تمامًا."
+      },
+      "lesson-vocabulary-7": {
+        "title": "فهم الكلمة من سياقها",
+        "notes": "لا تبحث عن معنى كل كلمة جديدة في القاموس؛ خمّن أولًا من الجمل المحيطة. غالبًا ما تأتي الجملة بعد الكلمة الغريبة شارحةً أو معاكسةً لها، وهذا يبني مهارة قراءة أسرع."
+      },
+      "lesson-grammar-8": {
+        "title": "أدوات العطف المترابطة والتوازي",
+        "notes": "أدوات العطف المترابطة تأتي كزوج ثابت: not only...but also، neither...nor. عند وجود قائمة أفعال أو أسماء، حافظ على الصيغة نفسها لكل عناصر القائمة (توازي)، فهذا مفتاح النجاح في أسئلة النحو والكتابة معًا."
+      },
+      "lesson-reading-8": {
+        "title": "تحديد رأي الكاتب من النص",
+        "notes": "لتحديد رأي الكاتب، ابحث عن صيغ التقييم: more valuable، counterproductive، critical. حين يقدم النص حجة ويضعف الطرف المقابل، فهذه إشارة واضحة لموقف الكاتب."
+      },
+      "lesson-listening-8": {
+        "title": "استخراج التفاصيل الدقيقة",
+        "notes": "بعض أسئلة الاستماع تسأل عن تفصيل صغير ذُكر مرة واحدة: رقم، شرط (مثل إبراز إيصال)، أو موقع. اسمع النصف الثاني من إجابة الموظف/البائع، فهو غالبًا يحوي الشرط أو التفصيل المطلوب."
+      },
+      "lesson-writingAnalysis-8": {
+        "title": "الجماعات والأسماء الجمعية في اتفاق الفعل",
+        "notes": "الاسم الجمعي (team, committee) مفرد في المعنى المتصل، وصفة \"as well as\" أو \"along with\" لا تحوّل الفاعل إلى جمع. وراقب الوصل who: فعله يتبع السابق المباشر له (one of the students who have)."
+      },
+      "lesson-vocabulary-8": {
+        "title": "المراجعة النهائية للمفردات",
+        "notes": "راجع بطاقاتك الأقدم أولًا قبل الجديدة، فالمفردات المنسية تحتاج إعادة تثبيت أكثر من الحديثة. خصص 10 دقائق يوميًا لمراجعة التكرار المتباعد في قسم المفردات قبل اختبارك التجريبي."
+      }
+    },
+    "achievements": {
+      "first-exam": {
+        "title": "أول اختبار",
+        "description": "أكملت أول اختبار لك على خطوة"
+      },
+      "week-streak": {
+        "title": "أسبوع كامل",
+        "description": "حافظت على نشاطك 7 أيام متتالية"
+      },
+      "100-words": {
+        "title": "100 كلمة",
+        "description": "راجعت 100 كلمة في قسم المفردات"
+      },
+      "score-90": {
+        "title": "درجة 90+",
+        "description": "حققت 90 أو أعلى في اختبار تجريبي"
+      },
+      "streak-3": {
+        "title": "انطلاقة",
+        "description": "حافظت على نشاطك 3 أيام متتالية"
+      },
+      "streak-14": {
+        "title": "التزام",
+        "description": "حافظت على نشاطك 14 يومًا متتالية"
+      },
+      "streak-30": {
+        "title": "شهر من العزم",
+        "description": "حافظت على نشاطك 30 يومًا متتالية"
+      },
+      "streak-60": {
+        "title": "عزيمة حديدية",
+        "description": "حافظت على نشاطك 60 يومًا متتالية"
+      },
+      "streak-100": {
+        "title": "100 يوم من الإصرار",
+        "description": "حافظت على نشاطك 100 يوم متتالية"
+      },
+      "words-10": {
+        "title": "بداية لغوية",
+        "description": "راجعت 10 كلمات في قسم المفردات"
+      },
+      "words-50": {
+        "title": "مخزون لغوي",
+        "description": "راجعت 50 كلمة في قسم المفردات"
+      },
+      "words-250": {
+        "title": "قاموسك ينمو",
+        "description": "راجعت 250 كلمة في قسم المفردات"
+      },
+      "words-500": {
+        "title": "عاشق الكلمات",
+        "description": "راجعت 500 كلمة في قسم المفردات"
+      },
+      "words-1000": {
+        "title": "موسوعة لغوية",
+        "description": "راجعت 1000 كلمة في قسم المفردات"
+      },
+      "bookmarks-25": {
+        "title": "جامع الكلمات",
+        "description": "أضفت 25 كلمة إلى المفضلة"
+      },
+      "bookmarks-100": {
+        "title": "أمين المكتبة",
+        "description": "أضفت 100 كلمة إلى المفضلة"
+      },
+      "exams-5": {
+        "title": "خمسة اختبارات",
+        "description": "أكملت 5 اختبارات تجريبية"
+      },
+      "exams-10": {
+        "title": "عشرة اختبارات",
+        "description": "أكملت 10 اختبارات تجريبية"
+      },
+      "exams-25": {
+        "title": "محارب الاختبارات",
+        "description": "أكملت 25 اختبارًا تجريبيًا"
+      },
+      "exams-50": {
+        "title": "خبير الاختبارات",
+        "description": "أكملت 50 اختبارًا تجريبيًا"
+      },
+      "score-100": {
+        "title": "علامة كاملة",
+        "description": "حققت 100% في اختبار تجريبي"
+      },
+      "level-intermediate": {
+        "title": "مستوى متوسط",
+        "description": "وصلت إلى المستوى المتوسط"
+      },
+      "level-advanced": {
+        "title": "مستوى متقدم",
+        "description": "وصلت إلى المستوى المتقدم"
+      },
+      "first-lesson": {
+        "title": "أول خطوة",
+        "description": "أكملت أول درس لك"
+      },
+      "lessons-10": {
+        "title": "متعلم واعٍ",
+        "description": "أكملت 10 دروس"
+      },
+      "lessons-25": {
+        "title": "طالب مجتهد",
+        "description": "أكملت 25 درسًا"
+      },
+      "lessons-50": {
+        "title": "باحث دؤوب",
+        "description": "أكملت 50 درسًا"
+      },
+      "lessons-100": {
+        "title": "إنسان متعلم",
+        "description": "أكملت 100 درس"
+      },
+      "hours-5": {
+        "title": "خمس ساعات",
+        "description": "درست 5 ساعات على خطوة"
+      },
+      "hours-10": {
+        "title": "عشر ساعات",
+        "description": "درست 10 ساعات على خطوة"
+      },
+      "hours-25": {
+        "title": "25 ساعة",
+        "description": "درست 25 ساعة على خطوة"
+      },
+      "hours-50": {
+        "title": "50 ساعة",
+        "description": "درست 50 ساعة على خطوة"
+      },
+      "hours-100": {
+        "title": "100 ساعة",
+        "description": "درست 100 ساعة على خطوة"
+      },
+      "daily-1": {
+        "title": "تحدي اليوم",
+        "description": "أكملت أول تحدٍّ يومي"
+      },
+      "daily-7": {
+        "title": "أسبوع من التحديات",
+        "description": "أكملت 7 تحديات يومية"
+      },
+      "daily-30": {
+        "title": "شهر من التحديات",
+        "description": "أكملت 30 تحديًا يوميًا"
+      }
+    }
+  },
+  "pwa": {
+    "installTitle": "تثبيت تطبيق خطوة",
+    "installDescription": "ثبّت التطبيق على جهازك للوصول السريع واختصار الشاشة الرئيسية.",
+    "installButton": "تثبيت",
+    "dismissAria": "إغلاق"
+  },
+  "socialProof": {
+    "eyebrow": "كل ما تحتاجه للاستعداد الكامل",
+    "partnersLabel": "أدوات وخدمات متكاملة لاستعدادك الكامل",
+    "partners": [
+      "متوافق مع اختبار STEP",
+      "تغطية جميع الأقسام",
+      "خطة دراسية شخصية",
+      "تقارير أداء تفصيلية",
+      "متابعة يومية للالتزام"
+    ]
+  },
+  "interactiveDemo": {
+    "title": "جرب محرك الاختبار التفاعلي",
+    "subtitle": "اختبر نفسك بأسئلة على نمط اختبار STEP وشاهد النتيجة الفورية",
+    "correct": "إجابة صحيحة!",
+    "wrong": "إجابة خاطئة",
+    "timeUp": "انتهى الوقت!",
+    "questionCounter": "السؤال {current} من {total}",
+    "timerLabel": "الوقت",
+    "scoreLabel": "النقاط",
+    "pickHint": "اختر الإجابة المناسبة أدناه",
+    "restart": "إعادة",
+    "next": "التالي",
+    "seeResult": "شاهد نتيجتك",
+    "optionsHint": "اختر إجابة واحدة",
+    "startTitle": "اختبر نفسك بثلاثة أسئلة حقيقية",
+    "startNote": "لديك {total, plural, one {سؤال واحد} two {سؤالان} few {# أسئلة} many {# سؤالًا} other {# سؤالًا}} بنفس نمط اختبار STEP الحقيقي — قراءة وقواعد وتحليل كتابي — مع مؤقت كالاختبار الفعلي. أجب وشاهد نتيجتك فورًا.",
+    "startButton": "ابدأ الاختبار",
+    "skipCta": "جاهز للاختبار الكامل؟",
+    "resultTitle": "نتيجتك: {score} من {total}",
+    "resultNote": "هذه مجرد عينة. الاختبار الكامل يغطي 100 سؤال في 150 دقيقة مع تحليل تفصيلي لأدائك.",
+    "resultCta": "جرّب الاختبار الكامل مجانًا",
+    "tryAgain": "إعادة التجربة",
+    "questions": [
+      {
+        "question": "A recent workplace study found that employees who take a short break every 90 minutes report noticeably higher focus than those who work straight through the day without stopping. According to the study, what helps employees stay focused?",
+        "options": [
+          "Working without any breaks",
+          "Taking a short break every 90 minutes",
+          "Working only in the morning",
+          "Avoiding screens completely"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "By the time she arrived, the meeting ___ already started.",
+        "options": [
+          "has",
+          "had",
+          "was",
+          "have"
+        ],
+        "correct": 1
+      },
+      {
+        "question": "Identify the error: \"Each of the applicants are required to submit two references.\"",
+        "options": [
+          "\"Each of\" should be \"All of\"",
+          "\"are\" should be \"is\"",
+          "\"submit\" should be \"submitting\"",
+          "\"two\" should be \"a two\""
+        ],
+        "correct": 1
+      }
+    ]
+  },
+  "scrollEffects": {
+    "backToTop": "العودة إلى الأعلى",
+    "whatsApp": "تواصل معنا عبر واتساب"
+  },
+  "topNav": {
+    "tagline": "استعد لاختبار STEP بخطة دراسية ذكية وشخصية",
+    "email": "support@khatwa.com",
+    "phone": "+966 55 000 0000"
+  },
+  "avatars": {
+    "styles": {
+      "classic": "كلاسيك",
+      "waves": "تموجات ناعمة",
+      "curly": "شعر مجعد",
+      "afro": "أفرو",
+      "long": "شعر طويل",
+      "bob": "بوب قصير",
+      "ponytail": "ذيل حصان",
+      "buzz": "قصير جداً",
+      "bald": "حليق",
+      "beard": "بلحية",
+      "silver": "شعر فضي",
+      "grad": "خريج",
+      "glasses": "نظارة",
+      "scarf": "حجاب",
+      "turban": "عمامة",
+      "female": "بنات",
+      "male": "أولاد"
+    }
+  }
+}

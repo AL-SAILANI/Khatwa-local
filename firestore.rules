@@ -1,0 +1,169 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    // ---- Public catalog content: readable by any signed-in user,
+    // ---- writable only by admins (via the admin dashboard / Cloud Functions).
+    match /courses/{courseId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // Top-level (not a subcollection of /courses) so a single query can
+    // filter by `courseId` across the whole bank — same shape as `questions`.
+    match /lessons/{lessonId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /questions/{questionId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /readingPassages/{passageId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /mockExams/{examId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /vocabWords/{wordId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /achievements/{achievementId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    // ---- Per-user data: owner-only, admin can read for support/moderation.
+    // Owner updates are field-allowlisted so a crafted client can't promote
+    // its own planTier, forge xp/coins/streak, or inject arbitrary fields.
+    // `planTier`/`stripeCustomerId` are written only by the Stripe webhook
+    // (server, bypasses rules) or the admin console (isAdmin). Numeric stats
+    // (xp/coins/testsTaken/...) remain client-trusted for this MVP — a full
+    // server-side gate would require Cloud Functions.
+    function allowedOwnerProfileFields() {
+      return [
+        "name", "photoURL", "goal", "notificationsEnabled", "fcmTokens",
+        "level", "activeStudyPlanId", "lastDailyChallengeDate", "updatedAt",
+        "xp", "coins", "streak", "testsTaken", "lastScore", "lastActiveAt",
+        "recentActivityDays", "studyHours", "completionPercent",
+        "examDate", "age", "gender", "avatarEmoji",
+      ];
+    }
+
+    match /users/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId)
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.planTier == "free"
+        && request.resource.data.xp == 0
+        && request.resource.data.coins == 0
+        && request.resource.data.streak == 0
+        && request.resource.data.testsTaken == 0
+        && request.resource.data.studyHours == 0;
+      allow update: if isAdmin()
+        || (isOwner(userId)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(allowedOwnerProfileFields()));
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // Read rules guard `resource == null` so a `getDoc` of a not-yet-created
+    // document (uncompleted lesson, first vocab review) returns not-found
+    // instead of being denied. Note `request.resource` only exists on writes,
+    // so reads must branch on `resource` alone.
+    match /studyPlans/{planId} {
+      allow read: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    match /lessonProgress/{progressId} {
+      allow read: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    match /vocabReviewState/{stateId} {
+      allow read: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    // Custom word sets ("My sets"): owner-gated like the other per-user
+    // collections. The client-side delete/add-word helpers don't carry a
+    // userId check, so ownership is enforced here by the rule itself.
+    match /vocabSets/{setId} {
+      allow read: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update, delete: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+    }
+
+    match /examAttempts/{attemptId} {
+      allow read: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid || isAdmin());
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update: if isSignedIn() && (resource.data.userId == request.auth.uid || isAdmin());
+      // Owner-delete only exists so the client-side account-deletion flow
+      // (src/lib/firestore/users.ts `deleteUserData`) can cascade-clean this
+      // collection without a Cloud Function — a user can only ever remove
+      // their own attempts, never anyone else's.
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid || isAdmin();
+    }
+
+    // ---- Achievements are cosmetic, so a self-attested client create is an
+    // ---- acceptable MVP trade-off; update is admin-only (no client fudging
+    // ---- of existing records), but owner-delete is allowed so account
+    // ---- deletion can cascade-clean this collection client-side.
+    match /userAchievements/{recordId} {
+      allow read: if isSignedIn() && (resource == null || resource.data.userId == request.auth.uid);
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      allow update: if isAdmin();
+      allow delete: if isSignedIn() && resource.data.userId == request.auth.uid || isAdmin();
+    }
+
+    // Public, name/xp/streak-only projection of /users, so the leaderboard
+    // can read across everyone without exposing email or other private
+    // fields from the real user doc (which stays owner-only). Writes are
+    // owner-only AND must mirror the authoritative user doc, so a client
+    // can't inflate its leaderboard xp/streak independently of /users.
+    function profileMatchesUser(userId) {
+      let user = get(/databases/$(database)/documents/users/$(userId)).data;
+      return user != null
+        && request.resource.data.uid == userId
+        && request.resource.data.xp == user.xp
+        && request.resource.data.streak == user.streak
+        && request.resource.data.level == user.level;
+    }
+
+    match /publicProfiles/{userId} {
+      allow read: if isSignedIn();
+      allow create: if isOwner(userId) && profileMatchesUser(userId);
+      allow update: if isOwner(userId) && profileMatchesUser(userId);
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    match /subscriptions/{userId} {
+      allow read: if isOwner(userId) || isAdmin();
+      allow write: if isAdmin();
+    }
+  }
+}
