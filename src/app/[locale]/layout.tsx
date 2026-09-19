@@ -4,7 +4,6 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, localeDirection, type Locale } from "@/i18n/routing";
 import { ThemeProvider, themeInitScript } from "@/components/theme/theme-provider";
-import { InlineScript } from "@/components/theme/inline-script";
 import { PwaRegister } from "@/components/pwa/pwa-register";
 import { InstallPrompt } from "@/components/pwa/install-prompt";
 import { PageErrorBoundary } from "@/components/ui/error-boundary";
@@ -74,7 +73,12 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
-        <InlineScript html={themeInitScript} />
+        {/* Raw, render-blocking <script> rather than next/script: this must
+            run before the first paint so the stored theme is applied without
+            a flash. `next/script` defaults to afterInteractive, which runs
+            after hydration — it never reached the served HTML at all, so the
+            page painted unthemed first. */}
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <NextIntlClientProvider>
