@@ -16,7 +16,8 @@
   },
   "theme": {
     "nightShift": "Warm night mode",
-    "toggleTheme": "Toggle light/dark theme"
+    "toggleTheme": "Toggle light/dark theme",
+    "switchTo": "Switch to {lang}"
   },
   "hero": {
     "eyebrow": "The smart way to prepare for STEP",
