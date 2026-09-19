@@ -13,6 +13,7 @@ import { Testimonials } from "@/components/landing/testimonials";
 import { FAQ } from "@/components/landing/faq";
 import { CTA } from "@/components/landing/cta";
 import { PricingPage } from "@/components/pricing/pricing-page";
+import { PWAInstallModal } from "@/components/pwa/pwa-install-modal";
 
 export default async function HomePage({
   params,
@@ -26,6 +27,7 @@ export default async function HomePage({
     <>
       <Navbar />
       <main className="flex-1">
+        <PWAInstallModal />
         <Hero />
         <SocialProof />
         <Stats />

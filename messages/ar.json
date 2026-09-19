@@ -1451,7 +1451,8 @@
     "installTitle": "تثبيت تطبيق خطوة",
     "installDescription": "ثبّت التطبيق على جهازك للوصول السريع واختصار الشاشة الرئيسية.",
     "installButton": "تثبيت",
-    "dismissAria": "إغلاق"
+    "dismissAria": "إغلاق",
+    "dismissButton": "لاحقاً"
   },
   "socialProof": {
     "eyebrow": "كل ما تحتاجه للاستعداد الكامل",
