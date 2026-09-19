@@ -25,14 +25,13 @@ const NIGHT_SHIFT_KEY = "khatwa-night-shift";
 export const themeInitScript = `
 (function () {
   try {
-    // First visit defaults to light + night shift, deliberately ignoring
-    // prefers-color-scheme: the reading-heavy study screens were designed
-    // for the warm light palette, and "dark" is a separate mode the learner
-    // opts into. Once they pick either one it is stored and wins from then on.
+    // First visit is plain light: no dark, no warm overlay. prefers-color-scheme
+    // is deliberately not consulted, so a phone set to dark still opens on the
+    // cream palette the study screens were designed for. Both modes are opt-in,
+    // and once the learner picks either it is stored and wins from then on.
     var stored = localStorage.getItem("${STORAGE_KEY}");
     document.documentElement.classList.toggle("dark", stored === "dark");
-    var night = localStorage.getItem("${NIGHT_SHIFT_KEY}");
-    document.documentElement.classList.toggle("night-shift", night === null ? true : night === "1");
+    document.documentElement.classList.toggle("night-shift", localStorage.getItem("${NIGHT_SHIFT_KEY}") === "1");
   } catch (e) {}
 })();
 `;
