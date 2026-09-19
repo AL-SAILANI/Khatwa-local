@@ -1,40 +1,11 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import withBundleAnalyzer from "@next/bundle-analyzer";
-import withPWA from "next-pwa";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
-});
-
-const withPWAConfig = withPWA({
-  dest: "public",
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === "development",
-  runtimeCaching: [
-    {
-      urlPattern: /^https:\/\/.+\/api\//i,
-      handler: "NetworkFirst",
-      options: {
-        cacheName: "api-cache",
-        networkTimeoutSeconds: 10,
-      },
-    },
-    {
-      urlPattern: /^https:\/\/firebasestorage\.googleapis\.com\/.+/i,
-      handler: "CacheFirst",
-      options: {
-        cacheName: "firebase-cache",
-        expiration: {
-          maxEntries: 100,
-          maxAgeSeconds: 60 * 60 * 24 * 7, // 1 week
-        },
-      },
-    },
-  ],
 });
 
 const nextConfig: NextConfig = {
@@ -56,4 +27,4 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 };
 
-export default withNextIntl(withPWAConfig(bundleAnalyzer(nextConfig)));
+export default withNextIntl(bundleAnalyzer(nextConfig));
