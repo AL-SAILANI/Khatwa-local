@@ -9,7 +9,7 @@ import { useInstallPrompt } from "@/hooks/use-install-prompt";
 export function InstallAppSection() {
   const t = useTranslations("settings.installApp");
   const tPwa = useTranslations("pwa");
-  const { canInstall, canShowIOSSteps, isStandalone, promptInstall } = useInstallPrompt();
+  const { canInstall, isIOS, isStandalone, promptInstall } = useInstallPrompt();
 
   return (
     <Card className="flex items-center gap-4 p-5">
@@ -35,7 +35,7 @@ export function InstallAppSection() {
           <Download className="size-4" aria-hidden="true" />
           {t("install")}
         </Button>
-      ) : canShowIOSSteps ? (
+      ) : isIOS ? (
         <span className="shrink-0 text-end text-xs leading-relaxed text-muted">
           {tPwa("iosStep1")}
           <br />

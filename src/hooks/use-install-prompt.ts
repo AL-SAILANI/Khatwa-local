@@ -107,14 +107,20 @@ export function useInstallPrompt() {
     return false;
   }, []);
 
+  /** For the automatic bottom card only, which interrupts unprompted and so
+   * must respect a dismissal. iOS never reaches it (no `beforeinstallprompt`)
+   * and doesn't need to — the menu entry covers that platform. */
   const canInstall = !!prompt && !isDismissed && !isStandalone;
-  /** iOS gets no install event, so the offer is gated on the platform alone —
-   * the UI shows the manual Share-sheet steps instead of a prompt button. */
-  const canShowIOSSteps = isIOSDevice && !isDismissed && !isStandalone;
+
+  /** For install entries the user goes looking for — the nav menu, settings.
+   * Deliberately ignores `dismissed`: that flag means "stop interrupting me",
+   * not "never let me install". Gating a menu item on it hid the entry
+   * permanently after a single dismissal of the automatic card. */
+  const installAvailable = !isStandalone && (!!prompt || isIOSDevice);
 
   return {
     canInstall,
-    canShowIOSSteps,
+    installAvailable,
     isIOS: isIOSDevice,
     /** Actually running as an installed app. Callers must not infer this from
      * `!canInstall` — that is also false on iOS, after a dismissal, and on

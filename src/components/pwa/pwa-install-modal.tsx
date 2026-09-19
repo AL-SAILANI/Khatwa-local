@@ -19,14 +19,14 @@ export interface PWAInstallModalHandle {
  * never fires that event — gets the manual Share-sheet steps instead. */
 export const PWAInstallModal = forwardRef<PWAInstallModalHandle>(function PWAInstallModal(_, ref) {
   const t = useTranslations("pwa");
-  const { canInstall, canShowIOSSteps, promptInstall } = useInstallPrompt();
+  const { installAvailable, isIOS, promptInstall } = useInstallPrompt();
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   useImperativeHandle(ref, () => ({
     open: () => dialogRef.current?.showModal(),
   }));
 
-  if (!canInstall && !canShowIOSSteps) return null;
+  if (!installAvailable) return null;
 
   const close = () => dialogRef.current?.close();
 
@@ -56,9 +56,9 @@ export const PWAInstallModal = forwardRef<PWAInstallModalHandle>(function PWAIns
         </div>
 
         <div className="min-w-0 flex-1">
-          <h2 className="text-lg font-bold">{canShowIOSSteps ? t("iosTitle") : t("installTitle")}</h2>
+          <h2 className="text-lg font-bold">{isIOS ? t("iosTitle") : t("installTitle")}</h2>
           <p className="mt-1 text-sm leading-relaxed text-muted">
-            {canShowIOSSteps ? t("iosNote") : t("installDescription")}
+            {isIOS ? t("iosNote") : t("installDescription")}
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export const PWAInstallModal = forwardRef<PWAInstallModalHandle>(function PWAIns
         </button>
       </div>
 
-      {canShowIOSSteps ? (
+      {isIOS ? (
         <>
           <ol className="mt-5 space-y-3">
             {steps.map(({ icon: Icon, text }, i) => (
