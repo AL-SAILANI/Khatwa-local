@@ -324,3 +324,18 @@ body::after {
 .night-shift body::after {
   opacity: 1;
 }
+
+/* The floating WhatsApp / back-to-top buttons sit at `bottom-6` with a higher
+   z-index than the mobile bottom nav, so on app pages they landed on top of
+   the nav and covered its outer tabs ("الرئيسية" and "المزيد").
+
+   Lift them clear only where the nav actually exists — `:has()` keeps landing
+   and marketing pages, which have no bottom nav, at the original offset — and
+   only below `lg`, where the nav is visible at all. The offset clears the
+   nav's own height (~4.5rem) plus a gap, and respects the home-indicator
+   inset the nav already pads for. */
+@media (max-width: 1023px) {
+  body:has([data-bottom-nav]) [data-floating-action] {
+    bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
+}

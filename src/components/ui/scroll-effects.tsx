@@ -58,6 +58,7 @@ export function BackToTop() {
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           )}
           aria-label={t("backToTop")}
+          data-floating-action
         >
           <ArrowUp className="size-5 rtl:rotate-180" />
         </motion.button>
@@ -84,6 +85,7 @@ export function WhatsAppFloat() {
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
       )}
       aria-label={t("whatsApp")}
+      data-floating-action
     >
       <WhatsAppIcon className="size-5" />
     </motion.a>
