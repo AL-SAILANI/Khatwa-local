@@ -8,6 +8,8 @@
   "theme_color": "#0d0129",
   "scope": "/",
   "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "version": "1.0.0",
   "icons": [
     {
       "src": "/icon-192.png",
@@ -46,5 +48,42 @@
       "sizes": "1080x1440",
       "type": "image/png"
     }
-  ]
+  ],
+  "prefer_related_applications": false,
+  "shortcuts": [
+    {
+      "name": "الدروس",
+      "short_name": "دروس",
+      "description": "عرض الدروس المتاحة",
+      "url": "/courses",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "المفردات",
+      "short_name": "مفردات",
+      "description": "تعلم المفردات الجديدة",
+      "url": "/vocabulary",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  }
 }

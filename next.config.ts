@@ -13,6 +13,28 @@ const withPWAConfig = withPWA({
   dest: "public",
   register: true,
   skipWaiting: true,
+  disable: process.env.NODE_ENV === "development",
+  runtimeCaching: [
+    {
+      urlPattern: /^https:\/\/.+\/api\//i,
+      handler: "NetworkFirst",
+      options: {
+        cacheName: "api-cache",
+        networkTimeoutSeconds: 10,
+      },
+    },
+    {
+      urlPattern: /^https:\/\/firebasestorage\.googleapis\.com\/.+/i,
+      handler: "CacheFirst",
+      options: {
+        cacheName: "firebase-cache",
+        expiration: {
+          maxEntries: 100,
+          maxAgeSeconds: 60 * 60 * 24 * 7, // 1 week
+        },
+      },
+    },
+  ],
 });
 
 const nextConfig: NextConfig = {
