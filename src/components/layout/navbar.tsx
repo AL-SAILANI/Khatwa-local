@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { Logo } from "@/components/brand/logo";
@@ -8,7 +8,9 @@ import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { NightShiftToggle } from "@/components/theme/night-shift-toggle";
 import { LanguageToggle } from "@/components/theme/language-toggle";
 import { PWAInstallButton } from "@/components/pwa/pwa-install-button";
-import { Mail, Menu, X } from "lucide-react";
+import { PWAInstallModal, type PWAInstallModalHandle } from "@/components/pwa/pwa-install-modal";
+import { useInstallPrompt } from "@/hooks/use-install-prompt";
+import { Download, Mail, Menu, X } from "lucide-react";
 import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { cn } from "@/lib/utils/cn";
 
@@ -20,6 +22,9 @@ export function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const tPwa = useTranslations("pwa");
+  const { canInstall } = useInstallPrompt();
+  const installModalRef = useRef<PWAInstallModalHandle>(null);
 
   const links = [
     { id: "features", href: "#features", label: t("features") },
@@ -130,6 +135,21 @@ export function Navbar() {
                   {link.label}
                 </Link>
               ))}
+
+              {canInstall && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    installModalRef.current?.open();
+                  }}
+                  className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2.5 text-start text-sm font-medium text-ink-violet transition-colors hover:bg-surface-muted dark:text-primary-300"
+                >
+                  <Download className="size-4 shrink-0" aria-hidden="true" />
+                  {tPwa("installTitle")}
+                </button>
+              )}
+
               <div className="flex gap-3 pt-3">
                 <Link
                   href="/login"
@@ -150,6 +170,8 @@ export function Navbar() {
           </div>
         )}
       </header>
+
+      <PWAInstallModal ref={installModalRef} />
     </>
   );
 }

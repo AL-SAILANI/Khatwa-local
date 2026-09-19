@@ -5,8 +5,9 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { useInstallPrompt } from "@/hooks/use-install-prompt";
 
-/** Always-visible install button for PWA. Shows in navbar when app is
- * installable. Persists across pages (unlike the dismissible card). */
+/** Navbar install button, desktop only: from `lg` down the hamburger menu
+ * carries its own install entry, and showing both side by side would offer
+ * the same action twice on one screen. */
 export function PWAInstallButton() {
   const t = useTranslations("pwa");
   const { canInstall, promptInstall } = useInstallPrompt();
@@ -18,11 +19,11 @@ export function PWAInstallButton() {
       variant="primary"
       size="sm"
       onClick={promptInstall}
-      className="flex items-center gap-2"
+      className="hidden items-center gap-2 lg:flex"
       aria-label={t("installButton")}
     >
       <Download className="size-4" />
-      <span className="hidden sm:inline">{t("installButton")}</span>
+      {t("installButton")}
     </Button>
   );
 }
