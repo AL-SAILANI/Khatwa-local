@@ -18,7 +18,7 @@ export default async function AppLayout({
     <AuthGuard>
       <div className="flex min-h-screen w-full">
         <Sidebar />
-        <main className="flex min-w-0 flex-1 flex-col pb-20 lg:pb-0">
+        <main className="flex min-w-0 flex-1 flex-col pb-[calc(5rem+env(safe-area-inset-bottom))] lg:pb-0">
           <Topbar />
           {children}
         </main>

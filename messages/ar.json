@@ -447,7 +447,8 @@
     "settings": "الإعدادات",
     "logout": "تسجيل الخروج",
     "ariaLabel": "القائمة الرئيسية",
-    "more": "المزيد"
+    "more": "المزيد",
+    "mockExamsShort": "اختبارات"
   },
   "topbar": {
     "streakDay": "{count, plural, one {يوم واحد متتالي} two {يومان متتاليان} few {# أيام متتالية} many {# يومًا متتاليًا} other {# يومًا متتاليًا}}",

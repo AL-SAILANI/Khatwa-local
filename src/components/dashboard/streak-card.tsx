@@ -29,7 +29,10 @@ export function StreakCard({ streak, activeDays }: { streak: number; activeDays:
               className={cn(
                 "mx-auto mt-1.5 flex size-7 items-center justify-center rounded-full text-xs font-semibold",
                 activeDays[index]
-                  ? "bg-ink-violet text-ink-violet dark:text-primary-300"
+                  // Was `text-ink-violet` on `bg-ink-violet` — the tick was
+                  // the same colour as the circle it sat in, so an active day
+                  // rendered as an empty dot.
+                  ? "bg-ink-violet text-butter-yellow"
                   : "bg-surface-muted text-muted/60",
               )}
             >

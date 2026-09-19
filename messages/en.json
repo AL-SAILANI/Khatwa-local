@@ -447,7 +447,8 @@
     "settings": "Settings",
     "logout": "Log out",
     "ariaLabel": "Main navigation",
-    "more": "More"
+    "more": "More",
+    "mockExamsShort": "Tests"
   },
   "topbar": {
     "streakDay": "{count, plural, one {# day streak} other {# day streak}}",

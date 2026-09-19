@@ -20,10 +20,13 @@ import { NightShiftToggle } from "@/components/theme/night-shift-toggle";
 import { cn } from "@/lib/utils/cn";
 import { logout } from "@/lib/firebase/auth";
 
+/** `mockExamsShort` rather than `mockExams`: a fifth of a 375px bar is about
+ * 70px, and "الاختبارات التجريبية" truncated to "الاختبارات الت…" there. The
+ * sidebar has room for the full name and still uses it. */
 const PRIMARY_ITEMS = [
   { href: "/dashboard", labelKey: "home", icon: LayoutDashboard },
   { href: "/courses", labelKey: "courses", icon: BookOpen },
-  { href: "/mock-exams", labelKey: "mockExams", icon: FileText },
+  { href: "/mock-exams", labelKey: "mockExamsShort", icon: FileText },
   { href: "/vocabulary", labelKey: "vocabulary", icon: BookMarked },
 ] as const;
 
