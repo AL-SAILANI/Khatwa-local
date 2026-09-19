@@ -79,6 +79,44 @@ export default async function LocaleLayout({
             after hydration — it never reached the served HTML at all, so the
             page painted unthemed first. */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {/* TEMPORARY: overflow probe, opt-in via ?diag=1. Reports the real
+            numbers from the user's own device, which is the only place the
+            reported sideways shift reproduces. Remove once diagnosed. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+if (location.search.indexOf('diag=1') !== -1) {
+  addEventListener('load', function () { setTimeout(function () {
+    var de = document.documentElement, vw = de.clientWidth, worst = null, count = 0;
+    var all = document.querySelectorAll('body *');
+    for (var i = 0; i < all.length; i++) {
+      var r = all[i].getBoundingClientRect();
+      if (!r.width || !r.height) continue;
+      if (r.right > vw + 1 || r.left < -1) {
+        count++;
+        if (!worst || r.width > worst.w) {
+          worst = { t: all[i].tagName, c: (all[i].className || '').toString().slice(0, 70),
+                    l: Math.round(r.left), r: Math.round(r.right), w: Math.round(r.width) };
+        }
+      }
+    }
+    var box = document.createElement('div');
+    box.style.cssText = 'position:fixed;inset-inline:0;top:0;z-index:2147483647;background:#111;color:#0f0;font:11px/1.5 monospace;padding:10px;white-space:pre-wrap;direction:ltr;text-align:left';
+    box.textContent =
+      'innerWidth      ' + window.innerWidth + '\\n' +
+      'clientWidth     ' + vw + '\\n' +
+      'scrollWidth     ' + de.scrollWidth + '\\n' +
+      'scrollbar space ' + (window.innerWidth - vw) + '\\n' +
+      'overflow by     ' + (de.scrollWidth - vw) + '\\n' +
+      'body offsetLeft ' + document.body.getBoundingClientRect().left + '\\n' +
+      'overflowing els ' + count + '\\n' +
+      (worst ? 'WIDEST: <' + worst.t + '> L' + worst.l + ' R' + worst.r + ' W' + worst.w + '\\n' + worst.c
+             : 'none found');
+    document.body.appendChild(box);
+  }, 2500); });
+}`,
+          }}
+        />
       </head>
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <NextIntlClientProvider>
