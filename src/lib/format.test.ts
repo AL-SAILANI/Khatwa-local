@@ -98,18 +98,32 @@ describe("format utilities", () => {
       expect(labels[0]).toMatch(/[\u0600-\u06FF]/); // Arabic Unicode range
     });
 
-    it("should return English labels for English locale", () => {
-      const labels = getWeekdayLabels("en");
-      expect(labels[0]).toMatch(/^(Sun|Mon|Tue|Wed|Thu|Fri|Sat)$/);
+    // Regression: these were `weekday: "short"`, which in Arabic is the whole
+    // word ("\u0627\u0644\u0623\u062D\u062F", "\u0627\u0644\u0627\u062B\u0646\u064A\u0646"). Callers shortened them by taking the first two
+    // characters, and since every Arabic weekday begins with "\u0627\u0644", the calendar
+    // rendered "\u0627\u0644" seven times over \u2014 no day distinguishable from another.
+    it("gives every day a distinct Arabic label", () => {
+      const labels = getWeekdayLabels("ar");
+      expect(new Set(labels).size).toBe(7);
+    });
+
+    it("keeps labels short enough for a narrow cell", () => {
+      for (const locale of ["ar", "en"]) {
+        for (const label of getWeekdayLabels(locale)) {
+          expect(label.length).toBeLessThanOrEqual(2);
+        }
+      }
+    });
+
+    it("should return English initials for English locale", () => {
+      expect(getWeekdayLabels("en")).toEqual(["S", "M", "T", "W", "T", "F", "S"]);
     });
 
     it("should start with Sunday", () => {
-      const labelsEn = getWeekdayLabels("en");
-      expect(labelsEn[0].toLowerCase()).toContain("sun");
-
-      const labelsAr = getWeekdayLabels("ar");
-      // Arabic Sunday is "الأحد"
-      expect(labelsAr[0]).toContain("أحد");
+      // The English initials are ambiguous (S is both Sunday and Saturday), so
+      // the order is pinned via Arabic, where every narrow label is distinct:
+      // ح=الأحد ن=الاثنين ث=الثلاثاء ر=الأربعاء خ=الخميس ج=الجمعة س=السبت
+      expect(getWeekdayLabels("ar")).toEqual(["ح", "ن", "ث", "ر", "خ", "ج", "س"]);
     });
   });
 

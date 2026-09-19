@@ -32,11 +32,18 @@ export function formatRelativeTime(
   return rtf.format(0, "minute");
 }
 
-/** Short weekday labels (Sun..Sat) in the given locale, for calendar/streak
- * widgets — derived from `Intl.DateTimeFormat` rather than a hardcoded
- * array, so it's correct for any locale without a translation key per day. */
+/** Single-character weekday labels (Sun..Sat) in the given locale, for the
+ * calendar and streak widgets — derived from `Intl.DateTimeFormat` rather than
+ * a hardcoded array, so it's correct for any locale without a translation key
+ * per day.
+ *
+ * "narrow", not "short": Arabic's short form is the full word ("الأحد",
+ * "الاثنين"), which neither fits a 32px cell nor survives being truncated —
+ * every Arabic weekday starts with "ال", so callers chopping the first two
+ * characters rendered all seven days identically. "narrow" yields distinct
+ * letters in both languages (ح ن ث ر خ ج س / S M T W T F S). */
 export function getWeekdayLabels(locale: string): string[] {
-  const formatter = new Intl.DateTimeFormat(locale, { weekday: "short" });
+  const formatter = new Intl.DateTimeFormat(locale, { weekday: "narrow" });
   // 2024-01-07 was a Sunday — an arbitrary known-Sunday anchor date.
   return Array.from({ length: 7 }, (_, i) => formatter.format(new Date(2024, 0, 7 + i)));
 }

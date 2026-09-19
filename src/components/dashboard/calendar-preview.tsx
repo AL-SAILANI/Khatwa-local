@@ -108,7 +108,7 @@ export function CalendarPreview({ recentActivityDays }: { recentActivityDays: st
       <div className="mt-3 grid grid-cols-7 gap-1 text-center">
         {getWeekdayLabels(locale).map((day) => (
           <div key={day} className="text-[11px] text-muted">
-            {day.slice(0, 2)}
+            {day}
           </div>
         ))}
 
