@@ -60,7 +60,11 @@ export function BackToTop() {
           aria-label={t("backToTop")}
           data-floating-action
         >
-          <ArrowUp className="size-5 rtl:rotate-180" />
+          {/* No `rtl:rotate-180` here: mirroring is for arrows that follow
+              reading direction (next/back chevrons). This one points at the
+              top of the page, which is up in every locale — rotating it made
+              the back-to-top button show a downward arrow in Arabic. */}
+          <ArrowUp className="size-5" />
         </motion.button>
       )}
     </AnimatePresence>
