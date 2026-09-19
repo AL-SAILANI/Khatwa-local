@@ -23,7 +23,7 @@ export function Navbar() {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const tPwa = useTranslations("pwa");
-  const { canInstall } = useInstallPrompt();
+  const { canInstall, canShowIOSSteps } = useInstallPrompt();
   const installModalRef = useRef<PWAInstallModalHandle>(null);
 
   const links = [
@@ -136,7 +136,7 @@ export function Navbar() {
                 </Link>
               ))}
 
-              {canInstall && (
+              {(canInstall || canShowIOSSteps) && (
                 <button
                   type="button"
                   onClick={() => {

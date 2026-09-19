@@ -21,7 +21,7 @@
   "hero": {
     "eyebrow": "The smart way to prepare for STEP",
     "title": "Your first step toward mastering English and acing the STEP exam",
-    "subtitle": "A smart learning platform that builds your personal study plan, tracks your progress, and mirrors the real STEP exam \u2014 so you reach your goal with confidence.",
+    "subtitle": "A smart learning platform that builds your personal study plan, tracks your progress, and mirrors the real STEP exam — so you reach your goal with confidence.",
     "ctaPrimary": "Start your journey free",
     "ctaSecondary": "Explore features",
     "trustedBy": "Trusted by students across Saudi Arabia",
@@ -35,7 +35,7 @@
   },
   "features": {
     "title": "Everything you need, in one place",
-    "subtitle": "Built around how STEP is actually studied \u2014 not a generic language-learning template",
+    "subtitle": "Built around how STEP is actually studied — not a generic language-learning template",
     "items": {
       "placementTest": {
         "title": "Accurate placement test",
@@ -67,18 +67,18 @@
   "showcase": {
     "studyPlan": {
       "eyebrow": "A study plan that adapts to you",
-      "title": "Not a generic plan \u2014 yours",
-      "description": "Khatwa builds a daily schedule from your goal and available study hours, then reshuffles it automatically every time you finish a lesson or miss a day \u2014 instead of a fixed plan you have to reset yourself."
+      "title": "Not a generic plan — yours",
+      "description": "Khatwa builds a daily schedule from your goal and available study hours, then reshuffles it automatically every time you finish a lesson or miss a day — instead of a fixed plan you have to reset yourself."
     },
     "vocabulary": {
       "eyebrow": "Real spaced repetition",
       "title": "Words that stick, not ones that fade after the test",
-      "description": "Every word you review gets rescheduled by the SM-2 algorithm based on how well you actually remembered it \u2014 hard words come back sooner, easy ones drift further out, so you only review what you truly need to."
+      "description": "Every word you review gets rescheduled by the SM-2 algorithm based on how well you actually remembered it — hard words come back sooner, easy ones drift further out, so you only review what you truly need to."
     }
   },
   "steps": {
     "title": "How to start your journey with Khatwa?",
-    "subtitle": "Three simple steps between you and your goal \u2014 no fuss",
+    "subtitle": "Three simple steps between you and your goal — no fuss",
     "items": [
       {
         "title": "Create your account",
@@ -116,23 +116,23 @@
     "items": [
       {
         "name": "Sarah Ahmed",
-        "role": "High school student \u2014 Riyadh",
+        "role": "High school student — Riyadh",
         "score": "+14 points",
-        "avatarEmoji": "\ud83d\udc69\u200d\ud83c\udf93",
-        "quote": "The daily plan honestly saved me from going in circles. I open the platform knowing exactly what to do \u2014 no more guessing."
+        "avatarEmoji": "👩‍🎓",
+        "quote": "The daily plan honestly saved me from going in circles. I open the platform knowing exactly what to do — no more guessing."
       },
       {
         "name": "Omar Khaled",
-        "role": "University student \u2014 Jeddah",
+        "role": "University student — Jeddah",
         "score": "92/100",
-        "avatarEmoji": "\ud83e\uddd1\u200d\ud83c\udf93",
-        "quote": "The mock exams made the biggest difference. I walked into the real test feeling like I'd done it before \u2014 same atmosphere, exactly."
+        "avatarEmoji": "🧑‍🎓",
+        "quote": "The mock exams made the biggest difference. I walked into the real test feeling like I'd done it before — same atmosphere, exactly."
       },
       {
         "name": "Noura Saad",
-        "role": "Graduate \u2014 Dammam",
+        "role": "Graduate — Dammam",
         "score": "+18 points",
-        "avatarEmoji": "\ud83d\udc69\u200d\ud83d\udcbb",
+        "avatarEmoji": "👩‍💻",
         "quote": "The best part is the assessment after every test. It shows you exactly where your weak points are, instead of wasting time redoing the whole syllabus."
       }
     ]
@@ -146,11 +146,11 @@
       },
       {
         "question": "How closely do the mock exams match the real STEP exam?",
-        "answer": "Each mock exam follows the same structure and timing as the real STEP: 100 questions in 150 minutes, split between reading, grammar, listening, and writing analysis \u2014 so you know what to expect on test day."
+        "answer": "Each mock exam follows the same structure and timing as the real STEP: 100 questions in 150 minutes, split between reading, grammar, listening, and writing analysis — so you know what to expect on test day."
       },
       {
         "question": "Do I need a subscription to get started?",
-        "answer": "No \u2014 you can create a free account, take the placement test, and start on the basic plan right away. Pro and Premium plans unlock additional content and features."
+        "answer": "No — you can create a free account, take the placement test, and start on the basic plan right away. Pro and Premium plans unlock additional content and features."
       },
       {
         "question": "Can I use the platform from my phone?",
@@ -164,7 +164,7 @@
     "button": "Create your free account",
     "eyebrow": "Ready to start?",
     "placeholder": "Enter your email",
-    "success": "Check your inbox \u2014 we've just sent you a note!"
+    "success": "Check your inbox — we've just sent you a note!"
   },
   "footer": {
     "tagline": "Your smart platform for STEP exam prep.",
@@ -175,7 +175,7 @@
   },
   "aboutPage": {
     "title": "About Khatwa",
-    "body": "Khatwa is a smart study platform built for students preparing for the STEP exam in Saudi Arabia. It combines a placement test, a personalized study plan, realistic mock exams, vocabulary tools, and clear analytics \u2014 so you always know what to study next.",
+    "body": "Khatwa is a smart study platform built for students preparing for the STEP exam in Saudi Arabia. It combines a placement test, a personalized study plan, realistic mock exams, vocabulary tools, and clear analytics — so you always know what to study next.",
     "body2": "Our goal is simple: make high-quality STEP preparation accessible to every student, with a calm experience that keeps you focused on raising your score."
   },
   "contactPage": {
@@ -185,7 +185,7 @@
   },
   "privacyPage": {
     "title": "Privacy Policy",
-    "body": "We collect only the information needed to provide the service \u2014 such as your name and email address when you create an account.",
+    "body": "We collect only the information needed to provide the service — such as your name and email address when you create an account.",
     "body2": "Your data is used to personalize your study plan, track your progress, and improve the platform. We never sell your personal information.",
     "body3": "You can request a copy or deletion of your data at any time from your settings page."
   },
@@ -242,7 +242,7 @@
       "namePlaceholder": "Your full name",
       "orContinueWith": "Or continue with",
       "avatarLabel": "Pick your character",
-      "avatarDescription": "Choose a character that represents you \u2014 you can change it anytime later from settings.",
+      "avatarDescription": "Choose a character that represents you — you can change it anytime later from settings.",
       "avatarOptional": "(optional)",
       "ageLabel": "Age",
       "agePlaceholder": "e.g. 16",
@@ -307,9 +307,9 @@
       "advanced": "Advanced"
     },
     "studyHoursValue": "{hours}h",
-    "noScore": "\u2014",
+    "noScore": "—",
     "pathTo": "Path to {goal}",
-    "currentScoreNote": "Your current score is {current} out of {goal} \u2014 keep up the pace!",
+    "currentScoreNote": "Your current score is {current} out of {goal} — keep up the pace!",
     "streakDays": "{count, plural, one {# day streak} other {# day streak}}",
     "keepGoing": "Keep up your streak!",
     "achievementsTitle": "Achievements",
@@ -355,7 +355,7 @@
       "incorrectAnswer": "Incorrect, try again tomorrow!",
       "claimReward": "Claim Reward (+30 XP)",
       "fromSection": "Today's question from the {section} section",
-      "noQuestion": "No question is available right now \u2014 try again later",
+      "noQuestion": "No question is available right now — try again later",
       "tryAgain": "Try again",
       "studyConceptLink": "Study this concept"
     },
@@ -364,35 +364,35 @@
       "label": "Daily Motivation",
       "phrases": [
         "Every minute you study today brings you one step closer to your STEP goal",
-        "Don't compare your progress to anyone else \u2014 compare it to yesterday's you",
+        "Don't compare your progress to anyone else — compare it to yesterday's you",
         "Today's effort is tomorrow's confidence on exam day",
         "There's no shortcut to success, but every consistent day counts",
         "Small daily wins beat big occasional efforts",
         "Today you build your habit, tomorrow your habit builds you",
         "Today's mistake is a lesson that prevents tomorrow's",
-        "Strength isn't the effort on exam day \u2014 it's the commitment every day",
+        "Strength isn't the effort on exam day — it's the commitment every day",
         "Steady small progress beats a temporary jump",
         "When you feel like giving up, remember why you started",
         "Every question you practice today is one you'll own on the test",
-        "Your ambition is bigger than today's effort \u2014 keep going",
+        "Your ambition is bigger than today's effort — keep going",
         "The score you dream of is built from quiet hours of study",
         "Make studying a daily habit, and success becomes its result",
         "Daily repetition creates excellence",
-        "You don't need superpowers \u2014 just one extra step each day",
+        "You don't need superpowers — just one extra step each day",
         "Focusing on the goal makes the path feel easier",
         "Every day you learn something new, you're closer to your target",
         "Those who start early arrive comfortably",
         "Daily review gives you unshakeable confidence",
-        "Success isn't luck \u2014 it's a chain of small right decisions",
-        "Your mind learns every day \u2014 take your time, don't rush",
-        "Ask, practice, make mistakes, and adjust \u2014 that's the formula for excellence",
+        "Success isn't luck — it's a chain of small right decisions",
+        "Your mind learns every day — take your time, don't rush",
+        "Ask, practice, make mistakes, and adjust — that's the formula for excellence",
         "The day you study well is the best investment in your tomorrow",
         "Long-term consistency builds high-level mastery",
         "When the challenge grows, the value of your achievement grows too",
         "Your self-confidence grows with every correct answer you practice",
         "Save effort today to save worry on exam day",
-        "You can do more than you think \u2014 try once more today",
-        "Your dream is worth every one of these minutes \u2014 keep going"
+        "You can do more than you think — try once more today",
+        "Your dream is worth every one of these minutes — keep going"
       ]
     },
     "examCountdown": {
@@ -400,13 +400,13 @@
       "title": "STEP Exam Countdown",
       "subtitle": "Set your exam date from the calendar to know exactly how much time is left",
       "setLabel": "Your exam date:",
-      "saving": "Saving\u2026",
+      "saving": "Saving…",
       "saved": "Saved",
       "pickLabel": "Set your exam date",
       "pickSave": "Save",
       "yourDate": "Your date: {date}",
       "noDate": "Tap the icon to pick your exam day and time",
-      "passed": "Your exam date has passed \u2014 review your progress and get ready for the next attempt",
+      "passed": "Your exam date has passed — review your progress and get ready for the next attempt",
       "passedCta": "Review your path",
       "ariaLabel": "Time left until the STEP exam",
       "units": {
@@ -468,7 +468,7 @@
       "title": "Review your answers",
       "unanswered": "You have {count, plural, one {# unanswered question} other {# unanswered questions}}.",
       "allAnswered": "You've answered every question.",
-      "questionLabel": "Question {index} \u2014 {section}",
+      "questionLabel": "Question {index} — {section}",
       "backToExam": "Back to exam",
       "submitting": "Submitting...",
       "submitExam": "Submit exam",
@@ -506,7 +506,7 @@
       "noAnsweredQuestions": "You didn't answer any questions.",
       "shareScore": "Share Score",
       "copiedScore": "Score copied to clipboard!",
-      "shareText": "I scored {score} on the STEP exam with Khatwa! \ud83d\ude80",
+      "shareText": "I scored {score} on the STEP exam with Khatwa! 🚀",
       "shareTitle": "My Khatwa exam result",
       "scoreTrend": "Score trend",
       "attemptCount": "{count, plural, one {# attempt} other {# attempts}}",
@@ -553,13 +553,13 @@
     "noAttemptsYet": "You haven't taken a mock exam yet.",
     "noAttemptsDescription": "Start your first mock exam to simulate the real STEP test and track your progress here.",
     "scoreLabel": "Score: {score}",
-    "noDate": "\u2014",
+    "noDate": "—",
     "eyebrow": "Mock Exams"
   },
   "courses": {
     "pageTitle": "Courses",
     "description": "Content organized around STEP's four skill areas, plus tips and revision lessons.",
-    "lessonSummary": "{lessonCount} lessons \u00b7 {minutes} min",
+    "lessonSummary": "{lessonCount} lessons · {minutes} min",
     "openPdf": "Open PDF",
     "finishLesson": "Finish lesson",
     "lessonCompleted": "Lesson completed",
@@ -571,9 +571,9 @@
     "noCoursesYet": "No courses yet",
     "noResults": "No matching results",
     "searchLabel": "Search courses",
-    "searchPlaceholder": "Search a course or skill\u2026",
+    "searchPlaceholder": "Search a course or skill…",
     "clearFilters": "Clear filters",
-    "lockedLessonNotice": "This lesson is locked \u2014 complete the previous one to unlock it",
+    "lockedLessonNotice": "This lesson is locked — complete the previous one to unlock it",
     "goToCurrentLesson": "Go to current lesson",
     "lessonPosition": "{position} of {total, plural, one {# lesson} other {# lessons}}",
     "listenToDialogue": "Listen to the dialogue",
@@ -635,13 +635,13 @@
     "levelAll": "All levels",
     "medium": "Medium",
     "recallPrompt": "What's the English word?",
-    "modeRecall": "Active recall: meaning \u2192 word",
-    "modeRecognize": "Recognition: word \u2192 meaning",
+    "modeRecall": "Active recall: meaning → word",
+    "modeRecognize": "Recognition: word → meaning",
     "spacedLine": "The algorithm schedules your review smartly",
     "nextReviewSoon": "Reappears shortly to lock it in",
     "nextReviewTomorrow": "Reappears tomorrow",
     "nextReviewInDays": "Reappears in {days, plural, one {# day} other {# days}}",
-    "sessionHint": "F flip card \u00b7 1 Don't know \u00b7 2 Hard \u00b7 3 Easy",
+    "sessionHint": "F flip card · 1 Don't know · 2 Hard · 3 Easy",
     "doneTitle": "Nicely done! You finished today's review",
     "doneNote": "You reviewed {total, plural, one {# word} other {# words}} today. Active recall builds long-term memory.",
     "retentionTitle": "Retention rate",
@@ -655,13 +655,13 @@
     "curveWithoutReview": "Without review",
     "curveWithReview": "With spaced review",
     "scheduleTitle": "What's next",
-    "scheduleAgain": "Tomorrow \u2014 {count, plural, one {# forgotten word} other {# forgotten words}}",
-    "scheduleHard": "Short gap \u2014 {count, plural, one {# hard word} other {# hard words}}",
-    "scheduleEasy": "Longer gap \u2014 {count, plural, one {# easy word} other {# easy words}}",
-    "scheduleNew": "Entering the curve \u2014 {count, plural, one {# new word} other {# new words}}",
+    "scheduleAgain": "Tomorrow — {count, plural, one {# forgotten word} other {# forgotten words}}",
+    "scheduleHard": "Short gap — {count, plural, one {# hard word} other {# hard words}}",
+    "scheduleEasy": "Longer gap — {count, plural, one {# easy word} other {# easy words}}",
+    "scheduleNew": "Entering the curve — {count, plural, one {# new word} other {# new words}}",
     "tipRetrieval": "Active recall beats re-reading: trying to remember before revealing doubles retention (Roediger & Karpicke, 2006).",
     "tipSpacing": "Spacing beats cramming: reviews at growing intervals lock words into long-term memory (Cepeda et al., 2006).",
-    "tipLeitner": "Forgotten words looped back into this session \u2014 in-session relearning speeds up mastery (Leitner system).",
+    "tipLeitner": "Forgotten words looped back into this session — in-session relearning speeds up mastery (Leitner system).",
     "xpEarned": "+{xp} XP added to your balance",
     "favoritesBack": "Back to favorites",
     "dueToday": "Due today: {count, plural, one {# word} other {# words}}",
@@ -686,7 +686,7 @@
   "studyPlan": {
     "title": "Your study plan",
     "recommendationNote": "Based on your goal ({goal}) and current score ({lastScore}), we recommend a {recommended}-day plan.",
-    "noValue": "\u2014",
+    "noValue": "—",
     "durationLabel": "Plan duration",
     "durationOption": "{days, plural, one {# day} other {# days}}",
     "weeklyHoursLabel": "How many hours a week can you study?",
@@ -694,7 +694,7 @@
     "creating": "Creating...",
     "createButton": "Create my plan",
     "pathTitle": "Study Path",
-    "pathDescription": "Your daily plan in a progressive sequence \u2014 finish each lesson to unlock the next.",
+    "pathDescription": "Your daily plan in a progressive sequence — finish each lesson to unlock the next.",
     "planMeta": "{days, plural, one {#-day} other {#-day}} plan",
     "progressLabel": "{completed} of {total, plural, one {# lesson} other {# lessons}}",
     "continuePath": "Continue your path",
@@ -707,7 +707,7 @@
       "medium": "Intermediate",
       "hard": "Advanced"
     },
-    "pathNote": "Your lessons are arranged into a sequential daily path mixing multiple skills each day, with tips and weekly revision \u2014 every lesson unlocks the next one.",
+    "pathNote": "Your lessons are arranged into a sequential daily path mixing multiple skills each day, with tips and weekly revision — every lesson unlocks the next one.",
     "eyebrow": "Study Path"
   },
   "settings": {
@@ -716,13 +716,13 @@
       "goalLabel": "Goal",
       "planLabel": "Plan",
       "freePlan": "Free",
-      "noValue": "\u2014",
+      "noValue": "—",
       "avatarLabel": "Your character",
       "changeAvatar": "Change character",
       "avatarSave": "Save character",
       "avatarCancel": "Cancel",
       "avatarSaved": "Your character was updated successfully",
-      "avatarHint": "Pick from our diverse character set \u2014 you can change it anytime.",
+      "avatarHint": "Pick from our diverse character set — you can change it anytime.",
       "upgradePlan": "Upgrade plan",
       "errors": {
         "nameRequired": "Enter your name",
@@ -805,8 +805,8 @@
     "10": "Legend"
   },
   "levelCard": {
-    "levelLabel": "Level {level} \u00b7 {title}",
-    "xpAndCoins": "{xp} XP \u00b7 {coins} coins",
+    "levelLabel": "Level {level} · {title}",
+    "xpAndCoins": "{xp} XP · {coins} coins",
     "xpToNextLevel": "{current} / {total} XP to next level"
   },
   "achievements": {
@@ -911,7 +911,7 @@
       "lessonQuestionsLabel": "Quiz question IDs (comma-separated)",
       "resourcesLabel": "Lesson attachments (video / audio / PDF)",
       "chooseCourseFirst": "Choose a course first before uploading a file.",
-      "unsupportedFormat": "Unsupported format \u2014 please upload a video, audio, or PDF file.",
+      "unsupportedFormat": "Unsupported format — please upload a video, audio, or PDF file.",
       "uploadFailed": "Upload failed. Please try again.",
       "addLesson": "Add lesson",
       "currentCoursesTitle": "Current courses",
@@ -997,7 +997,7 @@
       "emailInvalid": "Invalid email address"
     },
     "checkEmailTitle": "Check your email",
-    "checkEmailNote": "We sent a password reset link \u2014 follow the instructions in it to create a new password.",
+    "checkEmailNote": "We sent a password reset link — follow the instructions in it to create a new password.",
     "checkSpam": "Didn't receive it? Check your spam folder, and make sure this email is registered on the platform.",
     "backToLogin": "Back to log in",
     "title": "Reset your password",
@@ -1012,7 +1012,7 @@
     "terms": "Terms"
   },
   "meta": {
-    "titleDefault": "Khatwa \u2014 Your Smart STEP Exam Prep Platform"
+    "titleDefault": "Khatwa — Your Smart STEP Exam Prep Platform"
   },
   "errorBoundary": {
     "title": "Something went wrong",
@@ -1117,7 +1117,7 @@
       },
       "lesson-writingAnalysis-1": {
         "title": "Spotting Grammar Errors Quickly",
-        "notes": "Start by checking subject-verb agreement first, as it is the most common error. Then check prepositions, and finally dangling modifiers \u2014 opening phrases that don't describe the right subject."
+        "notes": "Start by checking subject-verb agreement first, as it is the most common error. Then check prepositions, and finally dangling modifiers — opening phrases that don't describe the right subject."
       },
       "lesson-vocabulary-1": {
         "title": "Spaced Repetition for Vocabulary",
@@ -1153,11 +1153,11 @@
       },
       "lesson-vocabulary-2": {
         "title": "Common Academic Vocabulary in Reading",
-        "notes": "Words like infrastructure, curriculum, and sustained appear frequently in academic reading texts. Memorize them within a full sentence rather than as a single word \u2014 this locks them into memory better and helps you recognize them in different contexts."
+        "notes": "Words like infrastructure, curriculum, and sustained appear frequently in academic reading texts. Memorize them within a full sentence rather than as a single word — this locks them into memory better and helps you recognize them in different contexts."
       },
       "lesson-tips-2": {
         "title": "The Day Before the Exam",
-        "notes": "Avoid studying new material on the last day; instead focus on reviewing the recurring mistakes in your previous tests. Confirm the exam location and time in advance, and get enough sleep \u2014 fatigue affects reading speed and attention more than most students realize."
+        "notes": "Avoid studying new material on the last day; instead focus on reviewing the recurring mistakes in your previous tests. Confirm the exam location and time in advance, and get enough sleep — fatigue affects reading speed and attention more than most students realize."
       },
       "lesson-strategies-2": {
         "title": "When to Skip a Difficult Question",
@@ -1177,7 +1177,7 @@
       },
       "lesson-listening-3": {
         "title": "Conversations in Hotels and Universities",
-        "notes": "In service conversations (hotels, bookings, academic appointments), pay attention to the final solution the second speaker proposes after an apology or clarification \u2014 it is often the focus of the main question."
+        "notes": "In service conversations (hotels, bookings, academic appointments), pay attention to the final solution the second speaker proposes after an apology or clarification — it is often the focus of the main question."
       },
       "lesson-writingAnalysis-3": {
         "title": "Comma, Possessive, and Double-Negative Errors",
@@ -1189,7 +1189,7 @@
       },
       "lesson-tips-3": {
         "title": "Exam Day: Final Tips",
-        "notes": "Read the full instructions before starting each section even if they feel familiar, since some exams introduce slight changes to the instructions. Keep breathing calmly if you feel nervous \u2014 excessive anxiety slows reading speed more than anything else."
+        "notes": "Read the full instructions before starting each section even if they feel familiar, since some exams introduce slight changes to the instructions. Keep breathing calmly if you feel nervous — excessive anxiety slows reading speed more than anything else."
       },
       "lesson-strategies-3": {
         "title": "Dealing with Anxiety During the Exam",
@@ -1209,7 +1209,7 @@
       },
       "lesson-listening-4": {
         "title": "Memberships and Promotional Offers",
-        "notes": "In membership conversations (gyms, services), pay attention to what the more expensive plan adds over the basic one, and why the speaker chooses in the end \u2014 the reason is often a price or a feature mentioned only once."
+        "notes": "In membership conversations (gyms, services), pay attention to what the more expensive plan adds over the basic one, and why the speaker chooses in the end — the reason is often a price or a feature mentioned only once."
       },
       "lesson-writingAnalysis-4": {
         "title": "Comma Splices",
@@ -1265,7 +1265,7 @@
       },
       "lesson-reading-7": {
         "title": "Public Services and Community Texts",
-        "notes": "Public services texts (libraries, transport, facilities) usually compare past and present, or present a financial challenge. Look for the community that benefits most, and the main threat \u2014 these are two recurring questions."
+        "notes": "Public services texts (libraries, transport, facilities) usually compare past and present, or present a financial challenge. Look for the community that benefits most, and the main threat — these are two recurring questions."
       },
       "lesson-listening-7": {
         "title": "Formal Calls and Interviews",
@@ -1281,7 +1281,7 @@
       },
       "lesson-grammar-8": {
         "title": "Correlative Conjunctions and Parallelism",
-        "notes": "Correlative conjunctions come in fixed pairs: not only...but also, neither...nor. When a list of verbs or nouns appears, keep the same form across all items (parallelism) \u2014 this is key to succeeding in both grammar and writing questions."
+        "notes": "Correlative conjunctions come in fixed pairs: not only...but also, neither...nor. When a list of verbs or nouns appears, keep the same form across all items (parallelism) — this is key to succeeding in both grammar and writing questions."
       },
       "lesson-reading-8": {
         "title": "Identifying the Writer's Opinion",
@@ -1452,7 +1452,13 @@
     "installDescription": "Install the app on your home screen for quick access.",
     "installButton": "Install",
     "dismissAria": "Dismiss",
-    "dismissButton": "Later"
+    "dismissButton": "Later",
+    "iosTitle": "Add Khatwa to your Home Screen",
+    "iosStep1": "Tap the Share button in the browser bar",
+    "iosStep2": "Scroll and choose “Add to Home Screen”",
+    "iosStep3": "Tap “Add” in the top corner",
+    "iosNote": "On iPhone and iPad, installing is done manually from Safari.",
+    "iosDone": "Got it"
   },
   "socialProof": {
     "eyebrow": "Everything you need for complete preparation",
@@ -1480,7 +1486,7 @@
     "seeResult": "See your result",
     "optionsHint": "Choose one option",
     "startTitle": "Test yourself with three real questions",
-    "startNote": "You have {total, plural, one {# question} other {# questions}} in the real STEP format \u2014 reading, grammar, and writing analysis \u2014 with a timer like the real exam. Answer and see your result instantly.",
+    "startNote": "You have {total, plural, one {# question} other {# questions}} in the real STEP format — reading, grammar, and writing analysis — with a timer like the real exam. Answer and see your result instantly.",
     "startButton": "Start the quiz",
     "skipCta": "Ready for the full exam?",
     "resultTitle": "Your result: {score} of {total}",

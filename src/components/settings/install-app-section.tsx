@@ -8,7 +8,8 @@ import { useInstallPrompt } from "@/hooks/use-install-prompt";
 
 export function InstallAppSection() {
   const t = useTranslations("settings.installApp");
-  const { canInstall, promptInstall } = useInstallPrompt();
+  const tPwa = useTranslations("pwa");
+  const { canInstall, canShowIOSSteps, isStandalone, promptInstall } = useInstallPrompt();
 
   return (
     <Card className="flex items-center gap-4 p-5">
@@ -21,16 +22,26 @@ export function InstallAppSection() {
         <p className="mt-0.5 text-xs leading-relaxed text-muted">{t("description")}</p>
       </div>
 
-      {canInstall ? (
+      {/* "Installed" must key off `isStandalone`, not `!canInstall`: the latter
+          is also false on iOS, after a dismissal, and on browsers with no
+          install support, which used to tell those users the app was already
+          installed when it wasn't. */}
+      {isStandalone ? (
+        <span className="shrink-0 rounded-none bg-surface-muted px-3 py-1 text-xs font-medium text-foreground/70">
+          {t("installed")}
+        </span>
+      ) : canInstall ? (
         <Button variant="primary" size="sm" className="shrink-0" onClick={promptInstall}>
           <Download className="size-4" aria-hidden="true" />
           {t("install")}
         </Button>
-      ) : (
-        <span className="shrink-0 rounded-none bg-surface-muted px-3 py-1 text-xs font-medium text-foreground/70">
-          {t("installed")}
+      ) : canShowIOSSteps ? (
+        <span className="shrink-0 text-end text-xs leading-relaxed text-muted">
+          {tPwa("iosStep1")}
+          <br />
+          {tPwa("iosStep2")}
         </span>
-      )}
+      ) : null}
     </Card>
   );
 }

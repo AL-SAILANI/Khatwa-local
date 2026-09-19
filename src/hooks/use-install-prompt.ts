@@ -10,10 +10,31 @@ interface BeforeInstallPromptEvent extends Event {
 const DISMISSED_KEY = "khatwa:install-prompt-dismissed";
 const STORAGE_KEY = "khatwa:installable";
 
+/** Safari never fires `beforeinstallprompt`, so iOS can only be offered the
+ * manual Share → "Add to Home Screen" route. iPadOS 13+ reports itself as
+ * "Macintosh", hence the touch-point check. */
+export function detectIOS() {
+  if (typeof navigator === "undefined") return false;
+  const ua = navigator.userAgent;
+  return /iPad|iPhone|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+}
+
+/** `display-mode: standalone` covers Android and modern iOS; the legacy
+ * `navigator.standalone` still answers on older iOS, where the media query
+ * does not. */
+function detectStandalone() {
+  if (typeof window === "undefined") return false;
+  return (
+    window.matchMedia("(display-mode: standalone)").matches ||
+    (navigator as Navigator & { standalone?: boolean }).standalone === true
+  );
+}
+
 let deferredPrompt: BeforeInstallPromptEvent | null = null;
 const listeners = new Set<() => void>();
 let dismissed = typeof window !== "undefined" && window.localStorage.getItem(DISMISSED_KEY) === "1";
-let installed = typeof window !== "undefined" && window.matchMedia("(display-mode: standalone)").matches;
+let installed = detectStandalone();
+const isIOSDevice = detectIOS();
 
 function emit() {
   listeners.forEach((listener) => listener());
@@ -87,6 +108,19 @@ export function useInstallPrompt() {
   }, []);
 
   const canInstall = !!prompt && !isDismissed && !isStandalone;
+  /** iOS gets no install event, so the offer is gated on the platform alone —
+   * the UI shows the manual Share-sheet steps instead of a prompt button. */
+  const canShowIOSSteps = isIOSDevice && !isDismissed && !isStandalone;
 
-  return { canInstall, promptInstall, dismiss };
+  return {
+    canInstall,
+    canShowIOSSteps,
+    isIOS: isIOSDevice,
+    /** Actually running as an installed app. Callers must not infer this from
+     * `!canInstall` — that is also false on iOS, after a dismissal, and on
+     * browsers without install support. */
+    isStandalone,
+    promptInstall,
+    dismiss,
+  };
 }
