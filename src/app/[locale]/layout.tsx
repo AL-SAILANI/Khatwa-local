@@ -32,6 +32,7 @@ export async function generateMetadata({
     },
     description: t("subtitle"),
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+    manifest: "/manifest.json",
     // No manual `icons` entry: `icon.tsx` and `apple-icon.tsx` (file
     // conventions, colocated in `src/app/`) generate and wire up the
     // favicon and home-screen icon automatically. An explicit override

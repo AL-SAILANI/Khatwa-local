@@ -1,11 +1,18 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import withBundleAnalyzer from "@next/bundle-analyzer";
+import withPWA from "next-pwa";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const bundleAnalyzer = withBundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
+});
+
+const withPWAConfig = withPWA({
+  dest: "public",
+  register: true,
+  skipWaiting: true,
 });
 
 const nextConfig: NextConfig = {
@@ -27,4 +34,4 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 };
 
-export default withNextIntl(bundleAnalyzer(nextConfig));
+export default withNextIntl(withPWAConfig(bundleAnalyzer(nextConfig)));
