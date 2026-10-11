@@ -3,6 +3,7 @@ import { db } from "@/lib/firebase/client";
 import type { ExamSectionKey, Question, ReadingPassage } from "@/types/question";
 import { useSupabaseCatalog } from "@/lib/supabase/client";
 import {
+  sbCreateQuestion,
   sbGetAllQuestions,
   sbGetQuestionsByIds,
   sbGetQuestionsBySection,
@@ -88,6 +89,7 @@ export async function getAllQuestions(): Promise<Question[]> {
 }
 
 export async function createQuestion(question: Omit<Question, "id">) {
+  if (useSupabaseCatalog) return sbCreateQuestion(question);
   const docRef = await addDoc(questionsCollection, question);
   return docRef.id;
 }

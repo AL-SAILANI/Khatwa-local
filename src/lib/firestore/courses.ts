@@ -2,7 +2,7 @@ import { addDoc, collection, doc, getDoc, getDocs, orderBy, query, where } from 
 import { db } from "@/lib/firebase/client";
 import type { Course, Lesson } from "@/types/course";
 import { useSupabaseCatalog } from "@/lib/supabase/client";
-import { sbGetAllLessons, sbGetCourse, sbGetCourses, sbGetLesson, sbGetLessonsForCourse } from "@/lib/supabase/catalog";
+import { sbCreateCourse, sbCreateLesson, sbGetAllLessons, sbGetCourse, sbGetCourses, sbGetLesson, sbGetLessonsForCourse } from "@/lib/supabase/catalog";
 
 const coursesCollection = collection(db, "courses");
 
@@ -42,11 +42,13 @@ export async function getLesson(lessonId: string): Promise<Lesson | null> {
 
 /** Admin-only writes — enforced by firestore.rules, not by this function. */
 export async function createCourse(course: Omit<Course, "id">) {
+  if (useSupabaseCatalog) return sbCreateCourse(course);
   const docRef = await addDoc(coursesCollection, course);
   return docRef.id;
 }
 
 export async function createLesson(lesson: Omit<Lesson, "id">) {
+  if (useSupabaseCatalog) return sbCreateLesson(lesson);
   const docRef = await addDoc(collection(db, "lessons"), lesson);
   return docRef.id;
 }

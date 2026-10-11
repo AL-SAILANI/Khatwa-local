@@ -12,7 +12,8 @@
     "test:unit": "vitest run",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "migrate:supabase": "node --env-file=.env.local --import tsx scripts/migrate-firebase-to-supabase.ts"
+    "migrate:supabase": "node --env-file=.env.local --import tsx scripts/migrate-firebase-to-supabase.ts",
+    "migrate:content": "node --env-file=.env.local --import tsx scripts/migrate-content-to-supabase.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",

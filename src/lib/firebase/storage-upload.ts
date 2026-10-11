@@ -2,6 +2,8 @@
 
 import { ref, uploadBytesResumable, getDownloadURL, type UploadTaskSnapshot } from "firebase/storage";
 import { storage } from "./client";
+import { useSupabaseCatalog } from "@/lib/supabase/flags";
+import { sbUploadLessonResource } from "@/lib/supabase/storage";
 
 /** Uploads a lesson resource file (video/pdf/audio) to
  * `courses/{courseId}/lessons/{...}` — matches the `storage.rules` path
@@ -14,6 +16,7 @@ export function uploadLessonResource(
   file: File,
   onProgress?: (percent: number) => void,
 ): Promise<string> {
+  if (useSupabaseCatalog) return sbUploadLessonResource(courseId, file, onProgress);
   const path = `courses/${courseId}/lessons/${crypto.randomUUID()}/${file.name}`;
   const storageRef = ref(storage, path);
   const task = uploadBytesResumable(storageRef, file);

@@ -23,10 +23,10 @@
  * Auth > Providers > Email > "Confirm email" turned OFF.
  */
 import { writeFileSync } from "node:fs";
-import { cert, initializeApp } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
-import { FieldPath, getFirestore, type QueryDocumentSnapshot } from "firebase-admin/firestore";
+import { getFirestore } from "firebase-admin/firestore";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { initFirebaseAdmin, readCollection } from "./lib/firebase-admin";
 import type { FirebaseUserLike, ScryptParams } from "../src/lib/migration/firebase-to-supabase";
 import {
   PHASES,
@@ -58,22 +58,7 @@ if (limit !== undefined && (!Number.isInteger(limit) || limit < 1)) {
 
 // ---- Firebase (read-only) ----
 function buildSource(): MigrationSource {
-  let credential;
-  const key = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
-  if (key) {
-    try {
-      credential = cert(JSON.parse(key));
-    } catch {
-      console.error("FIREBASE_SERVICE_ACCOUNT_KEY is not a valid service-account JSON (paste the whole file as one line).");
-      process.exit(1);
-    }
-  } else if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-    console.error("No Firebase credentials. Set FIREBASE_SERVICE_ACCOUNT_KEY in .env.local");
-    console.error("(Firebase console > Project settings > Service accounts > Generate new private key).");
-    process.exit(1);
-  }
-
-  const app = initializeApp(credential ? { credential } : undefined);
+  const app = initFirebaseAdmin();
   const fbAuth = getAuth(app);
   const fs = getFirestore(app);
 
@@ -100,18 +85,7 @@ function buildSource(): MigrationSource {
         pageToken = page.pageToken;
       } while (pageToken);
     },
-
-    async *readCollection(name) {
-      let last: QueryDocumentSnapshot | undefined;
-      for (;;) {
-        let query = fs.collection(name).orderBy(FieldPath.documentId()).limit(500);
-        if (last) query = query.startAfter(last);
-        const snap = await query.get();
-        if (snap.empty) return;
-        for (const doc of snap.docs) yield { id: doc.id, data: doc.data() };
-        last = snap.docs[snap.docs.length - 1];
-      }
-    },
+    readCollection: (name) => readCollection(fs, name),
   };
 }
 

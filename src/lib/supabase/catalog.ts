@@ -3,6 +3,7 @@ import type { Course, Lesson } from "@/types/course";
 import type { Achievement } from "@/types/gamification";
 import type { ExamSectionKey, Question, ReadingPassage } from "@/types/question";
 import type { VocabWord } from "@/types/vocabulary";
+import { courseToRow, lessonToRow, questionToRow } from "@/lib/supabase/catalog-rows";
 
 type Row = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
 
@@ -128,3 +129,16 @@ export async function sbGetAllVocabWords() {
 export async function sbGetAllAchievements() {
   return (await rows(db().from("achievements").select("*"))).map(toAchievement);
 }
+
+// ---------- admin CMS writes (RLS: admin only) ----------
+
+async function insertWithNewId<T extends { id: string }>(table: string, toRow: (item: T) => Record<string, unknown>, item: Omit<T, "id">) {
+  const full = { ...item, id: crypto.randomUUID() } as T;
+  const { error } = await db().from(table).insert(toRow(full));
+  if (error) throw new Error(`Supabase: ${error.message}`);
+  return full.id;
+}
+
+export const sbCreateCourse = (course: Omit<Course, "id">) => insertWithNewId<Course>("courses", courseToRow, course);
+export const sbCreateLesson = (lesson: Omit<Lesson, "id">) => insertWithNewId<Lesson>("lessons", lessonToRow, lesson);
+export const sbCreateQuestion = (question: Omit<Question, "id">) => insertWithNewId<Question>("questions", questionToRow, question);
