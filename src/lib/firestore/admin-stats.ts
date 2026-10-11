@@ -1,5 +1,7 @@
 import { collection, getCountFromServer } from "firebase/firestore";
 import { db } from "@/lib/firebase/client";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
+import { sbGetAdminStats } from "@/lib/supabase/user-data";
 
 export interface AdminStats {
   totalUsers: number;
@@ -11,6 +13,7 @@ export interface AdminStats {
 /** Uses Firestore's server-side count aggregation (no document downloads),
  * so this stays cheap regardless of collection size. */
 export async function getAdminStats(): Promise<AdminStats> {
+  if (useSupabaseUsers) return sbGetAdminStats();
   const [users, examAttempts, courses, questions] = await Promise.all([
     getCountFromServer(collection(db, "users")),
     getCountFromServer(collection(db, "examAttempts")),

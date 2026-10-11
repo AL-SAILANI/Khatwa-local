@@ -1,5 +1,39 @@
 import { NextResponse } from "next/server";
 import { adminDb, adminMessaging } from "@/lib/firebase/admin";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
+
+interface ReminderTarget {
+  tokens: string[];
+  recentDays: string[];
+  saveTokens: (tokens: string[]) => Promise<unknown>;
+}
+
+async function loadReminderTargets(): Promise<ReminderTarget[]> {
+  if (useSupabaseUsers) {
+    const supabase = getSupabaseAdmin();
+    const { data, error } = await supabase
+      .from("profiles")
+      .select("uid, fcm_tokens, recent_activity_days")
+      .eq("notifications_enabled", true);
+    if (error) throw new Error(`Supabase: ${error.message}`);
+    return (data ?? []).map((row) => ({
+      tokens: row.fcm_tokens ?? [],
+      recentDays: row.recent_activity_days ?? [],
+      saveTokens: async (tokens) => supabase.from("profiles").update({ fcm_tokens: tokens }).eq("uid", row.uid),
+    }));
+  }
+
+  const snapshot = await adminDb.collection("users").where("notificationsEnabled", "==", true).get();
+  return snapshot.docs.map((docSnap) => {
+    const data = docSnap.data();
+    return {
+      tokens: data.fcmTokens ?? [],
+      recentDays: data.recentActivityDays ?? [],
+      saveTokens: (tokens) => docSnap.ref.update({ fcmTokens: tokens }),
+    };
+  });
+}
 
 /**
  * Daily streak-reminder push, triggered by a Vercel Cron job (see
@@ -18,15 +52,12 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const snapshot = await adminDb.collection("users").where("notificationsEnabled", "==", true).get();
+  const targets = await loadReminderTargets();
   const today = new Date().toISOString().slice(0, 10);
 
   let usersNotified = 0;
   await Promise.all(
-    snapshot.docs.map(async (docSnap) => {
-      const data = docSnap.data();
-      const tokens: string[] = data.fcmTokens ?? [];
-      const recentDays: string[] = data.recentActivityDays ?? [];
+    targets.map(async ({ tokens, recentDays, saveTokens }) => {
       if (tokens.length === 0 || recentDays.includes(today)) return;
 
       const response = await adminMessaging.sendEachForMulticast({
@@ -41,7 +72,7 @@ export async function GET(request: Request) {
 
       const liveTokens = tokens.filter((_, i) => response.responses[i]?.success);
       if (liveTokens.length !== tokens.length) {
-        await docSnap.ref.update({ fcmTokens: liveTokens });
+        await saveTokens(liveTokens);
       }
     }),
   );

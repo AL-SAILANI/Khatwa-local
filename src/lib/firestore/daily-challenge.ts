@@ -1,6 +1,4 @@
-import { doc, updateDoc, increment } from "firebase/firestore";
-import { db } from "@/lib/firebase/client";
-import { getUserProfile, markDayActive } from "@/lib/firestore/users";
+import { applyProfileChanges, getUserProfile, markDayActive } from "@/lib/firestore/users";
 import { syncPublicProfile } from "@/lib/firestore/public-profiles";
 import { unlockDailyMilestones } from "@/lib/firestore/achievements";
 
@@ -23,19 +21,15 @@ export function getTodayDateString(): string {
  */
 export async function completeDailyChallenge(uid: string, xpReward = 30): Promise<void> {
   const today = getTodayDateString();
-  const userRef = doc(db, "users", uid);
   const profile = await getUserProfile(uid);
   if (!profile) return;
 
   // Prevent multiple completions on the same day.
   if (profile.lastDailyChallengeDate === today) return;
 
-  await updateDoc(userRef, {
-    xp: increment(xpReward),
-    coins: increment(10),
-    lastDailyChallengeDate: today,
-    dailyChallengesCompleted: increment(1),
-    updatedAt: new Date().toISOString(),
+  await applyProfileChanges(uid, {
+    set: { lastDailyChallengeDate: today },
+    inc: { xp: xpReward, coins: 10, dailyChallengesCompleted: 1 },
   });
 
   await unlockDailyMilestones(uid, (profile.dailyChallengesCompleted ?? 0) + 1);

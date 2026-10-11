@@ -91,7 +91,7 @@ export function useVocabQueue(): VocabQueueState {
         const totalDays = plan?.durationDays ?? DEFAULT_PLAN_DAYS;
         const perDay = wordsPerDay(curriculum.totalWords, totalDays);
         const todayIndex = planDayIndex(
-          plan?.startedAt ?? user.metadata?.creationTime ?? new Date().toISOString(),
+          plan?.startedAt ?? user.createdAt ?? new Date().toISOString(),
           Date.now(),
           totalDays,
         );

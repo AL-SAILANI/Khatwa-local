@@ -1,9 +1,12 @@
-import { addDoc, collection, doc, getDoc, getDocs, increment, query, updateDoc, where } from "firebase/firestore";
+import { addDoc, collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/lib/firebase/client";
 import { syncPublicProfile } from "@/lib/firestore/public-profiles";
 import type { Achievement, UserAchievement } from "@/types/gamification";
 import { useSupabaseCatalog } from "@/lib/supabase/client";
 import { sbGetAllAchievements } from "@/lib/supabase/catalog";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
+import { sbGetAchievementXp, sbGetUserAchievements, sbInsertUserAchievement } from "@/lib/supabase/user-data";
+import { applyProfileChanges } from "@/lib/firestore/users";
 
 const userAchievementsCollection = collection(db, "userAchievements");
 const achievementsCollection = collection(db, "achievements");
@@ -15,6 +18,7 @@ export async function getAllAchievements(): Promise<Achievement[]> {
 }
 
 export async function getUserAchievements(uid: string): Promise<UserAchievement[]> {
+  if (useSupabaseUsers) return sbGetUserAchievements(uid);
   const q = query(userAchievementsCollection, where("userId", "==", uid));
   const snapshot = await getDocs(q);
   return snapshot.docs.map((docSnap) => docSnap.data() as UserAchievement);
@@ -28,6 +32,12 @@ export async function getUserAchievements(uid: string): Promise<UserAchievement[
  * since a client write here is technically forgeable by the signed-in user.
  */
 export async function unlockAchievement(uid: string, achievementId: string) {
+  if (useSupabaseUsers) {
+    if (!(await sbInsertUserAchievement(uid, achievementId))) return;
+    const xpReward = await sbGetAchievementXp(achievementId);
+    if (xpReward > 0) await applyProfileChanges(uid, { inc: { xp: xpReward } });
+    return;
+  }
   const existing = await getDocs(
     query(userAchievementsCollection, where("userId", "==", uid), where("achievementId", "==", achievementId)),
   );
@@ -42,7 +52,7 @@ export async function unlockAchievement(uid: string, achievementId: string) {
   const achievementSnap = await getDoc(doc(achievementsCollection, achievementId));
   const xpReward = achievementSnap.exists() ? (achievementSnap.data() as Achievement).xpReward : 0;
   if (xpReward > 0) {
-    await updateDoc(doc(db, "users", uid), { xp: increment(xpReward) });
+    await applyProfileChanges(uid, { inc: { xp: xpReward } });
   }
 
   await syncPublicProfile(uid);

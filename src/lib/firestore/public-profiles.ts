@@ -2,6 +2,8 @@ import { collection, doc, getDocs, limit, orderBy, query, setDoc } from "firebas
 import { db } from "@/lib/firebase/client";
 import { getUserProfile } from "@/lib/firestore/users";
 import type { UserProfile } from "@/types/user";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
+import { sbGetLeaderboard } from "@/lib/supabase/user-data";
 
 const publicProfilesCollection = collection(db, "publicProfiles");
 
@@ -25,6 +27,8 @@ export type LeaderboardPeriod = "all" | "weekly" | "monthly";
  * `level` so the two stay in sync.
  */
 export async function syncPublicProfile(uid: string) {
+  // On Supabase a trigger on `profiles` keeps `public_profiles` in sync.
+  if (useSupabaseUsers) return;
   const profile = await getUserProfile(uid);
   if (!profile) return;
 
@@ -40,6 +44,7 @@ export async function syncPublicProfile(uid: string) {
 }
 
 export async function getLeaderboard(count = 20): Promise<PublicProfile[]> {
+  if (useSupabaseUsers) return sbGetLeaderboard(count);
   const q = query(publicProfilesCollection, orderBy("xp", "desc"), limit(count));
   const snapshot = await getDocs(q);
   return snapshot.docs.map((docSnap) => docSnap.data() as PublicProfile);

@@ -1,4 +1,4 @@
-import { addDoc, arrayRemove, arrayUnion, collection, deleteDoc, doc, getDoc, getDocs, increment, orderBy, query, setDoc, updateDoc, where } from "firebase/firestore";
+import { addDoc, arrayRemove, arrayUnion, collection, deleteDoc, doc, getDoc, getDocs, orderBy, query, setDoc, updateDoc, where } from "firebase/firestore";
 import { db } from "@/lib/firebase/client";
 import { computeNextReview, NEW_WORD_STATE, type ReviewQuality } from "@/lib/spaced-repetition";
 import { unlockVocabMilestones } from "@/lib/firestore/achievements";
@@ -6,6 +6,18 @@ import { syncPublicProfile } from "@/lib/firestore/public-profiles";
 import type { VocabSet, VocabWord, VocabReviewState } from "@/types/vocabulary";
 import { useSupabaseCatalog } from "@/lib/supabase/client";
 import { sbGetAllVocabWords } from "@/lib/supabase/catalog";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
+import {
+  sbAddWordToSet,
+  sbCreateVocabSet,
+  sbDeleteVocabSet,
+  sbGetReviewState,
+  sbGetReviewStates,
+  sbGetVocabSets,
+  sbRemoveWordFromSet,
+  sbUpsertReviewState,
+} from "@/lib/supabase/user-data";
+import { applyProfileChanges } from "@/lib/firestore/users";
 
 const wordsCollection = collection(db, "vocabWords");
 const reviewStateCollection = collection(db, "vocabReviewState");
@@ -22,18 +34,21 @@ export async function getAllVocabWords(): Promise<VocabWord[]> {
 }
 
 export async function getReviewStatesForUser(uid: string): Promise<VocabReviewState[]> {
+  if (useSupabaseUsers) return sbGetReviewStates(uid);
   const q = query(reviewStateCollection, where("userId", "==", uid));
   const snapshot = await getDocs(q);
   return snapshot.docs.map((docSnap) => docSnap.data() as VocabReviewState);
 }
 
 export async function getVocabSetsForUser(uid: string): Promise<VocabSet[]> {
+  if (useSupabaseUsers) return sbGetVocabSets(uid);
   const q = query(vocabSetsCollection, where("userId", "==", uid), orderBy("createdAt", "desc"));
   const snapshot = await getDocs(q);
   return snapshot.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }) as VocabSet);
 }
 
 export async function createVocabSet(uid: string, name: string): Promise<string> {
+  if (useSupabaseUsers) return sbCreateVocabSet(uid, name);
   const ref = await addDoc(vocabSetsCollection, {
     userId: uid,
     name: name.trim(),
@@ -44,14 +59,17 @@ export async function createVocabSet(uid: string, name: string): Promise<string>
 }
 
 export async function deleteVocabSet(setId: string) {
+  if (useSupabaseUsers) return sbDeleteVocabSet(setId);
   await deleteDoc(doc(vocabSetsCollection, setId));
 }
 
 export async function addWordToSet(setId: string, wordId: string) {
+  if (useSupabaseUsers) return sbAddWordToSet(setId, wordId);
   await updateDoc(doc(vocabSetsCollection, setId), { wordIds: arrayUnion(wordId) });
 }
 
 export async function removeWordFromSet(setId: string, wordId: string) {
+  if (useSupabaseUsers) return sbRemoveWordFromSet(setId, wordId);
   await updateDoc(doc(vocabSetsCollection, setId), { wordIds: arrayRemove(wordId) });
 }
 
@@ -61,19 +79,22 @@ export async function recordReview(
   quality: ReviewQuality,
 ): Promise<{ intervalDays: number; repetitions: number }> {
   const ref = doc(reviewStateCollection, reviewStateId(uid, wordId));
-  const existing = await getDoc(ref);
-  const previousState = existing.exists() ? (existing.data() as VocabReviewState) : null;
+  const previousState = useSupabaseUsers
+    ? await sbGetReviewState(uid, wordId)
+    : await getDoc(ref).then((existing) => (existing.exists() ? (existing.data() as VocabReviewState) : null));
 
   const next = computeNextReview(previousState ?? NEW_WORD_STATE, quality);
 
-  await setDoc(ref, {
+  const updated = {
     userId: uid,
     wordId,
     ...next,
     bookmarked: previousState?.bookmarked ?? false,
     reviewCount: (previousState?.reviewCount ?? 0) + 1,
     lastReviewedAt: new Date().toISOString(),
-  });
+  };
+  if (useSupabaseUsers) await sbUpsertReviewState(updated);
+  else await setDoc(ref, updated);
 
   if (!previousState) {
     const allStates = await getReviewStatesForUser(uid);
@@ -92,11 +113,20 @@ export async function recordReview(
  * challenge. */
 export async function awardVocabSessionXp(uid: string, amount: number) {
   if (amount <= 0) return;
-  await updateDoc(doc(db, "users", uid), { xp: increment(amount) });
+  await applyProfileChanges(uid, { inc: { xp: amount } });
   await syncPublicProfile(uid);
 }
 
 export async function toggleBookmark(uid: string, wordId: string, bookmarked: boolean) {
+  if (useSupabaseUsers) {
+    const existing = await sbGetReviewState(uid, wordId);
+    await sbUpsertReviewState(
+      existing
+        ? { ...existing, bookmarked }
+        : { userId: uid, wordId, ...NEW_WORD_STATE, dueAt: new Date().toISOString(), bookmarked, lastReviewedAt: null },
+    );
+    return;
+  }
   const ref = doc(reviewStateCollection, reviewStateId(uid, wordId));
   const existing = await getDoc(ref);
 

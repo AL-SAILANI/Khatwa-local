@@ -1,8 +1,34 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
 
-/** Catalog reads (courses, lessons, questions, vocab, achievements) come from
- * Supabase only when this flag is "supabase"; Firebase stays the default. */
-export const useSupabaseCatalog = process.env.NEXT_PUBLIC_DATA_BACKEND === "supabase";
+export { useSupabaseCatalog, useSupabaseUsers } from "@/lib/supabase/flags";
+
+const REMEMBER_KEY = "khatwa.auth-remember";
+
+/** "Remember me" off keeps the session in sessionStorage (cleared on tab close). */
+export function setRememberSession(remember: boolean) {
+  try {
+    localStorage.setItem(REMEMBER_KEY, remember ? "1" : "0");
+  } catch {
+    // storage unavailable (private mode): session just won't persist
+  }
+}
+
+const authStorage = {
+  getItem: (key: string) =>
+    typeof window === "undefined" ? null : (sessionStorage.getItem(key) ?? localStorage.getItem(key)),
+  setItem: (key: string, value: string) => {
+    if (typeof window === "undefined") return;
+    const remember = localStorage.getItem(REMEMBER_KEY) !== "0";
+    (remember ? localStorage : sessionStorage).setItem(key, value);
+    (remember ? sessionStorage : localStorage).removeItem(key);
+  },
+  removeItem: (key: string) => {
+    if (typeof window === "undefined") return;
+    sessionStorage.removeItem(key);
+    localStorage.removeItem(key);
+  },
+};
 
 let client: SupabaseClient | null = null;
 
@@ -13,7 +39,13 @@ export function getSupabase(): SupabaseClient {
   if (!url || !anonKey) {
     throw new Error("NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY must be set");
   }
-  // Auth is still Firebase in this phase, so there is no Supabase session to persist.
-  client = createClient(url, anonKey, { auth: { persistSession: false, autoRefreshToken: false } });
+  client = createClient(url, anonKey, {
+    auth: {
+      persistSession: useSupabaseUsers,
+      autoRefreshToken: useSupabaseUsers,
+      detectSessionInUrl: useSupabaseUsers,
+      ...(useSupabaseUsers ? { storage: authStorage } : {}),
+    },
+  });
   return client;
 }

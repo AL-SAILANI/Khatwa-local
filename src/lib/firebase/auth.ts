@@ -19,6 +19,17 @@ import {
 import { auth, googleProvider } from "./client";
 import { createUserProfile, deleteUserData, ensureUserProfile } from "@/lib/firestore/users";
 import type { Gender, StudyGoal } from "@/types/user";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
+import {
+  sbChangePassword,
+  sbConfirmNewPassword,
+  sbDeleteAccount,
+  sbLoginWithEmail,
+  sbLoginWithGoogle,
+  sbLogout,
+  sbRegisterWithEmail,
+  sbResetPassword,
+} from "@/lib/supabase/auth";
 
 interface RegisterInput {
   name: string;
@@ -32,6 +43,7 @@ interface RegisterInput {
 }
 
 export async function registerWithEmail({ name, email, password, goal, age, gender, avatarEmoji, examDate }: RegisterInput) {
+  if (useSupabaseUsers) return sbRegisterWithEmail({ name, email, password, goal, age, gender, avatarEmoji, examDate });
   const credential = await createUserWithEmailAndPassword(auth, email, password);
   await updateProfile(credential.user, { displayName: name });
   await createUserProfile({ uid: credential.user.uid, name, email, goal, age, gender, avatarEmoji, examDate });
@@ -39,6 +51,7 @@ export async function registerWithEmail({ name, email, password, goal, age, gend
 }
 
 export async function loginWithEmail(email: string, password: string, rememberMe: boolean) {
+  if (useSupabaseUsers) return sbLoginWithEmail(email, password, rememberMe);
   await setPersistence(auth, rememberMe ? browserLocalPersistence : browserSessionPersistence);
   const credential = await signInWithEmailAndPassword(auth, email, password);
   return credential.user;
@@ -47,6 +60,7 @@ export async function loginWithEmail(email: string, password: string, rememberMe
 /** Creates a `goal: null` profile on first sign-in; caller should route
  * such users to `/onboarding/goal` (see `useUserProfile`). */
 export async function loginWithGoogle() {
+  if (useSupabaseUsers) return sbLoginWithGoogle();
   const credential = await signInWithPopup(auth, googleProvider);
   await ensureUserProfile({
     uid: credential.user.uid,
@@ -58,6 +72,7 @@ export async function loginWithGoogle() {
 }
 
 export async function resetPassword(email: string, settings?: ActionCodeSettings) {
+  if (useSupabaseUsers) return sbResetPassword(email, settings?.url);
   await sendPasswordResetEmail(auth, email, settings);
 }
 /** Validates an in-app reset link and returns the email it was issued for. */
@@ -67,10 +82,12 @@ export async function verifyPasswordReset(code: string) {
 
 /** Completes the reset for a link opened inside the app. */
 export async function confirmNewPassword(code: string, newPassword: string) {
+  if (useSupabaseUsers) return sbConfirmNewPassword(newPassword);
   await confirmPasswordReset(auth, code, newPassword);
 }
 
 export async function logout() {
+  if (useSupabaseUsers) return sbLogout();
   await signOut(auth);
 }
 
@@ -85,6 +102,7 @@ async function reauthenticate(currentPassword: string) {
 }
 
 export async function changePassword(currentPassword: string, newPassword: string) {
+  if (useSupabaseUsers) return sbChangePassword(currentPassword, newPassword);
   await reauthenticate(currentPassword);
   if (!auth.currentUser) throw new Error("No signed-in user");
   await updatePassword(auth.currentUser, newPassword);
@@ -96,6 +114,7 @@ export async function changePassword(currentPassword: string, newPassword: strin
  * Firestore cleanup first: once the Auth account is gone, the ID token
  * backing these writes is no longer valid. */
 export async function deleteAccount(currentPassword: string) {
+  if (useSupabaseUsers) return sbDeleteAccount(currentPassword);
   const user = auth.currentUser;
   if (!user) throw new Error("No signed-in user");
 

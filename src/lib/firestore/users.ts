@@ -3,6 +3,16 @@ import { db } from "@/lib/firebase/client";
 import { computeNextStreak, withTodayMarkedActive } from "@/lib/streak";
 import { unlockHoursMilestones, unlockStreakMilestones } from "@/lib/firestore/achievements";
 import type { Gender, StudyGoal, UserProfile } from "@/types/user";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
+import {
+  sbAddFcmToken,
+  sbBumpProfile,
+  sbGetUserProfile,
+  sbListAllUsers,
+  sbSubscribeUserProfile,
+  sbUpdateUserProfile,
+  type ProfileIncrements,
+} from "@/lib/supabase/user-data";
 
 const usersCollection = collection(db, "users");
 
@@ -26,7 +36,9 @@ interface NewProfileInput {
  * public-profile projection (see `public-profiles.ts`) the leaderboard
  * reads, inline rather than via `syncPublicProfile` to avoid a circular
  * import between the two modules. */
+// On Supabase the `handle_new_user` trigger creates the profile from sign-up metadata.
 export async function createUserProfile({ uid, name, email, photoURL, avatarEmoji, age, gender, goal, examDate }: NewProfileInput) {
+  if (useSupabaseUsers) return;
   await setDoc(userRef(uid), {
     uid,
     name,
@@ -71,24 +83,49 @@ export async function createUserProfile({ uid, name, email, photoURL, avatarEmoj
  * `/onboarding/goal` before letting them into the dashboard.
  */
 export async function ensureUserProfile(input: Omit<NewProfileInput, "goal">) {
+  if (useSupabaseUsers) return;
   const snapshot = await getDoc(userRef(input.uid));
   if (snapshot.exists()) return;
   await createUserProfile({ ...input, goal: null });
 }
 
 export async function getUserProfile(uid: string): Promise<UserProfile | null> {
+  if (useSupabaseUsers) return sbGetUserProfile(uid);
   const snapshot = await getDoc(userRef(uid));
   return snapshot.exists() ? (snapshot.data() as UserProfile) : null;
 }
 
 export function subscribeUserProfile(uid: string, onChange: (profile: UserProfile | null) => void) {
+  if (useSupabaseUsers) return sbSubscribeUserProfile(uid, onChange);
   return onSnapshot(userRef(uid), (snapshot) => {
     onChange(snapshot.exists() ? (snapshot.data() as UserProfile) : null);
   });
 }
 
 export async function updateUserProfile(uid: string, partial: Partial<UserProfile>) {
+  if (useSupabaseUsers) return sbUpdateUserProfile(uid, partial);
   await updateDoc(userRef(uid), { ...partial, updatedAt: new Date().toISOString() });
+}
+
+/**
+ * Applies absolute field changes (`set`) and atomic counter increments (`inc`)
+ * to a profile in one call, whichever backend is active. Callers describe the
+ * change once instead of branching on Firestore `increment()` vs a Postgres RPC.
+ */
+export async function applyProfileChanges(
+  uid: string,
+  { set = {}, inc = {} }: { set?: Partial<UserProfile>; inc?: ProfileIncrements },
+) {
+  if (useSupabaseUsers) {
+    if (Object.keys(inc).length > 0) await sbBumpProfile(inc);
+    if (Object.keys(set).length > 0) await sbUpdateUserProfile(uid, set);
+    return;
+  }
+  await updateDoc(userRef(uid), {
+    ...set,
+    ...Object.fromEntries(Object.entries(inc).map(([field, amount]) => [field, increment(amount)])),
+    updatedAt: new Date().toISOString(),
+  });
 }
 
 /**
@@ -103,12 +140,13 @@ export async function markDayActive(uid: string, studyHours = 0.5): Promise<numb
   if (!profile) return null;
 
   const nextStreak = computeNextStreak(profile.lastActiveAt, profile.streak);
-  await updateDoc(userRef(uid), {
-    streak: nextStreak,
-    lastActiveAt: new Date().toISOString(),
-    recentActivityDays: withTodayMarkedActive(profile.recentActivityDays ?? []),
-    studyHours: increment(studyHours),
-    updatedAt: new Date().toISOString(),
+  await applyProfileChanges(uid, {
+    set: {
+      streak: nextStreak,
+      lastActiveAt: new Date().toISOString(),
+      recentActivityDays: withTodayMarkedActive(profile.recentActivityDays ?? []),
+    },
+    inc: { studyHours },
   });
 
   await unlockStreakMilestones(uid, nextStreak);
@@ -119,6 +157,7 @@ export async function markDayActive(uid: string, studyHours = 0.5): Promise<numb
 /** Registers a Web Push token for this user's current browser. Safe to call
  * repeatedly — `arrayUnion` is a no-op for a token already stored. */
 export async function addFcmToken(uid: string, token: string) {
+  if (useSupabaseUsers) return sbAddFcmToken(uid, token);
   await updateDoc(userRef(uid), { fcmTokens: arrayUnion(token), updatedAt: new Date().toISOString() });
 }
 
@@ -156,6 +195,7 @@ export async function deleteUserData(uid: string) {
  * which extends to a list query too — each returned doc still has to pass
  * the per-document rule, and it does for an admin regardless of owner. */
 export async function listAllUsers(count = 50): Promise<UserProfile[]> {
+  if (useSupabaseUsers) return sbListAllUsers(count);
   const q = query(usersCollection, orderBy("createdAt", "desc"), fbLimit(count));
   const snapshot = await getDocs(q);
   return snapshot.docs.map((docSnap) => docSnap.data() as UserProfile);

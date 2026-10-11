@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 import { adminAuth } from "@/lib/firebase/admin";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
 import { getStripeClient } from "@/lib/stripe/server";
 import { getPaidTierPriceEnvVar, type BillingPeriod, type PaidTier } from "@/lib/stripe/pricing";
 
@@ -35,9 +37,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: `Price ID not configured for this plan (${priceEnvVar}).` }, { status: 503 });
   }
 
-  let decoded;
+  let identity: { uid: string; email?: string };
   try {
-    decoded = await adminAuth.verifyIdToken(idToken);
+    if (useSupabaseUsers) {
+      const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, {
+        auth: { persistSession: false, autoRefreshToken: false },
+      });
+      const { data, error } = await supabase.auth.getUser(idToken);
+      if (error || !data.user) throw error ?? new Error("no user");
+      identity = { uid: data.user.id, email: data.user.email };
+    } else {
+      const decoded = await adminAuth.verifyIdToken(idToken);
+      identity = { uid: decoded.uid, email: decoded.email };
+    }
   } catch {
     return NextResponse.json({ error: "Invalid session" }, { status: 401 });
   }
@@ -47,10 +59,10 @@ export async function POST(request: Request) {
   const session = await stripe.checkout.sessions.create({
     mode: "subscription",
     line_items: [{ price: priceId, quantity: 1 }],
-    client_reference_id: decoded.uid,
-    customer_email: decoded.email,
-    metadata: { uid: decoded.uid, tier: tier as PaidTier, billingPeriod: period },
-    subscription_data: { metadata: { uid: decoded.uid, tier: tier as PaidTier, billingPeriod: period } },
+    client_reference_id: identity.uid,
+    customer_email: identity.email,
+    metadata: { uid: identity.uid, tier: tier as PaidTier, billingPeriod: period },
+    subscription_data: { metadata: { uid: identity.uid, tier: tier as PaidTier, billingPeriod: period } },
     success_url: `${siteUrl}/settings?checkout=success`,
     cancel_url: `${siteUrl}/pricing?checkout=canceled`,
   });
