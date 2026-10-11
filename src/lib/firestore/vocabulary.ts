@@ -4,6 +4,8 @@ import { computeNextReview, NEW_WORD_STATE, type ReviewQuality } from "@/lib/spa
 import { unlockVocabMilestones } from "@/lib/firestore/achievements";
 import { syncPublicProfile } from "@/lib/firestore/public-profiles";
 import type { VocabSet, VocabWord, VocabReviewState } from "@/types/vocabulary";
+import { useSupabaseCatalog } from "@/lib/supabase/client";
+import { sbGetAllVocabWords } from "@/lib/supabase/catalog";
 
 const wordsCollection = collection(db, "vocabWords");
 const reviewStateCollection = collection(db, "vocabReviewState");
@@ -14,6 +16,7 @@ function reviewStateId(userId: string, wordId: string) {
 }
 
 export async function getAllVocabWords(): Promise<VocabWord[]> {
+  if (useSupabaseCatalog) return sbGetAllVocabWords();
   const snapshot = await getDocs(query(wordsCollection, orderBy("word")));
   return snapshot.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }) as VocabWord);
 }

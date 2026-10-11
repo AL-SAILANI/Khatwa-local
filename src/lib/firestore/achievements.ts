@@ -2,11 +2,14 @@ import { addDoc, collection, doc, getDoc, getDocs, increment, query, updateDoc, 
 import { db } from "@/lib/firebase/client";
 import { syncPublicProfile } from "@/lib/firestore/public-profiles";
 import type { Achievement, UserAchievement } from "@/types/gamification";
+import { useSupabaseCatalog } from "@/lib/supabase/client";
+import { sbGetAllAchievements } from "@/lib/supabase/catalog";
 
 const userAchievementsCollection = collection(db, "userAchievements");
 const achievementsCollection = collection(db, "achievements");
 
 export async function getAllAchievements(): Promise<Achievement[]> {
+  if (useSupabaseCatalog) return sbGetAllAchievements();
   const snapshot = await getDocs(achievementsCollection);
   return snapshot.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }) as Achievement);
 }

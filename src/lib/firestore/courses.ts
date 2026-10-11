@@ -1,21 +1,26 @@
 import { addDoc, collection, doc, getDoc, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "@/lib/firebase/client";
 import type { Course, Lesson } from "@/types/course";
+import { useSupabaseCatalog } from "@/lib/supabase/client";
+import { sbGetAllLessons, sbGetCourse, sbGetCourses, sbGetLesson, sbGetLessonsForCourse } from "@/lib/supabase/catalog";
 
 const coursesCollection = collection(db, "courses");
 
 export async function getCourses(): Promise<Course[]> {
+  if (useSupabaseCatalog) return sbGetCourses();
   const q = query(coursesCollection, orderBy("order"));
   const snapshot = await getDocs(q);
   return snapshot.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }) as Course);
 }
 
 export async function getCourse(courseId: string): Promise<Course | null> {
+  if (useSupabaseCatalog) return sbGetCourse(courseId);
   const snapshot = await getDoc(doc(coursesCollection, courseId));
   return snapshot.exists() ? ({ id: snapshot.id, ...snapshot.data() } as Course) : null;
 }
 
 export async function getLessonsForCourse(courseId: string): Promise<Lesson[]> {
+  if (useSupabaseCatalog) return sbGetLessonsForCourse(courseId);
   const q = query(collection(db, "lessons"), where("courseId", "==", courseId), orderBy("order"));
   const snapshot = await getDocs(q);
   return snapshot.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }) as Lesson);
@@ -24,11 +29,13 @@ export async function getLessonsForCourse(courseId: string): Promise<Lesson[]> {
 /** Every lesson across every course — used by the study-path builder to
  * assemble a cross-skill daily sequence. */
 export async function getAllLessons(): Promise<Lesson[]> {
+  if (useSupabaseCatalog) return sbGetAllLessons();
   const snapshot = await getDocs(query(collection(db, "lessons"), orderBy("order")));
   return snapshot.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }) as Lesson);
 }
 
 export async function getLesson(lessonId: string): Promise<Lesson | null> {
+  if (useSupabaseCatalog) return sbGetLesson(lessonId);
   const snapshot = await getDoc(doc(db, "lessons", lessonId));
   return snapshot.exists() ? ({ id: snapshot.id, ...snapshot.data() } as Lesson) : null;
 }

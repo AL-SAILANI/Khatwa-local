@@ -1,6 +1,13 @@
 import { addDoc, collection, doc, documentId, getDoc, getDocs, query, where } from "firebase/firestore";
 import { db } from "@/lib/firebase/client";
 import type { ExamSectionKey, Question, ReadingPassage } from "@/types/question";
+import { useSupabaseCatalog } from "@/lib/supabase/client";
+import {
+  sbGetAllQuestions,
+  sbGetQuestionsByIds,
+  sbGetQuestionsBySection,
+  sbGetReadingPassages,
+} from "@/lib/supabase/catalog";
 
 const questionsCollection = collection(db, "questions");
 const passagesCollection = collection(db, "readingPassages");
@@ -27,6 +34,7 @@ export async function getQuestionsBySection(
   count: number,
   bankTag?: string,
 ): Promise<Question[]> {
+  if (useSupabaseCatalog) return shuffle(await sbGetQuestionsBySection(section, bankTag)).slice(0, count);
   const q = bankTag
     ? query(questionsCollection, where("section", "==", section), where("tags", "array-contains", bankTag))
     : query(questionsCollection, where("section", "==", section));
@@ -39,6 +47,7 @@ export async function getQuestionsBySection(
  * fetched in chunks and re-combined. */
 export async function getQuestionsByIds(ids: string[]): Promise<Question[]> {
   if (ids.length === 0) return [];
+  if (useSupabaseCatalog) return sbGetQuestionsByIds(ids);
 
   const chunks: string[][] = [];
   for (let i = 0; i < ids.length; i += 10) chunks.push(ids.slice(i, i + 10));
@@ -55,12 +64,17 @@ export async function getQuestionsByIds(ids: string[]): Promise<Question[]> {
 }
 
 export async function getReadingPassage(passageId: string): Promise<ReadingPassage | null> {
+  if (useSupabaseCatalog) return (await sbGetReadingPassages([passageId]))[0] ?? null;
   const snapshot = await getDoc(doc(passagesCollection, passageId));
   return snapshot.exists() ? ({ id: snapshot.id, ...snapshot.data() } as ReadingPassage) : null;
 }
 
 export async function getReadingPassages(passageIds: string[]): Promise<Record<string, ReadingPassage>> {
   const unique = [...new Set(passageIds)];
+  if (useSupabaseCatalog) {
+    const found = await sbGetReadingPassages(unique);
+    return Object.fromEntries(found.map((passage) => [passage.id, passage]));
+  }
   const passages = await Promise.all(unique.map(getReadingPassage));
   return Object.fromEntries(passages.filter(Boolean).map((passage) => [passage!.id, passage!]));
 }
@@ -68,6 +82,7 @@ export async function getReadingPassages(passageIds: string[]): Promise<Record<s
 /** Admin-only list/write — enforced by firestore.rules, not by these
  * functions. Fine to fetch everything here; the question bank is small. */
 export async function getAllQuestions(): Promise<Question[]> {
+  if (useSupabaseCatalog) return sbGetAllQuestions();
   const snapshot = await getDocs(questionsCollection);
   return snapshot.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }) as Question);
 }
