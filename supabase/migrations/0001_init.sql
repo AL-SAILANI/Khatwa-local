@@ -153,7 +153,7 @@ create table public.subscriptions (
 
 -- Leaderboard projection. Maintained by trigger from profiles, so clients
 -- can never write it (replaces the profileMatchesUser() rule).
--- TODO: confirm exact fields against src/lib/firestore/leaderboard code.
+-- Fields match PublicProfile in src/lib/firestore/public-profiles.ts.
 create table public.public_profiles (
   uid uuid primary key references auth.users(id) on delete cascade,
   name text not null default '',
