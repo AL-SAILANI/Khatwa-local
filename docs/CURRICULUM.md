@@ -49,9 +49,9 @@ Current content: 356 questions (reading 127, listening 106, grammar 75, writing 
 | Step | Work | Status |
 |---|---|---|
 | 1 | Blueprint and placement test (balanced difficulty, reading by passage, band + focus report) | done |
-| 2 | Bands drive plan length and track order; "weakest first" ordering in `buildStudyPath` | next |
-| 3 | Reading-technique lessons (five question types, four-step routine) and listening 15-second routine | next |
-| 4 | Grammar lessons per rule in exam order, with 45-second drills | next |
+| 2 | Plan path ordered by placement result: weakest track first, strong tracks skip the easiest lesson (`buildStudyPath`) | done |
+| 3 | Reading lessons for the five question types (3) and listening 15-second routine + paraphrase lessons (2) | done |
+| 4 | Grammar lessons per rule in exam order (countable/uncountable added; wish, used to still missing, no questions yet) | in progress |
 | 5 | Four more full mock exams (about 400 new original questions) | after 3 and 4 |
 | 6 | Video layer: `lesson_videos` table, embedded players with credit and link-out | after 4 |
 
