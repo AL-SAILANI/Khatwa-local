@@ -7,7 +7,7 @@ import { ArrowUp } from "lucide-react";
 import { WhatsAppIcon } from "@/components/brand/whatsapp-icon";
 import { cn } from "@/lib/utils/cn";
 
-const WHATSAPP_NUMBER = "966550000000";
+const WHATSAPP_NUMBER = "966583813153";
 
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll();
