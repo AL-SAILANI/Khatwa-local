@@ -13,10 +13,13 @@ import {
 import { db } from "@/lib/firebase/client";
 import { updateUserProfile } from "@/lib/firestore/users";
 import type { StudyPlan } from "@/types/gamification";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
+import { sbCreateStudyPlan, sbGetActiveStudyPlan, sbMarkPlanDayComplete } from "@/lib/supabase/user-data";
 
 const plansCollection = collection(db, "studyPlans");
 
 export async function getActiveStudyPlan(uid: string): Promise<StudyPlan | null> {
+  if (useSupabaseUsers) return sbGetActiveStudyPlan(uid);
   const q = query(
     plansCollection,
     where("userId", "==", uid),
@@ -31,9 +34,9 @@ export async function getActiveStudyPlan(uid: string): Promise<StudyPlan | null>
 }
 
 export async function createStudyPlan(plan: Omit<StudyPlan, "id">) {
-  const docRef = await addDoc(plansCollection, plan);
-  await updateUserProfile(plan.userId, { activeStudyPlanId: docRef.id });
-  return docRef.id;
+  const planId = useSupabaseUsers ? await sbCreateStudyPlan(plan) : (await addDoc(plansCollection, plan)).id;
+  await updateUserProfile(plan.userId, { activeStudyPlanId: planId });
+  return planId;
 }
 
 export function completionPercentOf(plan: StudyPlan): number {
@@ -49,6 +52,7 @@ export function completionPercentOf(plan: StudyPlan): number {
  * if that ever changes.
  */
 export async function markPlanDayComplete(planId: string, dayIndex: number) {
+  if (useSupabaseUsers) return sbMarkPlanDayComplete(planId, dayIndex);
   const planRef = doc(db, "studyPlans", planId);
   const snapshot = await getDoc(planRef);
   if (!snapshot.exists()) return;

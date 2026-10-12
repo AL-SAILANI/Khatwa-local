@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Container, Section } from "@/components/ui/container";
 import { Link } from "@/i18n/navigation";
 import { useUserProfile } from "@/hooks/use-user-profile";
-import { auth } from "@/lib/firebase/client";
+import { getAccessToken } from "@/lib/auth-token";
 import { getPricingTiers, type BillingPeriod, type PaidTier } from "@/lib/stripe/pricing";
 import { cn } from "@/lib/utils/cn";
 
@@ -26,7 +26,7 @@ export function PricingPage({ embedded = false }: { embedded?: boolean }) {
     setError(null);
     setLoadingTier(tier);
     try {
-      const idToken = await auth.currentUser?.getIdToken();
+      const idToken = await getAccessToken();
       const response = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -73,3 +73,6 @@ scripts/voice/.venv/
 .venv/
 .venv/
 scripts/voice/.venv/
+
+# migration output (ids only, but keep it local)
+migration-report*.json

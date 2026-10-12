@@ -2,6 +2,31 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { adminDb } from "@/lib/firebase/admin";
 import { getStripeClient } from "@/lib/stripe/server";
+import { getSupabaseAdmin } from "@/lib/supabase/admin";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
+
+async function updateUserPlan(uid: string, patch: { planTier: string; stripeCustomerId?: string | null }) {
+  if (useSupabaseUsers) {
+    const { error } = await getSupabaseAdmin()
+      .from("profiles")
+      .update({
+        plan_tier: patch.planTier,
+        ...(patch.stripeCustomerId ? { stripe_customer_id: patch.stripeCustomerId } : {}),
+      })
+      .eq("uid", uid);
+    // Throwing makes the route 500, so Stripe retries instead of silently dropping the upgrade.
+    if (error) throw new Error(`Supabase: ${error.message}`);
+    return;
+  }
+  await adminDb
+    .collection("users")
+    .doc(uid)
+    .update({
+      planTier: patch.planTier,
+      ...(patch.stripeCustomerId ? { stripeCustomerId: patch.stripeCustomerId } : {}),
+      updatedAt: new Date().toISOString(),
+    });
+}
 
 /** Stripe webhook — keeps `users/{uid}.planTier` in sync with subscription
  * status. Must read the raw body (not `request.json()`) for signature
@@ -32,14 +57,8 @@ export async function POST(request: Request) {
       const uid = session.metadata?.uid ?? session.client_reference_id;
       const tier = session.metadata?.tier;
       if (uid && tier) {
-        await adminDb
-          .collection("users")
-          .doc(uid)
-          .update({
-            planTier: tier,
-            stripeCustomerId: session.customer,
-            updatedAt: new Date().toISOString(),
-          });
+        const customerId = typeof session.customer === "string" ? session.customer : (session.customer?.id ?? null);
+        await updateUserPlan(uid, { planTier: tier, stripeCustomerId: customerId });
       }
       break;
     }
@@ -53,10 +72,7 @@ export async function POST(request: Request) {
       const isActive = subscription.status === "active" || subscription.status === "trialing";
       const tier = isActive ? (subscription.metadata?.tier ?? "pro") : "free";
 
-      await adminDb.collection("users").doc(uid).update({
-        planTier: tier,
-        updatedAt: new Date().toISOString(),
-      });
+      await updateUserPlan(uid, { planTier: tier });
       break;
     }
 

@@ -1,6 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { auth } from "@/lib/firebase/client";
+import { getSupabase } from "@/lib/supabase/client";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
 import { useAuthUser } from "@/hooks/use-auth-user";
 
 interface ClaimState {
@@ -8,9 +11,10 @@ interface ClaimState {
   isAdmin: boolean;
 }
 
-/** Reads the `admin` custom claim off the current ID token — the only
- * source of truth `firestore.rules`/`storage.rules` trust. Grant it with
- * `npm run set-admin -- someone@example.com` (Admin SDK only). */
+/** Reads the admin flag off the current session token — the only source of
+ * truth the security rules trust. Firebase: the `admin` custom claim
+ * (`npm run set-admin`). Supabase: `app_metadata.admin`
+ * (`npx tsx scripts/supabase-set-admin.ts`). Both are Admin-API-only. */
 export function useIsAdmin() {
   const { user, isLoading: isAuthLoading } = useAuthUser();
   const [claim, setClaim] = useState<ClaimState | null>(null);
@@ -18,7 +22,16 @@ export function useIsAdmin() {
   useEffect(() => {
     if (!user) return;
 
-    user.getIdTokenResult().then((result) => {
+    if (useSupabaseUsers) {
+      getSupabase()
+        .auth.getSession()
+        .then(({ data }) => {
+          setClaim({ uid: user.uid, isAdmin: data.session?.user.app_metadata?.admin === true });
+        });
+      return;
+    }
+
+    auth.currentUser?.getIdTokenResult().then((result) => {
       setClaim({ uid: user.uid, isAdmin: result.claims.admin === true });
     });
   }, [user]);

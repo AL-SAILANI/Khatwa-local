@@ -1,3 +1,13 @@
+/** Backend-neutral signed-in user (Firebase User or Supabase user). */
+export interface AuthUser {
+  uid: string;
+  email: string | null;
+  displayName: string | null;
+  photoURL: string | null;
+  /** ISO timestamp of account creation, when known. */
+  createdAt?: string;
+}
+
 export type StudyGoal = 60 | 70 | 80 | 90 | 95;
 
 export type Gender = "male" | "female";

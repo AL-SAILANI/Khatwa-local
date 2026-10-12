@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
@@ -13,6 +13,8 @@ import { Card } from "@/components/ui/card";
 import { Label, FieldError } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { confirmNewPassword } from "@/lib/firebase/auth";
+import { useSupabaseUsers } from "@/lib/supabase/flags";
+import { sbWaitForRecoverySession } from "@/lib/supabase/auth";
 import { getAuthErrorMessage } from "@/lib/firebase/error-messages";
 
 export function ResetPasswordForm() {
@@ -20,6 +22,17 @@ export function ResetPasswordForm() {
   const tAuth = useTranslations("auth");
   const searchParams = useSearchParams();
   const oobCode = searchParams.get("oobCode");
+  // Supabase recovery links carry a session instead of an oobCode; null = still checking.
+  const [recoveryReady, setRecoveryReady] = useState<boolean | null>(useSupabaseUsers ? null : true);
+  useEffect(() => {
+    if (!useSupabaseUsers) return;
+    let active = true;
+    sbWaitForRecoverySession().then((ready) => active && setRecoveryReady(ready));
+    return () => {
+      active = false;
+    };
+  }, []);
+  const hasResetLink = useSupabaseUsers ? recoveryReady === true : Boolean(oobCode);
 
   const [formError, setFormError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
@@ -43,14 +56,14 @@ export function ResetPasswordForm() {
   } = useForm<Input>({ resolver: zodResolver(schema), defaultValues: { password: "", confirmPassword: "" } });
 
   const onSubmit = async (data: Input) => {
-    if (!oobCode) {
+    if (!hasResetLink) {
       setFormError(t("errors.missingCode"));
       return;
     }
     setFormError(null);
     setIsSubmitting(true);
     try {
-      await confirmNewPassword(oobCode, data.password);
+      await confirmNewPassword(oobCode ?? "", data.password);
       setDone(true);
     } catch (error) {
       setFormError(getAuthErrorMessage(error));
@@ -59,7 +72,15 @@ export function ResetPasswordForm() {
     }
   };
 
-  if (!oobCode) {
+  if (recoveryReady === null) {
+    return (
+      <div className="flex flex-1 items-center justify-center">
+        <div className="size-8 animate-spin rounded-full border-2 border-primary-500 border-t-transparent" />
+      </div>
+    );
+  }
+
+  if (!hasResetLink) {
     return (
       <Card className="w-full max-w-md text-center">
         <h1 className="text-2xl font-bold">{t("errors.missingCodeTitle")}</h1>
