@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { CalendarRange } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
@@ -13,9 +13,12 @@ import { PLAN_DURATIONS } from "@/lib/constants/exam";
 import { recommendDuration, buildStudyPath } from "@/lib/study-plan-generator";
 import { createStudyPlan } from "@/lib/firestore/study-plans";
 import { getAllLessons } from "@/lib/firestore/courses";
+import { getAttemptsByKind } from "@/lib/firestore/exam-attempts";
+import { focusSections, type PlacementFocus } from "@/lib/placement";
 
 export function PlanBuilder() {
   const t = useTranslations("studyPlan");
+  const tTracks = useTranslations("trackNames");
   const { user, profile } = useUserProfile();
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,6 +26,22 @@ export function PlanBuilder() {
 
   const recommended = profile ? recommendDuration(profile.goal ?? 80, profile.lastScore) : 15;
   const [duration, setDuration] = useState(recommended);
+  const [focus, setFocus] = useState<PlacementFocus[]>([]);
+
+  // The latest placement result decides which tracks the path starts with.
+  const uid = user?.uid;
+  useEffect(() => {
+    if (!uid) return;
+    let cancelled = false;
+    getAttemptsByKind(uid, "placement", 1)
+      .then(([latest]) => {
+        if (!cancelled && latest) setFocus(focusSections(latest.sectionResults));
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [uid]);
 
   if (!profile) {
     return (
@@ -48,7 +67,7 @@ export function PlanBuilder() {
       weeklyHours,
       startedAt: startedAt.toISOString(),
       targetEndAt: targetEndAt.toISOString(),
-      weeklySchedule: buildStudyPath(duration, lessons),
+      weeklySchedule: buildStudyPath(duration, lessons, focus),
     });
 
     router.push("/study-plan/path");
@@ -108,6 +127,12 @@ export function PlanBuilder() {
           />
           <div className="text-center text-sm font-medium">{t("weeklyHoursValue", { hours: weeklyHours })}</div>
         </div>
+
+        {focus.length > 0 && (
+          <p className="mt-4 rounded-xl bg-primary-50 px-4 py-3 text-xs leading-relaxed text-ink-violet dark:bg-primary-500/10 dark:text-primary-300">
+            {t("focusNote", { sections: focus.slice(0, 2).map((item) => tTracks(item.section)).join(" + ") })}
+          </p>
+        )}
 
         <p className="mt-4 rounded-xl bg-surface-muted px-4 py-3 text-xs leading-relaxed text-muted">
           {t("pathNote")}

@@ -2,6 +2,7 @@ import { describe, it, expect } from "vitest";
 import { recommendDuration, buildStudyPath, difficultyOf } from "@/lib/study-plan-generator";
 import { PLAN_DURATIONS } from "@/lib/constants/exam";
 import type { Lesson } from "@/types/course";
+import type { PlacementFocus } from "@/lib/placement";
 
 const CONTENT_TRACKS = ["grammar", "reading", "listening", "writingAnalysis", "vocabulary"] as const;
 const AUX_TRACKS = ["tips", "strategies", "revision"] as const;
@@ -161,5 +162,65 @@ describe("study-plan-generator", () => {
       expect(difficultyOf(lesson("a", "course-tips", 0))).toBeNull();
       expect(difficultyOf(lesson("a", "course-revision", 1))).toBeNull();
     });
+  });
+});
+
+describe("buildStudyPath with a placement focus", () => {
+  const focus = (entries: [PlacementFocus["section"], number, number][]): PlacementFocus[] =>
+    entries.map(([section, percentCorrect, total]) => ({
+      section,
+      percentCorrect,
+      total,
+      pointsLost: 100 - percentCorrect,
+    }));
+  const weakReadingFocus = focus([
+    ["reading", 30, 12],
+    ["listening", 50, 6],
+    ["grammar", 70, 9],
+    ["writingAnalysis", 90, 3],
+  ]);
+
+  it("matches the default path when no focus is given", () => {
+    const lessons = sampleLibrary();
+    expect(buildStudyPath(15, lessons, undefined)).toEqual(buildStudyPath(15, lessons));
+    expect(buildStudyPath(15, lessons, [])).toEqual(buildStudyPath(15, lessons));
+  });
+
+  it("serves the weakest track first and the strongest last", () => {
+    const ids = flattenIds(buildStudyPath(30, sampleLibrary(), weakReadingFocus));
+    const first = (track: string) => ids.findIndex((id) => id.startsWith(`lesson-${track}-`));
+    expect(ids[0]).toBe("lesson-reading-1");
+    expect(first("reading")).toBeLessThan(first("listening"));
+    expect(first("listening")).toBeLessThan(first("grammar"));
+    expect(first("grammar")).toBeLessThan(first("writingAnalysis"));
+  });
+
+  it("gives the weak track more lessons in a short plan", () => {
+    const ids = flattenIds(buildStudyPath(7, sampleLibrary(), weakReadingFocus));
+    const count = (track: string) => ids.filter((id) => id.startsWith(`lesson-${track}-`)).length;
+    expect(count("reading")).toBeGreaterThan(count("writingAnalysis"));
+  });
+
+  it("skips the easiest lesson only for strong tracks with enough questions", () => {
+    const strongGrammar = focus([
+      ["reading", 40, 12],
+      ["grammar", 95, 9], // strong, big sample: skips lesson 1
+      ["writingAnalysis", 100, 3], // strong but only 3 questions: keeps lesson 1
+      ["listening", 60, 6],
+    ]);
+    const ids = flattenIds(buildStudyPath(30, sampleLibrary(), strongGrammar));
+    expect(ids).not.toContain("lesson-grammar-1");
+    expect(ids).toContain("lesson-grammar-2");
+    expect(ids).toContain("lesson-writingAnalysis-1");
+  });
+
+  it("never repeats a lesson and respects the duration", () => {
+    for (const days of PLAN_DURATIONS) {
+      const path = buildStudyPath(days, sampleLibrary(), weakReadingFocus);
+      const ids = flattenIds(path);
+      expect(path).toHaveLength(days);
+      expect(new Set(ids).size).toBe(ids.length);
+      expect(ids.length).toBeLessThanOrEqual(days * 2);
+    }
   });
 });
