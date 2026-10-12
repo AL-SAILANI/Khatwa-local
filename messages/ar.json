@@ -487,6 +487,16 @@
     },
     "results": {
       "estimatedScore": "نتيجتك التقديرية",
+      "bandTitle": "مستواك التقديري",
+      "bands": {
+        "foundation": "تأسيسي (أقل من 40)",
+        "beginner": "مبتدئ (40 إلى 60)",
+        "intermediate": "متوسط (60 إلى 80)",
+        "advanced": "متقدم (80 فأكثر)"
+      },
+      "focusTitle": "أين تخسر أكثر النقاط؟",
+      "focusHint": "مرتبة حسب النقاط التي تخسرها من درجة الاختبار، فابدأ بالأعلى.",
+      "focusItem": "{percent}% صحيح · تخسر ≈ {points} نقطة",
       "timeSpentMinutes": "{minutes} دقيقة",
       "timeSpent": "الوقت المستغرق",
       "errorRate": "نسبة الخطأ",

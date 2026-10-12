@@ -2,10 +2,9 @@
 
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-import { PlacementIntro, PLACEMENT_QUESTIONS_PER_SECTION, PLACEMENT_MINUTES } from "@/components/placement/placement-intro";
+import { PlacementIntro } from "@/components/placement/placement-intro";
+import { PLACEMENT_COUNTS, PLACEMENT_MINUTES } from "@/lib/placement";
 import { useExamSession } from "@/hooks/use-exam-session";
-import { STEP_SECTION_QUESTION_COUNTS } from "@/lib/constants/exam";
-import type { ExamSectionKey } from "@/types/question";
 
 // Dynamically import heavy exam runner component
 const ExamRunner = dynamic(() => import("@/components/exam/exam-runner").then((mod) => mod.ExamRunner), {
@@ -17,19 +16,12 @@ const ExamRunner = dynamic(() => import("@/components/exam/exam-runner").then((m
   ssr: false,
 });
 
-const SECTION_COUNTS = Object.fromEntries(
-  (Object.keys(STEP_SECTION_QUESTION_COUNTS) as ExamSectionKey[]).map((section) => [
-    section,
-    PLACEMENT_QUESTIONS_PER_SECTION,
-  ]),
-) as Partial<Record<ExamSectionKey, number>>;
-
 export default function PlacementTestPage() {
   const t = useTranslations("placementTest");
   const { isLoading, session, start, submit } = useExamSession({
     kind: "placement",
     examId: "placement-test",
-    sectionCounts: SECTION_COUNTS,
+    sectionCounts: PLACEMENT_COUNTS,
   });
 
   if (!session) {
