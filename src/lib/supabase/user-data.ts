@@ -173,6 +173,8 @@ export async function sbGetUserProfile(uid: string): Promise<UserProfile | null>
   return row ? toUserProfile(row) : null;
 }
 
+let profileChannelSeq = 0;
+
 export function sbSubscribeUserProfile(uid: string, onChange: (profile: UserProfile | null) => void) {
   let active = true;
   sbGetUserProfile(uid)
@@ -183,7 +185,11 @@ export function sbSubscribeUserProfile(uid: string, onChange: (profile: UserProf
     });
 
   const channel = db()
-    .channel(`profile:${uid}`)
+    // supabase-js returns the existing channel for a repeated topic, and adding
+    // postgres_changes callbacks to an already-subscribed channel throws. Several
+    // components (and React strict-mode remounts) subscribe to the same profile,
+    // so every subscription gets its own topic.
+    .channel(`profile:${uid}:${++profileChannelSeq}`)
     .on(
       "postgres_changes",
       { event: "*", schema: "public", table: "profiles", filter: `uid=eq.${uid}` },

@@ -28,6 +28,7 @@ import {
   sbBumpProfile,
   sbGetRecentAttempts,
   sbInsertUserAchievement,
+  sbSubscribeUserProfile,
   toExamAttempt,
   toProfileRow,
   toUserProfile,
@@ -100,5 +101,17 @@ describe("query behaviour", () => {
       "bump_profile",
       { p_xp: 50, p_coins: 0, p_study_hours: 0, p_tests_taken: 0, p_daily_challenges: 0 },
     ]);
+  });
+});
+
+describe("profile realtime subscription", () => {
+  it("gives every subscription its own channel topic", () => {
+    const stop1 = sbSubscribeUserProfile("u1", () => {});
+    const stop2 = sbSubscribeUserProfile("u1", () => {});
+    const topics = calls.filter(([name]) => name === "channel").map(([, topic]) => topic);
+    expect(topics).toHaveLength(2);
+    expect(topics[0]).not.toBe(topics[1]);
+    stop1();
+    stop2();
   });
 });
