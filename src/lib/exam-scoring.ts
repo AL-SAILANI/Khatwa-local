@@ -1,4 +1,5 @@
 import { STEP_SECTION_WEIGHTS } from "@/lib/constants/exam";
+import { bandFromScore } from "@/lib/placement";
 import type { ExamSectionKey, Question } from "@/types/question";
 import type { SectionResult } from "@/types/exam";
 
@@ -60,8 +61,11 @@ export function scoreAttempt(
   return { score, sectionResults, weakSkills };
 }
 
+/** Profile level, derived from the STEP score bands (see `bandFromScore`):
+ * foundation and beginner both read as "beginner". */
 export function levelFromScore(score: number): "beginner" | "intermediate" | "advanced" {
-  if (score >= 75) return "advanced";
-  if (score >= 50) return "intermediate";
+  const band = bandFromScore(score);
+  if (band === "advanced") return "advanced";
+  if (band === "intermediate") return "intermediate";
   return "beginner";
 }

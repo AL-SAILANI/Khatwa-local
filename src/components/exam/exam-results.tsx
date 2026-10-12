@@ -11,6 +11,7 @@ import { getExamAttempt } from "@/lib/firestore/exam-attempts";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { useLocalizedContent } from "@/hooks/use-localized-content";
 import { suggestLessonForTag } from "@/lib/tag-lesson-map";
+import { bandFromScore, focusSections } from "@/lib/placement";
 import { cn } from "@/lib/utils/cn";
 import type { ExamAttempt } from "@/types/exam";
 
@@ -63,6 +64,11 @@ export function ExamResults({ attemptId }: { attemptId: string }) {
         </div>
         <span className="text-sm text-muted">{t("estimatedScore")}</span>
         <span className="text-5xl font-bold text-ink-violet dark:text-primary-400">{attempt.score}</span>
+        {attempt.kind === "placement" && (
+          <span className="mt-1 rounded-none bg-primary-50 px-3 py-1 text-sm font-semibold text-ink-violet dark:bg-primary-500/10 dark:text-primary-300">
+            {t("bandTitle")}: {t(`bands.${bandFromScore(attempt.score ?? 0)}`)}
+          </span>
+        )}
       </Card>
 
       <div className="grid grid-cols-2 gap-4">
@@ -113,6 +119,25 @@ export function ExamResults({ attemptId }: { attemptId: string }) {
           })}
         </div>
       </Card>
+
+      {attempt.kind === "placement" && (
+        <Card>
+          <h2 className="font-semibold">{t("focusTitle")}</h2>
+          <p className="mt-1 text-sm text-muted">{t("focusHint")}</p>
+          <ol className="mt-4 space-y-2">
+            {focusSections(attempt.sectionResults).map((item, index) => (
+              <li key={item.section} className="flex items-center justify-between gap-3 text-sm">
+                <span className="font-medium">
+                  {index + 1}. {tTracks(item.section)}
+                </span>
+                <span className="text-muted">
+                  {t("focusItem", { percent: item.percentCorrect, points: item.pointsLost })}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </Card>
+      )}
 
       {attempt.weakSkills.length > 0 && (
         <Card>

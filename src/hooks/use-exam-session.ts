@@ -11,6 +11,7 @@ import { generateRecommendations } from "@/lib/recommendations";
 import type { ExamSubmitPayload } from "@/components/exam/exam-runner";
 import type { ExamSectionKey, Question, ReadingPassage } from "@/types/question";
 import { STEP_SECTION_ORDER } from "@/lib/constants/exam";
+import { pickBalanced, pickReadingByPassage } from "@/lib/placement";
 
 interface ExamSession {
   attemptId: string;
@@ -44,8 +45,14 @@ export function useExamSession({ kind, examId, sectionCounts, bankTag }: UseExam
     const sections = STEP_SECTION_ORDER.map(
       (section) => [section, sectionCounts[section] ?? 0] as [ExamSectionKey, number],
     ).filter(([, count]) => count > 0);
+    // Placement draws a difficulty-balanced sample (reading by whole passage);
+    // mock exams keep the plain random draw from the dedicated bank.
     const questionsBySections = await Promise.all(
-      sections.map(([section, count]) => getQuestionsBySection(section, count, bankTag)),
+      sections.map(async ([section, count]) => {
+        if (kind !== "placement") return getQuestionsBySection(section, count, bankTag);
+        const pool = await getQuestionsBySection(section, Number.MAX_SAFE_INTEGER, bankTag);
+        return section === "reading" ? pickReadingByPassage(pool, count) : pickBalanced(pool, count);
+      }),
     );
     const questions = questionsBySections.flat();
     const passageIds = questions.map((q) => q.passageId).filter((id): id is string => Boolean(id));

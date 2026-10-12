@@ -2,15 +2,12 @@ import { useTranslations } from "next-intl";
 import { BookOpen, Clock, ListChecks } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { STEP_SECTION_QUESTION_COUNTS } from "@/lib/constants/exam";
-
-const PLACEMENT_QUESTIONS_PER_SECTION = 5;
-const PLACEMENT_MINUTES = 20;
+import { PLACEMENT_COUNTS, PLACEMENT_MINUTES, PLACEMENT_TOTAL_QUESTIONS } from "@/lib/placement";
+import type { ExamSectionKey } from "@/types/question";
 
 export function PlacementIntro({ onStart, isLoading }: { onStart: () => void; isLoading: boolean }) {
   const t = useTranslations("placementTest");
   const tTracks = useTranslations("trackNames");
-  const totalQuestions = PLACEMENT_QUESTIONS_PER_SECTION * Object.keys(STEP_SECTION_QUESTION_COUNTS).length;
 
   return (
     <div className="mx-auto flex min-h-[70vh] w-full max-w-2xl flex-col items-center justify-center px-6 text-center">
@@ -24,7 +21,7 @@ export function PlacementIntro({ onStart, isLoading }: { onStart: () => void; is
       <div className="mt-8 grid w-full grid-cols-2 gap-4">
         <Card className="text-center">
           <ListChecks className="mx-auto size-5 text-ink-violet dark:text-primary-300" />
-          <div className="mt-2 text-lg font-bold">{totalQuestions}</div>
+          <div className="mt-2 text-lg font-bold">{PLACEMENT_TOTAL_QUESTIONS}</div>
           <div className="text-xs text-muted">{t("questionUnit")}</div>
         </Card>
         <Card className="text-center">
@@ -35,9 +32,9 @@ export function PlacementIntro({ onStart, isLoading }: { onStart: () => void; is
       </div>
 
       <div className="mt-4 grid w-full grid-cols-2 gap-4 sm:grid-cols-4">
-        {Object.keys(STEP_SECTION_QUESTION_COUNTS).map((section) => (
+        {(Object.keys(PLACEMENT_COUNTS) as ExamSectionKey[]).map((section) => (
           <Card key={section} className="text-center">
-            <div className="text-lg font-bold">{PLACEMENT_QUESTIONS_PER_SECTION}</div>
+            <div className="text-lg font-bold">{PLACEMENT_COUNTS[section]}</div>
             <div className="text-xs text-muted">{tTracks(section)}</div>
           </Card>
         ))}
@@ -49,5 +46,3 @@ export function PlacementIntro({ onStart, isLoading }: { onStart: () => void; is
     </div>
   );
 }
-
-export { PLACEMENT_QUESTIONS_PER_SECTION, PLACEMENT_MINUTES };

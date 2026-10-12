@@ -487,6 +487,16 @@
     },
     "results": {
       "estimatedScore": "Your estimated score",
+      "bandTitle": "Your estimated level",
+      "bands": {
+        "foundation": "Foundation (below 40)",
+        "beginner": "Beginner (40 to 60)",
+        "intermediate": "Intermediate (60 to 80)",
+        "advanced": "Advanced (80 and above)"
+      },
+      "focusTitle": "Where you lose the most points",
+      "focusHint": "Sorted by points lost from your exam score, so start at the top.",
+      "focusItem": "{percent}% correct · losing ≈ {points} points",
       "timeSpentMinutes": "{minutes} min",
       "timeSpent": "Time spent",
       "errorRate": "Error rate",

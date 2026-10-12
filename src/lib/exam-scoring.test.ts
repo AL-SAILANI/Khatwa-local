@@ -152,21 +152,21 @@ describe("exam-scoring", () => {
   });
 
   describe("levelFromScore", () => {
-    it("should return beginner for scores below 50", () => {
+    it("should return beginner for scores below 60 (foundation and beginner bands)", () => {
       expect(levelFromScore(0)).toBe("beginner");
-      expect(levelFromScore(25)).toBe("beginner");
-      expect(levelFromScore(49)).toBe("beginner");
+      expect(levelFromScore(39)).toBe("beginner");
+      expect(levelFromScore(59)).toBe("beginner");
     });
 
-    it("should return intermediate for scores 50-74", () => {
-      expect(levelFromScore(50)).toBe("intermediate");
+    it("should return intermediate for scores 60-79", () => {
       expect(levelFromScore(60)).toBe("intermediate");
-      expect(levelFromScore(74)).toBe("intermediate");
+      expect(levelFromScore(70)).toBe("intermediate");
+      expect(levelFromScore(79)).toBe("intermediate");
     });
 
-    it("should return advanced for scores 75 and above", () => {
-      expect(levelFromScore(75)).toBe("advanced");
-      expect(levelFromScore(85)).toBe("advanced");
+    it("should return advanced for scores 80 and above", () => {
+      expect(levelFromScore(80)).toBe("advanced");
+      expect(levelFromScore(90)).toBe("advanced");
       expect(levelFromScore(100)).toBe("advanced");
     });
   });
