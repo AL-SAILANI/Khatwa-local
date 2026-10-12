@@ -8,7 +8,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "contactPage" });
-  const email = "support@khatwa.app";
+  const email = "supportkhatwa@gmail.com";
 
   return (
     <>
