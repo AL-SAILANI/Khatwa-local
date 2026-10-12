@@ -1,6 +1,7 @@
 import type { Lesson } from "@/types/course";
 import type { PlanDay } from "@/types/gamification";
 import { PLAN_DURATIONS } from "@/lib/constants/exam";
+import type { PlacementFocus } from "@/lib/placement";
 
 /**
  * The order in which the five content tracks are interleaved at each
@@ -27,6 +28,58 @@ export function recommendDuration(goal: number, currentScore: number | null): (t
   return 30;
 }
 
+type TrackLessons = (track: string) => Lesson[];
+
+/** Default order: one lesson per track per difficulty level, tracks in
+ * `CONTENT_TRACK_ORDER`. Also what legacy plans are back-filled with. */
+function leveledContent(orderedForTrack: TrackLessons): Lesson[] {
+  const content: Lesson[] = [];
+  for (let level = 0; ; level++) {
+    let added = 0;
+    for (const track of CONTENT_TRACK_ORDER) {
+      const lesson = orderedForTrack(track)[level];
+      if (lesson) {
+        content.push(lesson);
+        added++;
+      }
+    }
+    if (added === 0) break;
+  }
+  return content;
+}
+
+/** Points of "lag" per weakness rank: the weakest track is served first and
+ * each weaker-to-stronger step delays a track by about a third of a level, so
+ * the strongest tracks trail the weakest by more than one full level. */
+const RANK_LAG = 0.35;
+/** A track answered this well on a big-enough sample skips its easiest
+ * lesson; small samples (placement has only 3 writing questions) are noisy. */
+const SKIP_ACCURACY = 85;
+const SKIP_MIN_QUESTIONS = 6;
+
+/** Orders content lessons for a learner whose placement result is known:
+ * tracks are ranked by exam points lost (vocabulary sits second, since it
+ * supports every section), weaker tracks come earlier, and tracks the learner
+ * already handles well start one lesson in. */
+function focusedContent(orderedForTrack: TrackLessons, focus: PlacementFocus[]): Lesson[] {
+  const ranked: string[] = focus.map((f) => f.section).filter((t) => CONTENT_TRACKS.has(t));
+  ranked.splice(Math.min(1, ranked.length), 0, "vocabulary");
+  for (const track of CONTENT_TRACK_ORDER) if (!ranked.includes(track)) ranked.push(track);
+
+  const entries: { key: number; rank: number; lesson: Lesson }[] = [];
+  ranked.forEach((track, rank) => {
+    const strong = focus.find((f) => f.section === track);
+    const skip = strong && strong.percentCorrect >= SKIP_ACCURACY && strong.total >= SKIP_MIN_QUESTIONS ? 1 : 0;
+    const trackLessons = orderedForTrack(track);
+    // Never skip a track down to nothing.
+    const start = Math.min(skip, Math.max(0, trackLessons.length - 1));
+    trackLessons.slice(start).forEach((lesson, level) => {
+      entries.push({ key: level + rank * RANK_LAG, rank, lesson });
+    });
+  });
+  return entries.sort((a, b) => a.key - b.key || a.rank - b.rank).map((e) => e.lesson);
+}
+
 /**
  * Builds a day-by-day study path from the lesson library.
  *
@@ -42,7 +95,11 @@ export function recommendDuration(goal: number, currentScore: number | null): (t
  * `lessonIds` (created before this feature) can be back-filled on the fly
  * from `durationDays` alone.
  */
-export function buildStudyPath(durationDays: number, lessons: Lesson[]): PlanDay[] {
+export function buildStudyPath(
+  durationDays: number,
+  lessons: Lesson[],
+  focus?: PlacementFocus[],
+): PlanDay[] {
   const byCourse = new Map<string, Lesson[]>();
   for (const lesson of lessons) {
     const bucket = byCourse.get(lesson.courseId) ?? [];
@@ -53,18 +110,7 @@ export function buildStudyPath(durationDays: number, lessons: Lesson[]): PlanDay
     (byCourse.get(`course-${track}`) ?? []).slice().sort((a, b) => a.order - b.order);
 
   // 1. Leveled interleave of the content tracks.
-  const content: Lesson[] = [];
-  for (let level = 0; ; level++) {
-    let added = 0;
-    for (const track of CONTENT_TRACK_ORDER) {
-      const lesson = orderedForTrack(track)[level];
-      if (lesson) {
-        content.push(lesson);
-        added++;
-      }
-    }
-    if (added === 0) break;
-  }
+  const content = focus?.length ? focusedContent(orderedForTrack, focus) : leveledContent(orderedForTrack);
 
   // 2. Weave auxiliary + revision lessons into the path at spread positions.
   const positioned: { pos: number; lesson: Lesson }[] = content.map((lesson, index) => ({

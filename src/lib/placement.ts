@@ -105,6 +105,8 @@ export function bandFromScore(score: number): StepBand {
 export interface PlacementFocus {
   section: ExamSectionKey;
   percentCorrect: number;
+  /** Number of questions behind `percentCorrect`; small samples are noisy. */
+  total: number;
   /** Estimated score points lost in this section (weight x missed share). */
   pointsLost: number;
 }
@@ -119,6 +121,7 @@ export function focusSections(sectionResults: SectionResult[]): PlacementFocus[]
       const percentCorrect = r.correct / r.total;
       return {
         section: r.section,
+        total: r.total,
         percentCorrect: Math.round(percentCorrect * 100),
         pointsLost: Math.round((1 - percentCorrect) * STEP_SECTION_WEIGHTS[r.section] * 1000) / 10,
       };

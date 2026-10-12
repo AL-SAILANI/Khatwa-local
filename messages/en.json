@@ -720,6 +720,7 @@
       "hard": "Advanced"
     },
     "pathNote": "Your lessons are arranged into a sequential daily path mixing multiple skills each day, with tips and weekly revision — every lesson unlocks the next one.",
+    "focusNote": "Based on your placement test, your path starts with {sections} because they cost you the most points.",
     "eyebrow": "Study Path"
   },
   "settings": {
