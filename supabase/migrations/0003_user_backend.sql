@@ -14,10 +14,10 @@ begin
     coalesce(nullif(m->>'name', ''), nullif(m->>'full_name', ''), ''),
     coalesce(nullif(m->>'photo_url', ''), nullif(m->>'avatar_url', ''), nullif(m->>'picture', '')),
     nullif(m->>'avatar_emoji', ''),
-    case when m->>'age' ~ '^\d{1,3}$' then (m->>'age')::int end,
+    case when m->>'age' ~ '^[0-9]{1,3}$' then (m->>'age')::int end,
     case when m->>'gender' in ('male','female') then m->>'gender' end,
     case when m->>'goal' in ('60','70','80','90','95') then (m->>'goal')::int end,
-    case when m->>'exam_date' ~ '^\d{4}-\d{2}-\d{2}$' then (m->>'exam_date')::date end
+    case when m->>'exam_date' ~ '^[0-9]{4}-[0-9]{2}-[0-9]{2}$' then (m->>'exam_date')::date end
   )
   on conflict (uid) do nothing;
   return new;
