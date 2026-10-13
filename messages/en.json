@@ -322,6 +322,11 @@
       "words100": "100 words",
       "score90": "Score 90+"
     },
+    "retakePlacement": {
+      "title": "Retake the placement test",
+      "hint": "To get a plan built on your current level.",
+      "button": "Retake"
+    },
     "startPlacementCta": {
       "title": "Take the placement test",
       "description": "The system analyzes your grammar, reading, and listening level, then builds your personal study plan from the result.",
@@ -729,6 +734,8 @@
       "hard": "Advanced"
     },
     "pathNote": "Your lessons are arranged into a sequential daily path mixing multiple skills each day, with tips and weekly revision — every lesson unlocks the next one.",
+    "retakeHint": "Has your level changed?",
+    "retakeLink": "Retake the placement test first",
     "focusNote": "Based on your placement test, your path starts with {sections} because they cost you the most points.",
     "eyebrow": "Study Path"
   },

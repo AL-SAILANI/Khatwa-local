@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { CalendarRange } from "lucide-react";
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -136,6 +136,13 @@ export function PlanBuilder() {
 
         <p className="mt-4 rounded-xl bg-surface-muted px-4 py-3 text-xs leading-relaxed text-muted">
           {t("pathNote")}
+        </p>
+
+        <p className="mt-3 text-xs text-muted">
+          {t("retakeHint")}{" "}
+          <Link href="/placement-test" className="font-semibold text-ink-violet underline dark:text-primary-300">
+            {t("retakeLink")}
+          </Link>
         </p>
       </Card>
 
