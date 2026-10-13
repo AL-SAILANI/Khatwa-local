@@ -151,6 +151,28 @@ export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonI
                 <video controls className="w-full rounded-xl" src={resource.url} />
               )}
               {resource.type === "audio" && <audio controls className="w-full" src={resource.url} />}
+              {resource.type === "youtube" && resource.youtubeId && (
+                <div className="space-y-2">
+                  <iframe
+                    className="aspect-video w-full rounded-xl border-0"
+                    src={`https://www.youtube-nocookie.com/embed/${resource.youtubeId}?rel=0`}
+                    title={resource.title}
+                    loading="lazy"
+                    allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                  <a
+                    href={resource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs text-muted underline"
+                  >
+                    <ExternalLink className="size-3.5" />
+                    {t("videoSource", { provider: resource.provider ?? "" })}
+                  </a>
+                </div>
+              )}
               {resource.type === "link" && (
                 <a
                   href={resource.url}

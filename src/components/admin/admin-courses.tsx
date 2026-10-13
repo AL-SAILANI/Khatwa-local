@@ -12,7 +12,7 @@ import { uploadLessonResource, resourceTypeFromFile } from "@/lib/firebase/stora
 import type { Course, CourseTrack } from "@/types/course";
 import type { LessonResource } from "@/types/course";
 
-const RESOURCE_ICONS = { video: FileVideo, audio: FileAudio, pdf: FileText, link: ExternalLink } as const;
+const RESOURCE_ICONS = { video: FileVideo, audio: FileAudio, pdf: FileText, link: ExternalLink, youtube: FileVideo } as const;
 
 const TRACKS: CourseTrack[] = [
   "grammar",

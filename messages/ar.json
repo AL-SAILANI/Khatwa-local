@@ -579,6 +579,7 @@
     "pageTitle": "الدورات",
     "description": "محتوى مقسّم حسب مهارات اختبار STEP الأربع، مع دروس نصائح ومراجعة.",
     "lessonSummary": "{lessonCount} درس · {minutes} دقيقة",
+    "videoSource": "المصدر: {provider} (فتح الدرس الأصلي)",
     "extraVideoOn": "فيديو إضافي على {provider} (يفتح في تبويب جديد)",
     "openPdf": "فتح ملف PDF",
     "finishLesson": "أنهيت الدرس",

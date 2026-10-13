@@ -20,11 +20,14 @@ export interface Course {
 }
 
 export interface LessonResource {
-  type: "video" | "pdf" | "audio" | "link";
+  type: "video" | "pdf" | "audio" | "link" | "youtube";
+  /** Direct file URL, or the page to open for `link` / `youtube` resources. */
   url: string;
   title: string;
-  /** Source name shown for outbound `link` resources (e.g. "engVid"). */
+  /** Source name shown for `link` / `youtube` resources (e.g. "engVid"). */
   provider?: string;
+  /** `youtube` resources: the 11-character YouTube video id to embed. */
+  youtubeId?: string;
   durationSeconds?: number;
 }
 
