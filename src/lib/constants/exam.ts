@@ -59,4 +59,5 @@ export interface MockExamDef {
 export const MOCK_EXAMS: readonly MockExamDef[] = [
   { id: "full-mock-exam", number: 1, bankTag: "step-mock" },
   { id: "full-mock-exam-2", number: 2, bankTag: "step-mock-2" },
+  { id: "full-mock-exam-3", number: 3, bankTag: "step-mock-3" },
 ];
