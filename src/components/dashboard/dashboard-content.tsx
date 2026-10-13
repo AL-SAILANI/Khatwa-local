@@ -12,6 +12,7 @@ import { DailyMotivationCard } from "@/components/dashboard/daily-motivation-car
 import { AchievementsPreview } from "@/components/dashboard/achievements-preview";
 import { CalendarPreview } from "@/components/dashboard/calendar-preview";
 import { StartPlacementCta } from "@/components/dashboard/start-placement-cta";
+import { RetakePlacementLink } from "@/components/dashboard/retake-placement-link";
 import { StudyPathCard } from "@/components/dashboard/study-path-card";
 import { ContinueLearningCard } from "@/components/dashboard/continue-learning-card";
 import { StudyCoachCard } from "@/components/dashboard/study-coach-card";
@@ -96,7 +97,10 @@ export function DashboardContent() {
             <StreakCard streak={profile.streak} activeDays={getWeekActiveDays(profile.recentActivityDays)} />
 
             {hasTakenAnyTest && profile.goal !== null ? (
-              <GoalProgressCard currentScore={profile.lastScore ?? 0} goal={profile.goal} />
+              <>
+                <GoalProgressCard currentScore={profile.lastScore ?? 0} goal={profile.goal} />
+                <RetakePlacementLink />
+              </>
             ) : (
               <StartPlacementCta />
             )}
