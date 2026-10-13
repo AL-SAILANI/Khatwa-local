@@ -23,6 +23,8 @@ import { ModuleHeader } from "@/components/ui/module-header";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { getAttemptsByKind } from "@/lib/firestore/exam-attempts";
 import {
+  MOCK_EXAMS,
+  type MockExamDef,
   STEP_SECTION_ORDER,
   STEP_SECTION_QUESTION_COUNTS,
   STEP_SECTION_MINUTES,
@@ -67,12 +69,19 @@ function StatCard({ icon: Icon, label, value }: { icon: React.ElementType; label
   );
 }
 
-export function MockExamList({ onStart, isLoading }: { onStart: () => void; isLoading: boolean }) {
+export function MockExamList({
+  onStart,
+  isLoading,
+}: {
+  onStart: (exam: MockExamDef) => void;
+  isLoading: boolean;
+}) {
   const t = useTranslations("mockExams");
   const tSections = useTranslations("trackNames");
   const locale = useLocale();
   const { user, profile } = useUserProfile();
   const [attempts, setAttempts] = useState<ExamAttempt[] | null>(null);
+  const [chosenId, setChosenId] = useState<string | null>(null);
 
   useEffect(() => {
     if (!user) return;
@@ -81,6 +90,12 @@ export function MockExamList({ onStart, isLoading }: { onStart: () => void; isLo
 
   const submitted = (attempts ?? []).filter((a) => a.status === "submitted");
   const submittedCount = submitted.length;
+  const takenExamIds = new Set(submitted.map((a) => a.examId));
+  // Default to the first exam the learner has not taken yet.
+  const defaultExam = MOCK_EXAMS.find((exam) => !takenExamIds.has(exam.id)) ?? MOCK_EXAMS[0]!;
+  const selectedExam = MOCK_EXAMS.find((exam) => exam.id === chosenId) ?? defaultExam;
+  const examForAttempt = (attempt: ExamAttempt) =>
+    MOCK_EXAMS.find((exam) => exam.id === attempt.examId) ?? MOCK_EXAMS[0]!;
   const hitFreeLimit = profile?.planTier === "free" && submittedCount >= FREE_TIER_MOCK_EXAM_LIMIT;
 
   const scores = submitted.map((a) => a.score ?? 0);
@@ -162,6 +177,37 @@ export function MockExamList({ onStart, isLoading }: { onStart: () => void; isLo
             </p>
           </div>
 
+          {MOCK_EXAMS.length > 1 && (
+            <div className="mx-auto mt-8 w-full max-w-md" role="radiogroup" aria-label={t("chooseExam")}>
+              <p className="text-xs font-semibold uppercase tracking-wide text-secondary-300">{t("chooseExam")}</p>
+              <div className="mt-2 grid grid-cols-2 gap-3">
+                {MOCK_EXAMS.map((exam) => {
+                  const active = exam.id === selectedExam.id;
+                  return (
+                    <button
+                      key={exam.id}
+                      type="button"
+                      role="radio"
+                      aria-checked={active}
+                      onClick={() => setChosenId(exam.id)}
+                      className={cn(
+                        "rounded-none border px-3 py-3 text-sm font-semibold transition-colors",
+                        active
+                          ? "border-secondary-400 bg-white/15 text-white"
+                          : "border-white/20 text-primary-100/80 hover:border-secondary-400",
+                      )}
+                    >
+                      {t("examLabel", { number: exam.number })}
+                      {takenExamIds.has(exam.id) && (
+                        <span className="ms-2 text-xs font-normal text-secondary-300">{t("examTaken")}</span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           <div className="mt-8 flex flex-col items-center gap-2">
             {hitFreeLimit ? (
               <>
@@ -178,7 +224,7 @@ export function MockExamList({ onStart, isLoading }: { onStart: () => void; isLo
               <>
                 <button
                   type="button"
-                  onClick={onStart}
+                  onClick={() => onStart(selectedExam)}
                   disabled={isLoading}
                   className={cn(goldButtonStyles, "h-13 px-8 text-base")}
                 >
@@ -265,7 +311,7 @@ export function MockExamList({ onStart, isLoading }: { onStart: () => void; isLo
                     <Button
                       variant="secondary"
                       size="sm"
-                      onClick={onStart}
+                      onClick={() => onStart(examForAttempt(attempt))}
                       disabled={isLoading}
                       aria-label={t("retake")}
                       className="shrink-0 self-center"

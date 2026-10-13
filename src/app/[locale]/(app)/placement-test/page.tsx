@@ -25,7 +25,7 @@ export default function PlacementTestPage() {
   });
 
   if (!session) {
-    return <PlacementIntro onStart={start} isLoading={isLoading} />;
+    return <PlacementIntro onStart={() => start()} isLoading={isLoading} />;
   }
 
   return (

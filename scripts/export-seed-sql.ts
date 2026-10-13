@@ -16,6 +16,12 @@ import {
   STEP_MOCK_READING_QUESTIONS,
 } from "../src/data/step-mock-reading";
 import { STEP_MOCK_LISTENING_QUESTIONS } from "../src/data/step-mock-listening";
+import { STEP_MOCK_2_READING_PASSAGES, STEP_MOCK_2_READING_QUESTIONS } from "../src/data/step-mock-2-reading";
+import { STEP_MOCK_2_LISTENING_QUESTIONS } from "../src/data/step-mock-2-listening";
+import {
+  STEP_MOCK_2_GRAMMAR_QUESTIONS,
+  STEP_MOCK_2_WRITING_QUESTIONS,
+} from "../src/data/step-mock-2-grammar-writing";
 import {
   STEP_MOCK_GRAMMAR_QUESTIONS,
   STEP_MOCK_WRITING_QUESTIONS,
@@ -28,6 +34,14 @@ const STEP_MOCK_QUESTIONS: Question[] = [
   ...STEP_MOCK_LISTENING_QUESTIONS,
   ...STEP_MOCK_WRITING_QUESTIONS,
 ].map((q) => ({ ...q, tags: [...q.tags, "step-mock"] }));
+
+// Mock exam 2 questions already carry their "step-mock-2" tag.
+const STEP_MOCK_2_QUESTIONS: Question[] = [
+  ...STEP_MOCK_2_READING_QUESTIONS,
+  ...STEP_MOCK_2_GRAMMAR_QUESTIONS,
+  ...STEP_MOCK_2_LISTENING_QUESTIONS,
+  ...STEP_MOCK_2_WRITING_QUESTIONS,
+];
 
 const str = (v: unknown) => (v == null ? "null" : `'${String(v).replace(/'/g, "''")}'`);
 const num = (v: unknown) => (v == null ? "null" : String(Number(v)));
@@ -60,12 +74,12 @@ for (const l of SAMPLE_LESSONS) {
     resources: json(l.resources), notes: str(l.notes), question_ids: arr(l.questionIds),
   }));
 }
-for (const p of [...SAMPLE_READING_PASSAGES, ...STEP_MOCK_READING_PASSAGES]) {
+for (const p of [...SAMPLE_READING_PASSAGES, ...STEP_MOCK_READING_PASSAGES, ...STEP_MOCK_2_READING_PASSAGES]) {
   out.push(upsert("reading_passages", {
     id: str(p.id), title: str(p.title), body: str(p.body), question_ids: arr(p.questionIds),
   }));
 }
-for (const q of [...SAMPLE_QUESTIONS, ...STEP_MOCK_QUESTIONS]) {
+for (const q of [...SAMPLE_QUESTIONS, ...STEP_MOCK_QUESTIONS, ...STEP_MOCK_2_QUESTIONS]) {
   out.push(upsert("questions", {
     id: str(q.id), section: str(q.section), course_id: str(q.courseId),
     passage_id: str(q.passageId), audio_url: str(q.audioUrl), transcript: str(q.transcript),

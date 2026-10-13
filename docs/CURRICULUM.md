@@ -52,7 +52,7 @@ Current content: 356 questions (reading 127, listening 106, grammar 75, writing 
 | 2 | Plan path ordered by placement result: weakest track first, strong tracks skip the easiest lesson (`buildStudyPath`) | done |
 | 3 | Reading lessons for the five question types (3) and listening 15-second routine + paraphrase lessons (2) | done |
 | 4 | Grammar lessons per rule in exam order (countable/uncountable added; wish, used to still missing, no questions yet) | in progress |
-| 5 | Four more full mock exams (about 400 new original questions) | after 3 and 4 |
+| 5 | Four more full mock exams (about 400 new original questions): exam 2 done (100 questions), exams 3-5 to write | in progress |
 | 6 | Video layer: `lesson_videos` table, embedded players with credit and link-out | after 4 |
 
 ## 5. External resources

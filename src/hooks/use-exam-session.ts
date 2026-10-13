@@ -38,8 +38,11 @@ export function useExamSession({ kind, examId, sectionCounts, bankTag }: UseExam
   const [isLoading, setIsLoading] = useState(false);
   const [session, setSession] = useState<ExamSession | null>(null);
 
-  const start = async () => {
+  /** `override` lets one page launch different exams (e.g. mock exam 1 or 2). */
+  const start = async (override?: { examId?: string; bankTag?: string }) => {
     if (!user) return;
+    const activeExamId = override?.examId ?? examId;
+    const activeBankTag = override?.bankTag ?? bankTag;
     setIsLoading(true);
 
     const sections = STEP_SECTION_ORDER.map(
@@ -49,8 +52,8 @@ export function useExamSession({ kind, examId, sectionCounts, bankTag }: UseExam
     // mock exams keep the plain random draw from the dedicated bank.
     const questionsBySections = await Promise.all(
       sections.map(async ([section, count]) => {
-        if (kind !== "placement") return getQuestionsBySection(section, count, bankTag);
-        const pool = await getQuestionsBySection(section, Number.MAX_SAFE_INTEGER, bankTag);
+        if (kind !== "placement") return getQuestionsBySection(section, count, activeBankTag);
+        const pool = await getQuestionsBySection(section, Number.MAX_SAFE_INTEGER, activeBankTag);
         return section === "reading" ? pickReadingByPassage(pool, count) : pickBalanced(pool, count);
       }),
     );
@@ -60,7 +63,7 @@ export function useExamSession({ kind, examId, sectionCounts, bankTag }: UseExam
 
     const attemptId = await createExamAttempt({
       userId: user.uid,
-      examId,
+      examId: activeExamId,
       kind,
       answers: {},
       flagged: [],

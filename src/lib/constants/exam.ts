@@ -48,3 +48,15 @@ export const PLAN_DURATIONS = [7, 15, 30] as const;
 /** Next official STEP exam session. This is a placeholder — update to the real
  * announced session date (steps.sa) so the landing countdown stays accurate. */
 export const NEXT_STEP_EXAM_AT = "2026-12-12T09:00:00+03:00";
+
+/** Full-length mock exams. Each one is a fixed 100-question bank (tagged with
+ * `bankTag` in the questions table) with the official section sizes. */
+export interface MockExamDef {
+  id: string;
+  number: number;
+  bankTag: string;
+}
+export const MOCK_EXAMS: readonly MockExamDef[] = [
+  { id: "full-mock-exam", number: 1, bankTag: "step-mock" },
+  { id: "full-mock-exam-2", number: 2, bankTag: "step-mock-2" },
+];
