@@ -60,4 +60,6 @@ export const MOCK_EXAMS: readonly MockExamDef[] = [
   { id: "full-mock-exam", number: 1, bankTag: "step-mock" },
   { id: "full-mock-exam-2", number: 2, bankTag: "step-mock-2" },
   { id: "full-mock-exam-3", number: 3, bankTag: "step-mock-3" },
+  { id: "full-mock-exam-4", number: 4, bankTag: "step-mock-4" },
+  { id: "full-mock-exam-5", number: 5, bankTag: "step-mock-5" },
 ];

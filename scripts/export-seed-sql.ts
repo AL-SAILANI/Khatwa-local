@@ -21,6 +21,18 @@ import {
   STEP_MOCK_3_GRAMMAR_QUESTIONS,
   STEP_MOCK_3_WRITING_QUESTIONS,
 } from "../src/data/step-mock-3-grammar-writing";
+import { STEP_MOCK_4_READING_PASSAGES, STEP_MOCK_4_READING_QUESTIONS } from "../src/data/step-mock-4-reading";
+import { STEP_MOCK_4_LISTENING_QUESTIONS } from "../src/data/step-mock-4-listening";
+import {
+  STEP_MOCK_4_GRAMMAR_QUESTIONS,
+  STEP_MOCK_4_WRITING_QUESTIONS,
+} from "../src/data/step-mock-4-grammar-writing";
+import { STEP_MOCK_5_READING_PASSAGES, STEP_MOCK_5_READING_QUESTIONS } from "../src/data/step-mock-5-reading";
+import { STEP_MOCK_5_LISTENING_QUESTIONS } from "../src/data/step-mock-5-listening";
+import {
+  STEP_MOCK_5_GRAMMAR_QUESTIONS,
+  STEP_MOCK_5_WRITING_QUESTIONS,
+} from "../src/data/step-mock-5-grammar-writing";
 import { GRAMMAR_EXTRA_QUESTIONS } from "../src/data/grammar-extra";
 import { STEP_MOCK_LISTENING_QUESTIONS } from "../src/data/step-mock-listening";
 import { STEP_MOCK_2_READING_PASSAGES, STEP_MOCK_2_READING_QUESTIONS } from "../src/data/step-mock-2-reading";
@@ -43,6 +55,20 @@ const STEP_MOCK_QUESTIONS: Question[] = [
 ].map((q) => ({ ...q, tags: [...q.tags, "step-mock"] }));
 
 // Mock exam 2 questions already carry their "step-mock-2" tag.
+const STEP_MOCK_4_QUESTIONS: Question[] = [
+  ...STEP_MOCK_4_READING_QUESTIONS,
+  ...STEP_MOCK_4_GRAMMAR_QUESTIONS,
+  ...STEP_MOCK_4_LISTENING_QUESTIONS,
+  ...STEP_MOCK_4_WRITING_QUESTIONS,
+];
+
+const STEP_MOCK_5_QUESTIONS: Question[] = [
+  ...STEP_MOCK_5_READING_QUESTIONS,
+  ...STEP_MOCK_5_GRAMMAR_QUESTIONS,
+  ...STEP_MOCK_5_LISTENING_QUESTIONS,
+  ...STEP_MOCK_5_WRITING_QUESTIONS,
+];
+
 const STEP_MOCK_3_QUESTIONS: Question[] = [
   ...STEP_MOCK_3_READING_QUESTIONS,
   ...STEP_MOCK_3_GRAMMAR_QUESTIONS,
@@ -88,12 +114,12 @@ for (const l of SAMPLE_LESSONS) {
     resources: json(l.resources), notes: str(l.notes), question_ids: arr(l.questionIds),
   }));
 }
-for (const p of [...SAMPLE_READING_PASSAGES, ...STEP_MOCK_READING_PASSAGES, ...STEP_MOCK_2_READING_PASSAGES, ...STEP_MOCK_3_READING_PASSAGES]) {
+for (const p of [...SAMPLE_READING_PASSAGES, ...STEP_MOCK_READING_PASSAGES, ...STEP_MOCK_2_READING_PASSAGES, ...STEP_MOCK_3_READING_PASSAGES, ...STEP_MOCK_4_READING_PASSAGES, ...STEP_MOCK_5_READING_PASSAGES]) {
   out.push(upsert("reading_passages", {
     id: str(p.id), title: str(p.title), body: str(p.body), question_ids: arr(p.questionIds),
   }));
 }
-for (const q of [...SAMPLE_QUESTIONS, ...GRAMMAR_EXTRA_QUESTIONS, ...STEP_MOCK_QUESTIONS, ...STEP_MOCK_2_QUESTIONS, ...STEP_MOCK_3_QUESTIONS]) {
+for (const q of [...SAMPLE_QUESTIONS, ...GRAMMAR_EXTRA_QUESTIONS, ...STEP_MOCK_QUESTIONS, ...STEP_MOCK_2_QUESTIONS, ...STEP_MOCK_3_QUESTIONS, ...STEP_MOCK_4_QUESTIONS, ...STEP_MOCK_5_QUESTIONS]) {
   out.push(upsert("questions", {
     id: str(q.id), section: str(q.section), course_id: str(q.courseId),
     passage_id: str(q.passageId), audio_url: str(q.audioUrl), transcript: str(q.transcript),
