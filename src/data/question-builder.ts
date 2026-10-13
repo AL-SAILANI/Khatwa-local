@@ -1,4 +1,5 @@
 import type { ExamSectionKey, Question } from "@/types/question";
+import { MOCK_LISTENING_AUDIO } from "@/data/mock-listening-audio";
 
 /** Compact authoring format for a multiple-choice question: the correct answer
  * is written first and `buildQuestions` places it at a rotating position so
@@ -18,7 +19,14 @@ export interface QuestionSpec {
 const OPTION_IDS = ["a", "b", "c", "d"] as const;
 
 export function buildQuestions(section: ExamSectionKey, bankTag: string, specs: QuestionSpec[]): Question[] {
+  // A clip is shared by several questions; its MP3 is named after the first.
+  const clipIds = new Map<string, string>();
+  for (const spec of specs) {
+    if (spec.transcript && !clipIds.has(spec.transcript)) clipIds.set(spec.transcript, spec.id);
+  }
+
   return specs.map((spec, index) => {
+    const clipId = spec.transcript ? clipIds.get(spec.transcript) : undefined;
     const slot = (index + Math.floor(index / 4)) % 4;
     const texts = [...spec.wrong];
     texts.splice(slot, 0, spec.correct);
@@ -27,6 +35,7 @@ export function buildQuestions(section: ExamSectionKey, bankTag: string, specs: 
       section,
       ...(spec.passageId ? { passageId: spec.passageId } : {}),
       ...(spec.transcript ? { transcript: spec.transcript } : {}),
+      ...(clipId && MOCK_LISTENING_AUDIO.has(clipId) ? { audioUrl: `/audio/listening/${clipId}.mp3` } : {}),
       prompt: spec.prompt,
       options: texts.map((text, i) => ({ id: OPTION_IDS[i]!, text })),
       correctOptionId: OPTION_IDS[slot]!,
