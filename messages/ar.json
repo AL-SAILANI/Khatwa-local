@@ -525,6 +525,10 @@
       "secondsPerQuestion": "{seconds} ثانية لكل سؤال",
       "weakSkills": "مهارات تحتاج إلى تقوية"
     },
+    "listenPlay": "تشغيل المقطع",
+    "listenStop": "إيقاف",
+    "showTranscript": "إظهار النص",
+    "hideTranscript": "إخفاء النص",
     "audioNote": "استمع إلى المقطع الصوتي ثم أجب عن السؤال",
     "sectionTime": "{minutes} دقيقة",
     "showPalette": "إظهار جدول الأسئلة",

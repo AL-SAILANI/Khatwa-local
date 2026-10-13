@@ -525,6 +525,10 @@
       "secondsPerQuestion": "{seconds}s per question",
       "weakSkills": "Skills to strengthen"
     },
+    "listenPlay": "Play audio",
+    "listenStop": "Stop",
+    "showTranscript": "Show transcript",
+    "hideTranscript": "Hide transcript",
     "audioNote": "Listen to the audio, then answer the question",
     "sectionTime": "{minutes} min",
     "showPalette": "Show question grid",
