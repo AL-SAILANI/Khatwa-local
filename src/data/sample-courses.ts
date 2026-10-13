@@ -7,7 +7,7 @@ import type { Course, CourseTrack, Lesson } from "@/types/course";
  * lessons ship as text notes plus a short inline quiz instead.
  */
 const TRACK_META: Record<CourseTrack, { title: string; description: string; lessonCount: number; estimatedMinutes: number }> = {
-  grammar: { title: "أساسيات النحو", description: "القواعد الأكثر شيوعًا في اختبار STEP: تطابق الفعل والفاعل، الأزمنة، والجمل الشرطية.", lessonCount: 15, estimatedMinutes: 246 },
+  grammar: { title: "أساسيات النحو", description: "القواعد الأكثر شيوعًا في اختبار STEP: تطابق الفعل والفاعل، الأزمنة، والجمل الشرطية.", lessonCount: 17, estimatedMinutes: 278 },
   reading: { title: "استراتيجيات القراءة", description: "كيف تقرأ نصًا أكاديميًا بسرعة وتستخرج الفكرة الرئيسية والتفاصيل الداعمة.", lessonCount: 11, estimatedMinutes: 178 },
   listening: { title: "مهارات الاستماع", description: "تقنيات لمتابعة المحادثات المسموعة واستخراج المعلومة الدقيقة المطلوبة.", lessonCount: 10, estimatedMinutes: 162 },
   writingAnalysis: { title: "تحليل الأخطاء الكتابية", description: "كيف تكتشف الخطأ النحوي في جملة مكتوبة بسرعة ودقة.", lessonCount: 8, estimatedMinutes: 130 },
@@ -592,7 +592,7 @@ export const SAMPLE_LESSONS: Lesson[] = [
     resources: [],
     notes:
       "📌 القاعدة المركزية:\nالجمل الوصلية (relative clauses) تربط جملة باسم سابق، وسؤال الذيل (question tag) يعكس الفعل المساعد وفاعل الجملة الأصلية.\n\n⚡ الصيغة السريعة:\n• whose للملكية: the engineer whose design won.\n• who للأشخاص، which للأشياء، where للأماكن.\n• سؤال الذيل: جملة مثبتة + tag منفي (have finished → haven't you).\n\n⚠️ فخ STEP:\nلا تستخدم which للأشخاص ولا whose بمعنى who. وسؤال الذيل يتبع الفعل المساعد في الجملة، وليس الزمن المعنى: You've finished → haven't you وليس didn't you.\n\n🔄 مراجعة متباعدة:\n• اليوم 1 — ميّز whose عن who/which.\n• اليوم 3 — كوّن سؤال ذيل لجملة مثبتة.\n• اليوم 7 — حل أسئلة الوصل والذيل معًا.\n• اليوم 14 — راجع ضمائر الوصل الخمسة قبل الاختبار.\n\n🧭 تكنيكة اجدا (AGDA) للجرامر:\n• (أ) اقرأ الاختيارات أولاً لتحديد القاعدة المستهدفة (لا تبدأ بالسؤال).\n• (ج) خمّن القاعدة النحوية: أزمنة؟ مقارنة؟ حروف جر؟ مبني للمجهول؟ شرطية؟...\n• (د) حدد الكلمات الدلالية في الجملة (مفاتيح زمنية أو تركيبية).\n• (ا) استبعد الخيارات غير المتوافقة نحواً أو زمناً.\n• ⏱️ قاعدة الـ45 ثانية: إن لم تصل للإجابة خلال 45 ثانية خمّن وضع إجابة وانتقل فوراً، وحلّ بالترتيب دون قفز.",
-    questionIds: ["q-grammar-5", "q-grammar-19", "q-grammar-28"],
+    questionIds: ["q-grammar-5", "q-grammar-19", "q-grammar-28", "gx-grammar-7", "gx-grammar-8"],
   },
   {
     id: "lesson-reading-9",
@@ -653,5 +653,25 @@ export const SAMPLE_LESSONS: Lesson[] = [
     notes:
       "📌 القاعدة المركزية:\nالاسم المعدود يأخذ many وfew وعددًا (a student, two students)، وغير المعدود يأخذ much وlittle ولا يُجمع ولا يسبقه a. أسماء مثل information وadvice وnews وfurniture وequipment وluggage وhomework غير معدودة.\n\n⚡ الصيغة السريعة:\n• How many + معدود جمع؛ How much + غير معدود.\n• a few / few + معدود؛ a little / little + غير معدود.\n• some في الإثبات، any في النفي والسؤال، ولا نقول informations أو an advice.\n• a lot of تصلح للاثنين.\n\n⚠️ فخ STEP:\nfew وlittle بدون a تعني \"قليل يكاد لا يكفي\" (معنى سلبي)، أما a few وa little فتعني \"قليل لكنه كافٍ\". تحقق من المعنى المطلوب.\n\n🔄 مراجعة متباعدة:\n• اليوم 1 — صنّف عشر كلمات إلى معدود وغير معدود.\n• اليوم 3 — حل سؤالَي How much / How many.\n• اليوم 7 — حل أسئلة الكمية في اختبار القواعد.\n• اليوم 14 — راجع الاستثناءات التي أخطأت فيها.\n\n🧭 تكنيكة اجدا (AGDA): انظر إلى الخيارات أولًا؛ إذا رأيت many وmuch وfew وlittle فاعلم أن السؤال عن المعدود وغير المعدود، ثم انظر إلى الاسم بعد الفراغ.",
     questionIds: ["sm-grammar-4", "sm-grammar-5"],
+  },
+  {
+    id: "lesson-grammar-16",
+    courseId: "course-grammar",
+    title: "wish: تمني الحاضر والماضي",
+    order: 15,
+    resources: [],
+    notes:
+      "📌 القاعدة المركزية:\nبعد wish نرجع بالزمن خطوة إلى الوراء: تمنٍّ عن الحاضر يأخذ الماضي البسيط، وندم على الماضي يأخذ الماضي التام، وانزعاج من أمر مستمر يأخذ would + الفعل.\n\n⚡ الصيغة السريعة:\n• حاضر مخالف للواقع: I wish I had a car (ليس عندي سيارة). مع be نستخدم were لكل الضمائر: I wish I were taller.\n• ندم على الماضي: I wish I had studied harder (لم أذاكر جيدًا).\n• ضيق من موقف أو رغبة في تغييره: I wish he would stop talking.\n\n⚠️ فخ STEP:\nلا نستخدم المضارع ولا will بعد wish (خطأ: I wish I have / I wish I will). وانتبه لكلمات الزمن: yesterday وlast month وبالأمس تعني الماضي التام، وnow تعني الماضي البسيط.\n\n🔄 مراجعة متباعدة:\n• اليوم 1 — حوّل خمس جمل واقعية إلى تمنٍّ بـ wish.\n• اليوم 3 — ميّز بين wish + past وwish + past perfect في أسئلة.\n• اليوم 7 — حل أسئلة wish ضمن اختبار القواعد.\n• اليوم 14 — راجع الفرق بين wish وif (الشرطية الثانية والثالثة).\n\n🧭 تكنيكة اجدا (AGDA): إذا رأيت wish في الجملة فانظر في الخيارات إلى الأزمنة؛ الحاضر المضارع خطأ دائمًا، ثم حدّد هل المطلوب حاضر أم ماضٍ من الكلمات الدلالية.",
+    questionIds: ["gx-grammar-1", "gx-grammar-2", "gx-grammar-3"],
+  },
+  {
+    id: "lesson-grammar-17",
+    courseId: "course-grammar",
+    title: "used to وbe used to وget used to",
+    order: 16,
+    resources: [],
+    notes:
+      "📌 القاعدة المركزية:\nثلاث تراكيب متشابهة الشكل مختلفة المعنى: used to + الفعل المجرد لعادة ماضية انتهت، وbe used to + اسم أو -ing بمعنى معتاد على، وget used to + اسم أو -ing بمعنى يتعوّد على.\n\n⚡ الصيغة السريعة:\n• I used to play football (كنت ألعب، والآن لا).\n• I am used to getting up early (اعتدت ذلك).\n• I am getting used to the new city (أتعوّد تدريجيًا).\n• النفي والسؤال: did not use to / Did you use to...؟ (من غير d).\n\n⚠️ فخ STEP:\nبعد be used to وget used to لا يأتي الفعل المجرد؛ نقول used to living وليس used to live. وكلمة now في الجملة تدل غالبًا على عادة ماضية انتهت (used to).\n\n🔄 مراجعة متباعدة:\n• اليوم 1 — ضع خطًا تحت التراكيب الثلاثة في فقرة قصيرة.\n• اليوم 3 — اختر بين used to وbe used to في خمس جمل.\n• اليوم 7 — حل أسئلة used to ضمن اختبار.\n• اليوم 14 — راجع فخ الفعل المجرد بعد be used to.\n\n🧭 تكنيكة اجدا (AGDA): انظر في الخيارات إلى الفروق بين used to وis used to وget used to؛ ثم ابحث في الجملة عن الفعل بعد الفراغ: إن كان -ing فالتركيب be/get used to، وإن كان مجردًا فالتركيب used to.",
+    questionIds: ["gx-grammar-4", "gx-grammar-5", "gx-grammar-6"],
   },
 ];

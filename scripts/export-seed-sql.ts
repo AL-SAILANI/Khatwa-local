@@ -15,6 +15,7 @@ import {
   STEP_MOCK_READING_PASSAGES,
   STEP_MOCK_READING_QUESTIONS,
 } from "../src/data/step-mock-reading";
+import { GRAMMAR_EXTRA_QUESTIONS } from "../src/data/grammar-extra";
 import { STEP_MOCK_LISTENING_QUESTIONS } from "../src/data/step-mock-listening";
 import { STEP_MOCK_2_READING_PASSAGES, STEP_MOCK_2_READING_QUESTIONS } from "../src/data/step-mock-2-reading";
 import { STEP_MOCK_2_LISTENING_QUESTIONS } from "../src/data/step-mock-2-listening";
@@ -79,7 +80,7 @@ for (const p of [...SAMPLE_READING_PASSAGES, ...STEP_MOCK_READING_PASSAGES, ...S
     id: str(p.id), title: str(p.title), body: str(p.body), question_ids: arr(p.questionIds),
   }));
 }
-for (const q of [...SAMPLE_QUESTIONS, ...STEP_MOCK_QUESTIONS, ...STEP_MOCK_2_QUESTIONS]) {
+for (const q of [...SAMPLE_QUESTIONS, ...GRAMMAR_EXTRA_QUESTIONS, ...STEP_MOCK_QUESTIONS, ...STEP_MOCK_2_QUESTIONS]) {
   out.push(upsert("questions", {
     id: str(q.id), section: str(q.section), course_id: str(q.courseId),
     passage_id: str(q.passageId), audio_url: str(q.audioUrl), transcript: str(q.transcript),
