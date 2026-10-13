@@ -2,6 +2,10 @@ import { SAMPLE_LESSONS } from "@/data/sample-courses";
 import { SAMPLE_QUESTIONS } from "@/data/sample-questions";
 import { SAMPLE_READING_QUESTIONS_EXTRA } from "@/data/reading-extra";
 import { SAMPLE_LISTENING_QUESTIONS_EXTRA } from "@/data/listening-extra";
+import { GRAMMAR_EXTRA_QUESTIONS } from "@/data/grammar-extra";
+import { STEP_MOCK_READING_QUESTIONS } from "@/data/step-mock-reading";
+import { STEP_MOCK_LISTENING_QUESTIONS } from "@/data/step-mock-listening";
+import { STEP_MOCK_GRAMMAR_QUESTIONS, STEP_MOCK_WRITING_QUESTIONS } from "@/data/step-mock-grammar-writing";
 import type { Lesson } from "@/types/course";
 import type { Question } from "@/types/question";
 
@@ -21,6 +25,12 @@ const ALL_QUESTIONS: Question[] = [
   ...SAMPLE_QUESTIONS,
   ...SAMPLE_READING_QUESTIONS_EXTRA,
   ...SAMPLE_LISTENING_QUESTIONS_EXTRA,
+  ...GRAMMAR_EXTRA_QUESTIONS,
+  // Some lessons list mock-bank questions; indexing them lets their tags resolve.
+  ...STEP_MOCK_READING_QUESTIONS,
+  ...STEP_MOCK_LISTENING_QUESTIONS,
+  ...STEP_MOCK_GRAMMAR_QUESTIONS,
+  ...STEP_MOCK_WRITING_QUESTIONS,
 ];
 
 const LESSON_BY_ID = new Map<string, Lesson>(SAMPLE_LESSONS.map((lesson) => [lesson.id, lesson]));
@@ -61,7 +71,7 @@ function lessonsOwningQuestion(questionId: string): Lesson[] {
 function bestLessonForTag(tag: string, preferredTrack?: string): Lesson | null {
   const normalized = canonicalTag(tag);
   let best: Lesson | null = null;
-  let bestScore = -1;
+  let bestScore = Number.NEGATIVE_INFINITY;
 
   for (const lesson of SAMPLE_LESSONS) {
     let count = 0;
