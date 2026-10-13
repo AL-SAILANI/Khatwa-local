@@ -61,7 +61,7 @@ Link or embed through the owner's official player only. Never download, re-host 
 
 | Skill | Resource | How | Check before launch |
 |---|---|---|---|
-| Grammar | EngVid grammar lessons (YouTube embeds, LearnVid Inc.) | Embed 1-2 videos per grammar lesson, as "extra" | Ask EngVid for written permission for a commercial app |
+| Grammar | EngVid grammar lessons (LearnVid Inc.) | Done as outbound links: 1-2 per grammar lesson (`src/data/engvid-links.ts`), opening on engvid.com in a new tab, nothing embedded or re-hosted | Embedding inside the app needs EngVid's written permission for a commercial app; ask before switching |
 | Listening | VOA Learning English (US government work, generally public domain) | Embed or link graded news audio | Confirm each item's rights notice; some partner content is not public domain |
 | Listening | BBC Learning English (6 Minute English) | Link out only | BBC terms do not allow re-hosting |
 | Vocabulary | Tatoeba example sentences (CC BY 2.0 FR) | Optional extra sentences with attribution | Keep attribution; review quality |

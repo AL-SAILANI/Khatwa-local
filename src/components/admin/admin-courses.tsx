@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { X, FileVideo, FileAudio, FileText } from "lucide-react";
+import { X, FileVideo, FileAudio, FileText, ExternalLink } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,7 @@ import { uploadLessonResource, resourceTypeFromFile } from "@/lib/firebase/stora
 import type { Course, CourseTrack } from "@/types/course";
 import type { LessonResource } from "@/types/course";
 
-const RESOURCE_ICONS = { video: FileVideo, audio: FileAudio, pdf: FileText } as const;
+const RESOURCE_ICONS = { video: FileVideo, audio: FileAudio, pdf: FileText, link: ExternalLink } as const;
 
 const TRACKS: CourseTrack[] = [
   "grammar",

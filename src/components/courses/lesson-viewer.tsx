@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { CheckCircle2, ChevronLeft, ChevronRight, Lock, Play, Volume2 } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Lock, Play, Volume2 } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -151,6 +151,17 @@ export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonI
                 <video controls className="w-full rounded-xl" src={resource.url} />
               )}
               {resource.type === "audio" && <audio controls className="w-full" src={resource.url} />}
+              {resource.type === "link" && (
+                <a
+                  href={resource.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-violet underline dark:text-primary-400"
+                >
+                  <ExternalLink className="size-4" />
+                  {t("extraVideoOn", { provider: resource.provider ?? "" })}
+                </a>
+              )}
               {resource.type === "pdf" && (
                 <a
                   href={resource.url}
