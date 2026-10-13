@@ -8,7 +8,11 @@ Firebase Storage. Outputs one MP3 per unique conversation transcript into
 The exam runner plays `question.audioUrl`, which `src/data/sample-questions.ts`
 points at these static files. Run this whenever transcripts change:
 
-    python3 scripts/generate-listening-audio.py
+    python3 scripts/generate-listening-audio.py          # original q-listening-* clips
+    python3 scripts/generate-listening-audio.py --mocks  # clips of mock exams 2-5
+
+`--mocks` also rewrites `src/data/mock-listening-audio.ts`, which tells the
+question data which clips have an MP3 (commit the MP3s and that file).
 
 Requires: `pip install edge-tts` and `brew install ffmpeg` (for joining the
 per-speaker segments with natural pauses).
@@ -37,6 +41,57 @@ VOICES = {
     "Doctor": "en-US-ChristopherNeural",
 }
 DEFAULT_VOICE = "en-US-AvaNeural"
+
+
+# Mock-exam clips use many speaker labels (roles and first names), so voices
+# are assigned per clip: a known first name keeps its gender, other speakers
+# alternate male/female in order of appearance.
+FEMALE_NAMES = {"Reem", "Salma", "Noura", "Huda", "Sara", "Nada", "Laila"}
+MALE_NAMES = {"Ali", "Faisal", "Yazeed", "Hamad", "Omar", "Khalid"}
+MALE_VOICES = ["en-US-ChristopherNeural", "en-US-GuyNeural"]
+FEMALE_VOICES = ["en-US-AvaNeural", "en-US-JennyNeural"]
+MOCK_MANIFEST = "src/data/mock-listening-audio.ts"
+
+
+def assign_voices(labels: list[str]) -> dict:
+    voices = {}
+    used = {"m": 0, "f": 0}
+    last = "f"  # so the first unnamed speaker is male
+    for label in labels:
+        if label in voices:
+            continue
+        if label in FEMALE_NAMES:
+            gender = "f"
+        elif label in MALE_NAMES:
+            gender = "m"
+        else:
+            gender = "m" if last == "f" else "f"
+        pool = MALE_VOICES if gender == "m" else FEMALE_VOICES
+        voices[label] = pool[used[gender] % len(pool)]
+        used[gender] += 1
+        last = gender
+    return voices
+
+
+def load_mock_clips() -> list:
+    import json
+    out = subprocess.run(
+        ["npx", "tsx", "scripts/export-listening-clips.ts"],
+        check=True, capture_output=True, text=True,
+    ).stdout
+    return json.loads(out)
+
+
+def write_mock_manifest(ids: list[str]) -> None:
+    body = ",\n".join(f'  "{i}"' for i in sorted(ids))
+    open(MOCK_MANIFEST, "w", encoding="utf-8").write(
+        "/**\n * Clips of mock exams 2-5 that have a recorded MP3 in\n"
+        " * `public/audio/listening/<id>.mp3` (id = first question using the clip).\n"
+        " * Rewritten by `python3 scripts/generate-listening-audio.py --mocks`; clips\n"
+        " * not listed here are read aloud by the browser instead.\n */\n"
+        "export const MOCK_LISTENING_AUDIO: ReadonlySet<string> = new Set<string>("
+        + ("[\n" + body + ",\n]" if ids else "[]") + ");\n"
+    )
 
 
 def unescape(s: str) -> str:
@@ -89,7 +144,11 @@ def merge(segments: list[str], out_path: str) -> None:
 
 def main() -> None:
     os.makedirs(OUT_DIR, exist_ok=True)
-    questions = parse_questions(SRC) + parse_questions(SRC_EXTRA)
+    mocks = "--mocks" in sys.argv
+    if mocks:
+        questions = load_mock_clips()
+    else:
+        questions = parse_questions(SRC) + parse_questions(SRC_EXTRA)
 
     unique = {}
     for q in questions:
@@ -102,6 +161,11 @@ def main() -> None:
         if os.path.exists(out_path) and "--force" not in sys.argv:
             continue
         lines = [ln.strip() for ln in transcript.split("\n") if ln.strip()]
+        clip_voices = {}
+        if mocks:
+            clip_voices = assign_voices(
+                [m.group(1) for m in (re.match(r"^([A-Za-z]+):", ln) for ln in lines) if m]
+            )
         tmp_dir = f"/tmp/edge-segs-{canonical}"
         os.makedirs(tmp_dir, exist_ok=True)
         seg_files = []
@@ -109,7 +173,7 @@ def main() -> None:
             label_match = re.match(r"^([A-Za-z]+):\s*(.*)$", line)
             if label_match:
                 label, text = label_match.group(1), label_match.group(2)
-                voice = VOICES.get(label, DEFAULT_VOICE)
+                voice = clip_voices.get(label) or VOICES.get(label, DEFAULT_VOICE)
             else:
                 text, voice = line, DEFAULT_VOICE
             seg = os.path.join(tmp_dir, f"seg{i}.mp3")
@@ -118,6 +182,13 @@ def main() -> None:
         merge(seg_files, out_path)
         print(f"  {canonical}.mp3  {os.path.getsize(out_path) / 1024:.1f} KB  ({len(seg_files)} segments)")
         time.sleep(0.3)
+    if mocks:
+        done = [
+            canonical for canonical in unique.values()
+            if os.path.exists(os.path.join(OUT_DIR, f"{canonical}.mp3"))
+        ]
+        write_mock_manifest(done)
+        print(f"{MOCK_MANIFEST}: {len(done)} clips with audio")
     print("done")
 
 
