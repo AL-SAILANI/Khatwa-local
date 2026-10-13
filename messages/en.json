@@ -579,6 +579,7 @@
     "pageTitle": "Courses",
     "description": "Content organized around STEP's four skill areas, plus tips and revision lessons.",
     "lessonSummary": "{lessonCount} lessons · {minutes} min",
+    "extraVideoOn": "Extra video on {provider} (opens in a new tab)",
     "openPdf": "Open PDF",
     "finishLesson": "Finish lesson",
     "lessonCompleted": "Lesson completed",

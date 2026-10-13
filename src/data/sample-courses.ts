@@ -1,4 +1,5 @@
 import type { Course, CourseTrack, Lesson } from "@/types/course";
+import { ENGVID_LINKS } from "@/data/engvid-links";
 
 /**
  * One starter course + lesson per track, enough to exercise the course
@@ -27,7 +28,7 @@ export const SAMPLE_COURSES: Course[] = Object.entries(TRACK_META).map(([track, 
   estimatedMinutes: meta.estimatedMinutes,
 }));
 
-export const SAMPLE_LESSONS: Lesson[] = [
+const BASE_LESSONS: Lesson[] = [
   {
     id: "lesson-grammar-1",
     courseId: "course-grammar",
@@ -675,3 +676,8 @@ export const SAMPLE_LESSONS: Lesson[] = [
     questionIds: ["gx-grammar-4", "gx-grammar-5", "gx-grammar-6"],
   },
 ];
+
+export const SAMPLE_LESSONS: Lesson[] = BASE_LESSONS.map((lesson) => ({
+  ...lesson,
+  resources: [...lesson.resources, ...(ENGVID_LINKS[lesson.id] ?? [])],
+}));

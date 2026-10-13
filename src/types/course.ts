@@ -20,9 +20,11 @@ export interface Course {
 }
 
 export interface LessonResource {
-  type: "video" | "pdf" | "audio";
+  type: "video" | "pdf" | "audio" | "link";
   url: string;
   title: string;
+  /** Source name shown for outbound `link` resources (e.g. "engVid"). */
+  provider?: string;
   durationSeconds?: number;
 }
 
