@@ -72,3 +72,9 @@ Link or embed through the owner's official player only. Never download, re-host 
 - Each question has exactly one defensible answer, an explanation and a tag naming the rule or skill.
 - Listening scripts are longer and faster than the third-party booklets: the real test is not a verbatim match.
 - No question or passage copied from a booklet; new items cover the same topics with new wording.
+
+## Content review log
+
+- **Answer-length bias (mock exams 2-5):** in reading and listening the correct option was the single longest in about 66% of questions (chance is 25%), so test-wise students could guess it. 104 questions had distractors rewritten to be plausible and similar in length; the share is now about 39%. Grammar and writing-analysis were already balanced (about 15%/13%).
+- Grammar and writing-analysis items of exams 2-5 were re-read for answer correctness and ambiguity; no errors found.
+- Still needed before launch: a review by a qualified English teacher (accent/usage, level fit, distractor plausibility).
