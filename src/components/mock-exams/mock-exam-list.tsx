@@ -180,7 +180,7 @@ export function MockExamList({
           {MOCK_EXAMS.length > 1 && (
             <div className="mx-auto mt-8 w-full max-w-md" role="radiogroup" aria-label={t("chooseExam")}>
               <p className="text-xs font-semibold uppercase tracking-wide text-secondary-300">{t("chooseExam")}</p>
-              <div className="mt-2 grid grid-cols-2 gap-3">
+              <div className="mt-2 flex flex-wrap gap-3">
                 {MOCK_EXAMS.map((exam) => {
                   const active = exam.id === selectedExam.id;
                   return (
@@ -191,7 +191,7 @@ export function MockExamList({
                       aria-checked={active}
                       onClick={() => setChosenId(exam.id)}
                       className={cn(
-                        "rounded-none border px-3 py-3 text-sm font-semibold transition-colors",
+                        "min-w-28 flex-1 rounded-none border px-3 py-3 text-sm font-semibold transition-colors",
                         active
                           ? "border-secondary-400 bg-white/15 text-white"
                           : "border-white/20 text-primary-100/80 hover:border-secondary-400",
