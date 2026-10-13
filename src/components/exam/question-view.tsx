@@ -1,7 +1,8 @@
 import { useTranslations } from "next-intl";
-import { Headphones, Volume2 } from "lucide-react";
+import { Volume2 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils/cn";
+import { ListeningPlayer } from "./listening-player";
 import type { Question, ReadingPassage } from "@/types/question";
 
 interface QuestionViewProps {
@@ -35,17 +36,7 @@ export function QuestionView({ question, passage, selectedOptionId, onSelect }: 
         </Card>
       )}
 
-      {question.transcript && !question.audioUrl && (
-        <Card className="max-h-[60vh] overflow-y-auto">
-          <div className="flex items-center gap-2 text-sm font-semibold">
-            <Headphones className="size-4 text-ink-violet dark:text-primary-300" />
-            {t("transcriptNote")}
-          </div>
-          <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-foreground/90" dir="ltr">
-            {question.transcript}
-          </p>
-        </Card>
-      )}
+      {question.transcript && !question.audioUrl && <ListeningPlayer transcript={question.transcript} />}
 
       <div className={cn(!passage && !question.audioUrl && !question.transcript && "lg:col-span-2")}>
         <p className="text-base font-medium leading-relaxed" dir="ltr">
