@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { MockExamList } from "@/components/mock-exams/mock-exam-list";
 import { useExamSession } from "@/hooks/use-exam-session";
-import { STEP_SECTION_QUESTION_COUNTS, STEP_TOTAL_MINUTES } from "@/lib/constants/exam";
+import { MOCK_EXAMS, STEP_SECTION_QUESTION_COUNTS, STEP_TOTAL_MINUTES } from "@/lib/constants/exam";
 
 // Dynamically import heavy exam runner component
 const ExamRunner = dynamic(() => import("@/components/exam/exam-runner").then((mod) => mod.ExamRunner), {
@@ -20,13 +20,18 @@ export default function MockExamsPage() {
   const t = useTranslations("mockExams");
   const { isLoading, session, start, submit } = useExamSession({
     kind: "mock",
-    examId: "full-mock-exam",
+    examId: MOCK_EXAMS[0]!.id,
     sectionCounts: STEP_SECTION_QUESTION_COUNTS,
-    bankTag: "step-mock",
+    bankTag: MOCK_EXAMS[0]!.bankTag,
   });
 
   if (!session) {
-    return <MockExamList onStart={start} isLoading={isLoading} />;
+    return (
+      <MockExamList
+        onStart={(exam) => start({ examId: exam.id, bankTag: exam.bankTag })}
+        isLoading={isLoading}
+      />
+    );
   }
 
   return (

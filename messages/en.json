@@ -542,6 +542,9 @@
     "eyebrow": "Placement Test"
   },
   "mockExams": {
+    "chooseExam": "Choose an exam",
+    "examLabel": "Exam {number}",
+    "examTaken": "✓ taken",
     "pageTitle": "Full Mock Exam",
     "title": "Full mock exam",
     "description": "Full STEP simulation: {total, plural, one {# question} other {# questions}} in {minutes, plural, one {# minute} other {# minutes}}, with the same section split (reading 40%, grammar 30%, listening 20%, writing 10%).",
