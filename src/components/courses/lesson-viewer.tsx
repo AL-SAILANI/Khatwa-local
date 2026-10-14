@@ -20,7 +20,7 @@ import type { Question, ReadingPassage } from "@/types/question";
 
 export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonId: string }) {
   const t = useTranslations("courses");
-  const { user } = useUserProfile();
+  const { user, profile } = useUserProfile();
   const { lessonTitle, lessonNotes } = useLocalizedContent();
   const router = useRouter();
   const [lesson, setLesson] = useState<Lesson | null>(null);
@@ -56,7 +56,7 @@ export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonI
   const nextId = index >= 0 && index < order.length - 1 ? order[index + 1] : null;
 
   const currentIndex = currentLessonId ? orderedLessonIds.indexOf(currentLessonId) : orderedLessonIds.length;
-  const isLocked = inPath && index > currentIndex;
+  const isLocked = inPath && index > currentIndex && profile?.planTier !== "premium";
   const currentLesson = currentLessonId ? lessonById.get(currentLessonId) : undefined;
 
   const hrefOf = (id: string) => {

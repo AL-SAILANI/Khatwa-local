@@ -29,7 +29,8 @@ export function StudyPath() {
   const t = useTranslations("studyPlan");
   const trackNames = useTranslations("trackNames");
   const emptyT = useTranslations("emptyState");
-  const { user } = useUserProfile();
+  const { user, profile } = useUserProfile();
+  const unlockAll = profile?.planTier === "premium";
   const {
     plan,
     lessonById,
@@ -68,7 +69,7 @@ export function StudyPath() {
     const index = orderedLessonIds.indexOf(lessonId);
     if (index === -1) return "locked";
     if (index < currentIndex) return "done";
-    if (index === currentIndex) return "current";
+    if (index === currentIndex || unlockAll) return "current";
     return "locked";
   };
 
