@@ -606,7 +606,27 @@
     "nextLesson": "الدرس التالي",
     "prevLesson": "الدرس السابق",
     "completeToContinue": "أكمل هذا الدرس للانتقال إلى التالي",
-    "filterByTrack": "التصفية حسب المسار"
+    "filterByTrack": "التصفية حسب المسار",
+    "lessonSteps": "خطوات الدرس",
+    "stepOf": "الخطوة {current} من {total}",
+    "stepNext": "التالي",
+    "stepBack": "السابق",
+    "block": {
+      "explain": "الشرح",
+      "video": "فيديو",
+      "example": "مثال محلول",
+      "guided": "تدريب موجّه",
+      "strategy": "التقنية",
+      "exit": "بطاقة الخروج",
+      "review": "المراجعة"
+    },
+    "exampleIntro": "انظر كيف تُحل هذه المسألة خطوة بخطوة، والإجابة الصحيحة موضّحة.",
+    "guidedIntro": "جرّب بنفسك؛ ستظهر الإجابة والشرح فور اختيارك.",
+    "exitIntro": "بطاقة الخروج: تحتاج {threshold}% أو أكثر لإتقان هذه المهارة.",
+    "masteryReached": "أحسنت! أتقنت هذه المهارة.",
+    "masteryNotYet": "لم تصل إلى {threshold}% بعد. راجع الشرح ثم أعد المحاولة.",
+    "retryExit": "إعادة المحاولة",
+    "completeAnyway": "المتابعة على أي حال"
   },
   "vocabulary": {
     "pageTitle": "المفردات",

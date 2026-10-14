@@ -606,7 +606,27 @@
     "nextLesson": "Next lesson",
     "prevLesson": "Previous lesson",
     "completeToContinue": "Complete this lesson to continue",
-    "filterByTrack": "Filter by track"
+    "filterByTrack": "Filter by track",
+    "lessonSteps": "Lesson steps",
+    "stepOf": "Step {current} of {total}",
+    "stepNext": "Next",
+    "stepBack": "Back",
+    "block": {
+      "explain": "Explain",
+      "video": "Video",
+      "example": "Worked example",
+      "guided": "Guided practice",
+      "strategy": "Technique",
+      "exit": "Exit card",
+      "review": "Review"
+    },
+    "exampleIntro": "See how this question is solved step by step; the correct answer is shown.",
+    "guidedIntro": "Try it yourself; the answer and explanation appear as soon as you choose.",
+    "exitIntro": "Exit card: you need {threshold}% or more to master this skill.",
+    "masteryReached": "Well done! You mastered this skill.",
+    "masteryNotYet": "You have not reached {threshold}% yet. Review the explanation and try again.",
+    "retryExit": "Try again",
+    "completeAnyway": "Continue anyway"
   },
   "vocabulary": {
     "pageTitle": "Vocabulary",
