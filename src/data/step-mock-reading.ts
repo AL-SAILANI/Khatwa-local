@@ -1,3 +1,4 @@
+import { rebalanceAnswerKey } from "@/data/question-builder";
 import type { Question, ReadingPassage } from "@/types/question";
 
 /**
@@ -74,7 +75,7 @@ export const STEP_MOCK_READING_PASSAGES: ReadingPassage[] = [
   },
 ];
 
-export const STEP_MOCK_READING_QUESTIONS: Question[] = [
+const STEP_MOCK_READING_QUESTIONS_RAW: Question[] = [
   {
     id: "sm-reading-1",
     section: "reading",
@@ -353,10 +354,10 @@ export const STEP_MOCK_READING_QUESTIONS: Question[] = [
     passageId: "passage-sm-5",
     prompt: "What did the ancient Egyptians do with the stems of the papyrus plant?",
     options: [
-      { id: "a", text: "They boiled them to make ink." },
+      { id: "a", text: "They boiled them to make ink for writing." },
       { id: "b", text: "They flattened them and pressed them together." },
-      { id: "c", text: "They planted them in long rows." },
-      { id: "d", text: "They burned them for fuel." },
+      { id: "c", text: "They planted them in long rows beside the river." },
+      { id: "d", text: "They burned them for fuel during the winter." },
     ],
     correctOptionId: "b",
     explanation: "The passage describes how the Egyptians flattened the fibrous stems, laid them crosswise, and pressed them together so they stuck and could be written on.",
@@ -417,10 +418,10 @@ export const STEP_MOCK_READING_QUESTIONS: Question[] = [
     passageId: "passage-sm-6",
     prompt: "Which parts of Saudi Arabia experience the highest number of dust storms?",
     options: [
-      { id: "a", text: "the western region" },
-      { id: "b", text: "the southern highlands" },
+      { id: "a", text: "the western region near the Red Sea coast" },
+      { id: "b", text: "the southern highlands near the border" },
       { id: "c", text: "the eastern and central parts" },
-      { id: "d", text: "the coastal islands" },
+      { id: "d", text: "the coastal islands in the Arabian Gulf" },
     ],
     correctOptionId: "c",
     explanation: "The passage states that the eastern and central parts of Saudi Arabia suffer the highest number of dust storms each year, as seen in Qassim.",
@@ -449,10 +450,10 @@ export const STEP_MOCK_READING_QUESTIONS: Question[] = [
     passageId: "passage-sm-6",
     prompt: "What is the passage mainly about?",
     options: [
-      { id: "a", text: "the religious history of Saudi Arabia" },
+      { id: "a", text: "the religious history of the kingdom and its holy cities" },
       { id: "b", text: "the climatic zones and weather diversity of the kingdom" },
-      { id: "c", text: "the population growth of Saudi cities" },
-      { id: "d", text: "the oil resources of Saudi Arabia" },
+      { id: "c", text: "the population growth of the largest Saudi cities" },
+      { id: "d", text: "the oil resources of the kingdom and their uses" },
     ],
     correctOptionId: "b",
     explanation: "The passage explains that the kingdom has three climatic zones and then describes how weather differs across Abha, Qassim, Makkah, and Madinah.",
@@ -594,9 +595,9 @@ export const STEP_MOCK_READING_QUESTIONS: Question[] = [
     prompt: "According to the passage, which animals sleep in groups to keep warm?",
     options: [
       { id: "a", text: "lions, monkeys, and penguins" },
-      { id: "b", text: "snakes and flamingos" },
-      { id: "c", text: "horses and cows" },
-      { id: "d", text: "bats and owls" },
+      { id: "b", text: "snakes and flamingos on cold nights" },
+      { id: "c", text: "horses and cows in the open fields" },
+      { id: "d", text: "bats and owls in the caves where they live" },
     ],
     correctOptionId: "a",
     explanation: "The passage lists lions, monkeys, and penguins as animals that sleep in groups for warmth.",
@@ -609,10 +610,10 @@ export const STEP_MOCK_READING_QUESTIONS: Question[] = [
     passageId: "passage-sm-9",
     prompt: "Which of the following animals sleep standing, according to the passage?",
     options: [
-      { id: "a", text: "snakes" },
+      { id: "a", text: "snakes that rest on the warm ground" },
       { id: "b", text: "large elephants and horses" },
-      { id: "c", text: "young elephants" },
-      { id: "d", text: "penguins" },
+      { id: "c", text: "young elephants that lie down to rest" },
+      { id: "d", text: "penguins that stand in huge groups" },
     ],
     correctOptionId: "b",
     explanation: "Large elephants and horses both sleep standing; young elephants, by contrast, lie down inside the group.",
@@ -673,10 +674,10 @@ export const STEP_MOCK_READING_QUESTIONS: Question[] = [
     passageId: "passage-sm-10",
     prompt: "What did the Sultan of Bukhara give Ibn Sina as a reward?",
     options: [
-      { id: "a", text: "a village to govern" },
+      { id: "a", text: "a village to govern and its farmland" },
       { id: "b", text: "permission to use the royal library" },
-      { id: "c", text: "five books on law" },
-      { id: "d", text: "a new hospital to manage" },
+      { id: "c", text: "five books on law from his own collection" },
+      { id: "d", text: "a new hospital to manage in the capital" },
     ],
     correctOptionId: "b",
     explanation: "After the Sultan recovered, he rewarded Ibn Sina by allowing him to use the royal library, where he could study rare manuscripts.",
@@ -716,3 +717,5 @@ export const STEP_MOCK_READING_QUESTIONS: Question[] = [
     tags: ["reading-comprehension", "detail"],
   },
 ];
+
+export const STEP_MOCK_READING_QUESTIONS: Question[] = rebalanceAnswerKey(STEP_MOCK_READING_QUESTIONS_RAW);

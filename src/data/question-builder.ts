@@ -45,3 +45,30 @@ export function buildQuestions(section: ExamSectionKey, bankTag: string, specs: 
     };
   });
 }
+
+/** Spreads the correct answer evenly over A-D within each section of a
+ * hand-written question list (they were written with the key clustered on
+ * B), so the answer position carries no information. Deterministic: the n-th
+ * question of a section gets the same slot `buildQuestions` would use. The
+ * other options keep their relative order; ids are re-lettered by position. */
+export function rebalanceAnswerKey(questions: Question[]): Question[] {
+  const counters = new Map<string, number>();
+  return questions.map((question) => {
+    const n = counters.get(question.section) ?? 0;
+    counters.set(question.section, n + 1);
+    if (question.options.length !== OPTION_IDS.length) return question;
+
+    const slot = (n + Math.floor(n / 4)) % 4;
+    const correct = question.options.find((option) => option.id === question.correctOptionId);
+    if (!correct) return question;
+
+    const others = question.options.filter((option) => option !== correct);
+    const ordered = [...others];
+    ordered.splice(slot, 0, correct);
+    return {
+      ...question,
+      options: ordered.map((option, i) => ({ ...option, id: OPTION_IDS[i]! })),
+      correctOptionId: OPTION_IDS[slot]!,
+    };
+  });
+}

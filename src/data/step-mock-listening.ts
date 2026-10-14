@@ -1,6 +1,7 @@
+import { rebalanceAnswerKey } from "@/data/question-builder";
 import type { Question } from "@/types/question";
 
-export const STEP_MOCK_LISTENING_QUESTIONS: Question[] = [
+const STEP_MOCK_LISTENING_QUESTIONS_RAW: Question[] = [
   // ---- Dialogue 1: Booking a test date (sm-listening-1 to 3) ----
   {
     id: "sm-listening-1",
@@ -79,10 +80,10 @@ export const STEP_MOCK_LISTENING_QUESTIONS: Question[] = [
       "Lecturer: Our lecture today is about SAD, which stands for Seasonal Affective Disorder, a kind of depression that appears at certain times of the year. Before I continue, do you have any questions?\nStudent: Yes, sir. Why is SAD considered a seasonal disorder?\nLecturer: Because it happens during the dark months, when the days become shorter and the sky is usually cloudy.\nStudent: And what actually causes SAD?\nLecturer: Honestly, no one really knows what causes it. But fortunately, there is a treatment called light box therapy. It can relieve the symptoms, and sometimes it works better when combined with other medication.\nStudent: Is that treatment widely available now?\nLecturer: Not yet. Scientists are still testing the light boxes to make sure they are safe and effective.",
     prompt: "What does the professor think is the reason for differences in SAD symptoms?",
     options: [
-      { id: "a", text: "The patient's diet" },
-      { id: "b", text: "The climate in the region" },
+      { id: "a", text: "The patient's diet during the long winter months" },
+      { id: "b", text: "The climate in the region where the patient lives" },
       { id: "c", text: "Unknown, since no one knows what starts the disorder" },
-      { id: "d", text: "The amount of medication taken" },
+      { id: "d", text: "The amount of medication that the patient takes" },
     ],
     correctOptionId: "c",
     explanation: "The professor says no one really knows what causes SAD, which is why the differences in symptoms remain unexplained.",
@@ -185,9 +186,9 @@ export const STEP_MOCK_LISTENING_QUESTIONS: Question[] = [
       "Customer: Good morning. I heard you are running special offers at the moment.\nSeller: Good morning, sir. Yes, we have a different special offer every day.\nCustomer: What is today's offer?\nSeller: Today's offer costs only $65. For that price, you get two medium pizzas and two cans of soda.\nCustomer: That sounds like a great deal. I'll take it.\nSeller: What kind of pizza would you like?\nCustomer: Two pepperoni pizzas, please.\nSeller: Sure. Your pizzas and soda will be ready to pick up in about an hour from Jack's Pizza Place.\nCustomer: Wonderful. Thank you very much.\nSeller: You're most welcome.",
     prompt: "Where and when will the customer's order most likely be ready?",
     options: [
-      { id: "a", text: "Delivered to his office within the hour" },
-      { id: "b", text: "Cooked only on weekends" },
-      { id: "c", text: "Available only at the downtown branch" },
+      { id: "a", text: "Delivered to his office within the hour by a driver" },
+      { id: "b", text: "Cooked only on weekends when the shop is open" },
+      { id: "c", text: "Available only at the downtown branch of the restaurant" },
       { id: "d", text: "Ready to pick up in about an hour from Jack's Pizza Place" },
     ],
     correctOptionId: "d",
@@ -222,9 +223,9 @@ export const STEP_MOCK_LISTENING_QUESTIONS: Question[] = [
     prompt: "All octopuses are venomous, but what is true about their danger to humans?",
     options: [
       { id: "a", text: "Only the blue-ringed octopus has been known to kill humans" },
-      { id: "b", text: "The giant octopus is the most deadly" },
-      { id: "c", text: "No octopus can ever harm a person" },
-      { id: "d", text: "Their venom always causes instant death" },
+      { id: "b", text: "The giant octopus is the most deadly of all octopuses" },
+      { id: "c", text: "No octopus can ever harm a person in any way" },
+      { id: "d", text: "Their venom always causes instant death in humans" },
     ],
     correctOptionId: "a",
     explanation: "Adam says that although all octopuses are venomous, only the blue-ringed octopus has been known to kill humans.",
@@ -239,9 +240,9 @@ export const STEP_MOCK_LISTENING_QUESTIONS: Question[] = [
     prompt: "Where did Adam learn about octopuses?",
     options: [
       { id: "a", text: "In a biology lesson at school" },
-      { id: "b", text: "From a nature documentary" },
-      { id: "c", text: "From a book at home" },
-      { id: "d", text: "From his mother" },
+      { id: "b", text: "From a nature documentary that he watched on television" },
+      { id: "c", text: "From a book that he found at home last year" },
+      { id: "d", text: "From his mother, who works as a marine scientist" },
     ],
     correctOptionId: "a",
     explanation: "Adam tells his mother that he learned the facts during a biology lesson at school.",
@@ -328,9 +329,9 @@ export const STEP_MOCK_LISTENING_QUESTIONS: Question[] = [
     prompt: "What is the most important point mentioned about Jane Austen's career?",
     options: [
       { id: "a", text: "She had to hide her identity when publishing her novels" },
-      { id: "b", text: "She wrote only short stories" },
-      { id: "c", text: "Her novels were never published" },
-      { id: "d", text: "She studied literature at university" },
+      { id: "b", text: "She wrote only short stories and never a full novel" },
+      { id: "c", text: "Her novels were never published in her lifetime" },
+      { id: "d", text: "She studied literature at university before writing" },
     ],
     correctOptionId: "a",
     explanation: "The professor emphasizes that Austen had to hide her identity when publishing, because women writers were not taken seriously at the time.",
@@ -355,3 +356,5 @@ export const STEP_MOCK_LISTENING_QUESTIONS: Question[] = [
     tags: ["listening-comprehension"],
   },
 ];
+
+export const STEP_MOCK_LISTENING_QUESTIONS: Question[] = rebalanceAnswerKey(STEP_MOCK_LISTENING_QUESTIONS_RAW);

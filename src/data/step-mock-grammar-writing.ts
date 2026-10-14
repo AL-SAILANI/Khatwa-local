@@ -1,3 +1,4 @@
+import { rebalanceAnswerKey } from "@/data/question-builder";
 import type { Question } from "@/types/question";
 
 /**
@@ -16,7 +17,7 @@ import type { Question } from "@/types/question";
  * conjunctions. Explanations are concise English rule summaries.
  */
 
-export const STEP_MOCK_GRAMMAR_QUESTIONS: Question[] = [
+const STEP_MOCK_GRAMMAR_QUESTIONS_RAW: Question[] = [
   {
     id: "sm-grammar-1",
     section: "grammar",
@@ -50,7 +51,7 @@ export const STEP_MOCK_GRAMMAR_QUESTIONS: Question[] = [
   {
     id: "sm-grammar-3",
     section: "grammar",
-    prompt: "Rana speaks English ___ a native speaker.",
+    prompt: "Rana speaks English almost ___ a native speaker.",
     options: [
       { id: "a", text: "as fluently as" },
       { id: "b", text: "more fluently than" },
@@ -158,9 +159,9 @@ export const STEP_MOCK_GRAMMAR_QUESTIONS: Question[] = [
     prompt: "You look tired. You ___ get some rest before the exam.",
     options: [
       { id: "a", text: "would" },
-      { id: "b", text: "could" },
+      { id: "b", text: "mustn't" },
       { id: "c", text: "should" },
-      { id: "d", text: "might" },
+      { id: "d", text: "shouldn't" },
     ],
     correctOptionId: "c",
     explanation: "\"Should\" gives advice or a recommendation.",
@@ -469,7 +470,7 @@ export const STEP_MOCK_GRAMMAR_QUESTIONS: Question[] = [
   },
 ];
 
-export const STEP_MOCK_WRITING_QUESTIONS: Question[] = [
+const STEP_MOCK_WRITING_QUESTIONS_RAW: Question[] = [
   {
     id: "sm-writing-1",
     section: "writingAnalysis",
@@ -621,3 +622,7 @@ export const STEP_MOCK_WRITING_QUESTIONS: Question[] = [
     tags: ["error-identification", "conjunctions"],
   },
 ];
+
+export const STEP_MOCK_GRAMMAR_QUESTIONS: Question[] = rebalanceAnswerKey(STEP_MOCK_GRAMMAR_QUESTIONS_RAW);
+
+export const STEP_MOCK_WRITING_QUESTIONS: Question[] = rebalanceAnswerKey(STEP_MOCK_WRITING_QUESTIONS_RAW);
