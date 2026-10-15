@@ -33,7 +33,9 @@ import {
   STEP_MOCK_5_GRAMMAR_QUESTIONS,
   STEP_MOCK_5_WRITING_QUESTIONS,
 } from "../src/data/step-mock-5-grammar-writing";
-import { SKILLS, skillsForTags, type SkillSection } from "../src/data/skills";
+import { SKILLS } from "../src/data/skills";
+import { skillsOfQuestion } from "../src/lib/skill-mastery";
+import { TYPE_PRACTICE_QUESTIONS, TYPE_PRACTICE_READING_PASSAGES } from "../src/data/type-practice";
 import { GRAMMAR_EXTRA_QUESTIONS } from "../src/data/grammar-extra";
 import { LESSON_PRACTICE_GRAMMAR_QUESTIONS } from "../src/data/lesson-practice-grammar";
 import { LESSON_PRACTICE_WRITING_QUESTIONS } from "../src/data/lesson-practice-writing";
@@ -119,12 +121,12 @@ for (const l of SAMPLE_LESSONS) {
     resources: json(l.resources), notes: str(l.notes), question_ids: arr(l.questionIds),
   }));
 }
-for (const p of [...SAMPLE_READING_PASSAGES, ...STEP_MOCK_READING_PASSAGES, ...STEP_MOCK_2_READING_PASSAGES, ...STEP_MOCK_3_READING_PASSAGES, ...STEP_MOCK_4_READING_PASSAGES, ...STEP_MOCK_5_READING_PASSAGES, ...LESSON_PRACTICE_READING_PASSAGES]) {
+for (const p of [...SAMPLE_READING_PASSAGES, ...STEP_MOCK_READING_PASSAGES, ...STEP_MOCK_2_READING_PASSAGES, ...STEP_MOCK_3_READING_PASSAGES, ...STEP_MOCK_4_READING_PASSAGES, ...STEP_MOCK_5_READING_PASSAGES, ...LESSON_PRACTICE_READING_PASSAGES, ...TYPE_PRACTICE_READING_PASSAGES]) {
   out.push(upsert("reading_passages", {
     id: str(p.id), title: str(p.title), body: str(p.body), question_ids: arr(p.questionIds),
   }));
 }
-const ALL_QUESTIONS: Question[] = [...SAMPLE_QUESTIONS, ...GRAMMAR_EXTRA_QUESTIONS, ...LESSON_PRACTICE_GRAMMAR_QUESTIONS, ...LESSON_PRACTICE_WRITING_QUESTIONS, ...LESSON_PRACTICE_READING_QUESTIONS, ...LESSON_PRACTICE_LISTENING_QUESTIONS, ...STEP_MOCK_QUESTIONS, ...STEP_MOCK_2_QUESTIONS, ...STEP_MOCK_3_QUESTIONS, ...STEP_MOCK_4_QUESTIONS, ...STEP_MOCK_5_QUESTIONS];
+const ALL_QUESTIONS: Question[] = [...SAMPLE_QUESTIONS, ...GRAMMAR_EXTRA_QUESTIONS, ...LESSON_PRACTICE_GRAMMAR_QUESTIONS, ...LESSON_PRACTICE_WRITING_QUESTIONS, ...LESSON_PRACTICE_READING_QUESTIONS, ...LESSON_PRACTICE_LISTENING_QUESTIONS, ...TYPE_PRACTICE_QUESTIONS, ...STEP_MOCK_QUESTIONS, ...STEP_MOCK_2_QUESTIONS, ...STEP_MOCK_3_QUESTIONS, ...STEP_MOCK_4_QUESTIONS, ...STEP_MOCK_5_QUESTIONS];
 
 for (const skill of SKILLS) {
   out.push(upsert("skills", {
@@ -143,7 +145,7 @@ for (const q of ALL_QUESTIONS) {
 }
 
 const skillLinks = ALL_QUESTIONS.flatMap((q) =>
-  skillsForTags(q.section as SkillSection, q.tags).map((skillId) => `(${str(q.id)}, ${str(skillId)})`),
+  skillsOfQuestion(q).map((skillId) => `(${str(q.id)}, ${str(skillId)})`),
 );
 for (let i = 0; i < skillLinks.length; i += 200) {
   out.push(

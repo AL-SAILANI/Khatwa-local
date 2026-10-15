@@ -13,6 +13,7 @@ import { LESSON_PRACTICE_GRAMMAR_QUESTIONS } from "./lesson-practice-grammar";
 import { LESSON_PRACTICE_WRITING_QUESTIONS } from "./lesson-practice-writing";
 import { LESSON_PRACTICE_READING_QUESTIONS } from "./lesson-practice-reading";
 import { LESSON_PRACTICE_LISTENING_QUESTIONS } from "./lesson-practice-listening";
+import { TYPE_PRACTICE_QUESTIONS } from "./type-practice";
 import { STEP_MOCK_2_READING_QUESTIONS } from "./step-mock-2-reading";
 import { STEP_MOCK_2_LISTENING_QUESTIONS } from "./step-mock-2-listening";
 import {
@@ -58,6 +59,7 @@ const QUESTIONS = [
   ...LESSON_PRACTICE_WRITING_QUESTIONS,
   ...LESSON_PRACTICE_READING_QUESTIONS,
   ...LESSON_PRACTICE_LISTENING_QUESTIONS,
+  ...TYPE_PRACTICE_QUESTIONS,
   ...STEP_MOCK_2_READING_QUESTIONS,
   ...STEP_MOCK_2_LISTENING_QUESTIONS,
   ...STEP_MOCK_2_GRAMMAR_QUESTIONS,

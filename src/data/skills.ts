@@ -659,6 +659,7 @@ const TAG_SKILL: Record<SkillSection, Record<string, string>> = {
     wish: "gr-wish-subjunctive",
     wishes: "gr-wish-subjunctive",
     tenses: "gr-present-perfect",
+    "time-clauses": "gr-time-clauses",
     "used-to-would": "gr-habit",
     "used-to": "gr-habit",
   },
