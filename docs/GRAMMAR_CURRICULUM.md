@@ -668,3 +668,28 @@ Each mark, its trigger, and the usual elimination:
 ### Gaps this adds
 - The band table could seed a predicted-score estimate (uncalibrated).
 - A diagnostic level test and plan generator by days and hours remain open ideas.
+
+## Grammar question collection (third-party PDF, about 950 questions, no answer key)
+
+Reference only: the questions are not copied, because the wording is not ours and the file ships without answers.
+- File: 485 pages, "compilations and drills", roughly two questions per page, four options each (a to d), no key,
+  no explanations, no rule labels.
+- Formats seen: a sentence with a blank (the large majority); a short dialogue where one speaker's line has the
+  blank; a tag question item; "which sentence is correct" items whose four options are full sentences differing in
+  capitalization, punctuation or one wrong word; "which sentence is correctly punctuated"; error-spotting by
+  option; sentence-completion with a connector.
+- Rough topic mix, from a keyword heuristic over the 942 recognizable items (categories overlap, so treat it as
+  directional, not exact): verb forms and verb patterns (gerund, infinitive, tense) are by far the largest share;
+  comparison and superlatives next; then modals, connectors and conjunctions, quantifiers and determiners,
+  conditionals; passive, relative pronouns, prepositions, reported speech, capitalization and punctuation each
+  appear as smaller groups (capitalization and punctuation items are long, so they are few per page).
+- This matches the earlier course advice: detect the rule from the options, and the high-frequency rules are verb
+  forms, comparison, modals and connectors.
+
+### Gaps this adds
+- Our grammar bank has far fewer items; the high-volume topics above are where more original questions would pay off.
+- Tag every new item with its rule id (gr-gerund-infinitive, gr-comparison, gr-modals, gr-conjunctions,
+  gr-quantifiers, gr-conditionals, and so on) so the report can show the weakest rule.
+- Add the dialogue-blank and tag-question formats, and sentence-level capitalization and punctuation items whose
+  options are full sentences, as item templates.
+- Since the source has no key, any use of it as inspiration still needs our own answer and a short explanation per item.

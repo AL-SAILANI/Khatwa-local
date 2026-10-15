@@ -12,6 +12,7 @@ each answer against the passage. Our own question bank is written independently 
   physician (sixteen, correct).
 
 ## Files received (not imported)
+- Grammar collection PDF (485 pages, about 950 items, no answer key): see the summary at the end of GRAMMAR_CURRICULUM.md.
 - Reading drills, unsolved (100 pages) and solved (100 pages; same text, with an answer key): third-party, wording
   not ours, so only the structure is used as a reference, never copied.
 - 50-question practice booklet (34 pages: listening, reading, grammar and writing analysis): reference only.
