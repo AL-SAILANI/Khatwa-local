@@ -253,3 +253,115 @@ Detection routine:
 - Comparison by syllable length, plus a memorized irregular table.
 - Pronoun families with a "what is missing" first-step drill.
 - Simple-tense signal-word cards and an irregular-verb deck (top ~100).
+
+---
+
+# Key-rules series (videos 6 to 10): what it adds
+
+Source: the same third-party "most repeated rules" series (shared by the project owner; not official). Videos
+covered: continuous tenses, verb patterns (infinitive and gerund), third form of the verb, perfect tenses, perfect
+continuous tenses. Notes are in our own words. Transcripts are auto-captions, so the ends of a few may be cut off.
+
+## Tense map (the whole 12-tense system)
+- Three time zones times four aspects: simple, continuous, perfect, perfect continuous. The aspect decides the shape,
+  the helper verb decides the time.
+- Continuous = be + verb-ing. The verb-ing never changes; only be changes with the time: present am/is/are, past
+  was/were, future will be.
+- Perfect = have + third form. The third form never changes; only have changes: present have/has, past had, future
+  will have.
+- Perfect continuous = have + been + verb-ing. Only the first helper changes: have/has been, had been, will have been.
+- Method: find the helper words in the options first to name the time and aspect, then use the clues below to choose.
+
+## Continuous tenses
+| Tense | Clues |
+|---|---|
+| Present continuous | Happening now (now, at the moment, look, listen: a call for attention to something going on); a temporary habit or temporary situation (this week, these days, I am living in Riyadh for now); a fixed future plan (I am meeting her tomorrow). If will is not offered, a settled plan can use present continuous or be going to. |
+| Past continuous | An action in progress at a past moment (when the accident happened I was watching TV); a long action over a past period (all morning, all week, for months); an old situation that no longer holds (we were living in China at that time); the clause after while. |
+| Future continuous | An action in progress at a named future moment (this time next week I will be relaxing on the beach). If both will + verb and will be + -ing are offered with a future time marker, pick will be + -ing. |
+
+- when versus while: after when, prefer the simple verb; after while, prefer the continuous verb. When both
+  forms are offered, the continuous after while is the more correct choice; if only the simple is offered, take it.
+- There is no had been (as a standalone past continuous): *wasn't studying* is right, *was study* is wrong.
+- Logic test: if the person is described as ill, the logical present continuous is staying home (is not going
+  to school). If the sentence asks "what is X doing?" use continuous.
+
+## Verb patterns: infinitive and gerund
+Three forms after a verb or word: infinitive with to (to eat), gerund (eating), bare infinitive (eat).
+- An -ing word may be a noun (eating = the act of eating), not a continuous verb; it appears after prepositions,
+  as a subject, and after certain verbs.
+- Rule 1: choose the gerund when the word is the subject (Graduating is a milestone; Speaking English is
+  important). The gerund is the first choice; to + verb is possible but weaker.
+- Rule 2: after an adjective, prefer the infinitive (smart to invest; too expensive for me to buy). If to is not
+  offered, the gerund can work as a second choice.
+- Rule 2b: infinitive of purpose answers why (He went to Riyadh to find a job. Why did he go to China? To study
+  Chinese). so alone is never followed by to; so is followed by a subject (so that + clause).
+- Rule 3: after a preposition, always use the gerund (interested in becoming; thank you for helping; before leaving;
+  after graduating; I made breakfast before going outside).
+- Rule 4: after verbs it depends on the verb:
+  - Verbs that take the infinitive with to: need, want, seem, would like, plan, decide, hope, promise, agree.
+  - Verbs that must have an object before the infinitive (tell, ask, remind, persuade): tell me to study; ask the
+    mechanic to fix.
+  - Verbs that take the gerund: enjoy, keep, finish, avoid, mind, suggest, consider.
+  - Verbs that take the bare verb (no to, no -ing): make, let, and all modals/auxiliaries (can, could, will,
+    would, must, should, may, might). I can go, not I can to go or can going.
+  - Verbs that accept both with no big change: like, love, hate, begin, start (I like drinking = I like to drink).
+    would like is always to (I would like to listen).
+  - Verbs that accept both but change meaning: stop, remember, forget. stop eating = quit eating; stop to
+    get water = stop in order to do it.
+- Practical order when unsure: gerund after a preposition, infinitive after most adjectives and for purpose, bare
+  verb after modals, otherwise use the verb list.
+- Trap: forms like to getting or to playing do not exist; check that to is followed by a bare verb.
+
+## Third form of the verb (past participle)
+- Where it is used: perfect tenses, the passive voice, third conditional (had + third form), past modals (could
+  have + third form), and as an adjective after a noun.
+- Three shapes:
+  1. Regular verbs: verb + ed, the same as the past simple (expect: expected).
+  2. Irregular verbs whose third form equals the past simple (let, let, let; buy, bought, bought).
+  3. Irregular verbs whose third form differs from the past simple (give, gave, given; drive, drove, driven). These
+     must be memorized.
+- Check: when the past simple and the third form share a shape, an option like had + past simple form of a
+  type-3 verb is wrong, which can also eliminate answers.
+- Meaning note: a participle used as an adjective says what happened to the noun (the lost book, the broken table);
+  -ing as an adjective describes what the noun does (the sleeping man, the crying child).
+
+## Perfect tenses
+| Tense | Form | Clues |
+|---|---|---|
+| Present perfect | have/has + third form (have with I/you/we/they/plural; has with he/she/it/singular) | Just finished (just, already, yet); recent past with present effect (I haven't seen her this week); life experience up to now (how many countries; I have visited Moscow; three times so far); a duration not yet closed (has known her since he was 10; for three years). hasn't/haven't + yet = present perfect. |
+| Past perfect | had + third form for every subject | Two past events: the earlier one is past perfect (when we arrived, the film had already started; after he closed the door, he found he had lost the key). A regret about the past (I wish I hadn't stayed up). Duration up to a past point (by the time he graduated he had spent six years in America). by the time + past simple points to a past perfect in the other clause. |
+| Future perfect | will have + third form for every subject | A completion before a future point (by 8 o'clock I will have finished; by this time tomorrow we will have submitted; by then she will have finished; by my next birthday I will have turned 25). Clues: by/by the time/when + a future point. |
+
+Choose-by-clue rules:
+- If the option list has have/has with a clearly singular subject like box, pick has (a box of dates is one box).
+- Sequence words (after, before, when) tell the order; the verb of the later event is past simple, the earlier is past
+  simple or past perfect; if only past perfect is offered, take it.
+- Present perfect is not used with a finished past time (yesterday, last year, in 2005) - those take the past simple.
+
+## Perfect continuous tenses
+- Present perfect continuous: have/has been + verb-ing. Clues: an action that is still going, with its length
+  stated (I have been working for four hours; she has been waiting for half an hour); a cause with a present
+  result (I am exhausted because I have been working all day); a recently repeated habit (lately, recently); an
+  action since a past point (we have been working together since 2003). A sentence with since or for may allow
+  either the present perfect or the present perfect continuous; when a question offers both, look for a stated
+  duration, which points to the continuous.
+- Past perfect continuous: had been + verb-ing. Clues: a past action that went on and then stopped before another
+  past moment (the pavement was wet because it had been raining all day; when I met my friend I had been waiting
+  for three hours). The question "how long?" often triggers continuous.
+- Future perfect continuous: will have been + verb-ing. Clues: a duration that will reach a stated point (in April
+  the teacher will have been teaching here for ten years; by July I will have been living in San Francisco for
+  two years; when I retire I will have been working for forty years).
+- Cause and result rule: a sustained action in the recent past that explains a present situation is present perfect
+  continuous; the same relationship set in the past is past perfect continuous; with a future point it is future
+  perfect continuous.
+- Reminder: have been is a pair; only have been + -ing is perfect continuous. Do not confuse had been with was.
+
+## Gaps this adds
+- A 12-tense decision chain that names the aspect from the helper verb first, then the clue words. The present
+  skills (gr-present-simple, gr-present-continuous, gr-present-perfect, gr-past-simple, gr-past-continuous,
+  gr-past-perfect, gr-future) leave out the perfect continuous tenses and future continuous / future perfect.
+  Add: gr-future-continuous, gr-future-perfect, gr-present-perfect-continuous, gr-past-perfect-continuous.
+- A dedicated gr-verb-patterns split (infinitive vs gerund vs bare verb, by verb list), plus a verb-pattern deck.
+- A third-form deck (irregular verbs, grouped by the three shapes).
+- A "when vs while" drill that lets the learner pick simple vs continuous.
+- Existing gr-gerund-infinitive stays but gains the full verb lists and the three exceptions (stop, remember, forget).
