@@ -1,4 +1,5 @@
 import { SKILLS, skillsForTags, type SkillSection } from "@/data/skills";
+import { effectiveTags } from "@/data/question-types";
 import type { ExamAttempt } from "@/types/exam";
 import type { Lesson, LessonProgress } from "@/types/course";
 import type { Question } from "@/types/question";
@@ -19,7 +20,10 @@ const PRIOR_WEIGHT = 2;
 const LESSON_EVIDENCE_WEIGHT = 3;
 
 export function skillsOfQuestion(question: Question): string[] {
-  return skillsForTags(question.section as SkillSection, question.tags);
+  return skillsForTags(
+    question.section as SkillSection,
+    effectiveTags(question),
+  );
 }
 
 interface Tally {

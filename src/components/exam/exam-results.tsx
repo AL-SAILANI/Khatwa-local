@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Award, ArrowLeft, Clock, Target, BookMarked, Share2, BookOpen } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/card";
@@ -10,6 +10,7 @@ import { ScoreTrend } from "@/components/exam/score-trend";
 import { getExamAttempt } from "@/lib/firestore/exam-attempts";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { useLocalizedContent } from "@/hooks/use-localized-content";
+import { skillForTag } from "@/data/skills";
 import { suggestLessonForTag } from "@/lib/tag-lesson-map";
 import { bandFromScore, focusSections } from "@/lib/placement";
 import { cn } from "@/lib/utils/cn";
@@ -20,6 +21,7 @@ const buttonStyles = "inline-flex items-center justify-center gap-2 whitespace-n
 export function ExamResults({ attemptId }: { attemptId: string }) {
   const t = useTranslations("exam.results");
   const tTracks = useTranslations("trackNames");
+  const locale = useLocale();
   const { user } = useUserProfile();
   const { lessonTitle } = useLocalizedContent();
   const [attempt, setAttempt] = useState<ExamAttempt | null>(null);
@@ -143,12 +145,14 @@ export function ExamResults({ attemptId }: { attemptId: string }) {
         <Card>
           <h2 className="font-semibold">{t("weakSkills")}</h2>
           <div className="mt-4 flex flex-wrap gap-2">
-            {attempt.weakSkills.map((skill) => {
-              const lesson = suggestLessonForTag(skill);
+            {attempt.weakSkills.map((tag) => {
+              const lesson = suggestLessonForTag(tag);
+              const found = skillForTag(tag);
+              const skill = found ? (locale === "ar" ? found.titleAr : found.title) : tag;
               if (!lesson) {
                 return (
                   <span
-                    key={skill}
+                    key={tag}
                     className="rounded-none bg-surface-muted px-3.5 py-1.5 text-sm font-medium text-foreground/80"
                   >
                     {skill}
@@ -157,7 +161,7 @@ export function ExamResults({ attemptId }: { attemptId: string }) {
               }
               return (
                 <Link
-                  key={`${skill}-${lesson.id}`}
+                  key={`${tag}-${lesson.id}`}
                   href={`/courses/${lesson.courseId}/${lesson.id}`}
                   className="inline-flex items-center gap-1.5 rounded-none bg-primary-50 px-3.5 py-1.5 text-sm font-medium text-ink-violet transition-colors hover:bg-primary-100 dark:bg-primary-500/10 dark:text-primary-300 dark:hover:bg-primary-500/20"
                 >

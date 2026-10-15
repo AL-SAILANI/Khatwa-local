@@ -10,6 +10,7 @@ import { LESSON_PRACTICE_LISTENING_QUESTIONS } from "@/data/lesson-practice-list
 import { STEP_MOCK_READING_QUESTIONS } from "@/data/step-mock-reading";
 import { STEP_MOCK_LISTENING_QUESTIONS } from "@/data/step-mock-listening";
 import { STEP_MOCK_GRAMMAR_QUESTIONS, STEP_MOCK_WRITING_QUESTIONS } from "@/data/step-mock-grammar-writing";
+import { effectiveTags, reportableTags } from "@/data/question-types";
 import type { Lesson } from "@/types/course";
 import type { Question } from "@/types/question";
 
@@ -85,7 +86,7 @@ function bestLessonForTag(tag: string, preferredTrack?: string): Lesson | null {
     let count = 0;
     for (const questionId of lesson.questionIds) {
       const question = QUESTION_BY_ID.get(questionId);
-      if (question?.tags.some((t) => canonicalTag(t) === normalized)) count++;
+      if (question && effectiveTags(question).some((t) => canonicalTag(t) === normalized)) count++;
     }
     if (count === 0) continue;
 
@@ -114,7 +115,7 @@ export function suggestLessonsForQuestion(question: Question, limit = 2): Lesson
   candidates.push(...directOwners);
 
   if (candidates.length < limit) {
-    for (const tag of question.tags) {
+    for (const tag of reportableTags(question)) {
       const lesson = bestLessonForTag(tag, track);
       if (lesson && !candidates.some((candidate) => candidate.id === lesson.id)) {
         candidates.push(lesson);
