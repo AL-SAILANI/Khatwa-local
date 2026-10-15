@@ -74,6 +74,28 @@ export function buildStages(
   return stages;
 }
 
+export interface ListeningClipRange {
+  /** Index of the clip's first question in the full question list. */
+  start: number;
+  count: number;
+}
+
+/** Groups the listening stage's questions into clips: consecutive questions
+ * that share one recording (same audio file or same script). */
+export function buildClips(questions: Question[], stage: ExamStage): ListeningClipRange[] {
+  const clips: ListeningClipRange[] = [];
+  let lastKey: string | null = null;
+  for (let i = stage.start; i < stage.start + stage.count; i++) {
+    const q = questions[i]!;
+    const key = q.audioUrl ?? q.transcript ?? q.id;
+    const last = clips[clips.length - 1];
+    if (last && key === lastKey) last.count += 1;
+    else clips.push({ start: i, count: 1 });
+    lastKey = key;
+  }
+  return clips;
+}
+
 export type QuestionState = "answered" | "flagged" | "unanswered";
 
 /** Counts for the questions of one stage, used by the stage summary. */

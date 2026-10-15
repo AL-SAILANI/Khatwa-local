@@ -100,6 +100,26 @@ export const SKILLS: Skill[] = [
     ["rd-main-idea"],
   ),
   s(
+    "rd-agreement",
+    "reading",
+    "question-types",
+    "True, false and not mentioned",
+    "صحيح وخطأ وغير مذكور",
+    "B1",
+    5,
+    ["rd-detail"],
+  ),
+  s(
+    "rd-graph",
+    "reading",
+    "question-types",
+    "Graphs, charts and tables",
+    "الرسوم البيانية والجداول",
+    "B1",
+    3,
+    ["rd-detail"],
+  ),
+  s(
     "rd-asma",
     "reading",
     "strategy",
@@ -145,6 +165,56 @@ export const SKILLS: Skill[] = [
     "التعابير وإعادة الصياغة",
     "B1",
     3,
+  ),
+  s(
+    "ls-numbers",
+    "listening",
+    "comprehension",
+    "Numbers, times and dates",
+    "الأرقام والأوقات والتواريخ",
+    "A2",
+    5,
+    ["ls-detail"],
+  ),
+  s(
+    "ls-reason",
+    "listening",
+    "comprehension",
+    "Reasons and causes",
+    "الأسباب في المسموع",
+    "A2",
+    4,
+    ["ls-detail"],
+  ),
+  s(
+    "ls-important-idea",
+    "listening",
+    "comprehension",
+    "The most important idea",
+    "الفكرة المهمة",
+    "B1",
+    3,
+    ["ls-detail"],
+  ),
+  s(
+    "ls-opinion",
+    "listening",
+    "comprehension",
+    "Speaker opinions and feelings",
+    "آراء المتحدث ومشاعره",
+    "B1",
+    3,
+    ["ls-detail"],
+  ),
+  s(
+    "ls-evidence",
+    "listening",
+    "comprehension",
+    "Evidence and support",
+    "الأدلة والدعم",
+    "B2",
+    1,
+    ["ls-opinion"],
   ),
   s(
     "ls-preview",
@@ -398,6 +468,36 @@ export const SKILLS: Skill[] = [
   ),
   // Writing analysis
   s(
+    "gr-tag-questions",
+    "grammar",
+    "sentence-level",
+    "Question tags",
+    "الأسئلة الذيلية",
+    "B1",
+    3,
+    ["gr-present-simple"],
+  ),
+  s(
+    "gr-habit",
+    "grammar",
+    "tenses",
+    "Used to and be used to",
+    "used to و be used to",
+    "B1",
+    3,
+    ["gr-past-simple"],
+  ),
+  s(
+    "gr-time-clauses",
+    "grammar",
+    "tenses",
+    "Time clauses and connectors",
+    "جمل الوقت وأدوات الربط الزمنية",
+    "B1",
+    4,
+    ["gr-past-simple", "gr-future"],
+  ),
+  s(
     "wa-capitalization",
     "writingAnalysis",
     "mechanics",
@@ -506,10 +606,19 @@ const TAG_SKILL: Record<SkillSection, Record<string, string>> = {
     purpose: "rd-purpose-opinion",
     "author-opinion": "rd-purpose-opinion",
     "reading-comprehension": "rd-detail",
+    agreement: "rd-agreement",
+    graph: "rd-graph",
   },
   listening: {
     "listening-comprehension": "ls-detail",
     "listening-inference": "ls-inference",
+    "listening-number": "ls-numbers",
+    "listening-reason": "ls-reason",
+    "listening-important-idea": "ls-important-idea",
+    "listening-opinion": "ls-opinion",
+    "listening-evidence": "ls-evidence",
+    "listening-main-idea": "ls-gist",
+    "listening-term": "ls-idiom",
   },
   grammar: {
     adverbs: "gr-adj-adv",
@@ -538,7 +647,7 @@ const TAG_SKILL: Record<SkillSection, Record<string, string>> = {
     "gerunds-infinitives": "gr-gerund-infinitive",
     inversion: "gr-inversion",
     "noun-clauses": "gr-noun-clauses",
-    "question-tags": "gr-noun-clauses",
+    "question-tags": "gr-tag-questions",
     "parallel-structure": "gr-conjunctions",
     "passive-voice": "gr-passive",
     "past-continuous": "gr-past-continuous",
@@ -561,8 +670,9 @@ const TAG_SKILL: Record<SkillSection, Record<string, string>> = {
     wish: "gr-wish-subjunctive",
     wishes: "gr-wish-subjunctive",
     tenses: "gr-present-perfect",
-    "used-to-would": "gr-past-simple",
-    "used-to": "gr-past-simple",
+    "time-clauses": "gr-time-clauses",
+    "used-to-would": "gr-habit",
+    "used-to": "gr-habit",
   },
   writingAnalysis: {
     "adjective-adverb": "gr-adj-adv",
@@ -597,7 +707,7 @@ const TAG_SKILL: Record<SkillSection, Record<string, string>> = {
     sequencing: "wa-sequencing",
     "subject-verb-agreement": "gr-sv-agreement",
     tenses: "gr-present-perfect",
-    "time-clauses": "gr-past-perfect",
+    "time-clauses": "gr-time-clauses",
     "word-order": "wa-sentence-structure",
     "sentence-meaning": "wa-sentence-structure",
     comparatives: "gr-comparison",
@@ -611,4 +721,13 @@ export function skillsForTags(section: SkillSection, tags: string[]): string[] {
     .map((tag) => TAG_SKILL[section][tag])
     .filter((id): id is string => Boolean(id));
   return [...new Set(ids)];
+}
+
+/** The skill a tag practises, searched across sections (tags are mostly unique per skill). */
+export function skillForTag(tag: string): Skill | undefined {
+  for (const section of Object.keys(TAG_SKILL) as SkillSection[]) {
+    const id = TAG_SKILL[section][tag];
+    if (id) return SKILL_BY_ID.get(id);
+  }
+  return undefined;
 }

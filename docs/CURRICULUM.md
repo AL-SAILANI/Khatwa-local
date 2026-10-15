@@ -19,7 +19,7 @@ structure, technique ideas and links only, never copied (see `.opencode/skills/s
 
 Treat the "third-party" rows as approximations until Qiyas publishes them.
 
-Exam interface, as built in the mock exam screen: three timed stages (reading 60 min, grammar + writing analysis 30 min, listening 25 min), each opened by a briefing and closed for good when finished or when its time runs out. Not verified against an official source: the order of the stages (the app uses reading, structure, listening; one third-party site lists listening first) and whether a listening clip plays only once (third-party sites say once). Confirm both with a student who took the exam before relying on them.
+Exam interface, as built in the mock exam screen: three timed stages (reading 60 min, grammar + writing analysis 30 min, listening 25 min), each opened by a briefing and closed for good when finished or when its time runs out. Listening follows the format described in a third-party Saudi STEP course (video series, not an official source): about 9 clips with 1 to 4 questions each (20 in total), 15 seconds of reading time per question before the recording, one automatic play, no return to an earlier clip, answers not necessarily in the order they are heard, and the clip and its questions on the same screen. The runner implements this (clip preview countdown, single play, forward-only). Still not verified against an official source: the order of the stages (the app uses reading, structure, listening; one third-party site lists listening first) and whether a listening clip plays only once (third-party sites say once). Confirm both with a student who took the exam before relying on them.
 
 ## 2. Tracks
 

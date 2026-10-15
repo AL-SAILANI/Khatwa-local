@@ -1,7 +1,9 @@
 import { useTranslations } from "next-intl";
 import { Check, Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
+import { chartForPassage } from "@/data/passage-charts";
 import { ListeningPlayer } from "./listening-player";
+import { PassageChart } from "./passage-chart";
 import type { Question, ReadingPassage } from "@/types/question";
 
 interface QuestionViewProps {
@@ -24,6 +26,7 @@ export function QuestionView({
   onSelect,
 }: QuestionViewProps) {
   const t = useTranslations("exam");
+  const chart = passage ? chartForPassage(passage.id) : undefined;
   const hasMaterial = Boolean(
     passage || question.audioUrl || question.transcript,
   );
@@ -31,7 +34,12 @@ export function QuestionView({
   const material = (
     <>
       {passage && (
-        <article className="max-h-[34vh] overflow-y-auto border-s-4 border-primary-500 bg-surface-muted/50 px-5 py-4 sm:px-8 sm:py-5">
+        <article
+          className={cn(
+            "overflow-y-auto border-s-4 border-primary-500 bg-surface-muted/50 px-5 py-4 sm:px-8 sm:py-5",
+            chart ? "max-h-[52vh]" : "max-h-[34vh]",
+          )}
+        >
           <h3 className="text-xl font-bold leading-snug sm:text-2xl" dir="ltr">
             {passage.title}
           </h3>
@@ -41,6 +49,11 @@ export function QuestionView({
           >
             {passage.body}
           </p>
+          {chart && (
+            <div className="mt-4">
+              <PassageChart spec={chart} />
+            </div>
+          )}
         </article>
       )}
 
@@ -78,45 +91,69 @@ export function QuestionView({
             {question.prompt}
           </p>
 
-          <div className="mt-4 space-y-2.5" role="group">
-            {question.options.map((option) => {
-              const isSelected = selectedOptionId === option.id;
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  onClick={() => onSelect(option.id)}
-                  dir="ltr"
-                  aria-pressed={isSelected}
-                  className={cn(
-                    "flex min-h-14 w-full items-center gap-4 rounded-xl border-2 px-4 py-3 text-start text-lg leading-snug transition-colors sm:px-5 sm:text-xl",
-                    isSelected
-                      ? "border-primary-500 bg-primary-100 font-semibold dark:bg-primary-500/15"
-                      : "border-border hover:border-primary-300 hover:bg-surface-muted",
-                  )}
-                >
-                  <span
-                    className={cn(
-                      "grid size-10 shrink-0 place-items-center rounded-full border-2 font-sans text-base font-bold leading-none",
-                      isSelected
-                        ? "border-primary-600 bg-primary-500 text-ink-violet"
-                        : "border-border text-muted",
-                    )}
-                  >
-                    <span className="block leading-none">
-                      {option.id.toUpperCase()}
-                    </span>
-                  </span>
-                  <span className="min-w-0 flex-1">{option.text}</span>
-                  {isSelected && (
-                    <Check className="size-5 shrink-0 text-ink-violet dark:text-primary-300" />
-                  )}
-                </button>
-              );
-            })}
-          </div>
+          <AnswerOptions
+            question={question}
+            selectedOptionId={selectedOptionId}
+            onSelect={onSelect}
+          />
         </div>
       </div>
+    </div>
+  );
+}
+
+interface AnswerOptionsProps {
+  question: Question;
+  selectedOptionId?: string;
+  onSelect: (optionId: string) => void;
+  disabled?: boolean;
+}
+
+/** The lettered answer buttons of one question. */
+export function AnswerOptions({
+  question,
+  selectedOptionId,
+  onSelect,
+  disabled = false,
+}: AnswerOptionsProps) {
+  return (
+    <div className="mt-4 space-y-2.5" role="group">
+      {question.options.map((option) => {
+        const isSelected = selectedOptionId === option.id;
+        return (
+          <button
+            key={option.id}
+            type="button"
+            disabled={disabled}
+            onClick={() => onSelect(option.id)}
+            dir="ltr"
+            aria-pressed={isSelected}
+            className={cn(
+              "flex min-h-14 w-full items-center gap-4 rounded-xl border-2 px-4 py-3 text-start text-lg leading-snug transition-colors sm:px-5 sm:text-xl",
+              isSelected
+                ? "border-primary-500 bg-primary-100 font-semibold dark:bg-primary-500/15"
+                : "border-border hover:border-primary-300 hover:bg-surface-muted",
+            )}
+          >
+            <span
+              className={cn(
+                "grid size-10 shrink-0 place-items-center rounded-full border-2 font-sans text-base font-bold leading-none",
+                isSelected
+                  ? "border-primary-600 bg-primary-500 text-ink-violet"
+                  : "border-border text-muted",
+              )}
+            >
+              <span className="block leading-none">
+                {option.id.toUpperCase()}
+              </span>
+            </span>
+            <span className="min-w-0 flex-1">{option.text}</span>
+            {isSelected && (
+              <Check className="size-5 shrink-0 text-ink-violet dark:text-primary-300" />
+            )}
+          </button>
+        );
+      })}
     </div>
   );
 }

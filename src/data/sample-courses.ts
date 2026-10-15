@@ -4,6 +4,7 @@ import { LESSON_PRACTICE_GRAMMAR_IDS } from "@/data/lesson-practice-grammar";
 import { LESSON_PRACTICE_WRITING_IDS } from "@/data/lesson-practice-writing";
 import { LESSON_PRACTICE_READING_IDS } from "@/data/lesson-practice-reading";
 import { LESSON_PRACTICE_LISTENING_IDS } from "@/data/lesson-practice-listening";
+import { TYPE_LESSONS } from "@/data/type-lessons";
 
 const PRACTICE_IDS: Record<string, string[]> = {
   ...LESSON_PRACTICE_GRAMMAR_IDS,
@@ -19,10 +20,10 @@ const PRACTICE_IDS: Record<string, string[]> = {
  * lessons ship as text notes plus a short inline quiz instead.
  */
 const TRACK_META: Record<CourseTrack, { title: string; description: string; lessonCount: number; estimatedMinutes: number }> = {
-  grammar: { title: "أساسيات النحو", description: "القواعد الأكثر شيوعًا في اختبار STEP: تطابق الفعل والفاعل، الأزمنة، والجمل الشرطية.", lessonCount: 17, estimatedMinutes: 278 },
-  reading: { title: "استراتيجيات القراءة", description: "كيف تقرأ نصًا أكاديميًا بسرعة وتستخرج الفكرة الرئيسية والتفاصيل الداعمة.", lessonCount: 11, estimatedMinutes: 178 },
-  listening: { title: "مهارات الاستماع", description: "تقنيات لمتابعة المحادثات المسموعة واستخراج المعلومة الدقيقة المطلوبة.", lessonCount: 10, estimatedMinutes: 162 },
-  writingAnalysis: { title: "تحليل الأخطاء الكتابية", description: "كيف تكتشف الخطأ النحوي في جملة مكتوبة بسرعة ودقة.", lessonCount: 8, estimatedMinutes: 130 },
+  grammar: { title: "أساسيات النحو", description: "القواعد الأكثر شيوعًا في اختبار STEP: تطابق الفعل والفاعل، الأزمنة، والجمل الشرطية.", lessonCount: 20, estimatedMinutes: 326 },
+  reading: { title: "استراتيجيات القراءة", description: "كيف تقرأ نصًا أكاديميًا بسرعة وتستخرج الفكرة الرئيسية والتفاصيل الداعمة.", lessonCount: 15, estimatedMinutes: 242 },
+  listening: { title: "مهارات الاستماع", description: "تقنيات لمتابعة المحادثات المسموعة واستخراج المعلومة الدقيقة المطلوبة.", lessonCount: 16, estimatedMinutes: 258 },
+  writingAnalysis: { title: "تحليل الأخطاء الكتابية", description: "كيف تكتشف الخطأ النحوي في جملة مكتوبة بسرعة ودقة.", lessonCount: 10, estimatedMinutes: 162 },
   vocabulary: { title: "بناء المفردات", description: "أساليب فعّالة لحفظ وتثبيت مفردات جديدة على المدى الطويل.", lessonCount: 8, estimatedMinutes: 130 },
   tips: { title: "نصائح عامة للاختبار", description: "عادات صغيرة ترفع درجتك دون مذاكرة إضافية.", lessonCount: 3, estimatedMinutes: 50 },
   strategies: { title: "إدارة الوقت أثناء الاختبار", description: "كيف توزّع 150 دقيقة على 100 سؤال دون الشعور بالضغط.", lessonCount: 3, estimatedMinutes: 50 },
@@ -688,7 +689,7 @@ const BASE_LESSONS: Lesson[] = [
   },
 ];
 
-export const SAMPLE_LESSONS: Lesson[] = BASE_LESSONS.map((lesson) => ({
+export const SAMPLE_LESSONS: Lesson[] = [...BASE_LESSONS, ...TYPE_LESSONS].map((lesson) => ({
   ...lesson,
   resources: [...lesson.resources, ...(ENGVID_LINKS[lesson.id] ?? [])],
   questionIds: [...lesson.questionIds, ...(PRACTICE_IDS[lesson.id] ?? [])],

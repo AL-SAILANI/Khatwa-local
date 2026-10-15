@@ -7,6 +7,14 @@ import {
   STEP_MOCK_WRITING_QUESTIONS,
 } from "./step-mock-grammar-writing";
 import { GRAMMAR_EXTRA_QUESTIONS } from "./grammar-extra";
+import { SAMPLE_READING_QUESTIONS_EXTRA } from "./reading-extra";
+import { SAMPLE_LISTENING_QUESTIONS_EXTRA } from "./listening-extra";
+import { LESSON_PRACTICE_GRAMMAR_QUESTIONS } from "./lesson-practice-grammar";
+import { LESSON_PRACTICE_WRITING_QUESTIONS } from "./lesson-practice-writing";
+import { LESSON_PRACTICE_READING_QUESTIONS } from "./lesson-practice-reading";
+import { LESSON_PRACTICE_LISTENING_QUESTIONS } from "./lesson-practice-listening";
+import { TYPE_PRACTICE_QUESTIONS } from "./type-practice";
+import { GRAPH_PRACTICE_QUESTIONS } from "./graph-practice";
 import { STEP_MOCK_2_READING_QUESTIONS } from "./step-mock-2-reading";
 import { STEP_MOCK_2_LISTENING_QUESTIONS } from "./step-mock-2-listening";
 import {
@@ -37,6 +45,7 @@ import {
   skillsForTags,
   type SkillSection,
 } from "./skills";
+import { skillsOfQuestion } from "@/lib/skill-mastery";
 
 const QUESTIONS = [
   ...SAMPLE_QUESTIONS,
@@ -45,6 +54,14 @@ const QUESTIONS = [
   ...STEP_MOCK_GRAMMAR_QUESTIONS,
   ...STEP_MOCK_WRITING_QUESTIONS,
   ...GRAMMAR_EXTRA_QUESTIONS,
+  ...SAMPLE_READING_QUESTIONS_EXTRA,
+  ...SAMPLE_LISTENING_QUESTIONS_EXTRA,
+  ...LESSON_PRACTICE_GRAMMAR_QUESTIONS,
+  ...LESSON_PRACTICE_WRITING_QUESTIONS,
+  ...LESSON_PRACTICE_READING_QUESTIONS,
+  ...LESSON_PRACTICE_LISTENING_QUESTIONS,
+  ...TYPE_PRACTICE_QUESTIONS,
+  ...GRAPH_PRACTICE_QUESTIONS,
   ...STEP_MOCK_2_READING_QUESTIONS,
   ...STEP_MOCK_2_LISTENING_QUESTIONS,
   ...STEP_MOCK_2_GRAMMAR_QUESTIONS,
@@ -90,5 +107,20 @@ describe("skills map", () => {
       if (ids.length === 0) unmapped.push(q.id);
     }
     expect(unmapped).toEqual([]);
+  });
+
+  it("gives every question-type skill at least one question in the bank", () => {
+    const strategy = new Set(["rd-asma", "ls-preview", "gr-strategy"]);
+    const covered = new Set<string>();
+    for (const q of QUESTIONS) {
+      for (const id of skillsOfQuestion(q)) covered.add(id);
+    }
+    const empty = SKILLS.filter(
+      (skill) =>
+        skill.section !== "vocabulary" &&
+        !strategy.has(skill.id) &&
+        !covered.has(skill.id),
+    ).map((skill) => skill.id);
+    expect(empty).toEqual([]);
   });
 });

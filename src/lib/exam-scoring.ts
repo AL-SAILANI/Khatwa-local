@@ -1,4 +1,5 @@
 import { STEP_SECTION_WEIGHTS } from "@/lib/constants/exam";
+import { reportableTags } from "@/data/question-types";
 import { bandFromScore } from "@/lib/placement";
 import type { ExamSectionKey, Question } from "@/types/question";
 import type { SectionResult } from "@/types/exam";
@@ -31,7 +32,7 @@ export function scoreAttempt(
 
     for (const question of sectionQuestions) {
       if (answers[question.id] !== question.correctOptionId) {
-        for (const tag of question.tags) {
+        for (const tag of reportableTags(question)) {
           wrongTagCounts.set(tag, (wrongTagCounts.get(tag) ?? 0) + 1);
         }
       }
