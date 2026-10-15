@@ -110,6 +110,16 @@ export const SKILLS: Skill[] = [
     ["rd-detail"],
   ),
   s(
+    "rd-graph",
+    "reading",
+    "question-types",
+    "Graphs, charts and tables",
+    "الرسوم البيانية والجداول",
+    "B1",
+    3,
+    ["rd-detail"],
+  ),
+  s(
     "rd-asma",
     "reading",
     "strategy",
@@ -597,6 +607,7 @@ const TAG_SKILL: Record<SkillSection, Record<string, string>> = {
     "author-opinion": "rd-purpose-opinion",
     "reading-comprehension": "rd-detail",
     agreement: "rd-agreement",
+    graph: "rd-graph",
   },
   listening: {
     "listening-comprehension": "ls-detail",

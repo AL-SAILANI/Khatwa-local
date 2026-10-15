@@ -60,6 +60,7 @@ const READING_SPECIFIC = new Set([
   "purpose",
   "inference",
   "agreement",
+  "graph",
 ]);
 
 const LISTENING_SPECIFIC = new Set([

@@ -1,7 +1,9 @@
 import { useTranslations } from "next-intl";
 import { Check, Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
+import { chartForPassage } from "@/data/passage-charts";
 import { ListeningPlayer } from "./listening-player";
+import { PassageChart } from "./passage-chart";
 import type { Question, ReadingPassage } from "@/types/question";
 
 interface QuestionViewProps {
@@ -24,6 +26,7 @@ export function QuestionView({
   onSelect,
 }: QuestionViewProps) {
   const t = useTranslations("exam");
+  const chart = passage ? chartForPassage(passage.id) : undefined;
   const hasMaterial = Boolean(
     passage || question.audioUrl || question.transcript,
   );
@@ -31,7 +34,12 @@ export function QuestionView({
   const material = (
     <>
       {passage && (
-        <article className="max-h-[34vh] overflow-y-auto border-s-4 border-primary-500 bg-surface-muted/50 px-5 py-4 sm:px-8 sm:py-5">
+        <article
+          className={cn(
+            "overflow-y-auto border-s-4 border-primary-500 bg-surface-muted/50 px-5 py-4 sm:px-8 sm:py-5",
+            chart ? "max-h-[52vh]" : "max-h-[34vh]",
+          )}
+        >
           <h3 className="text-xl font-bold leading-snug sm:text-2xl" dir="ltr">
             {passage.title}
           </h3>
@@ -41,6 +49,11 @@ export function QuestionView({
           >
             {passage.body}
           </p>
+          {chart && (
+            <div className="mt-4">
+              <PassageChart spec={chart} />
+            </div>
+          )}
         </article>
       )}
 
