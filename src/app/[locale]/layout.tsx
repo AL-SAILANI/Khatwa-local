@@ -4,6 +4,7 @@ import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing, localeDirection, type Locale } from "@/i18n/routing";
 import { ThemeProvider, themeInitScript } from "@/components/theme/theme-provider";
+import { OAuthReturnHandler } from "@/components/auth/oauth-return-handler";
 import { PwaRegister } from "@/components/pwa/pwa-register";
 import { InstallPrompt } from "@/components/pwa/install-prompt";
 import { PageErrorBoundary } from "@/components/ui/error-boundary";
@@ -87,6 +88,7 @@ export default async function LocaleLayout({
             <BackToTop />
             <WhatsAppFloat />
             <PageErrorBoundary>{children}</PageErrorBoundary>
+            <OAuthReturnHandler />
             <PwaRegister />
             <InstallPrompt />
           </ThemeProvider>

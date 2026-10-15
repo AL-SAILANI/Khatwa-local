@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
-import { Volume2 } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { Check, Volume2 } from "lucide-react";
 import { cn } from "@/lib/utils/cn";
 import { ListeningPlayer } from "./listening-player";
 import type { Question, ReadingPassage } from "@/types/question";
@@ -12,6 +11,12 @@ interface QuestionViewProps {
   onSelect: (optionId: string) => void;
 }
 
+/**
+ * Exam question. With a passage or audio it becomes a split view: the
+ * material on one side and the question with its answers on the other, each
+ * scrolling on its own so the passage stays in view while answering. Without
+ * material the question is a single centred column.
+ */
 export function QuestionView({
   question,
   passage,
@@ -19,83 +24,97 @@ export function QuestionView({
   onSelect,
 }: QuestionViewProps) {
   const t = useTranslations("exam");
+  const hasMaterial = Boolean(
+    passage || question.audioUrl || question.transcript,
+  );
 
-  return (
-    <div className="grid gap-6 lg:grid-cols-2">
+  const material = (
+    <>
       {passage && (
-        <Card className="max-h-[36vh] overflow-y-auto lg:max-h-[60vh]">
-          <h3 className="font-semibold">{passage.title}</h3>
+        <article className="max-h-[34vh] overflow-y-auto border-s-4 border-primary-500 bg-surface-muted/50 px-5 py-4 sm:px-8 sm:py-5">
+          <h3 className="text-xl font-bold leading-snug sm:text-2xl" dir="ltr">
+            {passage.title}
+          </h3>
           <p
-            className="mt-3 whitespace-pre-line text-sm leading-relaxed text-foreground/90"
+            className="mt-3 whitespace-pre-line text-base leading-8 text-foreground/90 sm:text-lg sm:leading-8"
             dir="ltr"
           >
             {passage.body}
           </p>
-        </Card>
+        </article>
       )}
 
       {question.audioUrl && (
-        <Card className="max-h-[60vh] overflow-y-auto">
-          <div className="flex items-center gap-2 text-sm font-semibold">
-            <Volume2 className="size-4 text-ink-violet dark:text-primary-300" />
+        <div className="border border-border bg-surface-muted/50 p-5">
+          <div className="flex items-center gap-2 text-lg font-semibold">
+            <Volume2 className="size-5 text-ink-violet dark:text-primary-300" />
             {t("audioNote")}
           </div>
           <audio
             controls
             preload="none"
-            className="mt-3 w-full"
+            className="mt-4 w-full"
             src={question.audioUrl}
           />
-        </Card>
+        </div>
       )}
 
       {question.transcript && !question.audioUrl && (
         <ListeningPlayer transcript={question.transcript} />
       )}
+    </>
+  );
 
-      <div
-        className={cn(
-          !passage &&
-            !question.audioUrl &&
-            !question.transcript &&
-            "lg:col-span-2",
-        )}
-      >
-        <p className="text-base font-medium leading-relaxed" dir="ltr">
-          {question.prompt}
-        </p>
+  return (
+    <div className="h-full overflow-y-auto">
+      <div className="mx-auto w-full max-w-5xl space-y-5 px-4 py-5 sm:px-8 sm:py-6">
+        {hasMaterial && <div className="space-y-4">{material}</div>}
 
-        <div className="mt-6 space-y-3">
-          {question.options.map((option) => {
-            const isSelected = selectedOptionId === option.id;
-            return (
-              <button
-                key={option.id}
-                type="button"
-                onClick={() => onSelect(option.id)}
-                dir="ltr"
-                aria-pressed={isSelected}
-                className={cn(
-                  "flex w-full items-center gap-3 rounded-xl border p-4 text-start text-sm transition-all duration-200",
-                  isSelected
-                    ? "border-primary-500 bg-primary-100 font-semibold ring-1 ring-primary-500 dark:bg-primary-500/15"
-                    : "border-border hover:border-primary-300 hover:bg-surface-muted",
-                )}
-              >
-                <span
+        <div>
+          <p
+            className="text-xl font-semibold leading-snug sm:text-2xl"
+            dir="ltr"
+          >
+            {question.prompt}
+          </p>
+
+          <div className="mt-4 space-y-2.5" role="group">
+            {question.options.map((option) => {
+              const isSelected = selectedOptionId === option.id;
+              return (
+                <button
+                  key={option.id}
+                  type="button"
+                  onClick={() => onSelect(option.id)}
+                  dir="ltr"
+                  aria-pressed={isSelected}
                   className={cn(
-                    "flex size-6 shrink-0 items-center justify-center rounded-full border text-xs font-semibold",
+                    "flex min-h-14 w-full items-center gap-4 rounded-xl border-2 px-4 py-3 text-start text-lg leading-snug transition-colors sm:px-5 sm:text-xl",
                     isSelected
-                      ? "border-primary-600 bg-primary-600 text-ink-violet"
-                      : "border-border text-muted",
+                      ? "border-primary-500 bg-primary-100 font-semibold dark:bg-primary-500/15"
+                      : "border-border hover:border-primary-300 hover:bg-surface-muted",
                   )}
                 >
-                  {option.id.toUpperCase()}
-                </span>
-                {option.text}
-              </button>
-            );
-          })}
+                  <span
+                    className={cn(
+                      "grid size-10 shrink-0 place-items-center rounded-full border-2 font-sans text-base font-bold leading-none",
+                      isSelected
+                        ? "border-primary-600 bg-primary-500 text-ink-violet"
+                        : "border-border text-muted",
+                    )}
+                  >
+                    <span className="block leading-none">
+                      {option.id.toUpperCase()}
+                    </span>
+                  </span>
+                  <span className="min-w-0 flex-1">{option.text}</span>
+                  {isSelected && (
+                    <Check className="size-5 shrink-0 text-ink-violet dark:text-primary-300" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
