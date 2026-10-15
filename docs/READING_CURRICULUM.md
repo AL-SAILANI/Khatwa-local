@@ -35,7 +35,32 @@ Course levels: basic = pronouns, vocabulary, information and inference, graphs (
 text or graphic); intermediate = text agreement, main idea and title, author's opinion (needs more reading);
 advanced = two-text questions.
 
+## Worked-practice series (second source, same third-party style)
+Four videos that solve whole recalled passages question by question (a short history text, a world-language chart,
+a travel-history text, a mystery text, a country-history text, an astronomy text, a landmark text, a food text, a
+prize text, a life-expectancy chart). What they add:
+- **Search for the idea, not the word**: "old name" is found through "formerly known as"; "how many fields" through a
+  list; the question and the passage often share no words. Capitalised words (names, places) are anchors.
+- **Order of work inside a passage**: answer detail, pronoun and vocabulary questions as you meet them (each needs a
+  sentence or two); leave "which of these is mentioned", text-type and title questions to the end, when you have seen
+  most of the passage; mark skipped questions so none is forgotten. The presenter tries both orders for titles.
+- **Title and paragraph main idea**: a correct title covers the whole passage; one detail or one paragraph is too
+  narrow, a whole field is too broad; for "main idea of paragraph N" the right option summarises the paragraph and
+  the wrong ones are single details from it.
+- **Calculated information**: ages or durations from two dates, counts from a list, totals from "five planes plus
+  one search plane".
+- **Passage type** question ("what kind of text is this?": description, argument, story, opinion): decide after
+  reading; a text with facts and no opinion or persuasion is a description.
+- **Vocabulary**: stay in the sentence, use the neighbouring synonym or opposite, use word forms (bright to brighter
+  means "more shining"), read all options before choosing, and note how much plain vocabulary matters.
+- **"Not mentioned / not used" questions**: go through the passage paragraph by paragraph ticking options off.
+- **Charts**: unit first (years, millions of users), then which panel (men left, women right), which colour in the key,
+  then read the value; estimate between grid lines ("past the 50 line but short of 60 means under 10, so 9"); in
+  multi-year charts make sure you are on the year asked.
+
 ## Gap against what the app has
+- New question families seen here and not yet in the bank: passage type, "which paragraph discusses...", main idea
+  of a given paragraph, calculated information, two-panel charts.
 - Skills today: `rd-detail`, `rd-vocab-context`, `rd-pronoun-ref`, `rd-main-idea`, `rd-inference`,
   `rd-purpose-opinion`, `rd-asma`. Missing: graph/table reading, text agreement (true / not true / not mentioned),
   and a separate information-vs-inference split.
