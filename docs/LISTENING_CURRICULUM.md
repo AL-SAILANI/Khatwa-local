@@ -358,3 +358,25 @@ the least frequent in the exam. Advice given: master lessons 1 to 7 first, and o
 - Priority hint from the course: types 8 and 9 are rare, so weight mock clips lower for them.
 - Coverage is now complete for the nine listening types: information, inference, terms, important idea, opinions,
   main idea, best title, reason for mentioning, evidence.
+
+## Listening drill pack (third-party PDF, questions only; audio lives in the separate epub)
+
+Reference only. The recordings are in an epub the owner holds (about 160 MB); the PDF carries just the question
+text, so nothing here can be run as listening practice without the audio. Nothing was copied.
+- Size: 97 pages, about 146 questions, four options each, in clip sets of one to four questions per clip.
+- No answer key and no scripts in the PDF; its first page tells learners to practise the skill and not to memorize
+  the answers.
+- Several clips match ones already described in the course lessons (a meeting day and room with corrections, a test
+  date, a product company's history with dates and sponsor years), so this pack looks like the same author's set.
+- Rough question-type mix (keyword heuristic on the question stems; directional only): information about 37
+  percent (times, numbers, years, names, pages, places), reason or evidence about 12, opinion or feeling about 11,
+  main idea or title about 10, inference about 10, important idea about 7, terms or expressions about 5, other about 8.
+- Matches the course's own note that information questions are the most frequent and the advanced types are rare.
+- Typical stems: "what day", "how many", "when", "what pages", "why does X go to see Y", "what important point
+  does the lecturer make", "what is the topic of the discussion".
+
+### Gaps this adds
+- Our listening clips should lean about one third toward information questions with number, date and page traps.
+- If the epub audio is ever added to the product, it needs the owner's explicit permission from the author
+  (rights unknown); the safer path is recording or synthesizing our own clips from original scripts.
+- A listening item should always store its script so review mode can show the correction word or the evidence line.

@@ -12,6 +12,7 @@ each answer against the passage. Our own question bank is written independently 
   physician (sixteen, correct).
 
 ## Files received (not imported)
+- Listening drill PDF (97 pages, about 146 questions, no key, no audio; audio is in an epub kept by the owner): see LISTENING_CURRICULUM.md.
 - Grammar collection PDF (485 pages, about 950 items, no answer key): see the summary at the end of GRAMMAR_CURRICULUM.md.
 - Reading drills, unsolved (100 pages) and solved (100 pages; same text, with an answer key): third-party, wording
   not ours, so only the structure is used as a reference, never copied.
