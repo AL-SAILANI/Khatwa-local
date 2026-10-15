@@ -46,5 +46,5 @@ Phases: diagnose, foundation, technique and speed, simulation, final review of w
 | A | Skill map in code + migration file | skill map done; migration written, not yet applied |
 | B | Lesson player with blocks (explain, video, worked example, guided practice, technique, exit card, review); blocks derived from existing notes and questions, no schema change | built; exit card needs 80% (retry or continue anyway) |
 | C | Session engine (`src/lib/session-engine.ts`): mastery estimated from exam answers and lesson exit cards (no new storage), daily session card on the dashboard, soft lesson gate | built; persistence of per-skill mastery waits for migration 0007 |
-| D | Re-tag lessons and questions to skills in the database | after A is applied |
+| D | Skill graph tables applied to production (migration 0007), 50 skills and 1,379 question-skill links loaded; seed export includes them | done; mastery persistence (`user_skill_mastery`, `review_cards`) not yet written by the app |
 | E | Item analytics (difficulty, discrimination) and predicted score | after real usage |

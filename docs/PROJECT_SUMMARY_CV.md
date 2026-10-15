@@ -32,14 +32,14 @@
 **الهندسة**
 - مزامنة محتوى الاختبارات مع قاعدة البيانات بدون توقف، والتحقق بقيم تجزئة (checksum) بين الكود والإنتاج.
 - أتمتة توليد الصوت عبر GitHub Actions، وفحوصات آلية لجودة بنك الأسئلة.
-- تصميم معمارية منهج قائمة على خريطة مهارات (52 مهارة)، ومخطط جداول للإتقان والمراجعة.
+- تصميم معمارية منهج قائمة على خريطة مهارات (50 مهارة)، ومخطط جداول للإتقان والمراجعة.
 - حوالي 27 طلب دمج (PR) مراجعة ومنشورة، مع التحقق من كل نشر على الإنتاج.
 
 ## نقاط جاهزة للسيرة (إنجليزي)
 - Built and shipped **Khatwa**, an Arabic-first (RTL) STEP exam-prep platform with placement testing, personalised study plans, spaced-repetition vocabulary and five full-length mock exams (Next.js 16, React 19, TypeScript, Supabase, Vercel).
 - Designed a content pipeline of **764 questions and 63 lessons** aligned to the official STEP section weights, with automated quality checks (answer-position and option-length bias analysis, checksum-verified database syncs).
 - Automated listening-audio generation with **GitHub Actions** (edge-tts + ffmpeg) at zero infrastructure cost.
-- Designed a **skill-graph curriculum architecture** (52 skills, prerequisites, mastery tracking, spaced review) and a step-by-step lesson player based on mastery learning and retrieval practice.
+- Designed a **skill-graph curriculum architecture** (50 skills, prerequisites, mastery tracking, spaced review) and a step-by-step lesson player based on mastery learning and retrieval practice.
 - Maintained **273 automated tests**, row-level security on all user data, and continuous deployment with production verification.
 
 ## نقاط جاهزة (عربي)

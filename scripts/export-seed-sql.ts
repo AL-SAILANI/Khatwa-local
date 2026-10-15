@@ -33,6 +33,7 @@ import {
   STEP_MOCK_5_GRAMMAR_QUESTIONS,
   STEP_MOCK_5_WRITING_QUESTIONS,
 } from "../src/data/step-mock-5-grammar-writing";
+import { SKILLS, skillsForTags, type SkillSection } from "../src/data/skills";
 import { GRAMMAR_EXTRA_QUESTIONS } from "../src/data/grammar-extra";
 import { LESSON_PRACTICE_GRAMMAR_QUESTIONS } from "../src/data/lesson-practice-grammar";
 import { LESSON_PRACTICE_WRITING_QUESTIONS } from "../src/data/lesson-practice-writing";
@@ -123,13 +124,31 @@ for (const p of [...SAMPLE_READING_PASSAGES, ...STEP_MOCK_READING_PASSAGES, ...S
     id: str(p.id), title: str(p.title), body: str(p.body), question_ids: arr(p.questionIds),
   }));
 }
-for (const q of [...SAMPLE_QUESTIONS, ...GRAMMAR_EXTRA_QUESTIONS, ...LESSON_PRACTICE_GRAMMAR_QUESTIONS, ...LESSON_PRACTICE_WRITING_QUESTIONS, ...LESSON_PRACTICE_READING_QUESTIONS, ...LESSON_PRACTICE_LISTENING_QUESTIONS, ...STEP_MOCK_QUESTIONS, ...STEP_MOCK_2_QUESTIONS, ...STEP_MOCK_3_QUESTIONS, ...STEP_MOCK_4_QUESTIONS, ...STEP_MOCK_5_QUESTIONS]) {
+const ALL_QUESTIONS: Question[] = [...SAMPLE_QUESTIONS, ...GRAMMAR_EXTRA_QUESTIONS, ...LESSON_PRACTICE_GRAMMAR_QUESTIONS, ...LESSON_PRACTICE_WRITING_QUESTIONS, ...LESSON_PRACTICE_READING_QUESTIONS, ...LESSON_PRACTICE_LISTENING_QUESTIONS, ...STEP_MOCK_QUESTIONS, ...STEP_MOCK_2_QUESTIONS, ...STEP_MOCK_3_QUESTIONS, ...STEP_MOCK_4_QUESTIONS, ...STEP_MOCK_5_QUESTIONS];
+
+for (const skill of SKILLS) {
+  out.push(upsert("skills", {
+    id: str(skill.id), section: str(skill.section), domain: str(skill.domain), title: str(skill.title),
+    title_ar: str(skill.titleAr), cefr: str(skill.cefr), frequency: num(skill.frequency),
+    prerequisites: arr(skill.prerequisites),
+  }));
+}
+for (const q of ALL_QUESTIONS) {
   out.push(upsert("questions", {
     id: str(q.id), section: str(q.section), course_id: str(q.courseId),
     passage_id: str(q.passageId), audio_url: str(q.audioUrl), transcript: str(q.transcript),
     prompt: str(q.prompt), options: json(q.options), correct_option_id: str(q.correctOptionId),
     explanation: str(q.explanation), difficulty: str(q.difficulty), tags: arr(q.tags),
   }));
+}
+
+const skillLinks = ALL_QUESTIONS.flatMap((q) =>
+  skillsForTags(q.section as SkillSection, q.tags).map((skillId) => `(${str(q.id)}, ${str(skillId)})`),
+);
+for (let i = 0; i < skillLinks.length; i += 200) {
+  out.push(
+    `insert into public.question_skills (question_id, skill_id) values ${skillLinks.slice(i, i + 200).join(", ")} on conflict do nothing;`,
+  );
 }
 for (const w of SAMPLE_VOCAB_WORDS) {
   out.push(upsert("vocab_words", {
