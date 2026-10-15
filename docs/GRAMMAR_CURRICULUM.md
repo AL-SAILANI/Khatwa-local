@@ -365,3 +365,141 @@ Choose-by-clue rules:
 - A third-form deck (irregular verbs, grouped by the three shapes).
 - A "when vs while" drill that lets the learner pick simple vs continuous.
 - Existing gr-gerund-infinitive stays but gains the full verb lists and the three exceptions (stop, remember, forget).
+
+---
+
+# Key-rules series (videos 11 to 15): what it adds
+
+Source: the same third-party "most repeated rules" series (shared by the project owner; not official). Videos
+covered: conditionals, clue words and connectors with tenses, a "solve in seconds" techniques video, relative and
+question pronouns with questions vs reported speech, modal verbs. Notes are in our own words. Transcripts are
+auto-captions; the two longest (clue words, techniques) were read to about line 2000, so the last minutes may be
+missing.
+
+## Conditionals (if)
+- Every conditional has two parts: the condition (the clause with if) and the result. The result may come first and
+  the if-clause second (Bob will graduate if he works hard); split by where if starts.
+- Memorize the four-case table; the whole question family reduces to it:
+  | Case | Meaning | If-clause | Result |
+  |---|---|---|---|
+  | Zero | Always true, 100% (ice melts in the oven) | present simple | present simple |
+  | First | Expected, not guaranteed (if you study you will pass) | present simple | will + base verb |
+  | Second | Wish, advice, imaginary or impossible now | past simple | would + base verb |
+  | Third | Regret, too late | past perfect | would have + third form |
+- Method: find the given clause, name its tense, find its row, and fill the other clause from the row. A past
+  perfect on one side means the other side must be would have + third form (never plain past simple).
+- Choosing the first case or the zero case when the if-clause is present simple: if the result is certain, use
+  present simple; if only expected, use will (if you keep the secret, I will tell you what happened).
+- were or was: in the second case about something unreal or impossible, use were for every subject (if I were you,
+  if I were a bird). Use was only for a real possibility (if I was accepted, I will let you know).
+- Past negative result: wouldn't have + third form; a mixture like had + past simple is wrong.
+
+## Clue words and connectors with tenses
+- Three ground rules: many questions have no clue word at all; understanding each tense matters more than the
+  clue-word list; some clue words fit more than one tense, so check the options.
+- Past simple: last night, yesterday, two years ago, a past date or year; irregular verbs need memorizing (they do
+  not take -ed).
+- when / while: they split the sentence into two events. past simple + when + past simple is typical. After when, the
+  simple form fits better; after while, the continuous form fits better. Meaning: when = at that point (when I woke
+  up I talked to my mother); while = during (while I was eating, the doorbell rang).
+- before / after in the past: the clause right after before is past simple; the other clause can be past simple or
+  past perfect. After after, the clause right after it can be past simple or past perfect; the other clause is
+  past simple. Do not use these with future-only tense sets.
+- Future simple clues: tomorrow, next week, in four days, later (but later can fit other future tenses), dates such as
+  in 2032, and promises. will needs a verb (will be/will go), so an option with only will is incomplete.
+- when + present simple + future clause: a future-condition pattern (when you arrive, someone will be waiting). Also
+  until/as soon as/after + present simple, with will in the other clause. The same pair can have present simple on
+  both sides when it describes a habit (when it rains, the road gets slippery).
+- Present simple clues: always, usually, often, sometimes, rarely, every + time (every Monday, every summer), twice a
+  week, weekly, yearly, once a year, seasons (in winter). Watch the subject: no -s with I/you/we/they/plural; -s with
+  he/she/it/singular.
+- Present continuous clues: now, at the moment, these days, currently, this week; look, listen. Past continuous has no
+  reliable clue word, so rely on when/while.
+- Future continuous clues: this time next week, at this time tomorrow, later (when it fits a duration).
+- A clue only works if the tense form is known: knowing "last year means past" does not help when the right option
+  is an irregular verb you cannot recognize.
+- An unmarked or broken sentence is wrong: when + past simple + future (when school finished, I will go) is broken
+  because the times do not match.
+- Tense-with-duration rule: before the other clause, a stated length of time (for hours) points to the continuous
+  perfect (when the child arrived, his parents had been waiting for hours).
+
+## Techniques: solve in seconds
+Four reusable moves from the technique video; the first two are already in the document but sharpen them:
+1. Relative pronouns by sight: find the noun before the blank, decide person or not, then look at the first word or
+   two after the blank. Verb first: who (person). Person then verb: whom. Person then person (noun): whose.
+   If the options do not include who/whom/whose, use that or which.
+2. Verb forms by the word before the blank:
+   - preposition before the blank: gerund (about becoming; of flying);
+   - before/after/when/while directly before the blank: gerund;
+   - an adjective before the blank (important, easy, expensive): infinitive with to;
+   - a modal (can, could, must, would): the bare verb;
+   - a verb on the infinitive list (seems, need, promise, choose): to + verb;
+   - a verb on the gerund list (enjoy, keep, practise, finish): -ing;
+   - a subject slot: gerund;
+   - a verb that needs an object first (tell, ask, remind): object, then to + verb.
+3. Prepositions: in = a month or longer (summer, December, 2019, a season); on = a specific day or a special day
+   (on December 19, on my birthday, on the weekend); at = exact clock time (at 9 o'clock, at noon, at midnight, at
+   night). A part of the day that is longer than an hour: in the morning/afternoon/evening, but at night.
+   Duration vs start/end: for = a length from start to now; in = a length from now to the end; since = start point;
+   by = deadline.
+4. Tense blanks that sit next to when/while: split the sentence at the connector and match the other clause.
+- Note on whether the technique page applies: if the sentence uses a past perfect continuous ("hadn't been"), a
+  stated duration of hours or years is the clue.
+
+## Relative pronouns and question words
+- A relative pronoun links a described noun to a describing clause. The pronoun must fit the noun.
+- Who and whom are for people. Who is the doer (the next word is a verb: the professor who sold...). Whom is the
+  receiver (the next words are a subject then a verb: the student whom we met...). When the options offer only who,
+  who also covers an object if whom is missing.
+- Whose is for ownership: the clause describes something owned by the described noun (the student whose book is
+  tidy; the country whose flag is red; the child whose father is famous). The word after whose is a noun, then a verb.
+- Which and that are for things (the cake that Salma baked). That also marks a piece of information being passed on
+  (the newspaper that he read in). Use which or that when the clause identifies which thing (the shop that is next to
+  the pharmacy).
+- Adverbs of relation: when = time (the car was wrecked when I drove it); why = reason; where = place where the
+  event happened (the hospital where I was born). They differ from pronouns because they refer to an action's time,
+  reason or place.
+- Question words are the same words used at the start of a sentence: who = which person; whose = whose item; which =
+  one chosen from a limited set (which colour did Ahmed choose); what = open choice; when = time; where = place;
+  why = reason; how = way or amount (how are you; how much).
+- Question versus reported question: a question has a question mark and the question word is first, followed by a
+  verb (where are you going?). A reported or embedded question has no question mark, the question word may sit in the
+  middle, and a noun or pronoun follows it, then the verb (they asked where my brother went; I could not remember who
+  that man was). Do not use an auxiliary after the question word in a reported question; use the base verb after did
+  and does only in the real question.
+- Detection rules: question mark = question; wh-word then verb = question; wh-word then noun/subject = statement; if
+  the option puts a question word at the end, it is wrong.
+- Tail trap: if the sentence is a statement, a form with a verb right after the question word is wrong (where was the
+  files kept?) and the correct form reads as a statement (where the files were kept).
+- so does not belong in relative-pronoun questions: so is a connector of result and the clause with the cause comes
+  first (because/when for the cause, so for the result).
+
+## Modal verbs
+- Modals (can, could, may, might, must, should, would, will, shall) are followed by the bare verb: no to, no -ing, no
+  third form. have to, has to, ought to and had better follow their own forms (has to is not a modal; it follows the
+  subject: has to with he/she/it, have to with I/you/we/they).
+- Functions:
+  - Ability: can, could.
+  - Permission/request: can, could, may; may is the most polite for permission; could and would for polite requests.
+  - Advice: should, ought to; had better is stronger.
+  - Obligation: must, have to; must is stronger. mustn't = forbidden; don't have to = not necessary.
+  - Possibility/guess: may, might, could, can; might is the clearest word for "maybe".
+  - Offers/promises/the future: will, would.
+- Test choice: a statement of necessity (a bleeding person: you must call an ambulance) takes the strongest option;
+  a mere guess or assumption (he might want us to pick him up) takes might or may; a polite request takes could or
+  would.
+- Negative logic: if the sentence needs "you should not drink more coffee", choose shouldn't, not must. If something
+  is not necessary (tomorrow is a holiday), choose don't have to.
+- Past forms: had to + base verb = past obligation (she had to get ready before every class). must have + third form
+  is a guess about the past; should have + third form is a past regret. had must/had to + third form is wrong.
+- has did not exist as a modal: forms such as hass, wouldhave, wouldn't be are invalid; check that the verb form
+  after the modal is bare.
+- Mixed-skill note: some modal answers need the verb after it to be bare too (can eat, must work).
+
+## Gaps this adds
+- A "clue words with tenses" skill with the when/while/before/after rules (extends the earlier time-clause skill gap).
+- A pronoun pair drill: person vs thing, then verb or noun after the blank.
+- A statement-vs-question word-order drill (question mark, wh + verb vs wh + noun).
+- A modal-function skill: function sorted by strength (ability, permission, advice, obligation, possibility).
+- A conditional table drill with the "given clause, name the row, fill the other" routine (extends gr-conditionals).
+- The "no clue words" caution as an explicit lesson note inside gr-strategy.
