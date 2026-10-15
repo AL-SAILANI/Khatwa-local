@@ -21,6 +21,8 @@ import { getReviewStatesForUser } from "@/lib/firestore/vocabulary";
 import { computeSkillMastery, skillsOfLesson } from "@/lib/skill-mastery";
 import { buildDailySession, type DailySession } from "@/lib/session-engine";
 import { getStaticQuestion } from "@/lib/tag-lesson-map";
+import { getStoredSkillMastery } from "@/lib/skill-mastery-store";
+import { predictScore, type ScorePrediction } from "@/lib/score-prediction";
 
 function SessionRow({
   icon,
@@ -55,24 +57,29 @@ export function DailySessionCard({ uid }: { uid: string }) {
   const locale = useLocale();
   const { lessonTitle } = useLocalizedContent();
   const [session, setSession] = useState<DailySession | null>(null);
+  const [prediction, setPrediction] = useState<ScorePrediction | null>(null);
 
   useEffect(() => {
     let cancelled = false;
     async function load() {
-      const [attempts, lessons, progress, reviews] = await Promise.all([
+      const [attempts, lessons, progress, reviews, stored] = await Promise.all([
         getRecentAttempts(uid, 5),
         getAllLessons(),
         getAllUserProgress(uid),
         getReviewStatesForUser(uid),
+        getStoredSkillMastery(uid),
       ]);
       if (cancelled) return;
       const lessonById = new Map(lessons.map((lesson) => [lesson.id, lesson]));
-      const mastery = computeSkillMastery({
-        attempts,
-        progress,
-        lessonById,
-        getQuestion: getStaticQuestion,
-      });
+      const mastery =
+        stored ??
+        computeSkillMastery({
+          attempts,
+          progress,
+          lessonById,
+          getQuestion: getStaticQuestion,
+        });
+      setPrediction(predictScore(mastery));
       const now = Date.now();
       const dueWords = reviews.filter(
         (r) => new Date(r.dueAt).getTime() <= now,
@@ -117,6 +124,13 @@ export function DailySessionCard({ uid }: { uid: string }) {
             : undefined
         }
       />
+
+      {prediction && (
+        <p className="mt-3 rounded-xl bg-surface-muted px-3 py-2 text-xs text-muted">
+          {t("predicted", { score: prediction.score })}
+          {prediction.confidence === "low" && <span> {t("predictedLow")}</span>}
+        </p>
+      )}
 
       {session === null ? (
         <div className="mt-4 flex justify-center">

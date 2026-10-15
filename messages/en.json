@@ -439,7 +439,9 @@
       "lessonNew": "New skill for you: \"{skill}\"",
       "lessonDefault": "The next step in your journey",
       "retryDetail": "Last score {score}% — raise it to 80% to master the skill",
-      "empty": "You are all done for today. Well done!"
+      "empty": "You are all done for today. Well done!",
+      "predicted": "Predicted score (rough estimate): {score} out of 100.",
+      "predictedLow": "There is little data yet; it gets more accurate after more exams and lessons."
     }
   },
   "trackNames": {

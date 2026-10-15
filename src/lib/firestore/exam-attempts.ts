@@ -16,6 +16,7 @@ import { unlockExamMilestones, unlockStreakMilestones } from "@/lib/firestore/ac
 import { syncPublicProfile } from "@/lib/firestore/public-profiles";
 import { computeNextStreak, withTodayMarkedActive } from "@/lib/streak";
 import type { ExamAttempt, SectionResult } from "@/types/exam";
+import { refreshSkillMastery } from "@/lib/skill-mastery-store";
 import { useSupabaseUsers } from "@/lib/supabase/flags";
 import {
   sbCreateExamAttempt,
@@ -50,6 +51,8 @@ export async function saveAttemptAnswer(attemptId: string, answers: Record<strin
 }
 
 interface SubmitResult {
+  answers: Record<string, string>;
+  flagged: string[];
   score: number;
   sectionResults: SectionResult[];
   weakSkills: string[];
@@ -92,6 +95,7 @@ export async function submitExamAttempt(uid: string, attemptId: string, result: 
   await unlockStreakMilestones(uid, nextStreak);
 
   await syncPublicProfile(uid);
+  await refreshSkillMastery(uid);
 }
 
 export async function getExamAttempt(attemptId: string): Promise<ExamAttempt | null> {

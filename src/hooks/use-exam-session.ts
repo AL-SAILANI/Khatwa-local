@@ -87,7 +87,7 @@ export function useExamSession({ kind, examId, sectionCounts, bankTag }: UseExam
       await updateUserProfile(user.uid, { level: levelFromScore(result.score) });
     }
 
-    await submitExamAttempt(user.uid, session.attemptId, { ...result, recommendations, newWords: [] });
+    await submitExamAttempt(user.uid, session.attemptId, { ...result, recommendations, newWords: [], answers: payload.answers, flagged: payload.flagged });
 
     router.push(`/exam-results/${session.attemptId}`);
   };
