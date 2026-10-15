@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/card";
 import { AnswerReview } from "@/components/exam/answer-review";
 import { ScoreTrend } from "@/components/exam/score-trend";
+import { Confetti, SceneArt } from "@/components/courses/lesson-art";
 import { getExamAttempt } from "@/lib/firestore/exam-attempts";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { useLocalizedContent } from "@/hooks/use-localized-content";
@@ -58,12 +59,19 @@ export function ExamResults({ attemptId }: { attemptId: string }) {
   const totalSeconds = attempt.sectionResults.reduce((sum, r) => sum + r.timeSpentSeconds, 0);
   const errorRate = totalQuestions > 0 ? Math.round(((totalQuestions - totalCorrect) / totalQuestions) * 100) : 0;
 
+  const passed = (attempt.score ?? 0) >= 60;
+
   return (
     <div className="mx-auto w-full max-w-3xl space-y-6 p-6 lg:p-8">
-      <Card className="flex flex-col items-center gap-3 py-10 text-center">
-        <div className="inline-flex size-14 items-center justify-center rounded-2xl bg-butter-yellow text-ink-violet">
-          <Award className="size-6" />
-        </div>
+      <Card className="relative flex flex-col items-center gap-3 overflow-hidden py-10 text-center">
+        {passed && <Confetti />}
+        {passed ? (
+          <SceneArt name="success" className="h-36 w-56" />
+        ) : (
+          <div className="inline-flex size-14 items-center justify-center rounded-2xl bg-butter-yellow text-ink-violet">
+            <Award className="size-6" />
+          </div>
+        )}
         <span className="text-sm text-muted">{t("estimatedScore")}</span>
         <span className="text-5xl font-bold text-ink-violet dark:text-primary-400">{attempt.score}</span>
         {attempt.kind === "placement" && (

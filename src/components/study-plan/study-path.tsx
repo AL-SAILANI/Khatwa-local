@@ -9,6 +9,7 @@ import { difficultyOf } from "@/lib/study-plan-generator";
 import { Link } from "@/i18n/navigation";
 import { Card } from "@/components/ui/card";
 import { PageHeader } from "@/components/ui/page-header";
+import { SceneArt } from "@/components/courses/lesson-art";
 import { ModuleHeader } from "@/components/ui/module-header";
 import { EmptyState, LoadingState } from "@/components/ui/empty-state";
 import { cn } from "@/lib/utils/cn";
@@ -84,6 +85,7 @@ export function StudyPath() {
         eyebrowIcon={CalendarRange}
         title={t("pathTitle")}
         description={t("pathDescription")}
+        actions={<SceneArt name="roadmap" className="hidden h-28 w-52 sm:block" />}
       />
 
       <Card className="space-y-4 p-6">
