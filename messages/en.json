@@ -615,7 +615,7 @@
     "examTaken": "✓ taken",
     "pageTitle": "Full Mock Exam",
     "title": "Full mock exam",
-    "description": "Full STEP simulation: {total, plural, one {# question} other {# questions}} in {minutes, plural, one {# minute} other {# minutes}}, with the same section split (reading 40%, grammar 30%, listening 20%, writing 10%).",
+    "description": "Full STEP simulation: {total, plural, one {# question} other {# questions}} in {minutes, plural, one {# minute} other {# minutes}} over three stages, with the same section split (reading 40%, grammar 30%, listening 20%, writing 10%).",
     "questionCount": "{count, plural, one {# question} other {# questions}}",
     "minuteCount": "{count} min",
     "upgradeForUnlimited": "Upgrade for unlimited exams",
@@ -637,7 +637,23 @@
     "noAttemptsDescription": "Start your first mock exam to simulate the real STEP test and track your progress here.",
     "scoreLabel": "Score: {score}",
     "noDate": "—",
-    "eyebrow": "Mock Exams"
+    "eyebrow": "Mock Exams",
+    "stagesTitle": "Exam stages",
+    "stageCount": "{count} stages",
+    "stage": {
+      "reading": "Reading",
+      "structure": "Grammar and writing analysis",
+      "listening": "Listening"
+    },
+    "stageAbout": {
+      "reading": "Consecutive reading passages with their questions.",
+      "structure": "30 grammar and 10 writing-analysis questions in one stage.",
+      "listening": "Short audio clips, each with its own questions."
+    },
+    "ruleNoReturn": "Once you finish a stage you cannot return to it, so check your answers first.",
+    "ruleTimer": "Each stage has its own countdown that starts when you press \"Start stage\", and the stage closes automatically when time is up.",
+    "examNew": "Not taken yet",
+    "examBest": "Best score {score}%"
   },
   "courses": {
     "pageTitle": "Courses",

@@ -18,7 +18,9 @@ export interface ExamStage {
   minutes: number;
 }
 
-const OFFICIAL_STAGE_MINUTES: Record<StageKey, number> = {
+export const OFFICIAL_STAGE_ORDER: readonly StageKey[] = ["reading", "structure", "listening"];
+
+export const OFFICIAL_STAGE_MINUTES: Record<StageKey, number> = {
   reading: 60,
   structure: 30,
   listening: 25,
