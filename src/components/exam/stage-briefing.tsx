@@ -1,6 +1,5 @@
 import { useTranslations } from "next-intl";
 import { CheckCircle2, Clock, HelpCircle, Lock, Play } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import type { ExamStage, StageKey } from "@/lib/exam-stages";
 
@@ -28,51 +27,58 @@ export function StageBriefing({
   ];
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col justify-center py-6">
-      <Card className="space-y-6 p-6 sm:p-8">
-        <div>
-          <p className="text-xs font-semibold text-muted">
-            {t("stageOf", { current: stageNumber, total: stageTotal })}
-          </p>
-          <h2 className="mt-1 text-2xl font-bold">{t(`name.${key}`)}</h2>
-          <p className="mt-2 text-sm text-muted">{t(`about.${key}`)}</p>
-        </div>
+    <div className="mx-auto grid w-full max-w-6xl flex-1 content-center gap-8 px-4 py-8 sm:px-8 lg:grid-cols-2 lg:gap-16">
+      <div className="flex flex-col justify-center">
+        <p className="text-sm font-semibold text-muted sm:text-base">
+          {t("stageOf", { current: stageNumber, total: stageTotal })}
+        </p>
+        <h2 className="mt-2 text-4xl font-bold leading-tight sm:text-5xl">
+          {t(`name.${key}`)}
+        </h2>
+        <p className="mt-4 text-lg leading-8 text-muted sm:text-xl">
+          {t(`about.${key}`)}
+        </p>
 
-        <div className="grid grid-cols-2 gap-3">
-          <div className="flex items-center gap-3 border border-border p-3">
-            <HelpCircle className="size-5 text-ink-violet dark:text-primary-300" />
+        <div className="mt-8 grid grid-cols-2 gap-4">
+          <div className="flex items-center gap-4 border-2 border-border p-5">
+            <HelpCircle className="size-8 text-ink-violet dark:text-primary-300" />
             <div>
-              <p className="text-lg font-bold tabular-nums">{stage.count}</p>
-              <p className="text-xs text-muted">{t("questions")}</p>
+              <p className="text-3xl font-bold tabular-nums">{stage.count}</p>
+              <p className="text-sm text-muted">{t("questions")}</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 border border-border p-3">
-            <Clock className="size-5 text-ink-violet dark:text-primary-300" />
+          <div className="flex items-center gap-4 border-2 border-border p-5">
+            <Clock className="size-8 text-ink-violet dark:text-primary-300" />
             <div>
-              <p className="text-lg font-bold tabular-nums">{stage.minutes}</p>
-              <p className="text-xs text-muted">{t("minutes")}</p>
+              <p className="text-3xl font-bold tabular-nums">{stage.minutes}</p>
+              <p className="text-sm text-muted">{t("minutes")}</p>
             </div>
           </div>
         </div>
+      </div>
 
-        <ul className="space-y-2.5">
+      <div className="flex flex-col justify-center border-2 border-border bg-surface p-6 sm:p-8">
+        <ul className="space-y-5">
           {rules.map((rule, index) => (
-            <li key={index} className="flex items-start gap-2.5 text-sm">
+            <li
+              key={index}
+              className="flex items-start gap-3 text-lg leading-7"
+            >
               {index === 1 ? (
-                <Lock className="mt-0.5 size-4 shrink-0 text-warning-600 dark:text-warning-400" />
+                <Lock className="mt-1 size-5 shrink-0 text-warning-600 dark:text-warning-400" />
               ) : (
-                <CheckCircle2 className="mt-0.5 size-4 shrink-0 text-success" />
+                <CheckCircle2 className="mt-1 size-5 shrink-0 text-success" />
               )}
               <span>{rule}</span>
             </li>
           ))}
         </ul>
 
-        <Button size="lg" className="w-full" onClick={onStart}>
-          <Play className="size-4" />
+        <Button size="xl" className="mt-8 w-full" onClick={onStart}>
+          <Play className="size-5" />
           {t("start")}
         </Button>
-      </Card>
+      </div>
     </div>
   );
 }

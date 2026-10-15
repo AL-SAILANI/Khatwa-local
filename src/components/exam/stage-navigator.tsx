@@ -44,8 +44,8 @@ export function StageNavigator({
             aria-current={isCurrent ? "true" : undefined}
             aria-label={`${i + 1}`}
             className={cn(
-              "relative flex items-center justify-center rounded-md border font-semibold tabular-nums transition-colors",
-              size === "sm" ? "h-9 text-xs" : "h-12 text-sm",
+              "relative flex items-center justify-center border font-semibold tabular-nums transition-colors",
+              size === "sm" ? "h-9 text-xs" : "h-12 text-base",
               isCurrent && "border-primary-500 bg-primary-500 text-ink-violet",
               !isCurrent &&
                 isAnswered &&

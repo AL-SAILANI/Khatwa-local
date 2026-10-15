@@ -213,13 +213,11 @@ export function ExamRunner({
   const timeLeftCritical = timer.remainingSeconds <= 60;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-background">
+    <div className="fixed inset-0 z-[70] flex flex-col bg-background">
       <header className="border-b border-border">
-        <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-6">
+        <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-8">
           <div className="min-w-0">
-            <h1 className="truncate text-sm font-semibold sm:text-base">
-              {title}
-            </h1>
+            <h1 className="truncate text-base font-bold sm:text-lg">{title}</h1>
             <ol
               className="mt-1.5 hidden items-center gap-1.5 sm:flex"
               aria-label={tStage("stages")}
@@ -229,7 +227,7 @@ export function ExamRunner({
                   key={s.key}
                   aria-current={i === stageIndex ? "step" : undefined}
                   className={cn(
-                    "flex items-center gap-1.5 border px-2.5 py-0.5 text-[11px] font-semibold",
+                    "flex items-center gap-1.5 border px-3 py-1 text-xs font-semibold",
                     i < stageIndex &&
                       "border-success/40 bg-success/10 text-success-600 dark:text-success-300",
                     i === stageIndex &&
@@ -274,7 +272,7 @@ export function ExamRunner({
             </div>
             {phase === "running" && (
               <Button
-                size="sm"
+                size="md"
                 variant="outline"
                 onClick={() => setPhase("review")}
               >
@@ -294,7 +292,14 @@ export function ExamRunner({
         </div>
       </header>
 
-      <div className="flex flex-1 flex-col overflow-y-auto px-4 py-4 sm:px-6">
+      <div
+        className={cn(
+          "flex min-h-0 flex-1 flex-col",
+          phase === "running"
+            ? "overflow-y-auto lg:overflow-hidden"
+            : "overflow-y-auto px-4 py-6 sm:px-8",
+        )}
+      >
         {phase === "briefing" && (
           <StageBriefing
             stage={stage}
@@ -323,52 +328,56 @@ export function ExamRunner({
         )}
 
         {phase === "running" && (
-          <div className="mx-auto w-full max-w-5xl flex-1">
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              <span className="text-sm font-semibold tabular-nums">
-                {tStage("questionOf", {
-                  current: positionInStage,
-                  total: stage.count,
-                })}
-              </span>
-              {stage.sections.length > 1 && (
-                <span className="border border-border px-2.5 py-0.5 text-xs font-semibold text-muted">
-                  {tTrack(currentQuestion.section)}
+          <>
+            <div className="border-b border-border px-4 py-2.5 sm:px-8">
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                <span className="text-base font-bold tabular-nums sm:text-lg">
+                  {tStage("questionOf", {
+                    current: positionInStage,
+                    total: stage.count,
+                  })}
                 </span>
-              )}
-              <button
-                type="button"
-                onClick={toggleFlag}
-                aria-pressed={flagged.has(currentQuestion.id)}
-                className={cn(
-                  "flex items-center gap-1.5 text-sm font-medium transition-colors",
-                  flagged.has(currentQuestion.id)
-                    ? "text-warning-600 dark:text-warning-400"
-                    : "text-muted hover:text-foreground",
+                {stage.sections.length > 1 && (
+                  <span className="border border-border px-2.5 py-0.5 text-sm font-semibold text-muted">
+                    {tTrack(currentQuestion.section)}
+                  </span>
                 )}
-              >
-                <Flag
+                <button
+                  type="button"
+                  onClick={toggleFlag}
+                  aria-pressed={flagged.has(currentQuestion.id)}
                   className={cn(
-                    "size-4",
-                    flagged.has(currentQuestion.id) && "fill-warning",
+                    "flex items-center gap-1.5 border px-3 py-1 text-sm font-semibold transition-colors",
+                    flagged.has(currentQuestion.id)
+                      ? "border-warning bg-warning/10 text-warning-600 dark:text-warning-400"
+                      : "border-border text-muted hover:border-primary-500 hover:text-foreground",
                   )}
+                >
+                  <Flag
+                    className={cn(
+                      "size-4",
+                      flagged.has(currentQuestion.id) && "fill-warning",
+                    )}
+                  />
+                  {flagged.has(currentQuestion.id)
+                    ? t("unflagForReview")
+                    : t("flagForReview")}
+                </button>
+                <span className="ms-auto hidden text-xs text-muted xl:inline">
+                  {tStage("shortcuts")}
+                </span>
+              </div>
+              <div className="mt-2 h-1.5 w-full bg-surface-muted" aria-hidden>
+                <div
+                  className="h-full bg-primary-500 transition-all"
+                  style={{
+                    width: `${(summary.answered / stage.count) * 100}%`,
+                  }}
                 />
-                {flagged.has(currentQuestion.id)
-                  ? t("unflagForReview")
-                  : t("flagForReview")}
-              </button>
-              <span className="ms-auto hidden text-[11px] text-muted lg:inline">
-                {tStage("shortcuts")}
-              </span>
-            </div>
-            <div className="mt-2 h-1 w-full bg-surface-muted" aria-hidden>
-              <div
-                className="h-full bg-primary-500 transition-all"
-                style={{ width: `${(summary.answered / stage.count) * 100}%` }}
-              />
+              </div>
             </div>
 
-            <div className="mt-5">
+            <div className="min-h-0 flex-1">
               <QuestionView
                 key={currentQuestion.id}
                 question={currentQuestion}
@@ -386,14 +395,14 @@ export function ExamRunner({
                 }
               />
             </div>
-          </div>
+          </>
         )}
       </div>
 
       {phase === "running" && (
-        <footer className="border-t border-border p-3 sm:p-4">
+        <footer className="border-t border-border bg-surface/60 px-4 py-3 sm:px-8">
           {showList && (
-            <div className="mx-auto mb-3 max-h-48 w-full max-w-5xl overflow-y-auto border border-border bg-surface/60 p-2">
+            <div className="mb-3 max-h-48 w-full overflow-y-auto border border-border bg-surface/60 p-2">
               <StageNavigator
                 start={stage.start}
                 count={stage.count}
@@ -407,25 +416,25 @@ export function ExamRunner({
               />
             </div>
           )}
-          <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-2">
+          <div className="flex w-full items-center justify-between gap-3">
             <Button
               variant="outline"
-              size="sm"
+              size="lg"
               disabled={currentIndex === stage.start}
               onClick={() => goTo(currentIndex - 1)}
             >
-              <ChevronRight className="size-4 rtl:rotate-180" />
+              <ChevronRight className="size-5 rtl:rotate-180" />
               {t("previous")}
             </Button>
 
             <Button
-              size="sm"
+              size="lg"
               variant="ghost"
               onClick={() => setShowList((v) => !v)}
               aria-expanded={showList}
-              className="text-xs text-muted"
+              className="text-muted"
             >
-              <LayoutGrid className="size-3.5" />
+              <LayoutGrid className="size-5" />
               <span className="hidden sm:inline">
                 {showList ? tStage("hideList") : tStage("showList")}
               </span>
@@ -435,14 +444,14 @@ export function ExamRunner({
             </Button>
 
             {isLastInStage ? (
-              <Button size="sm" onClick={() => setPhase("review")}>
+              <Button size="lg" onClick={() => setPhase("review")}>
                 {tStage("reviewStage")}
-                <ChevronLeft className="size-4 rtl:rotate-180" />
+                <ChevronLeft className="size-5 rtl:rotate-180" />
               </Button>
             ) : (
-              <Button size="sm" onClick={() => goTo(currentIndex + 1)}>
+              <Button size="lg" onClick={() => goTo(currentIndex + 1)}>
                 {t("next")}
-                <ChevronLeft className="size-4 rtl:rotate-180" />
+                <ChevronLeft className="size-5 rtl:rotate-180" />
               </Button>
             )}
           </div>
