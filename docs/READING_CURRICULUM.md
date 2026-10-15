@@ -1,15 +1,23 @@
 # STEP reading: question types and lesson plan
 
 Source of the framework: a third-party Arabic video course on the STEP reading section (shared by the project
-owner; not an official source; five lessons received so far: pronouns, vocabulary, information and inference,
-graphs, text agreement; the main-idea and title lesson was not received). Only the framework and routines are
-summarised, in our own words. Practice passages and questions must be original.
+owner; not an official source; received: the course introduction and five lessons: pronouns, vocabulary,
+information and inference, graphs, text agreement). Only the framework and routines are summarised, in our own
+words. Practice passages and questions must be original.
 
 ## What the course says about the format
+- 60 minutes, 40 questions, about 13 passages, 1 to 6 questions per passage (about 90 seconds per question, which
+  is not enough to read every passage in full).
+- The passage and its questions share one screen (passage on one side, questions on the other); some passages have
+  no title.
 - Passages are long (6 to 15 numbered paragraphs); questions often name a paragraph ("in paragraph 5...").
-- Questions generally follow the order of the passage; main-idea and title questions are best answered last.
-- Do not read the whole passage first: read one question, find the answer, then move to the next.
+- Answers are not necessarily in passage order, but search in an orderly way (paragraph 1, then 2, ...), never at
+  random. Some answers are not written and must be inferred. Unlike listening, questions can be skipped and revisited.
+- Do not read the whole passage first: read one question, find the answer, then move to the next. Main-idea and
+  title questions are best answered last.
 - Some passages come with a chart or a table instead of, or beside, text.
+- Golden rules: read the questions first; do not read the whole text; do not rely on word-for-word matches; do not
+  spend time on a hard question; look for implied meaning when the words are not there.
 
 ## Question types and routines
 | # | Type | Core routine |
@@ -20,6 +28,12 @@ summarised, in our own words. Practice passages and questions must be original.
 | 4 | Graphs and tables | Title, unit, axes, key/legend, then the exact part the question asks about; do not use outside knowledge; typical traps: wrong unit, mixing categories without the key. Chart kinds: single and grouped bars, horizontal bars, stacked bars, pie, table, line. Trend words: rise/increase/climb/grow/peak/double/triple; fall/decrease/decline/drop/collapse; compare words: highest, lowest, more/less than, approximately. |
 | 5 | Text agreement (true / not true / not mentioned) | Read the stem to see which of the three is asked; take the options one at a time and check each against the text; "not true" contradicts the text, "not mentioned" is never discussed; match meaning, not words (synonyms). |
 | 6 | Main idea / title | Answered last, after the other questions have shown what the passage is about (lesson not received). |
+| 7 | Author's opinion | Intermediate level; lesson not received. |
+| 8 | Linking and comparing two texts | Advanced level and the least frequent; lesson not received. |
+
+Course levels: basic = pronouns, vocabulary, information and inference, graphs (the answer sits in a small part of the
+text or graphic); intermediate = text agreement, main idea and title, author's opinion (needs more reading);
+advanced = two-text questions.
 
 ## Gap against what the app has
 - Skills today: `rd-detail`, `rd-vocab-context`, `rd-pronoun-ref`, `rd-main-idea`, `rd-inference`,
