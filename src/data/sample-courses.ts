@@ -1,5 +1,9 @@
 import type { Course, CourseTrack, Lesson } from "@/types/course";
 import { ENGVID_LINKS } from "@/data/engvid-links";
+import { LESSON_PRACTICE_GRAMMAR_IDS } from "@/data/lesson-practice-grammar";
+import { LESSON_PRACTICE_WRITING_IDS } from "@/data/lesson-practice-writing";
+
+const PRACTICE_IDS: Record<string, string[]> = { ...LESSON_PRACTICE_GRAMMAR_IDS, ...LESSON_PRACTICE_WRITING_IDS };
 
 /**
  * One starter course + lesson per track, enough to exercise the course
@@ -680,4 +684,5 @@ const BASE_LESSONS: Lesson[] = [
 export const SAMPLE_LESSONS: Lesson[] = BASE_LESSONS.map((lesson) => ({
   ...lesson,
   resources: [...lesson.resources, ...(ENGVID_LINKS[lesson.id] ?? [])],
+  questionIds: [...lesson.questionIds, ...(PRACTICE_IDS[lesson.id] ?? [])],
 }));
