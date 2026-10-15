@@ -159,3 +159,97 @@ Existing skills cover most of these. New gaps to add or fold in:
 - Modal perfect forms (could have, should have) with unrealized past (extends gr-modals).
 - Dialogue-reply questions (what is the best response), which the listening and structure sections both use.
 - The "wh-word inside a statement" order rule (noun clauses; extends gr-noun-clauses).
+
+---
+
+# Key-rules series (videos 1 to 5): what it adds
+
+Source: a second series from the same third-party course, "the most repeated grammar rules in STEP" (shared by the
+project owner; not official). Notes are in our own words. Videos covered: prepositions, countable/uncountable
+nouns with articles and quantifiers, comparison, pronouns, simple tenses. Cut-off note: transcripts are
+auto-captions, so the last minutes of some videos may be missing.
+
+## 1. Prepositions
+| Case | Routine |
+|---|---|
+| Transport | Can you stand inside it (plane, train, bus, bicycle)? Use `on`. Can you not stand inside it (car, taxi, truck)? Use `in`. Moving from A to B using it: `by` (by train, by bus). |
+| Time length ladder | The longer the period, the more likely `in`: century, decade, year, season, month, a week (in the 19th century, in the 1950s, in June, in summer, next week). A fixed date or day or a special occasion: `on` (on Monday, on my birthday, on the weekend, on Eid). An exact clock time: `at` (at 10:30, at noon, at midnight). Parts of the day: in the morning/afternoon/evening, but at night. |
+| Age | `at` + age (at 12 months). |
+| No time given | If a general long-term habit is meant and no date is named, assume the long period (they get up early in the morning). If one particular day is named (Monday morning), use `on`. |
+| Start, end, span | since = the starting point (since 2017, since the beginning of the season). by = the deadline or end point (by next Monday, by 2026). for = the length from start up to now (for 12 hours). in = the time remaining from now to finish (in three hours). |
+| Place ladder | The larger and less exact the place, the more likely `in`: continent, country, city, district (in Asia, in Saudi Arabia, in New York City, in Al-Hamra). A street or island: `on` (on Ali Street, on an island). A precise address or a specific building, room or office: `at` (at the university, at home, at the office). Positions such as top, bottom, left, right: `at` (at the top, at the left). |
+| Test question idea | Every preposition question hides a category question: is it transport, a time point, a duration, a start, an end, or a place? Answer that first. |
+
+## 2. Countable and uncountable nouns, articles, quantifiers
+- Countable: can be one, two, three; has plural -s (book, student). Uncountable: no plural; you count it only with a
+  measure unit (a glass of water, a kilo of rice, two bottles of milk; the plural goes on the unit, not on the noun).
+  Typical uncountables: milk, flour, sugar, salt, water, rice, money, time, enjoyment, information.
+- Articles: the = something the sentence already makes specific (the highest score, the bag that sold for the highest
+  price, superlatives, ordinals, "the last/most/first" phrases). a / an = unspecified singular countable noun; an
+  before a vowel sound, a before a consonant sound. No article = unspecified plural or uncountable noun.
+- Process for the question: look at the first word after the blank, decide vowel or consonant sound, decide singular
+  or plural, then decide whether the sentence has made it specific. A question that gives the plural -s
+  (paintings) removes a and an at once.
+- Specific vs unspecific test: "Are they yours?" does not define the paintings; "the paintings the artist drew" does.
+- Quantifier map: much + uncountable; many + countable; a lot of / lots of + both; few = not many (countable);
+  little = not much (uncountable); a few / a little = some (positive); some = exists, amount unspecified (mostly
+  affirmative, countable or uncountable plural); any = zero or none (mostly negative and questions); several +
+  countable; a few and several need a plural noun.
+- Signal tips: negative sentences more often take any; sentences about a person's number of items ask for many/few
+  when the noun is countable.
+
+## 3. Comparison
+- Three kinds: comparing two things (than), distinguishing one from a group (the + superlative), equality (as ... as).
+- Adjective length: short (one syllable and words ending in -y such as happy, simple) takes -er / -est (smaller than,
+  the smallest). Long (three or more syllables, such as beautiful, expensive, difficult) takes more / less ... than
+  and the most / the least. Two-syllable words have no single rule: ending -y or -le take the short form; careful
+  takes the long form.
+- Detection: than in the sentence means two things; the + group word (of all, in the class) means distinguish; as ...
+  as means equality.
+- Careful traps: -er never goes together with more (not more smaller); the -est form is not used for two things; an
+  option with -est and no the is wrong; much can come before a comparative (much harder).
+- Irregular: good, better, the best; bad, worse, the worst; far, farther, the farthest; little, less, the least.
+  These must be memorized.
+
+## 4. Pronouns (five families)
+| Family | Role | Forms (singular then plural) |
+|---|---|---|
+| Subject | Does the action | I, you, he/she/it, we, you, they |
+| Object | Receives the action | me, you, him/her/it, us, you, them |
+| Possessive adjective | Comes before a noun | my, your, his/her/its, our, your, their |
+| Possessive pronoun | Replaces an owned noun; stands alone | mine, yours, his/hers, ours, yours, theirs |
+| Reflexive | Subject and object are the same person | myself, yourself, himself/herself/itself, ourselves, yourselves, themselves |
+
+Detection routine:
+1. Find what is missing: subject, object, a describer before a noun, a whole owned noun, or the same person again.
+2. A gap with a verb after it needs a subject pronoun; a gap after a verb or preposition needs an object pronoun.
+3. A gap before a noun needs a possessive adjective (the sentence is a noun-phrase sentence with no verb: it is the
+   describing slot).
+4. A gap that replaces "my book" needs a possessive pronoun; ask whether it is just a person or an owned thing.
+5. Gap needing "by oneself" or the same person as the subject needs a reflexive; by + reflexive = alone.
+6. In a dialogue, the second speaker mirrors the first: your in the question becomes my in the answer.
+7. Plural reflexives match a group subject (the students: themselves); you = yourself (one) or yourselves (many).
+
+## 5. Simple tenses
+- English has three time zones, four aspects (simple, continuous, perfect, perfect continuous): 12 tenses. Simple
+  tenses are the easiest: one point or one habit, no continuing or finished meaning, no `be` or `have` helper.
+- Present simple: the base verb with I/you/we/they/plural; verb + s with he/she/it/singular. It is used for
+  habits, regular events, facts and permanent situations, and in the condition part of a future sentence. Signal
+  words: always, usually, often, sometimes, rarely, never, every day, twice a week, five times a day, every winter.
+  If the options have no present simple, a past form may rescue a habit-in-the-past question.
+- Past simple: verb + ed or an irregular form (understand: understood, buy: bought, make: made). Signal words:
+  yesterday, last night, ago, later, a past year or date. The subject does not change the form. Irregular verbs must
+  be memorized.
+- Past plus past: if two actions happened in the past, check whether the second is continuous (while + continuous).
+- Future simple: will + base verb for every subject. Signals: tomorrow, next week, at 11 p.m. tonight, last
+  weekend (when it follows a promise), and promises or offers. Do not confuse will with be (no will be + verb
+  mix-ups). A sentence like "when school finishes, I will go" has present simple in the when-clause and will in the main
+  clause.
+
+## Gaps this adds
+- A preposition skill split by category (transport, time ladder, start/end/span, place ladder). The current
+  gr-prepositions skill is a single node, so it should become a small chain with category drills.
+- A short article-and-quantifier decision chain: sound, count, specific; then quantifier map.
+- Comparison by syllable length, plus a memorized irregular table.
+- Pronoun families with a "what is missing" first-step drill.
+- Simple-tense signal-word cards and an irregular-verb deck (top ~100).
