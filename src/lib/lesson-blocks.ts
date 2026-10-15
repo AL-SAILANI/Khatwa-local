@@ -11,7 +11,8 @@ export type LessonBlock =
   | { kind: "guided"; questions: Question[] }
   | { kind: "strategy"; notes: string }
   | { kind: "exit"; questions: Question[] }
-  | { kind: "review"; notes: string };
+  | { kind: "review"; notes: string }
+  | { kind: "summary" };
 
 const MARKER_GROUP: Record<string, "explain" | "strategy" | "review"> = {
   "📌": "explain",
@@ -45,6 +46,19 @@ export function splitNotes(
   };
 }
 
+/** Splits explain text into one short card per marked section (rule, quick form, trap). */
+export function explainCards(text: string): string[] {
+  const cards: string[][] = [];
+  for (const raw of text.split("\n")) {
+    const line = raw.trim();
+    if (!line) continue;
+    const isMarker = Object.keys(MARKER_GROUP).some((m) => line.startsWith(m));
+    if (isMarker || cards.length === 0) cards.push([]);
+    cards[cards.length - 1]!.push(line);
+  }
+  return cards.map((card) => card.join("\n"));
+}
+
 /**
  * Turns a lesson plus its questions into the ordered teaching blocks:
  * explain, video, worked example, guided practice, strategy, exit card, review.
@@ -58,7 +72,8 @@ export function buildLessonBlocks(
   const notes = splitNotes(lesson.notes);
   const blocks: LessonBlock[] = [];
 
-  if (notes.explain) blocks.push({ kind: "explain", notes: notes.explain });
+  for (const card of explainCards(notes.explain))
+    blocks.push({ kind: "explain", notes: card });
   if (lesson.resources.length > 0)
     blocks.push({ kind: "video", resources: lesson.resources });
   if (notes.strategy) blocks.push({ kind: "strategy", notes: notes.strategy });
@@ -74,6 +89,7 @@ export function buildLessonBlocks(
   if (exit.length > 0) blocks.push({ kind: "exit", questions: exit });
 
   if (notes.review) blocks.push({ kind: "review", notes: notes.review });
+  if (exit.length > 0) blocks.push({ kind: "summary" });
   return blocks;
 }
 

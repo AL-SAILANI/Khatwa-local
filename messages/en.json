@@ -618,7 +618,8 @@
       "guided": "Guided practice",
       "strategy": "Technique",
       "exit": "Exit card",
-      "review": "Review"
+      "review": "Review",
+      "summary": "Summary"
     },
     "exampleIntro": "See how this question is solved step by step; the correct answer is shown.",
     "guidedIntro": "Try it yourself; the answer and explanation appear as soon as you choose.",
@@ -626,7 +627,21 @@
     "masteryReached": "Well done! You mastered this skill.",
     "masteryNotYet": "You have not reached {threshold}% yet. Review the explanation and try again.",
     "retryExit": "Try again",
-    "completeAnyway": "Continue anyway"
+    "completeAnyway": "Continue anyway",
+    "questionOf": "Question {current} of {total}",
+    "retryLabel": "Retrying a missed question",
+    "checkAnswer": "Check",
+    "dontKnow": "I don't know",
+    "nextQuestion": "Next",
+    "finishPractice": "Finish practice",
+    "correctAnswer": "Correct",
+    "wrongAnswer": "Not quite",
+    "willReturn": "This question will come back at the end.",
+    "guidedDone": "Well done! You finished the guided practice.",
+    "summaryTitle": "Exit card result",
+    "summaryMastered": "You mastered this skill. Move on to the next lesson.",
+    "summaryNeedsWork": "Review the explanation, then retake the exit card to reach mastery.",
+    "summaryPending": "Finish the exit card first to see your summary."
   },
   "vocabulary": {
     "pageTitle": "Vocabulary",

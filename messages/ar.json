@@ -618,7 +618,8 @@
       "guided": "تدريب موجّه",
       "strategy": "التقنية",
       "exit": "بطاقة الخروج",
-      "review": "المراجعة"
+      "review": "المراجعة",
+      "summary": "الملخص"
     },
     "exampleIntro": "انظر كيف تُحل هذه المسألة خطوة بخطوة، والإجابة الصحيحة موضّحة.",
     "guidedIntro": "جرّب بنفسك؛ ستظهر الإجابة والشرح فور اختيارك.",
@@ -626,7 +627,21 @@
     "masteryReached": "أحسنت! أتقنت هذه المهارة.",
     "masteryNotYet": "لم تصل إلى {threshold}% بعد. راجع الشرح ثم أعد المحاولة.",
     "retryExit": "إعادة المحاولة",
-    "completeAnyway": "المتابعة على أي حال"
+    "completeAnyway": "المتابعة على أي حال",
+    "questionOf": "السؤال {current} من {total}",
+    "retryLabel": "إعادة سؤال أخطأت فيه",
+    "checkAnswer": "تحقق",
+    "dontKnow": "لا أعرف",
+    "nextQuestion": "التالي",
+    "finishPractice": "إنهاء التمرين",
+    "correctAnswer": "إجابة صحيحة",
+    "wrongAnswer": "إجابة غير صحيحة",
+    "willReturn": "سيعود هذا السؤال في نهاية التمرين.",
+    "guidedDone": "أحسنت! أنهيت التدريب الموجّه.",
+    "summaryTitle": "نتيجة بطاقة الخروج",
+    "summaryMastered": "أتقنت هذه المهارة. انتقل إلى الدرس التالي.",
+    "summaryNeedsWork": "راجع الشرح ثم أعد بطاقة الخروج لتصل إلى الإتقان.",
+    "summaryPending": "أنهِ بطاقة الخروج أولًا لترى ملخصك."
   },
   "vocabulary": {
     "pageTitle": "المفردات",
