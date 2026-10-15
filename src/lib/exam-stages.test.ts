@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildStages, stageKeyOf, summarizeStage } from "./exam-stages";
+import { buildClips, buildStages, stageKeyOf, summarizeStage } from "./exam-stages";
 import { STEP_TOTAL_MINUTES } from "@/lib/constants/exam";
 import type { ExamSectionKey, Question } from "@/types/question";
 
@@ -67,5 +67,19 @@ describe("exam stages", () => {
       unanswered: 18,
       flagged: 1,
     });
+  });
+
+  it("groups listening questions that share a recording into clips", () => {
+    const listening = ["a", "a", "a", "b", "b", "c"].map((script, i) => ({
+      ...q(`l${i}`, "listening"),
+      transcript: script,
+    }));
+    const stages = buildStages([...build([["reading", 2]]), ...listening], 165);
+    const clips = buildClips([...build([["reading", 2]]), ...listening], stages[1]!);
+    expect(clips).toEqual([
+      { start: 2, count: 3 },
+      { start: 5, count: 2 },
+      { start: 7, count: 1 },
+    ]);
   });
 });

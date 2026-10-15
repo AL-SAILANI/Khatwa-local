@@ -12,11 +12,12 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { QuestionView } from "@/components/exam/question-view";
+import { ListeningClip } from "@/components/exam/listening-clip";
 import { StageBriefing } from "@/components/exam/stage-briefing";
 import { StageNavigator } from "@/components/exam/stage-navigator";
 import { StageReview } from "@/components/exam/stage-review";
 import { useExamTimer } from "@/hooks/use-exam-timer";
-import { buildStages, summarizeStage } from "@/lib/exam-stages";
+import { buildClips, buildStages, summarizeStage } from "@/lib/exam-stages";
 import { cn } from "@/lib/utils/cn";
 import type {
   ExamSectionKey,
@@ -54,6 +55,7 @@ export function ExamRunner({
 }: ExamRunnerProps) {
   const t = useTranslations("exam");
   const tStage = useTranslations("exam.stage");
+  const tListening = useTranslations("exam.listening");
   const tTrack = useTranslations("trackNames");
   const stages = useMemo(
     () => buildStages(questions, durationMinutes),
@@ -67,6 +69,7 @@ export function ExamRunner({
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showList, setShowList] = useState(false);
+  const [clipEnded, setClipEnded] = useState(false);
 
   const timeBySectionRef = useRef<Partial<Record<ExamSectionKey, number>>>({});
   const enteredAtRef = useRef<number>(0);
@@ -74,6 +77,16 @@ export function ExamRunner({
   const stage = stages[stageIndex];
   const isLastStage = stageIndex === stages.length - 1;
   const currentQuestion: Question | undefined = questions[currentIndex];
+  const isListening = stage?.key === "listening";
+  const clips = useMemo(
+    () =>
+      stage && stage.key === "listening" ? buildClips(questions, stage) : [],
+    [stage, questions],
+  );
+  const clipIndex = clips.findIndex(
+    (c) => currentIndex >= c.start && currentIndex < c.start + c.count,
+  );
+  const currentClip = clips[clipIndex];
 
   const flushElapsedTime = useCallback(
     (section: ExamSectionKey | undefined) => {
@@ -122,6 +135,7 @@ export function ExamRunner({
     setStageIndex(stageIndex + 1);
     setCurrentIndex(next.start);
     setShowList(false);
+    setClipEnded(false);
     setPhase("briefing");
   }, [
     flushElapsedTime,
@@ -145,6 +159,7 @@ export function ExamRunner({
         return;
       flushElapsedTime(questions[currentIndex]?.section);
       setCurrentIndex(index);
+      setClipEnded(false);
       setPhase("running");
     },
     [stage, flushElapsedTime, questions, currentIndex],
@@ -162,7 +177,8 @@ export function ExamRunner({
 
   // Keyboard: A-D or 1-4 choose an option, N / P move, F flags.
   useEffect(() => {
-    if (phase !== "running" || !currentQuestion || !stage) return;
+    if (phase !== "running" || !currentQuestion || !stage || isListening)
+      return;
     const onKey = (event: KeyboardEvent) => {
       if (event.ctrlKey || event.metaKey || event.altKey) return;
       const target = event.target as HTMLElement | null;
@@ -182,7 +198,15 @@ export function ExamRunner({
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [phase, currentQuestion, stage, currentIndex, goTo, toggleFlag]);
+  }, [
+    phase,
+    currentQuestion,
+    stage,
+    isListening,
+    currentIndex,
+    goTo,
+    toggleFlag,
+  ]);
 
   const answeredIndexes = useMemo(
     () =>
@@ -270,7 +294,7 @@ export function ExamRunner({
               <Clock className="size-4" />
               {timer.label}
             </div>
-            {phase === "running" && (
+            {phase === "running" && !isListening && (
               <Button
                 size="md"
                 variant="outline"
@@ -321,13 +345,52 @@ export function ExamRunner({
             answeredIndexes={answeredIndexes}
             flaggedIndexes={flaggedIndexes}
             onJump={goTo}
+            locked={isListening}
             onBack={() => setPhase("running")}
             onFinish={finishStage}
             isSubmitting={isSubmitting}
           />
         )}
 
-        {phase === "running" && (
+        {phase === "running" && isListening && currentClip && (
+          <>
+            <div className="border-b border-border px-4 py-2.5 sm:px-8">
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                <span className="text-base font-bold tabular-nums sm:text-lg">
+                  {tListening("clipOf", {
+                    current: clipIndex + 1,
+                    total: clips.length,
+                  })}
+                </span>
+                <span className="border border-border px-2.5 py-0.5 text-sm font-semibold text-muted">
+                  {tListening("playsOnce")}
+                </span>
+              </div>
+              <div className="mt-2 h-1.5 w-full bg-surface-muted" aria-hidden>
+                <div
+                  className="h-full bg-primary-500 transition-all"
+                  style={{ width: `${(clipIndex / clips.length) * 100}%` }}
+                />
+              </div>
+            </div>
+            <div className="min-h-0 flex-1">
+              <ListeningClip
+                key={currentClip.start}
+                questions={questions.slice(
+                  currentClip.start,
+                  currentClip.start + currentClip.count,
+                )}
+                answers={answers}
+                onSelect={(questionId, optionId) =>
+                  setAnswers((prev) => ({ ...prev, [questionId]: optionId }))
+                }
+                onEnded={() => setClipEnded(true)}
+              />
+            </div>
+          </>
+        )}
+
+        {phase === "running" && !isListening && (
           <>
             <div className="border-b border-border px-4 py-2.5 sm:px-8">
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
@@ -399,7 +462,31 @@ export function ExamRunner({
         )}
       </div>
 
-      {phase === "running" && (
+      {phase === "running" && isListening && currentClip && (
+        <footer className="border-t border-border bg-surface/60 px-4 py-3 sm:px-8">
+          <div className="flex w-full items-center justify-between gap-3">
+            <p className="text-sm text-muted sm:text-base">
+              {clipEnded ? tListening("noReturn") : tListening("waitEnd")}
+            </p>
+            <Button
+              size="lg"
+              disabled={!clipEnded}
+              onClick={() =>
+                clipIndex === clips.length - 1
+                  ? setPhase("review")
+                  : goTo(clips[clipIndex + 1]!.start)
+              }
+            >
+              {clipIndex === clips.length - 1
+                ? tStage("reviewStage")
+                : tListening("nextClip")}
+              <ChevronLeft className="size-5 rtl:rotate-180" />
+            </Button>
+          </div>
+        </footer>
+      )}
+
+      {phase === "running" && !isListening && (
         <footer className="border-t border-border bg-surface/60 px-4 py-3 sm:px-8">
           {showList && (
             <div className="mb-3 max-h-48 w-full overflow-y-auto border border-border bg-surface/60 p-2">

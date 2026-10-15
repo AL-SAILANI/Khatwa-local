@@ -572,7 +572,7 @@
       "rule": {
         "reading": "Move freely between the questions of this stage. Understand what each question asks before reading everything (ASMA technique).",
         "structure": "Move freely inside the stage. A good rule: 45 seconds per question; if you do not know, guess and move on.",
-        "listening": "Read the question and options before the clip (the 15-second routine). In the real exam a clip usually plays only once, so concentrate."
+        "listening": "Each clip first gives you time to read the questions (15 seconds per question), then the recording starts by itself and plays only once. You cannot replay it or go back to an earlier clip."
       },
       "ruleUnanswered": "Unanswered questions count as wrong, so answer every question, even with a guess.",
       "start": "Start stage",
@@ -597,6 +597,23 @@
       "finishStage": "Finish stage and continue",
       "submitExam": "Submit exam",
       "submitting": "Submitting..."
+    },
+    "listening": {
+      "clipOf": "Clip {current} of {total}",
+      "playsOnce": "Plays once",
+      "previewTitle": "Read the questions before the recording",
+      "previewHint": "Find what is asked and skim the options. The recording starts by itself when the time is up.",
+      "startNow": "Start the recording now",
+      "tapTitle": "Tap to start the recording",
+      "tapHint": "Your browser blocked autoplay. Press the button and the clip plays once.",
+      "tapButton": "Start recording",
+      "playingTitle": "Recording in progress",
+      "playingHint": "It will not be repeated. Focus on listening and answer as you go.",
+      "endedTitle": "Recording finished",
+      "endedHint": "Finish your answers, then move on to the next clip.",
+      "waitEnd": "Waiting for the recording to end…",
+      "noReturn": "Once you move on you cannot come back to this clip.",
+      "nextClip": "Next clip"
     }
   },
   "placementTest": {

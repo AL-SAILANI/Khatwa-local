@@ -78,45 +78,69 @@ export function QuestionView({
             {question.prompt}
           </p>
 
-          <div className="mt-4 space-y-2.5" role="group">
-            {question.options.map((option) => {
-              const isSelected = selectedOptionId === option.id;
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  onClick={() => onSelect(option.id)}
-                  dir="ltr"
-                  aria-pressed={isSelected}
-                  className={cn(
-                    "flex min-h-14 w-full items-center gap-4 rounded-xl border-2 px-4 py-3 text-start text-lg leading-snug transition-colors sm:px-5 sm:text-xl",
-                    isSelected
-                      ? "border-primary-500 bg-primary-100 font-semibold dark:bg-primary-500/15"
-                      : "border-border hover:border-primary-300 hover:bg-surface-muted",
-                  )}
-                >
-                  <span
-                    className={cn(
-                      "grid size-10 shrink-0 place-items-center rounded-full border-2 font-sans text-base font-bold leading-none",
-                      isSelected
-                        ? "border-primary-600 bg-primary-500 text-ink-violet"
-                        : "border-border text-muted",
-                    )}
-                  >
-                    <span className="block leading-none">
-                      {option.id.toUpperCase()}
-                    </span>
-                  </span>
-                  <span className="min-w-0 flex-1">{option.text}</span>
-                  {isSelected && (
-                    <Check className="size-5 shrink-0 text-ink-violet dark:text-primary-300" />
-                  )}
-                </button>
-              );
-            })}
-          </div>
+          <AnswerOptions
+            question={question}
+            selectedOptionId={selectedOptionId}
+            onSelect={onSelect}
+          />
         </div>
       </div>
+    </div>
+  );
+}
+
+interface AnswerOptionsProps {
+  question: Question;
+  selectedOptionId?: string;
+  onSelect: (optionId: string) => void;
+  disabled?: boolean;
+}
+
+/** The lettered answer buttons of one question. */
+export function AnswerOptions({
+  question,
+  selectedOptionId,
+  onSelect,
+  disabled = false,
+}: AnswerOptionsProps) {
+  return (
+    <div className="mt-4 space-y-2.5" role="group">
+      {question.options.map((option) => {
+        const isSelected = selectedOptionId === option.id;
+        return (
+          <button
+            key={option.id}
+            type="button"
+            disabled={disabled}
+            onClick={() => onSelect(option.id)}
+            dir="ltr"
+            aria-pressed={isSelected}
+            className={cn(
+              "flex min-h-14 w-full items-center gap-4 rounded-xl border-2 px-4 py-3 text-start text-lg leading-snug transition-colors sm:px-5 sm:text-xl",
+              isSelected
+                ? "border-primary-500 bg-primary-100 font-semibold dark:bg-primary-500/15"
+                : "border-border hover:border-primary-300 hover:bg-surface-muted",
+            )}
+          >
+            <span
+              className={cn(
+                "grid size-10 shrink-0 place-items-center rounded-full border-2 font-sans text-base font-bold leading-none",
+                isSelected
+                  ? "border-primary-600 bg-primary-500 text-ink-violet"
+                  : "border-border text-muted",
+              )}
+            >
+              <span className="block leading-none">
+                {option.id.toUpperCase()}
+              </span>
+            </span>
+            <span className="min-w-0 flex-1">{option.text}</span>
+            {isSelected && (
+              <Check className="size-5 shrink-0 text-ink-violet dark:text-primary-300" />
+            )}
+          </button>
+        );
+      })}
     </div>
   );
 }

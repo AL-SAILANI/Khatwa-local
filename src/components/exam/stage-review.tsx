@@ -18,6 +18,8 @@ interface StageReviewProps {
   answeredIndexes: Set<number>;
   flaggedIndexes: Set<number>;
   onJump: (index: number) => void;
+  /** The stage cannot be reopened at all (listening clips play once). */
+  locked?: boolean;
   onBack: () => void;
   onFinish: () => void;
   isSubmitting: boolean;
@@ -32,6 +34,7 @@ export function StageReview({
   answeredIndexes,
   flaggedIndexes,
   onJump,
+  locked = false,
   onBack,
   onFinish,
   isSubmitting,
@@ -85,36 +88,45 @@ export function StageReview({
         </p>
       )}
 
-      <Card className="p-4">
-        <StageNavigator
-          start={stage.start}
-          count={stage.count}
-          currentIndex={currentIndex}
-          answeredIndexes={answeredIndexes}
-          flaggedIndexes={flaggedIndexes}
-          onJump={onJump}
-          size="md"
-        />
-        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
-          <span className="flex items-center gap-1.5">
-            <span className="size-3 border border-primary-400 bg-primary-100 dark:bg-primary-500/20" />
-            {t("legendAnswered")}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="size-3 border border-border" />
-            {t("legendUnanswered")}
-          </span>
-          <span className="flex items-center gap-1.5">
-            <Flag className="size-3 fill-warning text-warning" />
-            {t("legendFlagged")}
-          </span>
-        </div>
-      </Card>
+      {!locked && (
+        <Card className="p-4">
+          <StageNavigator
+            start={stage.start}
+            count={stage.count}
+            currentIndex={currentIndex}
+            answeredIndexes={answeredIndexes}
+            flaggedIndexes={flaggedIndexes}
+            onJump={onJump}
+            size="md"
+          />
+          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
+            <span className="flex items-center gap-1.5">
+              <span className="size-3 border border-primary-400 bg-primary-100 dark:bg-primary-500/20" />
+              {t("legendAnswered")}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="size-3 border border-border" />
+              {t("legendUnanswered")}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <Flag className="size-3 fill-warning text-warning" />
+              {t("legendFlagged")}
+            </span>
+          </div>
+        </Card>
+      )}
 
       <div className="flex flex-col gap-3 sm:flex-row">
-        <Button size="lg" variant="outline" className="flex-1" onClick={onBack}>
-          {t("backToQuestions")}
-        </Button>
+        {!locked && (
+          <Button
+            size="lg"
+            variant="outline"
+            className="flex-1"
+            onClick={onBack}
+          >
+            {t("backToQuestions")}
+          </Button>
+        )}
         <Button
           size="lg"
           className="flex-1"
