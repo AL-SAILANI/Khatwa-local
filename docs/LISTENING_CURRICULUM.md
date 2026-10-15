@@ -40,3 +40,50 @@ The course advises mastering types 1 to 7 before types 8 and 9, which appear les
 3. Lessons in the nine-type order with a worked clip, guided practice and an exit card, each with original clips
    of realistic length (the course's own drills are deliberately short and unrealistic; the exam clips are longer).
 4. Mock-exam listening banks tagged by type so the report can show weak types.
+
+---
+
+# Addendum: listening-section orientation video (third-party)
+
+Source: an introduction to the STEP listening section with four practice clips, from the same third-party Arabic
+course (shared by the project owner; not official). Notes are in our own words.
+
+## Facts the course gives about the section
+- 7 to 10 recordings (varies); 20 questions fixed; 25 minutes; worth about 20 points (20% of the exam).
+- Each recording has 1 to 4 questions. Before it starts, you get about 15 seconds per question to read the questions
+  and answers (e.g. 30 seconds for two, 45 for three, 60 for four).
+- Each recording plays once. No replay. No going back: after pressing Next you cannot return to earlier questions
+  (unlike reading and grammar, where review is possible).
+- Short and light section, but unforgiving: one chance to hear.
+
+## Approach
+1. Use the preview time to read the questions and answers and work out what each asks (a number, a person, a place, a
+   price, an opinion, a procedure).
+2. As soon as the recording starts, stop reading and listen. Anything missed cannot be heard again.
+3. Pick an answer as soon as you hear it. If a question was not answered directly, decide by context after it ends.
+4. Note-taking is not recommended in general: recordings are short, many answers can be picked as heard, some
+   questions are answered by context (the meaning of a term, the setting of the dialogue), and writing while
+   listening costs focus (an unknown spelling can derail you). The only exception: with three or more questions,
+   write one or two key words per question during the preview to remember what to listen for.
+
+## Question types seen in the four clips
+- Direct information (a page number, a price, a number of pages, which format).
+- Who (the person who will be in the lab).
+- Advice or procedure (what to do if you do not understand).
+- Details of a list (what a flat has, the rent with and without an air conditioner).
+- Setting of the conversation (where it happens, inferred from clues such as food and a restaurant).
+- Opinion about something (the food: good but expensive).
+- Format specifications (spacing, title style, number position, margin size in the right unit).
+
+## Pitfalls and checks
+- Units: check pixels vs centimetres, per month vs per week, dollars vs another currency.
+- Distractors: a first-mentioned value may be corrected later (a rent with an extra feature costs more; without it, less).
+- A conversation setting is never stated; infer it from topic words.
+- Answer options may all be about one topic (all spacing, all about format): the question asks which detail.
+- Hearing the answer early does not end the clip; do not stop listening if other questions about the same clip remain.
+
+## Gaps this adds
+- Matches the clip model already built in the product (15 seconds per question, one play, forward-only).
+- Skill candidates: preview-reading strategy (what is asked), keep-listening discipline, context questions (setting,
+  attitude), number and unit questions.
+- Mock clips should include correction distractors and setting questions.

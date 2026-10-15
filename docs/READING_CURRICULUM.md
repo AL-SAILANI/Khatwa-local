@@ -76,3 +76,56 @@ prize text, a life-expectancy chart). What they add:
 3. Numbered paragraphs in new passages and "in paragraph N" question stems.
 4. Lessons in the course order (pronouns, vocabulary, information and inference, graphs, text agreement, main idea),
    each with a worked example, guided practice and an exit card.
+
+---
+
+# Addendum: reading-section guide video (third-party)
+
+Source: a complete guide to the STEP reading section with worked passages, from the same third-party Arabic course
+(shared by the project owner; not official). Notes are in our own words. The transcript was read to about line 2000,
+so the last passages may be missing.
+
+## Facts the course gives
+- 9 to 13 passages (varies) with 40 questions in total, worth 40 points, in 60 minutes: about 1.5 minutes per question.
+- A passage can carry 1 to 8 questions. Total questions stay at 40 however many passages appear.
+- Reading each passage fully costs 2 to 3 minutes; with 13 passages that wastes 30 to 40 minutes, leaving 30 to
+  50 seconds per question. So do not read the passage first.
+- Passages usually have no title; some questions ask you to choose the best title.
+
+## Method
+1. Read the first question and its options.
+2. Pick a keyword (a name, number, rare word). Prefer a word that appears once or twice, not one that appears in
+   every sentence (not blood group when every sentence says blood group; choose antigens).
+3. Skim the passage for that keyword. Questions follow the order of the information, so start from the beginning for
+   question 1, then continue from where the last answer was found; if the answer is not there, look a little above or below.
+4. Read only the sentence around the keyword (a fuller sentence, then the one before or after if the meaning is
+   unclear).
+5. Match meaning, not words: the passage may use a synonym or a different word form (owns for has; nothing for not
+   any; negative on both sides).
+6. Repeat for each question. A question asking for the main idea or title comes last, because the other answers have
+   already shown the passage.
+7. If the option wording is not helpful, the keyword may sit in the options (a list of horses, five horses, ten
+   horses points to a question about the number of horses).
+
+## Question types in the guide
+| Type | Notes |
+|---|---|
+| Pronoun | The pronoun is marked (underlined or shaded); the answer is usually in the same sentence or the one before. Example: he refers to the first-mentioned male noun. |
+| Term / vocabulary | The word is marked and the paragraph number may be given. Answer in the same sentence or the next. Test each option by substitution in the sentence; reject the meaning that does not make sense (greedy fire means hungry for trees, not poor or rich). Transition words (for example, however) ask for a replacement word. A "why was this term used" or "what does it refer to" question also exists. |
+| Information | The most common type. Either the answer is stated directly (born in 1960) or needs a small inference (born 1960 and died 2020 means age 60). Choose a keyword and scan. |
+| Main idea / title | The text as a whole, or one paragraph; asked last. |
+| Not mentioned | Which option does not appear? Check each option against the passage; the one never mentioned or contradicted is the answer. Beware of near-misses (a term similar to the one in the passage but not the same). |
+| Does not agree | Which option contradicts the text, sometimes limited to one paragraph. |
+| Author's opinion | Asks what the writer thinks about something. |
+| Audience / text type | Who the text is written for; whether it is scientific, medical or historical. |
+
+- The course also mentions short examples such as a firefighter passage: job, term meaning, a cause (why the rescue
+  failed), a pronoun, an action taken (a fire break), a reason for being happy.
+- Practice sources named: a site with explained passages and practice questions and a larger set of about 30
+  passages in the same order as the solved set.
+
+## Gaps this adds
+- The keyword choice drill (rarest word, not the topic word) is new.
+- The "order of questions follows the passage" rule can be used in the lesson tags and in item generation.
+- Types listed here: pronoun, term, information (direct and inferred), main idea/title, not mentioned, does not agree,
+  author opinion, audience, text type. The earlier reading doc already has most; add audience and text-type questions.

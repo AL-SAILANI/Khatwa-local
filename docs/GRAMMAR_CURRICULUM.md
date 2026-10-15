@@ -503,3 +503,105 @@ Four reusable moves from the technique video; the first two are already in the d
 - A modal-function skill: function sorted by strength (ability, permission, advice, obligation, possibility).
 - A conditional table drill with the "given clause, name the row, fill the other" routine (extends gr-conditionals).
 - The "no clue words" caution as an explicit lesson note inside gr-strategy.
+
+---
+
+# Key-rules series (videos 16 to 18): what it adds
+
+Source: the last videos of the "most repeated rules" series (shared by the project owner; not official): the
+passive voice, capitalization (the writing-analysis rule), and time connectors. Notes are in our own words.
+Transcripts are auto-captions; the time-connector video was read to about line 1800 of ~1800, so it is complete.
+
+## Passive voice
+- Active sentence: subject, then verb, then object. Passive: the receiver comes first, then the verb form, then the doer
+  after by (the apple was eaten by Ahmed). The doer is often omitted (the bag was stolen; the building was built in
+  1990; the car was made in Japan) and the sentence is still complete.
+- Eight passive tenses exist; four have no passive: present perfect continuous, past perfect continuous, future
+  continuous, future perfect continuous. Learn the eight:
+  | Tense | Form |
+  |---|---|
+  | present simple | am/is/are + third form |
+  | past simple | was/were + third form |
+  | future simple | will be + third form |
+  | present continuous | am/is/are + being + third form |
+  | past continuous | was/were + being + third form |
+  | present perfect | has/have + been + third form |
+  | past perfect | had + been + third form |
+  | future perfect | will have + been + third form |
+- Core facts: the verb in a passive is always a third form with no -ing and no -s on the main verb; the third form
+  never stands alone as a finite verb (the book written by my father is wrong; the book was written by my father is
+  right). The helper decides the tense and agreement: was or is for a singular, were or are for a plural.
+- Detection moves, in order of strength:
+  1. by + a doer at the end (by my father, by smoking, by the children): almost always passive.
+  2. The word before the verb names a receiver, not a doer (a box is made, a course is offered, lectures are given).
+  3. A sentence that starts with the receiver and has no doer: a thing cannot do the verb.
+- Elimination routine once the sentence is passive: remove every option with no third form; remove any option with -ing
+  on the main verb; remove had/has + third form with no been (those are active); then choose among the remaining
+  helpers by singular/plural and by the time clue (last night = past simple passive; this semester, now, right now =
+  present continuous passive; tomorrow = future simple passive; so far = present perfect passive).
+- Clue words from the active-voice lessons apply unchanged: yesterday means past simple whether active or passive.
+- When no doer and no by appear, use logic: did the subject do it, or did it happen to the subject? Ali was taken to
+  the hospital (passive) versus Ali took (active).
+- Dual-trap: a past simple passive and a past simple active can look alike for some irregular verbs; the passive
+  always needs a helper before the participle.
+- Questions with a hidden passive: the lecture-location question where lectures are given asks for the passive
+  (where are the lectures given), not the active (where are they giving the lectures) when the lectures are the
+  receiver.
+
+## Capitalization (writing analysis)
+- Always capital: the first word of a sentence (including after a period, question mark and exclamation mark); the
+  first word of a quotation; the pronoun I (anywhere in the sentence).
+- Always capital (proper nouns, even mid-sentence): names of people, pets and named objects (Tom, Jerry, Coke); days;
+  months; languages (English, Arabic, Spanish); nationalities and ethnic groups (Egyptian, Chinese); religions and
+  their followers (Islam, Muslim, Christianity; atheism is not a religion and stays lowercase); holy books; holidays
+  and events (Ramadan, Christmas, Eid); planets; continents; countries; states; cities; streets; rivers; seas;
+  oceans; regions such as the Middle East; landmarks; companies and brands (Aramco, Toyota, Microsoft Corporation);
+  book, film and show titles; named places (King Saud University, King Khalid Airport).
+- Multi-word names: capitalize every word. Exceptions inside a name: small articles, short prepositions and short
+  conjunctions (of, in, to, by, and, or, the) stay lowercase (United States of America).
+- Titles before a name are capital (Mr., Mrs., Ms., Dr., Professor Ali, President Obama). The same word used alone as a
+  job is lowercase (he works as a technician; the professor spoke).
+- Lowercase unless a name is meant: seasons (summer, spring), unless inside a name (Prada Spring 2021 Collection);
+  directions (north, south-west), unless part of a name (Western countries); school subjects (biology, math, physics,
+  chemistry, business), unless the exact course name (Math 101); jobs; family words (my cousin, my uncle, my
+  grandmother) unless used as a name (my cousin Dave); common nouns (restaurant, friend, university when general).
+- A nationality used as a describer is capital, but the generic noun beside it is not: an Egyptian restaurant (only
+  Egyptian is capital) unless Egyptian Restaurant is the sign name.
+- Routine for the question: compare the options word by word and find the one place they differ; test that word against
+  the list (name, person, place, nationality, language, day, month, title) or against the lowercase list. Work word
+  by word, not by looking for a sentence that feels right.
+
+## Time connectors (before, after, when, while, until, by the time)
+- A connector splits a sentence into two events (clauses). If the connector starts the sentence, the first event ends at
+  the comma; if it sits in the middle, the first event ends before the connector. Always ask: what is the tense of the
+  other clause?
+- If the blank sits directly after the connector with no subject, use the gerund (before leaving, after graduating, when
+  crossing). If a subject follows the connector, the clause needs a full tense chosen from the table below.
+- Past: when one clause is past, the other is past too (a past with a future never matches; when school finished, I will
+  go is wrong). Present: the clause after a time connector uses present simple; the other clause is present simple (a
+  habit) or future (a plan).
+- Table:
+  | Connector | Past | Present | Future |
+  |---|---|---|---|
+  | before | before + past simple; other clause: past simple or past perfect | before + present simple; other clause: present simple or future | before + present simple; other: will + base |
+  | after | after + past simple or past perfect; other clause: past simple | after + present simple; other: present simple or future | after + present simple; other: will + base |
+  | when | when + past simple; other: any past (simple, continuous, perfect, perfect continuous); a stated duration (for hours) points to past perfect continuous | when + present simple; other: present simple (routine) or future | when + present simple; other: will + base or future continuous/perfect |
+  | while | while + past continuous | while + present continuous | similar |
+  | by the time | by the time + past simple; other: past perfect | by the time + present simple; other: future perfect |
+  | until | not until + past simple | until + present simple; other: will | |
+- Examples to model: before I go to sleep, I will tidy my room (before + present simple, will); he did his homework
+  before the test (past simple); when we arrive, Mary will have left (present simple + future perfect); by the time we
+  arrive, the sun will have set; by the time I arrived, I was hungry (both past).
+- Routine items: after + past simple, the other clause can be past perfect; if both past simple and past perfect are
+  options in the after clause, pick by logic (which event finished first).
+- A habit pair: when/after + present simple on both sides states a routine (after Sara studies, she takes a break).
+  A future plan pair: when + present simple + will (when I get home, I will call you).
+- Quick classification of by the time: the stated time may be closer to one clause: by the time the postman arrived,
+  I had left for work (past perfect for the earlier event); by this time next year, I will have turned 25.
+
+## Gaps this adds
+- gr-passive: add the eight-tense table and the "by" detection routine (the existing skill name stays).
+- wa-capitalization: split into three drills (always capital, always lowercase, multi-word names), with the
+  nationality-versus-noun contrast; this fits the earlier note on adding exception flashcards.
+- A time-connector skill (already listed) now has the full table: before, after, when, while, by the time, until in
+  the past, present and future.
