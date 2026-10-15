@@ -1,6 +1,7 @@
 import type { User } from "@supabase/supabase-js";
 import { getSupabase, setRememberSession } from "@/lib/supabase/client";
 import { FlowAuthError } from "@/lib/supabase/auth-error";
+import { markOAuthPending } from "@/lib/supabase/oauth-pending";
 import { routing } from "@/i18n/routing";
 import type { AuthUser, Gender, StudyGoal } from "@/types/user";
 
@@ -51,6 +52,7 @@ export async function sbLoginWithEmail(email: string, password: string, remember
  * callers don't navigate before the redirect happens. */
 export async function sbLoginWithGoogle(): Promise<never> {
   setRememberSession(true);
+  markOAuthPending();
   const first = window.location.pathname.split("/")[1] ?? "";
   const prefix = (routing.locales as readonly string[]).includes(first) ? `/${first}` : "";
   const { error } = await auth().signInWithOAuth({
