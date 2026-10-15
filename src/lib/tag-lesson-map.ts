@@ -3,6 +3,8 @@ import { SAMPLE_QUESTIONS } from "@/data/sample-questions";
 import { SAMPLE_READING_QUESTIONS_EXTRA } from "@/data/reading-extra";
 import { SAMPLE_LISTENING_QUESTIONS_EXTRA } from "@/data/listening-extra";
 import { GRAMMAR_EXTRA_QUESTIONS } from "@/data/grammar-extra";
+import { LESSON_PRACTICE_GRAMMAR_QUESTIONS } from "@/data/lesson-practice-grammar";
+import { LESSON_PRACTICE_WRITING_QUESTIONS } from "@/data/lesson-practice-writing";
 import { STEP_MOCK_READING_QUESTIONS } from "@/data/step-mock-reading";
 import { STEP_MOCK_LISTENING_QUESTIONS } from "@/data/step-mock-listening";
 import { STEP_MOCK_GRAMMAR_QUESTIONS, STEP_MOCK_WRITING_QUESTIONS } from "@/data/step-mock-grammar-writing";
@@ -26,6 +28,8 @@ const ALL_QUESTIONS: Question[] = [
   ...SAMPLE_READING_QUESTIONS_EXTRA,
   ...SAMPLE_LISTENING_QUESTIONS_EXTRA,
   ...GRAMMAR_EXTRA_QUESTIONS,
+  ...LESSON_PRACTICE_GRAMMAR_QUESTIONS,
+  ...LESSON_PRACTICE_WRITING_QUESTIONS,
   // Some lessons list mock-bank questions; indexing them lets their tags resolve.
   ...STEP_MOCK_READING_QUESTIONS,
   ...STEP_MOCK_LISTENING_QUESTIONS,
