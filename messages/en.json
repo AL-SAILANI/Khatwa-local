@@ -439,7 +439,9 @@
       "lessonNew": "New skill for you: \"{skill}\"",
       "lessonDefault": "The next step in your journey",
       "retryDetail": "Last score {score}% — raise it to 80% to master the skill",
-      "empty": "You are all done for today. Well done!"
+      "empty": "You are all done for today. Well done!",
+      "predicted": "Predicted score (rough estimate): {score} out of 100.",
+      "predictedLow": "There is little data yet; it gets more accurate after more exams and lessons."
     }
   },
   "trackNames": {
@@ -549,7 +551,53 @@
     "sectionTime": "{minutes} min",
     "showPalette": "Show question grid",
     "hidePalette": "Hide question grid",
-    "unflagForReview": "Remove review flag"
+    "unflagForReview": "Remove review flag",
+    "stage": {
+      "stages": "Exam stages",
+      "stageOf": "Stage {current} of {total}",
+      "name": {
+        "reading": "Reading",
+        "structure": "Grammar and writing analysis",
+        "listening": "Listening"
+      },
+      "about": {
+        "reading": "Consecutive reading passages with a set of questions for each.",
+        "structure": "Grammar questions (tenses, prepositions and more) and writing-analysis questions (punctuation, sentence order, error spotting).",
+        "listening": "Short audio clips, each with its own questions."
+      },
+      "questions": "questions",
+      "minutes": "minutes",
+      "ruleTimer": "This stage lasts {minutes} minutes. The countdown starts when you press \"Start stage\".",
+      "ruleNoReturn": "Once you finish a stage you cannot return to it, so check your answers before finishing.",
+      "rule": {
+        "reading": "Move freely between the questions of this stage. Understand what each question asks before reading everything (ASMA technique).",
+        "structure": "Move freely inside the stage. A good rule: 45 seconds per question; if you do not know, guess and move on.",
+        "listening": "Read the question and options before the clip (the 15-second routine). In the real exam a clip usually plays only once, so concentrate."
+      },
+      "ruleUnanswered": "Unanswered questions count as wrong, so answer every question, even with a guess.",
+      "start": "Start stage",
+      "timeLeft": "Time left",
+      "endStage": "End stage",
+      "questionOf": "Question {current} of {total}",
+      "shortcuts": "Shortcuts: A-D choose · N/P move · F flag",
+      "showList": "Question list",
+      "hideList": "Hide list",
+      "reviewStage": "Review stage",
+      "reviewTitle": "Review: {name}",
+      "reviewNote": "When you finish you move on to the next stage and cannot return to this one.",
+      "reviewFinalNote": "This is the last stage. After you submit the exam ends and you cannot change your answers.",
+      "answered": "Answered",
+      "unanswered": "Unanswered",
+      "flagged": "Flagged",
+      "unansweredWarning": "You have {count, plural, one {# unanswered question} other {# unanswered questions}}. Go back to them now, before the stage closes.",
+      "legendAnswered": "Answered",
+      "legendUnanswered": "Unanswered",
+      "legendFlagged": "Flagged",
+      "backToQuestions": "Back to questions",
+      "finishStage": "Finish stage and continue",
+      "submitExam": "Submit exam",
+      "submitting": "Submitting..."
+    }
   },
   "placementTest": {
     "pageTitle": "Placement Test",
@@ -567,7 +615,7 @@
     "examTaken": "✓ taken",
     "pageTitle": "Full Mock Exam",
     "title": "Full mock exam",
-    "description": "Full STEP simulation: {total, plural, one {# question} other {# questions}} in {minutes, plural, one {# minute} other {# minutes}}, with the same section split (reading 40%, grammar 30%, listening 20%, writing 10%).",
+    "description": "Full STEP simulation: {total, plural, one {# question} other {# questions}} in {minutes, plural, one {# minute} other {# minutes}} over three stages, with the same section split (reading 40%, grammar 30%, listening 20%, writing 10%).",
     "questionCount": "{count, plural, one {# question} other {# questions}}",
     "minuteCount": "{count} min",
     "upgradeForUnlimited": "Upgrade for unlimited exams",
@@ -589,7 +637,23 @@
     "noAttemptsDescription": "Start your first mock exam to simulate the real STEP test and track your progress here.",
     "scoreLabel": "Score: {score}",
     "noDate": "—",
-    "eyebrow": "Mock Exams"
+    "eyebrow": "Mock Exams",
+    "stagesTitle": "Exam stages",
+    "stageCount": "{count} stages",
+    "stage": {
+      "reading": "Reading",
+      "structure": "Grammar and writing analysis",
+      "listening": "Listening"
+    },
+    "stageAbout": {
+      "reading": "Consecutive reading passages with their questions.",
+      "structure": "30 grammar and 10 writing-analysis questions in one stage.",
+      "listening": "Short audio clips, each with its own questions."
+    },
+    "ruleNoReturn": "Once you finish a stage you cannot return to it, so check your answers first.",
+    "ruleTimer": "Each stage has its own countdown that starts when you press \"Start stage\", and the stage closes automatically when time is up.",
+    "examNew": "Not taken yet",
+    "examBest": "Best score {score}%"
   },
   "courses": {
     "pageTitle": "Courses",

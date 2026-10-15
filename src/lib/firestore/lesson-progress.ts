@@ -3,6 +3,7 @@ import { db } from "@/lib/firebase/client";
 import { getUserProfile, markDayActive } from "@/lib/firestore/users";
 import { unlockHoursMilestones, unlockLessonMilestones, unlockStreakMilestones } from "@/lib/firestore/achievements";
 import type { LessonProgress } from "@/types/course";
+import { refreshSkillMastery } from "@/lib/skill-mastery-store";
 import { useSupabaseUsers } from "@/lib/supabase/flags";
 import { sbGetAllUserProgress, sbGetCourseProgress, sbGetLessonProgress, sbMarkLessonComplete } from "@/lib/supabase/user-data";
 
@@ -64,4 +65,5 @@ export async function markLessonComplete(
   await unlockLessonMilestones(userId, completed.length);
   if (nextStreak) await unlockStreakMilestones(userId, nextStreak);
   if (profile) await unlockHoursMilestones(userId, profile.studyHours + 0.5);
+  await refreshSkillMastery(userId);
 }

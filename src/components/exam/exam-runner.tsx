@@ -2,15 +2,27 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Clock, Flag, ChevronRight, ChevronLeft, LayoutGrid } from "lucide-react";
+import {
+  Check,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Flag,
+  LayoutGrid,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { QuestionNavigator } from "@/components/exam/question-navigator";
 import { QuestionView } from "@/components/exam/question-view";
-import { ReviewScreen } from "@/components/exam/review-screen";
+import { StageBriefing } from "@/components/exam/stage-briefing";
+import { StageNavigator } from "@/components/exam/stage-navigator";
+import { StageReview } from "@/components/exam/stage-review";
 import { useExamTimer } from "@/hooks/use-exam-timer";
-import { STEP_SECTION_MINUTES } from "@/lib/constants/exam";
+import { buildStages, summarizeStage } from "@/lib/exam-stages";
 import { cn } from "@/lib/utils/cn";
-import type { ExamSectionKey, Question, ReadingPassage } from "@/types/question";
+import type {
+  ExamSectionKey,
+  Question,
+  ReadingPassage,
+} from "@/types/question";
 
 export interface ExamSubmitPayload {
   answers: Record<string, string>;
@@ -26,85 +38,60 @@ interface ExamRunnerProps {
   onSubmit: (payload: ExamSubmitPayload) => Promise<void>;
 }
 
-interface SectionRange {
-  section: ExamSectionKey;
-  start: number;
-  count: number;
-}
+type Phase = "briefing" | "running" | "review";
 
-export function ExamRunner({ title, questions, passages, durationMinutes, onSubmit }: ExamRunnerProps) {
+/**
+ * Timed exam in stages (reading, grammar + writing analysis, listening). Each
+ * stage opens with a briefing, has its own countdown, and closes for good when
+ * finished or when time runs out: the learner cannot go back to it.
+ */
+export function ExamRunner({
+  title,
+  questions,
+  passages,
+  durationMinutes,
+  onSubmit,
+}: ExamRunnerProps) {
   const t = useTranslations("exam");
+  const tStage = useTranslations("exam.stage");
   const tTrack = useTranslations("trackNames");
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const stages = useMemo(
+    () => buildStages(questions, durationMinutes),
+    [questions, durationMinutes],
+  );
+
+  const [stageIndex, setStageIndex] = useState(0);
+  const [phase, setPhase] = useState<Phase>("briefing");
+  const [currentIndex, setCurrentIndex] = useState(stages[0]?.start ?? 0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
-  const [mode, setMode] = useState<"exam" | "review">("exam");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isPaletteCollapsed, setIsPaletteCollapsed] = useState(false);
+  const [showList, setShowList] = useState(false);
 
   const timeBySectionRef = useRef<Partial<Record<ExamSectionKey, number>>>({});
-  const sectionEnteredAtRef = useRef<number>(Date.now());
+  const enteredAtRef = useRef<number>(0);
 
-  // Contiguous runs of the same section, in exam order.
-  const sectionRanges = useMemo<SectionRange[]>(() => {
-    const ranges: SectionRange[] = [];
-    questions.forEach((q, i) => {
-      const last = ranges[ranges.length - 1];
-      if (last && last.section === q.section) last.count += 1;
-      else ranges.push({ section: q.section, start: i, count: 1 });
-    });
-    return ranges;
-  }, [questions]);
+  const stage = stages[stageIndex];
+  const isLastStage = stageIndex === stages.length - 1;
+  const currentQuestion: Question | undefined = questions[currentIndex];
 
-  const currentQuestion = questions[currentIndex];
-  const currentSection = currentQuestion?.section;
-  const currentSectionIndex = Math.max(
-    0,
-    sectionRanges.findIndex((r) => r.section === currentSection),
-  );
-  const isLastSection = currentSectionIndex === sectionRanges.length - 1;
-  const isLastOfSection =
-    currentIndex === sectionRanges[currentSectionIndex]!.start + sectionRanges[currentSectionIndex]!.count - 1;
-  const sectionMinutes = currentSection ? (STEP_SECTION_MINUTES[currentSection] ?? durationMinutes) : durationMinutes;
-
-  const flushElapsedTime = useCallback((section: ExamSectionKey) => {
-    const now = Date.now();
-    const elapsedSeconds = (now - sectionEnteredAtRef.current) / 1000;
-    timeBySectionRef.current[section] = (timeBySectionRef.current[section] ?? 0) + elapsedSeconds;
-    sectionEnteredAtRef.current = now;
-  }, []);
-
-  /** Jump within the exam. During the timed run navigation is locked to the
-   * current section; `force` (review jumps) can go anywhere. */
-  const goToIndex = useCallback(
-    (index: number, force = false) => {
-      const targetQ = questions[index];
-      if (!targetQ) return;
-      if (!force && currentSection && targetQ.section !== currentSection) return;
-      if (currentQuestion) flushElapsedTime(currentQuestion.section);
-      setCurrentIndex(index);
-      setMode("exam");
+  const flushElapsedTime = useCallback(
+    (section: ExamSectionKey | undefined) => {
+      const now = Date.now();
+      if (section) {
+        timeBySectionRef.current[section] =
+          (timeBySectionRef.current[section] ?? 0) +
+          (now - enteredAtRef.current) / 1000;
+      }
+      enteredAtRef.current = now;
     },
-    [questions, currentIndex, currentSection, currentQuestion, flushElapsedTime],
+    [],
   );
-
-  /** Mark the current section done, discard its remaining time and open the
-   * next section with a fresh countdown (or move to review for the last). */
-  const finishCurrentSection = useCallback(() => {
-    if (!currentQuestion) return;
-    flushElapsedTime(currentSection ?? "reading");
-    const next = sectionRanges[currentSectionIndex + 1];
-    if (next) {
-      setCurrentIndex(next.start);
-      setMode("exam");
-    } else {
-      setMode("review");
-    }
-  }, [currentQuestion, currentSection, currentSectionIndex, sectionRanges, flushElapsedTime]);
 
   const handleSubmit = useCallback(async () => {
+    if (isSubmitting) return;
     setIsSubmitting(true);
-    if (currentQuestion) flushElapsedTime(currentQuestion.section);
+    flushElapsedTime(questions[currentIndex]?.section);
     try {
       await onSubmit({
         answers,
@@ -114,132 +101,288 @@ export function ExamRunner({ title, questions, passages, durationMinutes, onSubm
     } finally {
       setIsSubmitting(false);
     }
-  }, [answers, flagged, currentQuestion, flushElapsedTime, onSubmit]);
+  }, [
+    answers,
+    flagged,
+    currentIndex,
+    questions,
+    flushElapsedTime,
+    onSubmit,
+    isSubmitting,
+  ]);
 
-  const handleSectionExpire = useCallback(() => {
-    if (mode === "review" || isLastSection) {
+  /** Closes the current stage for good and opens the next one (or submits). */
+  const finishStage = useCallback(() => {
+    flushElapsedTime(questions[currentIndex]?.section);
+    const next = stages[stageIndex + 1];
+    if (!next) {
       void handleSubmit();
-    } else {
-      finishCurrentSection();
+      return;
     }
-  }, [mode, isLastSection, handleSubmit, finishCurrentSection]);
+    setStageIndex(stageIndex + 1);
+    setCurrentIndex(next.start);
+    setShowList(false);
+    setPhase("briefing");
+  }, [
+    flushElapsedTime,
+    questions,
+    currentIndex,
+    stages,
+    stageIndex,
+    handleSubmit,
+  ]);
 
-  const timer = useExamTimer(sectionMinutes, handleSectionExpire, currentSection ?? null);
-
-  const toggleFlag = () => {
-    setFlagged((prev) => {
-      const next = new Set(prev);
-      if (currentQuestion) {
-        if (next.has(currentQuestion.id)) next.delete(currentQuestion.id);
-        else next.add(currentQuestion.id);
-      }
-      return next;
-    });
-  };
-
-  const answeredIndexes = new Set(questions.map((q, i) => (answers[q.id] ? i : -1)).filter((i) => i >= 0));
-  const flaggedIndexes = new Set(questions.map((q, i) => (flagged.has(q.id) ? i : -1)).filter((i) => i >= 0));
-
-  // Sections other than the current one are locked during the timed run.
-  const lockedSections = useMemo(
-    () =>
-      new Set(
-        sectionRanges.filter((r) => r.section !== currentSection).map((r) => r.section),
-      ),
-    [sectionRanges, currentSection],
+  const timer = useExamTimer(
+    stage?.minutes ?? durationMinutes,
+    finishStage,
+    stage?.key ?? null,
+    phase !== "briefing",
   );
 
-  // Guard: if no questions or no current question, render nothing
-  if (!questions.length || !currentQuestion) {
-    return null;
-  }
+  const goTo = useCallback(
+    (index: number) => {
+      if (!stage || index < stage.start || index >= stage.start + stage.count)
+        return;
+      flushElapsedTime(questions[currentIndex]?.section);
+      setCurrentIndex(index);
+      setPhase("running");
+    },
+    [stage, flushElapsedTime, questions, currentIndex],
+  );
+
+  const toggleFlag = useCallback(() => {
+    if (!currentQuestion) return;
+    setFlagged((prev) => {
+      const next = new Set(prev);
+      if (next.has(currentQuestion.id)) next.delete(currentQuestion.id);
+      else next.add(currentQuestion.id);
+      return next;
+    });
+  }, [currentQuestion]);
+
+  // Keyboard: A-D or 1-4 choose an option, N / P move, F flags.
+  useEffect(() => {
+    if (phase !== "running" || !currentQuestion || !stage) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.ctrlKey || event.metaKey || event.altKey) return;
+      const target = event.target as HTMLElement | null;
+      if (target && ["INPUT", "TEXTAREA", "SELECT"].includes(target.tagName))
+        return;
+      const optionIndex = /^(?:Key([A-D])|Digit([1-4]))$/.exec(event.code);
+      if (optionIndex) {
+        const index = optionIndex[1]
+          ? optionIndex[1].charCodeAt(0) - 65
+          : Number(optionIndex[2]) - 1;
+        const option = currentQuestion.options[index];
+        if (option)
+          setAnswers((prev) => ({ ...prev, [currentQuestion.id]: option.id }));
+      } else if (event.code === "KeyN") goTo(currentIndex + 1);
+      else if (event.code === "KeyP") goTo(currentIndex - 1);
+      else if (event.code === "KeyF") toggleFlag();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [phase, currentQuestion, stage, currentIndex, goTo, toggleFlag]);
+
+  const answeredIndexes = useMemo(
+    () =>
+      new Set(
+        questions.map((q, i) => (answers[q.id] ? i : -1)).filter((i) => i >= 0),
+      ),
+    [questions, answers],
+  );
+  const flaggedIndexes = useMemo(
+    () =>
+      new Set(
+        questions
+          .map((q, i) => (flagged.has(q.id) ? i : -1))
+          .filter((i) => i >= 0),
+      ),
+    [questions, flagged],
+  );
+
+  if (!stage || !currentQuestion) return null;
+
+  const summary = summarizeStage(stage, questions, answers, flagged);
+  const positionInStage = currentIndex - stage.start + 1;
+  const isLastInStage = positionInStage === stage.count;
+  const timeShare = Math.max(
+    0,
+    Math.min(1, timer.remainingSeconds / (stage.minutes * 60)),
+  );
+  const timeLeftCritical = timer.remainingSeconds <= 60;
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-background">
-      <header className="flex items-center justify-between gap-3 border-b border-border px-4 py-4 sm:px-6">
-        <div className="flex min-w-0 flex-col sm:flex-row sm:items-center sm:gap-3">
-          <h1 className="truncate text-sm font-semibold sm:text-base">{title}</h1>
-          {mode === "exam" && (
-            <span
-              className="inline-flex shrink-0 items-center gap-1.5 rounded-none bg-primary-500/10 px-2.5 py-0.5 text-[11px] font-semibold text-ink-violet dark:text-primary-400"
-              dir="rtl"
+      <header className="border-b border-border">
+        <div className="flex items-center justify-between gap-3 px-4 py-3 sm:px-6">
+          <div className="min-w-0">
+            <h1 className="truncate text-sm font-semibold sm:text-base">
+              {title}
+            </h1>
+            <ol
+              className="mt-1.5 hidden items-center gap-1.5 sm:flex"
+              aria-label={tStage("stages")}
             >
-              {t("sectionOfTotal", { current: currentSectionIndex + 1, total: sectionRanges.length })}
-              <span className="font-medium" dir={currentSection === "reading" || currentSection === "listening" ? "ltr" : "rtl"}>
-                {tTrack(currentSection ?? "reading")}
-              </span>
-            </span>
-          )}
-        </div>
-        <div className="flex shrink-0 items-center gap-3 sm:gap-4">
-          <span
-            className={cn(
-              "font-mono text-lg font-bold tabular-nums",
-              timer.isRunningLow ? "text-error" : "text-foreground",
+              {stages.map((s, i) => (
+                <li
+                  key={s.key}
+                  aria-current={i === stageIndex ? "step" : undefined}
+                  className={cn(
+                    "flex items-center gap-1.5 border px-2.5 py-0.5 text-[11px] font-semibold",
+                    i < stageIndex &&
+                      "border-success/40 bg-success/10 text-success-600 dark:text-success-300",
+                    i === stageIndex &&
+                      "border-primary-500 bg-primary-500 text-ink-violet",
+                    i > stageIndex && "border-border text-muted",
+                  )}
+                >
+                  {i < stageIndex ? (
+                    <Check className="size-3" />
+                  ) : (
+                    <span>{i + 1}</span>
+                  )}
+                  {tStage(`name.${s.key}`)}
+                </li>
+              ))}
+            </ol>
+            <p className="mt-0.5 text-xs text-muted sm:hidden">
+              {tStage("stageOf", {
+                current: stageIndex + 1,
+                total: stages.length,
+              })}{" "}
+              · {tStage(`name.${stage.key}`)}
+            </p>
+          </div>
+
+          <div className="flex shrink-0 items-center gap-3">
+            <div
+              className={cn(
+                "flex items-center gap-1.5 border px-3 py-1.5 font-mono text-lg font-bold tabular-nums",
+                phase === "briefing"
+                  ? "border-border text-muted"
+                  : timer.isRunningLow
+                    ? "border-error text-error"
+                    : "border-border",
+                timeLeftCritical && phase !== "briefing" && "animate-pulse",
+              )}
+              aria-label={tStage("timeLeft")}
+              role="timer"
+            >
+              <Clock className="size-4" />
+              {timer.label}
+            </div>
+            {phase === "running" && (
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => setPhase("review")}
+              >
+                {tStage("endStage")}
+              </Button>
             )}
-          >
-            {timer.label}
-          </span>
-          {mode === "exam" && (
-            <Button size="sm" variant="outline" onClick={() => setMode("review")}>
-              {t("reviewAndSubmit")}
-            </Button>
-          )}
+          </div>
+        </div>
+        <div className="h-1 w-full bg-surface-muted" aria-hidden>
+          <div
+            className={cn(
+              "h-full transition-[width] duration-1000 ease-linear",
+              timer.isRunningLow ? "bg-error" : "bg-ink-violet",
+            )}
+            style={{ width: `${timeShare * 100}%` }}
+          />
         </div>
       </header>
 
-      <div className="flex flex-1 flex-col overflow-y-auto p-6">
-        {mode === "review" ? (
-          <ReviewScreen
-            questions={questions}
-            answers={answers}
-            flagged={flagged}
-            passages={passages}
-            onJump={(index) => goToIndex(index, true)}
-            onSubmit={handleSubmit}
-            onBack={() => setMode("exam")}
+      <div className="flex flex-1 flex-col overflow-y-auto px-4 py-4 sm:px-6">
+        {phase === "briefing" && (
+          <StageBriefing
+            stage={stage}
+            stageNumber={stageIndex + 1}
+            stageTotal={stages.length}
+            onStart={() => {
+              enteredAtRef.current = Date.now();
+              setPhase("running");
+            }}
+          />
+        )}
+
+        {phase === "review" && (
+          <StageReview
+            stage={stage}
+            isLastStage={isLastStage}
+            currentIndex={currentIndex}
+            summary={summary}
+            answeredIndexes={answeredIndexes}
+            flaggedIndexes={flaggedIndexes}
+            onJump={goTo}
+            onBack={() => setPhase("running")}
+            onFinish={finishStage}
             isSubmitting={isSubmitting}
           />
-        ) : (
-          <div className="mx-auto w-full max-w-4xl flex-1">
-            <div className="flex flex-wrap items-center gap-3">
-              <span
-                className="inline-flex items-center gap-1.5 rounded-none bg-primary-500/10 px-3 py-1 text-xs font-semibold text-ink-violet dark:text-primary-400"
-                dir={currentQuestion.section === "reading" || currentQuestion.section === "listening" ? "ltr" : "rtl"}
-              >
-                {tTrack(currentQuestion.section)}
-                <span className="inline-flex items-center gap-1 text-ink-violet/70 dark:text-primary-300/70" dir="rtl">
-                  <Clock className="size-3" />
-                  {t("sectionTime", { minutes: sectionMinutes })}
+        )}
+
+        {phase === "running" && (
+          <div className="mx-auto w-full max-w-5xl flex-1">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              <span className="text-sm font-semibold tabular-nums">
+                {tStage("questionOf", {
+                  current: positionInStage,
+                  total: stage.count,
+                })}
+              </span>
+              {stage.sections.length > 1 && (
+                <span className="border border-border px-2.5 py-0.5 text-xs font-semibold text-muted">
+                  {tTrack(currentQuestion.section)}
                 </span>
-              </span>
-              <span className="text-sm font-medium text-muted">
-                {t("questionCounter", { current: currentIndex + 1, total: questions.length })}
-              </span>
+              )}
               <button
                 type="button"
                 onClick={toggleFlag}
                 aria-pressed={flagged.has(currentQuestion.id)}
-                aria-label={flagged.has(currentQuestion.id) ? t("unflagForReview") : t("flagForReview")}
                 className={cn(
-                  "flex items-center gap-1.5 rounded-lg px-2 py-1 text-sm font-medium transition-colors",
+                  "flex items-center gap-1.5 text-sm font-medium transition-colors",
                   flagged.has(currentQuestion.id)
                     ? "text-warning-600 dark:text-warning-400"
                     : "text-muted hover:text-foreground",
                 )}
               >
-                <Flag className={cn("size-4", flagged.has(currentQuestion.id) && "fill-warning")} />
-                {t("flagForReview")}
+                <Flag
+                  className={cn(
+                    "size-4",
+                    flagged.has(currentQuestion.id) && "fill-warning",
+                  )}
+                />
+                {flagged.has(currentQuestion.id)
+                  ? t("unflagForReview")
+                  : t("flagForReview")}
               </button>
+              <span className="ms-auto hidden text-[11px] text-muted lg:inline">
+                {tStage("shortcuts")}
+              </span>
+            </div>
+            <div className="mt-2 h-1 w-full bg-surface-muted" aria-hidden>
+              <div
+                className="h-full bg-primary-500 transition-all"
+                style={{ width: `${(summary.answered / stage.count) * 100}%` }}
+              />
             </div>
 
-            <div className="mt-6">
+            <div className="mt-5">
               <QuestionView
+                key={currentQuestion.id}
                 question={currentQuestion}
-                passage={currentQuestion.passageId ? passages[currentQuestion.passageId] : undefined}
+                passage={
+                  currentQuestion.passageId
+                    ? passages[currentQuestion.passageId]
+                    : undefined
+                }
                 selectedOptionId={answers[currentQuestion.id]}
                 onSelect={(optionId) =>
-                  setAnswers((prev) => ({ ...prev, [currentQuestion.id]: optionId }))
+                  setAnswers((prev) => ({
+                    ...prev,
+                    [currentQuestion.id]: optionId,
+                  }))
                 }
               />
             </div>
@@ -247,57 +390,57 @@ export function ExamRunner({ title, questions, passages, durationMinutes, onSubm
         )}
       </div>
 
-      {mode === "exam" && (
-        <footer className="border-t border-border p-4">
-          <div className="mx-auto mb-4 flex w-full max-w-4xl items-center justify-end">
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={() => setIsPaletteCollapsed((prev) => !prev)}
-              aria-expanded={!isPaletteCollapsed}
-              className="text-xs text-muted"
-            >
-              <LayoutGrid className="size-3.5" />
-              {isPaletteCollapsed ? t("showPalette") : t("hidePalette")}
-            </Button>
-          </div>
-          <div
-            className={cn(
-              "mx-auto mb-4 w-full max-w-4xl overflow-x-auto",
-              !isPaletteCollapsed && "max-h-56 overflow-y-auto rounded-xl border border-border/60 bg-surface/60 p-2",
-              isPaletteCollapsed && "mb-2",
-            )}
-          >
-            <QuestionNavigator
-              total={questions.length}
-              currentIndex={currentIndex}
-              answeredIndexes={answeredIndexes}
-              flaggedIndexes={flaggedIndexes}
-              sections={questions.map((q) => q.section)}
-              disabledSections={lockedSections}
-              onJump={goToIndex}
-              collapsed={isPaletteCollapsed}
-            />
-          </div>
-
-          <div className="mx-auto flex w-full max-w-4xl items-center justify-between">
+      {phase === "running" && (
+        <footer className="border-t border-border p-3 sm:p-4">
+          {showList && (
+            <div className="mx-auto mb-3 max-h-48 w-full max-w-5xl overflow-y-auto border border-border bg-surface/60 p-2">
+              <StageNavigator
+                start={stage.start}
+                count={stage.count}
+                currentIndex={currentIndex}
+                answeredIndexes={answeredIndexes}
+                flaggedIndexes={flaggedIndexes}
+                onJump={(index) => {
+                  goTo(index);
+                  setShowList(false);
+                }}
+              />
+            </div>
+          )}
+          <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-2">
             <Button
               variant="outline"
               size="sm"
-              disabled={currentIndex === sectionRanges[currentSectionIndex]!.start}
-              onClick={() => goToIndex(currentIndex - 1)}
+              disabled={currentIndex === stage.start}
+              onClick={() => goTo(currentIndex - 1)}
             >
               <ChevronRight className="size-4 rtl:rotate-180" />
               {t("previous")}
             </Button>
 
-            {isLastOfSection ? (
-              <Button size="sm" onClick={finishCurrentSection}>
-                {isLastSection ? t("reviewAndSubmit") : t("finishSection")}
-                {!isLastSection && <ChevronLeft className="size-4 rtl:rotate-180" />}
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={() => setShowList((v) => !v)}
+              aria-expanded={showList}
+              className="text-xs text-muted"
+            >
+              <LayoutGrid className="size-3.5" />
+              <span className="hidden sm:inline">
+                {showList ? tStage("hideList") : tStage("showList")}
+              </span>
+              <span className="tabular-nums">
+                ({summary.answered}/{stage.count})
+              </span>
+            </Button>
+
+            {isLastInStage ? (
+              <Button size="sm" onClick={() => setPhase("review")}>
+                {tStage("reviewStage")}
+                <ChevronLeft className="size-4 rtl:rotate-180" />
               </Button>
             ) : (
-              <Button size="sm" onClick={() => goToIndex(currentIndex + 1)}>
+              <Button size="sm" onClick={() => goTo(currentIndex + 1)}>
                 {t("next")}
                 <ChevronLeft className="size-4 rtl:rotate-180" />
               </Button>

@@ -12,6 +12,7 @@ import {
   ListChecks,
   Lock,
   Percent,
+  ShieldAlert,
   RotateCcw,
   Trophy,
 } from "lucide-react";
@@ -25,17 +26,22 @@ import { getAttemptsByKind } from "@/lib/firestore/exam-attempts";
 import {
   MOCK_EXAMS,
   type MockExamDef,
-  STEP_SECTION_ORDER,
   STEP_SECTION_QUESTION_COUNTS,
-  STEP_SECTION_MINUTES,
   STEP_SECTION_WEIGHTS,
-  STEP_TOTAL_MINUTES,
   STEP_TOTAL_QUESTIONS,
 } from "@/lib/constants/exam";
+import { OFFICIAL_STAGE_MINUTES, OFFICIAL_STAGE_ORDER, type StageKey } from "@/lib/exam-stages";
 import { cn } from "@/lib/utils/cn";
 import type { ExamAttempt } from "@/types/exam";
 
 const FREE_TIER_MOCK_EXAM_LIMIT = 1;
+
+const STAGE_QUESTIONS: Record<StageKey, number> = {
+  reading: STEP_SECTION_QUESTION_COUNTS.reading,
+  structure: STEP_SECTION_QUESTION_COUNTS.grammar + STEP_SECTION_QUESTION_COUNTS.writingAnalysis,
+  listening: STEP_SECTION_QUESTION_COUNTS.listening,
+};
+const TOTAL_STAGE_MINUTES = OFFICIAL_STAGE_ORDER.reduce((sum, key) => sum + OFFICIAL_STAGE_MINUTES[key], 0);
 
 const buttonStyles = "inline-flex items-center justify-center gap-2 rounded-none font-semibold transition-all duration-200 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50";
 
@@ -91,6 +97,11 @@ export function MockExamList({
   const submitted = (attempts ?? []).filter((a) => a.status === "submitted");
   const submittedCount = submitted.length;
   const takenExamIds = new Set(submitted.map((a) => a.examId));
+  const bestByExam = new Map<string, number>();
+  for (const attempt of submitted) {
+    const score = attempt.score ?? 0;
+    bestByExam.set(attempt.examId, Math.max(bestByExam.get(attempt.examId) ?? 0, score));
+  }
   // Default to the first exam the learner has not taken yet.
   const defaultExam = MOCK_EXAMS.find((exam) => !takenExamIds.has(exam.id)) ?? MOCK_EXAMS[0]!;
   const selectedExam = MOCK_EXAMS.find((exam) => exam.id === chosenId) ?? defaultExam;
@@ -132,7 +143,7 @@ export function MockExamList({
 
           <h1 className="mt-4 text-2xl font-bold tracking-tight sm:text-3xl">{t("title")}</h1>
           <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-primary-100/80 sm:text-base">
-            {t("description", { total: STEP_TOTAL_QUESTIONS, minutes: STEP_TOTAL_MINUTES })}
+            {t("description", { total: STEP_TOTAL_QUESTIONS, minutes: TOTAL_STAGE_MINUTES })}
           </p>
 
           <div className="mt-5 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-primary-100/70">
@@ -142,32 +153,39 @@ export function MockExamList({
             </span>
             <span className="inline-flex items-center gap-1.5">
               <Clock className="size-4 text-secondary-400" />{" "}
-              {t("minuteCount", { count: STEP_TOTAL_MINUTES })}
+              {t("minuteCount", { count: TOTAL_STAGE_MINUTES })}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <ShieldAlert className="size-4 text-secondary-400" /> {t("stageCount", { count: OFFICIAL_STAGE_ORDER.length })}
             </span>
           </div>
 
-          <div className="mx-auto mt-8 w-full max-w-md space-y-2.5 text-start">
-            <p className="text-xs font-semibold uppercase tracking-wide text-secondary-300">
-              {t("distributionTitle")}
-            </p>
-            {STEP_SECTION_ORDER.map((section) => (
-              <div key={section} className="flex items-center gap-3">
-                <span className="w-28 shrink-0 text-sm font-medium text-primary-100/90">
-                  {tSections(section)}
-                </span>
-                <div className="h-2 flex-1 overflow-hidden rounded-none bg-white/10">
-                  <div
-                    className={barClass(STEP_SECTION_WEIGHTS[section] * 100)}
-                    style={{ width: `${STEP_SECTION_WEIGHTS[section] * 100}%` }}
-                  />
-                </div>
-                <span className="w-32 shrink-0 whitespace-nowrap text-end text-xs tabular-nums text-primary-100/70">
-                  {t("sectionCountLabel", { count: STEP_SECTION_QUESTION_COUNTS[section] })} ·{" "}
-                  {t("sectionMinutesLabel", { count: STEP_SECTION_MINUTES[section] })}
-                </span>
-              </div>
-            ))}
-            <p className="pt-1 text-xs leading-relaxed text-primary-100/60">
+          <div className="mx-auto mt-8 w-full max-w-2xl text-start">
+            <p className="text-xs font-semibold uppercase tracking-wide text-secondary-300">{t("stagesTitle")}</p>
+            <ol className="mt-3 grid gap-3 sm:grid-cols-3">
+              {OFFICIAL_STAGE_ORDER.map((key, index) => (
+                <li key={key} className="border border-white/15 bg-white/5 p-4">
+                  <div className="flex items-center gap-2">
+                    <span className="inline-flex size-6 items-center justify-center bg-secondary-500 text-xs font-bold text-cream-paper">
+                      {index + 1}
+                    </span>
+                    <span className="text-sm font-bold">{t(`stage.${key}`)}</span>
+                  </div>
+                  <p className="mt-3 text-xs tabular-nums text-primary-100/80">
+                    {t("sectionCountLabel", { count: STAGE_QUESTIONS[key] })} · {t("sectionMinutesLabel", { count: OFFICIAL_STAGE_MINUTES[key] })}
+                  </p>
+                  <div className="mt-2 h-1.5 overflow-hidden bg-white/15" aria-hidden>
+                    <div className="h-full bg-butter-yellow" style={{ width: `${(STAGE_QUESTIONS[key] / STEP_TOTAL_QUESTIONS) * 100}%` }} />
+                  </div>
+                  <p className="mt-3 text-[11px] leading-relaxed text-primary-100/60">{t(`stageAbout.${key}`)}</p>
+                </li>
+              ))}
+            </ol>
+            <ul className="mt-4 space-y-1.5 text-xs leading-relaxed text-primary-100/70">
+              <li className="flex items-start gap-2"><Lock className="mt-0.5 size-3.5 shrink-0 text-secondary-400" />{t("ruleNoReturn")}</li>
+              <li className="flex items-start gap-2"><Clock className="mt-0.5 size-3.5 shrink-0 text-secondary-400" />{t("ruleTimer")}</li>
+            </ul>
+            <p className="pt-3 text-xs leading-relaxed text-primary-100/50">
               {t("distributionNote", {
                 reading: STEP_SECTION_WEIGHTS.reading * 100,
                 grammar: STEP_SECTION_WEIGHTS.grammar * 100,
@@ -178,11 +196,12 @@ export function MockExamList({
           </div>
 
           {MOCK_EXAMS.length > 1 && (
-            <div className="mx-auto mt-8 w-full max-w-md" role="radiogroup" aria-label={t("chooseExam")}>
+            <div className="mx-auto mt-8 w-full max-w-2xl text-start" role="radiogroup" aria-label={t("chooseExam")}>
               <p className="text-xs font-semibold uppercase tracking-wide text-secondary-300">{t("chooseExam")}</p>
-              <div className="mt-2 flex flex-wrap gap-3">
+              <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-5">
                 {MOCK_EXAMS.map((exam) => {
                   const active = exam.id === selectedExam.id;
+                  const best = bestByExam.get(exam.id);
                   return (
                     <button
                       key={exam.id}
@@ -191,16 +210,16 @@ export function MockExamList({
                       aria-checked={active}
                       onClick={() => setChosenId(exam.id)}
                       className={cn(
-                        "min-w-28 flex-1 rounded-none border px-3 py-3 text-sm font-semibold transition-colors",
+                        "flex flex-col items-start gap-1 border px-3 py-3 text-start transition-colors",
                         active
                           ? "border-secondary-400 bg-white/15 text-white"
                           : "border-white/20 text-primary-100/80 hover:border-secondary-400",
                       )}
                     >
-                      {t("examLabel", { number: exam.number })}
-                      {takenExamIds.has(exam.id) && (
-                        <span className="ms-2 text-xs font-normal text-secondary-300">{t("examTaken")}</span>
-                      )}
+                      <span className="text-sm font-bold">{t("examLabel", { number: exam.number })}</span>
+                      <span className={cn("text-[11px] tabular-nums", best === undefined ? "text-primary-100/50" : "text-secondary-300")}>
+                        {best === undefined ? t("examNew") : t("examBest", { score: best })}
+                      </span>
                     </button>
                   );
                 })}

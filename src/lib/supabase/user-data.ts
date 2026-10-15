@@ -366,13 +366,15 @@ export async function sbSaveAttemptAnswer(attemptId: string, answers: Record<str
 
 export async function sbSubmitAttempt(
   attemptId: string,
-  result: Pick<ExamAttempt, "score" | "sectionResults" | "weakSkills" | "newWords" | "recommendations">,
+  result: Pick<ExamAttempt, "score" | "sectionResults" | "weakSkills" | "newWords" | "recommendations" | "answers" | "flagged">,
 ) {
   check(
     await db()
       .from("exam_attempts")
       .update({
         score: result.score,
+        answers: result.answers,
+        flagged: result.flagged,
         section_results: result.sectionResults,
         weak_skills: result.weakSkills,
         new_words: result.newWords,
@@ -395,6 +397,18 @@ export async function sbGetRecentAttempts(uid: string, count: number, kind?: Exa
   // Firestore's `orderBy desc` sorts null (in-progress) last; match that.
   const rows = check(await query.order("submitted_at", { ascending: false, nullsFirst: false }).limit(count));
   return (rows ?? []).map(toExamAttempt);
+}
+
+// ---------- skill mastery ----------
+
+/** Recomputes the learner's per-skill mastery in the database (see migration 0008). */
+export async function sbRefreshSkillMastery(uid: string) {
+  check(await db().rpc("refresh_skill_mastery", { p_user: uid }));
+}
+
+export async function sbGetSkillMastery(uid: string) {
+  const rows = check(await db().from("user_skill_mastery").select("skill_id, attempts, mastery").eq("user_id", uid));
+  return (rows ?? []).map((r: Row) => ({ skillId: r.skill_id as string, attempts: Number(r.attempts), mastery: Number(r.mastery) }));
 }
 
 // ---------- vocabulary (per-user) ----------
