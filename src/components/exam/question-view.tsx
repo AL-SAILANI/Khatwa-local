@@ -12,15 +12,23 @@ interface QuestionViewProps {
   onSelect: (optionId: string) => void;
 }
 
-export function QuestionView({ question, passage, selectedOptionId, onSelect }: QuestionViewProps) {
+export function QuestionView({
+  question,
+  passage,
+  selectedOptionId,
+  onSelect,
+}: QuestionViewProps) {
   const t = useTranslations("exam");
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
       {passage && (
-        <Card className="max-h-[60vh] overflow-y-auto">
+        <Card className="max-h-[36vh] overflow-y-auto lg:max-h-[60vh]">
           <h3 className="font-semibold">{passage.title}</h3>
-          <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-foreground/90" dir="ltr">
+          <p
+            className="mt-3 whitespace-pre-line text-sm leading-relaxed text-foreground/90"
+            dir="ltr"
+          >
             {passage.body}
           </p>
         </Card>
@@ -32,13 +40,27 @@ export function QuestionView({ question, passage, selectedOptionId, onSelect }: 
             <Volume2 className="size-4 text-ink-violet dark:text-primary-300" />
             {t("audioNote")}
           </div>
-          <audio controls preload="none" className="mt-3 w-full" src={question.audioUrl} />
+          <audio
+            controls
+            preload="none"
+            className="mt-3 w-full"
+            src={question.audioUrl}
+          />
         </Card>
       )}
 
-      {question.transcript && !question.audioUrl && <ListeningPlayer transcript={question.transcript} />}
+      {question.transcript && !question.audioUrl && (
+        <ListeningPlayer transcript={question.transcript} />
+      )}
 
-      <div className={cn(!passage && !question.audioUrl && !question.transcript && "lg:col-span-2")}>
+      <div
+        className={cn(
+          !passage &&
+            !question.audioUrl &&
+            !question.transcript &&
+            "lg:col-span-2",
+        )}
+      >
         <p className="text-base font-medium leading-relaxed" dir="ltr">
           {question.prompt}
         </p>
@@ -56,7 +78,7 @@ export function QuestionView({ question, passage, selectedOptionId, onSelect }: 
                 className={cn(
                   "flex w-full items-center gap-3 rounded-xl border p-4 text-start text-sm transition-all duration-200",
                   isSelected
-                    ? "border-primary-500 bg-primary-50 dark:bg-primary-500/10"
+                    ? "border-primary-500 bg-primary-100 font-semibold ring-1 ring-primary-500 dark:bg-primary-500/15"
                     : "border-border hover:border-primary-300 hover:bg-surface-muted",
                 )}
               >

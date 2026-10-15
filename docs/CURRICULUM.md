@@ -19,6 +19,8 @@ structure, technique ideas and links only, never copied (see `.opencode/skills/s
 
 Treat the "third-party" rows as approximations until Qiyas publishes them.
 
+Exam interface, as built in the mock exam screen: three timed stages (reading 60 min, grammar + writing analysis 30 min, listening 25 min), each opened by a briefing and closed for good when finished or when its time runs out. Not verified against an official source: the order of the stages (the app uses reading, structure, listening; one third-party site lists listening first) and whether a listening clip plays only once (third-party sites say once). Confirm both with a student who took the exam before relying on them.
+
 ## 2. Tracks
 
 1. **Reading** (40%): five question types (meaning, pronoun, detail, topic, opinion), solved in that order, plus a

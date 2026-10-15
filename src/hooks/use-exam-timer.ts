@@ -8,11 +8,13 @@ import { useEffect, useRef, useState } from "react";
  *
  * Pass a `resetKey` (e.g. the active exam section) to restart the countdown
  * from its full `durationMinutes` whenever it changes — so each section of
- * the exam gets its own fresh timer. */
+ * the exam gets its own fresh timer. While `running` is false the countdown
+ * is paused (for example during a stage briefing). */
 export function useExamTimer(
   durationMinutes: number,
   onExpire: () => void,
   resetKey: string | null = null,
+  running = true,
 ) {
   const [remainingSeconds, setRemainingSeconds] = useState(durationMinutes * 60);
   const hasExpiredRef = useRef(false);
@@ -31,6 +33,7 @@ export function useExamTimer(
   }, [durationMinutes, resetKey]);
 
   useEffect(() => {
+    if (!running) return;
     const interval = setInterval(() => {
       setRemainingSeconds((prev) => {
         if (prev <= 1) {
@@ -46,7 +49,7 @@ export function useExamTimer(
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [running]);
 
   const minutes = Math.floor(remainingSeconds / 60);
   const seconds = remainingSeconds % 60;
