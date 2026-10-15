@@ -8,12 +8,12 @@ import {
   ChevronRight,
   Lock,
   Play,
-  Volume2,
 } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { LessonPlayer } from "@/components/courses/lesson-player";
+import { LessonHero, trackOfCourse } from "@/components/courses/lesson-hero";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { useLocalizedContent } from "@/hooks/use-localized-content";
 import { useStudyPath } from "@/hooks/use-study-path";
@@ -38,6 +38,7 @@ export function LessonViewer({
   lessonId: string;
 }) {
   const t = useTranslations("courses");
+  const trackNames = useTranslations("trackNames");
   const { user } = useUserProfile();
   const { lessonTitle, lessonNotes } = useLocalizedContent();
   const router = useRouter();
@@ -107,14 +108,6 @@ export function LessonViewer({
     );
   }
 
-  const listeningAudioUrls = [
-    ...new Set(
-      questions
-        .filter((q) => q.section === "listening" && q.audioUrl)
-        .map((q) => q.audioUrl as string),
-    ),
-  ];
-
   const finish = async (quizScore: number | null) => {
     if (!user) return;
     await markLessonComplete(user.uid, courseId, lessonId, quizScore);
@@ -164,28 +157,15 @@ export function LessonViewer({
         </Card>
       )}
 
-      <div>
-        <h1 className="text-2xl font-bold">{lessonTitle(lesson)}</h1>
-      </div>
-
-      {lesson.courseId === "course-listening" &&
-        listeningAudioUrls.length > 0 && (
-          <Card className="space-y-4">
-            <div className="flex items-center gap-2 text-sm font-semibold">
-              <Volume2 className="size-4 text-ink-violet dark:text-primary-300" />
-              {t("listenToDialogue")}
-            </div>
-            {listeningAudioUrls.map((url) => (
-              <audio
-                key={url}
-                controls
-                preload="none"
-                className="w-full"
-                src={url}
-              />
-            ))}
-          </Card>
-        )}
+      <LessonHero
+        title={lessonTitle(lesson)}
+        track={trackOfCourse(lesson.courseId)}
+        trackLabel={
+          trackOfCourse(lesson.courseId)
+            ? trackNames(trackOfCourse(lesson.courseId)!)
+            : undefined
+        }
+      />
 
       {lesson.questionIds.length > 0 && questions.length === 0 ? (
         <div className="flex justify-center py-8">
