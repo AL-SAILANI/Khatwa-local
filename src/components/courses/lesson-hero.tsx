@@ -50,7 +50,7 @@ export function LessonHero({
         </h1>
       </div>
       {track && (
-        <div className="relative size-24 shrink-0 rotate-3 bg-cream-paper p-2 shadow-hard sm:size-32">
+        <div className="relative h-24 w-32 shrink-0 rotate-2 bg-cream-paper p-2 shadow-hard sm:h-32 sm:w-44">
           <HeroArt track={track} className="size-full" />
         </div>
       )}

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { CourseTrack } from "@/types/course";
 import type { LessonStageKey } from "@/lib/lesson-blocks";
 
@@ -148,6 +149,34 @@ const HERO_ART: Record<CourseTrack, () => React.JSX.Element> = {
   revision: () => <RevisionArt />,
 };
 
+/** Illustrations supplied as files (public/lessons); the drawn art above is the fallback. */
+const HERO_IMAGE: Partial<Record<CourseTrack, string>> = {
+  listening: "/lessons/listening.svg",
+  reading: "/lessons/reading.svg",
+  grammar: "/lessons/grammar.svg",
+  writingAnalysis: "/lessons/writing.svg",
+  vocabulary: "/lessons/vocabulary.svg",
+};
+
+const STAGE_IMAGE: Partial<Record<LessonStageKey, string>> = {
+  example: "/lessons/example.svg",
+  practice: "/lessons/practice.svg",
+};
+
+function ArtImage({ src, className }: { src: string; className?: string }) {
+  return (
+    <Image
+      src={src}
+      alt=""
+      width={400}
+      height={300}
+      unoptimized
+      aria-hidden="true"
+      className={`object-contain ${className ?? ""}`}
+    />
+  );
+}
+
 export function HeroArt({
   track,
   className,
@@ -155,6 +184,8 @@ export function HeroArt({
   track: CourseTrack;
   className?: string;
 }) {
+  const image = HERO_IMAGE[track];
+  if (image) return <ArtImage src={image} className={className} />;
   const Art = HERO_ART[track];
   return (
     <Svg stroke={HERO_STROKE} className={className}>
@@ -222,6 +253,8 @@ export function StageArt({
   stage: LessonStageKey;
   className?: string;
 }) {
+  const image = STAGE_IMAGE[stage];
+  if (image) return <ArtImage src={image} className={className} />;
   const Art = STAGE_ART[stage];
   return (
     <Svg stroke={TILE_STROKE} className={className}>

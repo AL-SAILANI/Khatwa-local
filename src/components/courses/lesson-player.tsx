@@ -315,7 +315,7 @@ export function LessonPlayer({
       />
 
       <div className="flex items-center gap-4 border border-border/20 bg-surface p-3">
-        <div className="size-16 shrink-0 bg-butter-yellow p-1.5 shadow-hard">
+        <div className="h-16 w-24 shrink-0 bg-butter-yellow p-1.5 shadow-hard">
           <StageArt stage={stage.key} className="size-full" />
         </div>
         <div className="min-w-0 space-y-0.5">
