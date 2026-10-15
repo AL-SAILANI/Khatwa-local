@@ -25,7 +25,7 @@ const STAGE_IMAGE: Record<LessonStageKey, string> = {
   wrap: "/lessons/wrap.svg",
 };
 
-function ArtImage({ src, className }: { src: string; className?: string }) {
+export function ArtImage({ src, className }: { src: string; className?: string }) {
   return (
     <Image
       src={src}
@@ -37,6 +37,19 @@ function ArtImage({ src, className }: { src: string; className?: string }) {
       className={`object-contain ${className ?? ""}`}
     />
   );
+}
+
+/** Whole-page scenes (public/lessons) used outside lessons. */
+export type SceneName = "success" | "roadmap" | "page_not_found";
+
+export function SceneArt({
+  name,
+  className,
+}: {
+  name: SceneName;
+  className?: string;
+}) {
+  return <ArtImage src={`/lessons/${name}.svg`} className={className} />;
 }
 
 export function HeroArt({
