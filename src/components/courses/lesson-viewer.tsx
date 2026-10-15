@@ -8,7 +8,6 @@ import {
   ChevronRight,
   Lock,
   Play,
-  Volume2,
 } from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import { Card } from "@/components/ui/card";
@@ -109,14 +108,6 @@ export function LessonViewer({
     );
   }
 
-  const listeningAudioUrls = [
-    ...new Set(
-      questions
-        .filter((q) => q.section === "listening" && q.audioUrl)
-        .map((q) => q.audioUrl as string),
-    ),
-  ];
-
   const finish = async (quizScore: number | null) => {
     if (!user) return;
     await markLessonComplete(user.uid, courseId, lessonId, quizScore);
@@ -175,25 +166,6 @@ export function LessonViewer({
             : undefined
         }
       />
-
-      {lesson.courseId === "course-listening" &&
-        listeningAudioUrls.length > 0 && (
-          <Card className="space-y-4">
-            <div className="flex items-center gap-2 text-sm font-semibold">
-              <Volume2 className="size-4 text-ink-violet dark:text-primary-300" />
-              {t("listenToDialogue")}
-            </div>
-            {listeningAudioUrls.map((url) => (
-              <audio
-                key={url}
-                controls
-                preload="none"
-                className="w-full"
-                src={url}
-              />
-            ))}
-          </Card>
-        )}
 
       {lesson.questionIds.length > 0 && questions.length === 0 ? (
         <div className="flex justify-center py-8">
