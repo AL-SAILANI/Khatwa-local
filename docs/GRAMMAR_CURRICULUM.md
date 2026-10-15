@@ -115,3 +115,47 @@ wa-capitalization, wa-punctuation, wa-sequencing, wa-sentence-structure). Gaps:
 - "Read the options first" as an explicit drill: show only the options and ask which rule is tested, before the
   learner sees the sentence. A good fit for the existing gr-strategy skill and the daily session engine.
 - Tag every question by rule so the mock-exam report can show the weakest rules (already proposed above).
+
+---
+
+# Question-solving series (parts 6 to 9): what it adds
+
+Source: four more videos from the same third-party course (shared by the project owner; not official). Notes are in
+our own words. These four were read in full. The series keeps repeating the "read the options first" routine
+above; only new or sharpened rules are listed.
+
+## New or sharpened rules
+| Area | Routine |
+|---|---|
+| Verbs that cannot be passive | Verbs with no object (arrive, happen, go, come) never take a passive form; I arrived at the hospital has no passive. A verb with a real object (deliver the package) can. |
+| still / not yet | Something expected but not happened up to now: present perfect (has not arrived yet), not present simple. Present simple is for habits, routines, opinions and facts. |
+| Who vs whom | The word right after the blank decides: a verb follows, the person is the doer, use who; a subject then verb follows, the person receives the action, use whom (the manager whom we interviewed). After a preposition: whom (deal with whom). |
+| Question word as subject | Who / what + verb with no auxiliary: who took my pen, what happened to him. |
+| Adverb of manner in comparisons | Comparing how an action is done needs an adverb (as carefully as); comparing people or things needs an adjective (as careful as). Decide by what is being described. |
+| a / an | By sound, not spelling: an before a vowel sound (an official), a before a consonant sound. A singular countable job or role name needs an article (got a job as an official). |
+| Purpose | Purpose of an action: to + base verb (or in order to). so that is followed by a subject and a clause, never by to. |
+| Quantifier details | quite a few, a small number: countable. quite a bit, a small amount: uncountable. plenty, a lot, a large amount need of. neither goes with nor; both with a plural verb. few = not many, some = unspecified number (use some when no amount is stressed). |
+| Possessive answers in dialogue | The reply mirrors the question: Is this your car? answers No, my car is over there, or It is mine. Possessive adjective needs a noun after; possessive pronoun (mine, yours) ends the phrase. |
+| enough | After an adjective: old enough, rich enough. Before a noun: enough money. There is no form like to getting; use enough + to + base. |
+| Gerund or infinitive after a verb | enjoy, finish, avoid + -ing; want, decide, promise, wish, need + to; make, let, help + base; like and love allow both. |
+| Subject-verb agreement of a single task | A gerund phrase or group action counts as one thing and takes a singular verb (collecting insects and worms was the hardest part). |
+| Reflexive pronouns | Match the subject: plural subject (Tom and Adam) means themselves; singular you means yourself; plural you means yourselves; enjoy takes a reflexive. There is no theirselves. |
+| Modals for guesses | Present guess in progress: may/might + be + -ing (he may be having lunch now). General or future possibility: may/might + base. Past unrealized possibility: could have + third form (he could have gone, but he did not), joined by but, not so. |
+| Conditional table (revisited) | Same four-case table as before; check the if-clause first, then confirm the result clause. Third case: past perfect with would have + third form (also negatives: would not have missed). Second: past simple with would + base. |
+| Tag questions | Positive statement then negative tag; negative statement then positive tag; the tag repeats the auxiliary and tense of the statement (Mr. Harris has no brothers or sisters, does he?). |
+| Time sequence for past perfect | When one past action finished before another, the earlier one is past perfect (she had made the mistake before she noticed). |
+| Present perfect continuous and future continuous | Action started in the past and still going: has been studying since 6 a.m. Action in progress at a stated future moment: will be relaxing at this time next week. |
+| Passive time choice | Present simple: is made. Present continuous: is being repaired. Present perfect: has been eaten. Past simple with a past date: was founded in 2005. The agent follows by. |
+| Punctuation | A comma goes after an introductory clause that has its own subject and verb (After school ended, we travelled to London). Do not put a question mark on a sentence built as a statement. |
+| Question vs statement word order | After how/what/where inside a statement, use statement order (I have no idea how they manage), not question order. |
+| Frequency adverb and time placement | Subject, frequency adverb, main verb, object, then manner, place, time (I always drink Pepsi late at night). |
+| Responding to a suggestion | A suggestion is answered by agreement or refusal, not by thanks or a repeated offer (Sounds good to me). Match the reply to what was just said. |
+| Paragraph ordering | Start with the sentence that names the person or topic, not a pronoun; keep the story's chronological order. |
+
+## Gaps this adds
+Existing skills cover most of these. New gaps to add or fold in:
+- A verb-patterns skill: verbs that cannot be passive, enough, purpose structures (extends gr-passive and gr-gerund-infinitive).
+- Tag questions (not in the skill list).
+- Modal perfect forms (could have, should have) with unrealized past (extends gr-modals).
+- Dialogue-reply questions (what is the best response), which the listening and structure sections both use.
+- The "wh-word inside a statement" order rule (noun clauses; extends gr-noun-clauses).
