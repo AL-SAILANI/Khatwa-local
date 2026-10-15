@@ -740,6 +740,12 @@
       "example": "See it solved",
       "practice": "Practise",
       "wrap": "Wrap-up"
+    },
+    "stageHint": {
+      "learn": "Read closely; get the idea in two minutes.",
+      "example": "See a real question solved step by step.",
+      "practice": "Your turn: try it yourself. Mistakes here are how you learn.",
+      "wrap": "Review what you learned and see your result."
     }
   },
   "vocabulary": {

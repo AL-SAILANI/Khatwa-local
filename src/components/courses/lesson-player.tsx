@@ -18,6 +18,9 @@ import {
   PracticeRunner,
   type PracticeResult,
 } from "@/components/courses/practice-runner";
+import { StageArt, Confetti } from "@/components/courses/lesson-art";
+import { LessonStepper } from "@/components/courses/lesson-stepper";
+import { ScoreRing } from "@/components/courses/score-ring";
 import { cn } from "@/lib/utils/cn";
 import {
   buildLessonBlocks,
@@ -108,10 +111,9 @@ function ExitCard({
   }
 
   return (
-    <Card className="space-y-3 text-center">
-      <span className="text-lg font-bold text-ink-violet dark:text-primary-400">
-        {score}%
-      </span>
+    <Card className="relative flex flex-col items-center space-y-3 overflow-hidden text-center">
+      {mastered && <Confetti />}
+      <ScoreRing score={score} mastered={mastered} />
       <p className="text-sm text-muted">
         {mastered
           ? t("masteryReached")
@@ -144,12 +146,11 @@ function SummaryCard({ score }: { score: number | null }) {
     return <p className="text-sm text-muted">{t("summaryPending")}</p>;
   const mastered = score >= MASTERY_THRESHOLD;
   return (
-    <Card className="space-y-2 text-center">
+    <Card className="relative flex flex-col items-center space-y-3 overflow-hidden py-6 text-center">
+      {mastered && <Confetti />}
       <p className="text-xs text-muted">{t("summaryTitle")}</p>
-      <p className="text-3xl font-bold text-ink-violet dark:text-primary-400">
-        {score}%
-      </p>
-      <p className="text-sm">
+      <ScoreRing score={score} mastered={mastered} className="size-36" />
+      <p className="text-sm font-medium">
         {mastered ? t("summaryMastered") : t("summaryNeedsWork")}
       </p>
     </Card>
@@ -303,31 +304,28 @@ export function LessonPlayer({
   const hasExit = blocks.some((b) => b.kind === "exit");
   const exitGate =
     stage.blocks.some((b) => b.kind === "exit") && !exitPassed && !isDone;
-  const progress = Math.round((step / Math.max(1, stages.length - 1)) * 100);
 
   return (
     <div className="space-y-4">
-      <div className="space-y-1.5">
-        <div className="flex items-center justify-between text-xs">
-          <span className="font-semibold text-ink-violet dark:text-primary-300">
-            {t(`stage.${stage.key}`)}
-          </span>
-          <span className="text-muted">
-            {t("stepOf", { current: step + 1, total: stages.length })}
-          </span>
+      <LessonStepper
+        stages={stages.map((x) => x.key)}
+        current={step}
+        labelOf={(key) => t(`stage.${key}`)}
+        ariaLabel={t("lessonSteps")}
+      />
+
+      <div className="flex items-center gap-4 border border-border/20 bg-surface p-3">
+        <div className="size-16 shrink-0 bg-butter-yellow p-1.5 shadow-hard">
+          <StageArt stage={stage.key} className="size-full" />
         </div>
-        <div
-          role="progressbar"
-          aria-valuenow={progress}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-label={t("lessonSteps")}
-          className="h-1.5 w-full overflow-hidden bg-surface-muted"
-        >
-          <div
-            className="h-full bg-ink-violet transition-all"
-            style={{ width: `${progress}%` }}
-          />
+        <div className="min-w-0 space-y-0.5">
+          <p className="text-xs text-muted">
+            {t("stepOf", { current: step + 1, total: stages.length })}
+          </p>
+          <h2 className="text-lg font-bold leading-tight">
+            {t(`stage.${stage.key}`)}
+          </h2>
+          <p className="text-sm text-muted">{t(`stageHint.${stage.key}`)}</p>
         </div>
       </div>
 

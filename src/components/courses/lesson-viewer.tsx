@@ -14,6 +14,7 @@ import { useRouter } from "@/i18n/navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { LessonPlayer } from "@/components/courses/lesson-player";
+import { LessonHero, trackOfCourse } from "@/components/courses/lesson-hero";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { useLocalizedContent } from "@/hooks/use-localized-content";
 import { useStudyPath } from "@/hooks/use-study-path";
@@ -38,6 +39,7 @@ export function LessonViewer({
   lessonId: string;
 }) {
   const t = useTranslations("courses");
+  const trackNames = useTranslations("trackNames");
   const { user } = useUserProfile();
   const { lessonTitle, lessonNotes } = useLocalizedContent();
   const router = useRouter();
@@ -164,9 +166,15 @@ export function LessonViewer({
         </Card>
       )}
 
-      <div>
-        <h1 className="text-2xl font-bold">{lessonTitle(lesson)}</h1>
-      </div>
+      <LessonHero
+        title={lessonTitle(lesson)}
+        track={trackOfCourse(lesson.courseId)}
+        trackLabel={
+          trackOfCourse(lesson.courseId)
+            ? trackNames(trackOfCourse(lesson.courseId)!)
+            : undefined
+        }
+      />
 
       {lesson.courseId === "course-listening" &&
         listeningAudioUrls.length > 0 && (

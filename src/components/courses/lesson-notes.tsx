@@ -1,4 +1,5 @@
 import {
+  ArrowLeft,
   BookOpen,
   CalendarClock,
   Clock,
@@ -64,6 +65,29 @@ const SECTION_STYLES: Record<SectionMarker, { icon: LucideIcon; border: string; 
   },
 };
 
+const LATIN_RUN = /([A-Za-z][A-Za-z0-9'’/.-]*(?:\s+[A-Za-z][A-Za-z0-9'’/.-]*)*)/;
+
+/** Highlights English words and phrases inside Arabic text so they stand out. */
+function rich(text: string): React.ReactNode[] {
+  return text.split(LATIN_RUN).map((part, i) => {
+    if (i % 2 === 0) return part;
+    const isPhrase = part.trim().split(/\s+/).length <= 4;
+    return (
+      <bdi
+        key={i}
+        dir="ltr"
+        className={
+          isPhrase
+            ? "rounded-sm bg-butter-yellow/50 px-1 font-semibold dark:bg-butter-yellow/20"
+            : "font-medium"
+        }
+      >
+        {part}
+      </bdi>
+    );
+  });
+}
+
 function findMarker(line: string): SectionMarker | "" {
   for (const marker of SECTION_MARKERS) {
     if (line.startsWith(marker)) return marker;
@@ -104,18 +128,44 @@ function SectionBody({ lines, marker }: { lines: string[]; marker: SectionMarker
   const flushBullets = () => {
     if (bullets.length === 0) return;
     nodes.push(
-      <ul key={`ul-${key++}`} className="space-y-2">
-        {bullets.map((item, index) => (
-          <li key={index} className="flex items-start gap-2.5">
-            <span
-              className={cn(
-                "mt-2 size-1.5 shrink-0 rounded-full",
-                marker === "🧭" ? "bg-violet-500" : marker === "⚠️" ? "bg-error" : "bg-primary-500",
-              )}
-            />
-            <span className="text-sm leading-relaxed text-foreground/90">{item}</span>
-          </li>
-        ))}
+      <ul key={`ul-${key++}`} className="space-y-2.5">
+        {bullets.map((item, index) => {
+          const [clue, ...rest] = item.split("←");
+          const action = rest.join("←").trim();
+          if (action) {
+            return (
+              <li
+                key={index}
+                className="space-y-1 border-s-2 border-deep-teal/50 ps-3"
+              >
+                <p className="text-sm font-semibold leading-relaxed">
+                  {rich(clue!.trim())}
+                </p>
+                <p className="flex items-start gap-1.5 text-sm leading-relaxed text-foreground/90">
+                  <ArrowLeft className="mt-1 size-4 shrink-0 text-deep-teal dark:text-mint-400" />
+                  <span>{rich(action)}</span>
+                </p>
+              </li>
+            );
+          }
+          return (
+            <li key={index} className="flex items-start gap-2.5">
+              <span
+                className={cn(
+                  "mt-2 size-1.5 shrink-0 rounded-full",
+                  marker === "🧭"
+                    ? "bg-violet-500"
+                    : marker === "⚠️"
+                      ? "bg-error"
+                      : "bg-deep-teal dark:bg-mint-400",
+                )}
+              />
+              <span className="text-sm leading-relaxed text-foreground/90">
+                {rich(item)}
+              </span>
+            </li>
+          );
+        })}
       </ul>,
     );
     bullets = [];
@@ -136,7 +186,7 @@ function SectionBody({ lines, marker }: { lines: string[]; marker: SectionMarker
         >
           <Clock className="mt-0.5 size-4 shrink-0 text-amber-600 dark:text-amber-400" />
           <span className="text-sm leading-relaxed text-amber-900 dark:text-amber-100">
-            {line.replace(/^⏱️\s*/, "")}
+            {rich(line.replace(/^⏱️\s*/, ""))}
           </span>
         </div>,
       );
@@ -144,8 +194,14 @@ function SectionBody({ lines, marker }: { lines: string[]; marker: SectionMarker
     }
 
     nodes.push(
-      <p key={`p-${key++}`} className="text-sm leading-relaxed text-foreground/90">
-        {line}
+      <p
+        key={`p-${key++}`}
+        className={cn(
+          "leading-relaxed text-foreground/90",
+          marker === "📌" ? "text-base font-medium" : "text-sm",
+        )}
+      >
+        {rich(line)}
       </p>,
     );
   }
@@ -180,13 +236,18 @@ export function LessonNotes({ notes }: { notes: string }) {
           <section
             key={index}
             aria-label={section.title}
-            className={cn("overflow-hidden rounded-2xl border", style.border, style.tint)}
+            className={cn(
+              "lesson-rise overflow-hidden rounded-2xl border border-s-4",
+              style.border,
+              style.tint,
+            )}
+            style={{ animationDelay: `${index * 90}ms` }}
           >
             <header className="flex items-center gap-2.5 border-b border-border/60 px-4 py-3">
-              <span className="inline-flex size-8 shrink-0 items-center justify-center rounded-lg bg-surface">
-                <Icon className={cn("size-4", style.titleColor)} />
+              <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl bg-surface shadow-sm">
+                <Icon className={cn("size-5", style.titleColor)} />
               </span>
-              <h3 className={cn("text-sm font-bold", style.titleColor)}>{section.title}</h3>
+              <h3 className={cn("text-base font-bold", style.titleColor)}>{section.title}</h3>
             </header>
             <div className="px-4 py-4">
               <SectionBody lines={section.lines} marker={section.marker} />
