@@ -605,3 +605,66 @@ Transcripts are auto-captions; the time-connector video was read to about line 1
   nationality-versus-noun contrast; this fits the earlier note on adding exception flashcards.
 - A time-connector skill (already listed) now has the full table: before, after, when, while, by the time, until in
   the past, present and future.
+
+## Punctuation video (third-party course, not official)
+
+Each mark, its trigger, and the usual elimination:
+- Period: ends statements; abbreviations (Mr., Mrs., Ms., Dr., a.m., p.m.); decimals. A reported question ends with a
+  period, not a question mark.
+- Question mark: direct yes/no questions (start with an auxiliary) and wh-questions. If a wh-word is followed by a
+  noun or subject in statement order, it is a statement.
+- Exclamation mark: strong feeling, some commands.
+- After a period, question mark or exclamation mark, the next word is capitalized.
+- Quotation marks: spoken or quoted words, first letter capitalized, comma between the speech verb and the quote;
+  a question mark that belongs to the quoted question sits inside the quotes.
+- Apostrophe: singular possession ('s), regular plural possession (s'), contractions (I'm, couldn't); an apostrophe
+  in a plain plural is wrong.
+- Colon: introduces a list after a complete clause.
+- Comma: items in a list of three or more (and or or must come before the last item, no comma after it); after
+  yes or no; before a coordinating conjunction (for, and, nor, but, or, yet, so) joining two complete clauses;
+  before please in a request; between a command and a name; after an introductory phrase or clause; around
+  non-restrictive (extra-information) relative clauses. Never between subject and verb; defining relative clauses
+  take no commas.
+- Semicolon: joins two related complete clauses with no conjunction, or comes before however, therefore, moreover;
+  never together with a coordinating conjunction.
+- Worked eliminations: Mr. vs Mr,; question vs statement; list missing "and"; but needing a comma; possessive vs
+  plural; colon before a list; stray comma between clauses.
+
+### Gaps this adds
+- wa-punctuation: split into drills per mark (end marks, comma uses, apostrophe, colon and semicolon, quotation).
+- Tag every punctuation item with the mark and the eliminated option type.
+
+## 50-question practice review and "start here" orientation (third-party course, not official)
+
+### Practice review method
+- Mixed set: 10 listening, 20 reading, 20 grammar. Every grammar item is solved by naming the rule first, then
+  checking only the options that fit it.
+- Reading: start from the question, scan paragraph by paragraph; pronoun answers sit in the preceding sentence;
+  term answers sit in the same or next sentence; "not mentioned" is tested against the whole passage.
+- Listening: guess when unsure; note correction words. Clips included a conversation with a missing-connection
+  meaning question and a booking call with dates, a price and a flight code.
+- Note: only the first part of the long transcript was readable.
+
+### Exam facts stated in the orientation video
+- Computer-based, multiple choice, about 2.5 hours, results in about 5 working days, 10 attempts in 3 years,
+  scores valid 3 years, 30-day wait between attempts.
+- Weights 20 / 40 / 40 (listening, reading, grammar and writing analysis); an optional unscored fourth mixed section
+  may exist.
+- Listening 25 min / 20 questions, one play, no return. Reading 60 min / 40 questions / 9 to 13 passages, return
+  allowed, passages usually untitled, answers not always in order. Grammar 30 min / 40 questions (about 45 s each),
+  return allowed.
+- Listening styles: answer while listening (good for information questions) vs listen first (inference and terms).
+  If unsure, pick the closest option rather than blank. Do not press flag or suspend before answering everything.
+- Skimming: title, first and last sentences, repeated words, ignore examples and numbers. Scanning: find the keyword
+  (maybe as a synonym) and read one or two lines around it.
+- Grammar: infer the rule from the stem and a quick look at the options; use clue words; watch small errors
+  (present simple -s, has vs have); flag and skip hard items.
+- Level bands (estimates): A1 below 40, A2 40 to 55, B1 55 to 70, B2 70 to 85, C1 85+, C2 90+; most exam items are
+  B1 to B2 with some C1.
+- Study plan depends on days available (14, 20, 30+), daily hours, current level and foundation. Practice sources
+  named: British Council LearnEnglish, ESL Cyber Listening Lab, Cambridge English skills, EF SET.
+- Note: transcript truncated before the end of the study-plan part.
+
+### Gaps this adds
+- The band table could seed a predicted-score estimate (uncalibrated).
+- A diagnostic level test and plan generator by days and hours remain open ideas.

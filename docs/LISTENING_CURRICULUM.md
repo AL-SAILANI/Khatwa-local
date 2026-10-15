@@ -87,3 +87,40 @@ course (shared by the project owner; not official). Notes are in our own words.
 - Skill candidates: preview-reading strategy (what is asked), keep-listening discipline, context questions (setting,
   attitude), number and unit questions.
 - Mock clips should include correction distractors and setting questions.
+
+## Addendum: listening course introduction and information-questions lesson (third-party course, not official)
+
+### Course design
+- Goals: reach 70+ on listening, build real listening skill, and grow general English.
+- Lesson order: three basic types (information, inference from context, terms and expressions), four intermediate
+  types (speaker's main point, speaker opinions, main idea, best title), two advanced types (why something was
+  mentioned, evidence or support; the rarest).
+- Practice format: clip on one side, questions on the other, a notes area. Instructions first, then 15 seconds per
+  question, one automatic play, no going back, no replay, answers not in clip order, some answers only implied.
+- Golden rules: use the preview to read questions and options, never match word for word, never assume order, stop
+  reading once the audio starts, notes are allowed but not advised.
+
+### Information questions (most frequent type)
+- Direct facts, no inference; the difficulty is speed and focus.
+- Asked items: time, number, year, name, price, place, duration (how long), distance (how far), the part someone
+  did not understand.
+- Three steps: (1) read the question and predict the kind of answer, from the question or the options; (2) pick the
+  keyword and its likely synonyms; (3) watch for corrections and never lock in the first value.
+- Difficulty tiers: easy (clear lead-in to the fact), medium (fact arrives with no lead-in), hard (several numbers,
+  corrections, rephrasing, fast speech).
+- Typical traps: similar sounds (13 vs 30, Tuesday vs Thursday), number reading order (years said in two halves,
+  such as nineteen eighty-seven), self-corrections (time or price changed mid-speech), several numbers where only one
+  answers the question, a changed decision (the final choice wins).
+- Correction signals: actually, I mean, sorry, no, hold on; confirmation signals: let me repeat, just to confirm.
+- Five rules: read the question first; wait for the end before committing; watch correction words; long numbers
+  such as room numbers or codes are slow, so capture them at once; with two similar items, ask which one the
+  question wants.
+- Practice cases seen: meeting day and room corrected (Thursday to Friday, room 14 to 40, 2 pm to 3 pm), test date
+  plus number of units, page range changed, test moved from Tuesday to Thursday.
+- "Important idea" questions belong to a later lesson (not yet received).
+
+### Gaps this adds
+- Skill candidates: ls-info-numbers (similar-sounding numbers, dates, prices), ls-info-corrections (self-correction
+  and changed-decision clips), predict-the-answer-type drill in the preview step.
+- Mock clips should carry difficulty tags (easy, medium, hard) and a correction flag.
+- The existing 15-second preview and single play already match the course format.
