@@ -192,3 +192,162 @@ so the last passages may be missing.
 - Truncation note: the pronoun-lesson transcript was readable only up to the fish passage's main-idea question.
 - Still missing from the reading course: lessons 2 to 8 (terms, information and inference, graphs, matching, main idea
   and title, author's opinion, two-text linking).
+
+## Addendum: reading lessons 2 to 5 (third-party course, not official)
+
+Lessons in the course order: 1 pronouns (recorded earlier), 2 terms, 3 information and inference, 4 graphs and
+tables, 5 agreement with the text (first medium-tier lesson). Lessons 6 to 8 (main idea and title, author's opinion,
+two-text linking) are still missing.
+
+### Lesson 2: vocabulary questions
+- Tests inferring meaning from context, not memorized word lists. Always verify the meaning in context even for a
+  word you know, because many English words have several meanings (watch as "to view" or as a wrist watch).
+- Four question shapes: the meaning of a word (or closest in meaning); a replaceable word (which word could replace
+  "for example" without changing meaning); the meaning of a phrase or expression; why the writer used a word.
+- Steps: identify the target and what is asked (synonym, opposite, replacement, purpose of use); read the whole
+  sentence and its neighbours; if unclear read the previous and next sentence, since writers often explain or give
+  an example; eliminate options that clash with the context; put the chosen option into the sentence and check that
+  it still reads logically.
+- Prefix help: negation prefixes (un-, in-, im-, ir-, il-, dis-): unscheduled, inactive, impossible, irresponsible,
+  illegal, disagree; re- means again (rebuild, rewrite); over- means too much (overuse, overstate); mis- means wrong
+  (misunderstand, misplace, misuse).
+- Suffix help: -ful means full of (helpful, harmful); -less means without (hopeless, careless).
+- Five context-clue families, with signal words:
+  1. Similarity clues (similarly, like, just like, as): a calm lake "like the quiet sea" makes the unknown adjective
+     close to calm; a diligent new employee "just like her hard-working colleague".
+  2. Contrast clues (but, unlike, however, although): "the old system was complex but the new one was intuitive"
+     shows opposites; "the test seemed difficult, however it was straightforward".
+  3. Definition clues (is, means, which is, refers to): carnivore defined in the next sentence as an animal that eats
+     meat; photosynthesis defined as the process of turning sunlight into food; peninsula defined as land surrounded
+     by water on three sides.
+  4. Result clues (because, so, therefore, as a result, consequently): "he was lethargic because he had not slept for
+     two days"; "she was hungry, so she ate two large meals"; a medicine "alleviated the pain, as a result she felt
+     better".
+  5. Example clues (such as, for example, including, like): nocturnal explained by owls and bats being active at
+     night; celestial bodies explained by sun, moon and stars; citrus fruits explained by oranges, lemons, grapefruit;
+     predators explained by lions, wolves and eagles that hunt other animals.
+- Rules: never pick the first meaning you know; look for a clue in the same sentence first and then the neighbours;
+  substitute your choice and ask whether the sentence is logical.
+- Mistakes: choosing a meaning without returning to context (light can be lamp light or not heavy); ignoring the
+  surrounding sentences.
+- Worked examples: "bioluminescent" solved as "able to produce light"; "sufficient" tried against important, extra,
+  enough, different by substitution, where "important" and "extra" fail on amount versus importance and "enough"
+  wins; "maintain" in "vitamin A helps maintain good vision" means keep; "shelter" from the nearby word protection;
+  "broke out" for a fire means started, tied to "recovers slowly after a fire".
+
+### Lesson 3: information and inference questions
+- Information (direct): the fact is in the text word for word or paraphrased ("Ahmed is 20" then "how old is Ahmed").
+- Information (needs a step): the fact is present only through a calculation or link, for example born 1304 and died
+  1368 means the age at death is 64.
+- Inference: the answer is not written but can be understood ("Ahmed was too sick to go to school yesterday" so he
+  stayed home).
+- Wording: how old was X when Y, according to paragraph 2 why do countries invest in renewables, what can be inferred
+  about X.
+- Steps: (1) pick the unique keywords in the question, rare words that do not repeat in the text; (2) search the text
+  for the keyword and its synonyms, without reading the whole text and without random jumping (go paragraph 1, then
+  2, then 3); (3) read the lines around the keyword, normally not back to the paragraph start.
+- Scanning strategy: read the question first and decide exactly what to find; choose the most distinctive word;
+  hunt for synonyms too (the text may say "pleased" for "happy"); read only the surrounding context.
+- Question word to synonym families (examples given): happy, pleased; difficult, hard, complex, challenging,
+  demanding; important, key, essential, crucial, vital; say, state, mention, explain, claim; start, begin, launch,
+  found, establish, create; show, prove, indicate, reveal, demonstrate, suggest; use, apply, utilize, adopt,
+  implement, employ.
+- Matching-by-paraphrase examples: "when did the company start" found as "was founded in 1990"; "what does the data
+  show" found as "the data reveal that sleep is important for retaining information"; "what method did they use"
+  found as "employed".
+- Rules: do not read the whole text, read the question first and scan; hunt for synonyms, not only the keyword; the
+  answer must be supported by the text even when it is not written verbatim.
+- Mistakes: choosing a true fact from outside the text; reading the whole text for every question; searching only for
+  the exact keyword and ignoring synonyms.
+- Question flavors seen in practice passages: a number or count (oral presentations, readings per course length such
+  as 15 weekly readings), a duration (class length found in a Monday and Wednesday paragraph), "two things that cannot
+  be done" (paralegals cannot appear in court or give legal advice), an abbreviation question (organisation names
+  given as acronyms, found by locating the acronyms in a later paragraph), "which two ..." items, a "how many times
+  larger" (fivefold organic strawberry production from a date range in the seventh paragraph), a plant-pathogen item
+  solved by finding a rare term and its synonym ("cause plants to wilt and die" for "harm"), an effect-of-fire item
+  with a negative consequence (another plant grows in its place), a vocabulary item (shelter means protection), a
+  phrasal verb (broke out means started), a factual list (tobacco contains nicotine and alkaloids), the leaf type in
+  cigars (binder leaf and wrapper leaf), most-tobacco-growing countries (China and the United States), arrival dates
+  and reasons for immigration (economic opportunity), an immigrant-count range with a range of years, a trend that
+  contradicted predictions (online retail growth did not replace stores; the dot-com crash), the share of shoppers who
+  research online before buying (80 percent, with a nearby 62 percent distractor and an 11 percent growth distractor),
+  and an example of brick-and-mortar (store names).
+- Tip seen: several figures appear near the keyword; match the number to what the question asks, not to the first
+  percentage you meet.
+
+### Lesson 4: graphs, charts and tables
+- Tests reading data: pulling numbers and values, understanding trends, comparing two or more values.
+- Chart types met: single-series vertical bars (one colour); multi-series vertical bars (a colour per group, for
+  example two companies over five months); horizontal bars (the same with sideways bars), single and multi-series;
+  stacked horizontal bars (hardest: categories share bars and each colour is a category); pie chart; table; line
+  chart.
+- Reading steps: (1) read the title, which tells the data shown; (2) find the unit (percent, millions, gallons per
+  person, barrels per day); (3) understand the axes (x often years or regions, y often values); (4) read the key
+  or legend, which maps colours and symbols to categories or years; (5) read the question and decide exactly which
+  part of the graph answers it.
+- Vocabulary for rises: rise, increase, climb, grow, peak, reach a high, double, triple. For falls: fall, decrease,
+  decline, collapse, drop, plunge. For comparison: highest, lowest, more than, less than. For approximation:
+  approximately, about.
+- Rules: start with the title, axes, unit and key; do not infer from outside the graph, choose the answer the graph
+  supports.
+- Mistakes: reading without checking the unit; confusing categories in multi-colour charts without reading the key.
+- Worked patterns: a regional literacy chart with four coloured years, where "decline in the last five years" means
+  compare the third and fourth bars (only one region fell); a table of year, sales and growth where the year with 14
+  percent growth is found in the growth column; a birth-rate line (find the value between two year marks); social
+  media usage by age band (choose the platform used more than 47 percent by ages 30 to 49); annual ticket sales by
+  league (when one colour is above another, remembering axis starts); tourists to Japan by country (values in
+  millions, with a 5 to 10 million band for 2017); coffee consumed in gallons per person by year (about 40 gallons
+  in 1950, lowest near 1995); average monthly temperature by city (month with highest temperature, such as July);
+  life expectancy by region (about 18 to 20 years of rise for one region between 1960 and 2010, about 45 years for
+  another in 1970); commute shares by mode; mothers' ages at first birth in two years side by side (a 2016 age-20
+  share, a most-common age near 19 in 1980); US crude oil imports in million barrels a day by country; retail
+  digital ad spending in billions with a percent-change line; oil-palm area by owner in million hectares (convert
+  500,000 hectares to 0.5 million before reading); water extraction versus consumption in agriculture, domestic
+  and industry panels; a table of millionaires by country with change since 2015.
+- Skill note: unit conversion (500,000 to 0.5 million) and reading approximate values between gridlines recur.
+- Transcript note: only the first two thirds of the practice section were present.
+
+### Lesson 5: agreement with the text (first medium-tier lesson)
+- Three families: true statement (three options contradict or are unsupported, one is true), false or "not true"
+  statement (three are true, one is not; sometimes the test says false, incorrect or not true instead), and "not
+  mentioned" (three are present, one is absent).
+- Wording: which of the following is true according to the passage, what does the passage say about X, what can be
+  understood about viruses from paragraph 1, which is NOT true, which is NOT mentioned.
+- Steps for all three: read the question and confirm which family it is; start at option A and locate it in the
+  text or the stated paragraph; decide whether it is true, false or absent; eliminate and move on until the right
+  option remains.
+- Worked passages: social-media usage (the "most young adults use social media every day" option matches "about
+  75 percent"; "only for entertainment" is false because other uses are listed; "experts say it always improves
+  sleep" is false because experts warn of the opposite; "all adults use it every day" is false because only a share
+  does); exercise (three true statements about heart, weight and moderate exercise, the false one says exercise has
+  no health benefits); Amazon rainforest (three items are present, the fourth, 2,000 mm of rain a year, is not
+  mentioned).
+- Rules: look for meaning, not matching words (the text uses synonyms); separate a false idea (it contradicts the
+  text) from a not-mentioned idea (the text never speaks about it).
+- Mistakes: not focusing on what the question asks (true vs false vs not mentioned); reading the whole text for every
+  option; looking for the exact sentence and missing paraphrases.
+- Worked passages in practice: legal systems (common law and civil law; an item states that civil law is used by more
+  countries; the civil-law paragraph contrasts it with common law relying on written codes); trademarks and brands
+  (performance is a product attribute rather than a benefit; brand loyalty raises market share, so the option "brand
+  loyalty helps increase market share" is correct; "all customers have brand loyalty" and "brand preference means
+  brand quality" are not stated; "a strong brand must appeal emotionally" matches the final sentence of paragraph 1;
+  the main idea of paragraph 2 is that customers have different levels of brand awareness); Yellowstone park (the
+  oldest national park in the world; the lake is the highest mountain lake of its size in North America, and an
+  option about a 54-mile gorge is false because the text says 19 miles; the mammal-count option with the wrong number
+  of species is false).
+- Tip: main idea and purpose questions inside the same passage are answered last, after the agreement items.
+- Transcript note: the Yellowstone part was cut off before its damage question.
+
+### Gaps this adds
+- Reading skill candidates: rd-vocab-context-clues (five families), rd-affixes (negation, again, wrong, full,
+  without), rd-scan-keywords (keyword and synonym drills), rd-info-direct, rd-info-calc (answer needs arithmetic),
+  rd-inference, rd-graph-read (title, unit, axes, key, question), rd-graph-trend-vocab (rise, fall, compare words),
+  rd-unit-convert, rd-true-statement, rd-false-statement, rd-not-mentioned (and the contradict versus absent
+  distinction).
+- Question tags: type, family (agreement true, false, not mentioned), chart type (single or multi bar, stacked,
+  line, pie, table), and clue type for vocabulary items.
+- The chart and table component planned earlier is confirmed as necessary for graph questions (six chart types plus
+  table); needs a legend, units and axes, and approximate-value reading.
+- Elimination drill UI: option-by-option "true / false / absent" marking in review mode to match how the course
+  teaches the three agreement families.
+- Remaining missing reading lessons: main idea and title, author's opinion, two-text linking.
