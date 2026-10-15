@@ -28,6 +28,8 @@ const T = {
     "Lecturer: Before the printing press, every book was copied by hand, so books were rare and expensive. Printing changed everything. Within a few decades, books became cheaper, more people learned to read, and new ideas travelled faster across Europe. Scientists could share their results quickly and check each other's work. In short, the printing press helped to build the modern world.",
   noise:
     "A: Did you hear the building next door is being renovated?\nB: Yes, the noise starts at seven every morning. I can't sleep.\nA: Have you complained?\nB: I called the manager, and he promised that the loudest work would be finished before nine, and that it would end completely by Friday.\nA: That's something. I'd bring earplugs, just in case.",
+  phrasal:
+    "A: Did you find out who won the competition?\nB: Not yet. The results will be announced tomorrow. I hope my team doesn't give up if we lose.\nA: Don't worry. Our coach always looks after us and keeps everyone positive.\nB: True. He told us to turn up early on Friday for the next round.",
   waste:
     "Lecturer: Cities produce millions of tonnes of waste. Recycling paper, glass and plastic is helpful, and so is composting food scraps. But the most effective step, according to waste experts, is to produce less waste in the first place, because every item we avoid buying never needs to be collected, sorted or processed. In a study of two neighbourhoods, the one that ran a 'buy less' campaign sent forty percent less rubbish to the landfill than the one that only recycled.",
 };
@@ -479,6 +481,98 @@ const listeningSpecs: QuestionSpec[] = [
     level: "medium",
     tags: ["listening-reason"],
   },
+  {
+    id: "tp-listening-34",
+    transcript: T.phrasal,
+    prompt: "What does 'find out' mean in the conversation?",
+    correct: "Discover information",
+    wrong: ["Search a building", "Win a prize", "Leave a place"],
+    why: "She asks whether he has learned who won the competition, so 'find out' means to discover.",
+    level: "easy",
+    tags: ["listening-term"],
+  },
+  {
+    id: "tp-listening-35",
+    transcript: T.phrasal,
+    prompt: "What does the man mean by 'looks after us'?",
+    correct: "Takes care of us",
+    wrong: ["Watches us play", "Follows us home", "Waits for us"],
+    why: "He is describing a coach who keeps everyone positive, so 'looks after' means takes care of.",
+    level: "medium",
+    tags: ["listening-term"],
+  },
+  {
+    id: "tp-listening-36",
+    transcript: T.phrasal,
+    prompt: "What does 'turn up' mean in the last line?",
+    correct: "Arrive",
+    wrong: ["Raise the volume", "Return a book", "Change the date"],
+    why: "The coach told them to turn up early on Friday, which means to arrive early.",
+    level: "medium",
+    tags: ["listening-term"],
+  },
+  {
+    id: "tp-listening-37",
+    transcript: T.walking,
+    prompt: "What is the best title for the lecture?",
+    correct: "Walking and Creativity",
+    wrong: ["Eighty Volunteers", "Fresh Air", "The Benefits of Exercise"],
+    why: "The whole lecture links walking to creativity. 'Eighty volunteers' and 'fresh air' are details; 'exercise' is too general.",
+    level: "medium",
+    tags: ["listening-main-idea"],
+  },
+  {
+    id: "tp-listening-38",
+    transcript: T.library,
+    prompt: "What is the announcement mainly about?",
+    correct: "A change to the library's opening hours on Thursday",
+    wrong: ["How to borrow books", "Staff training methods", "New study rooms"],
+    why: "The announcement is about Thursday's early closing; borrowing and training are details that support it.",
+    level: "easy",
+    tags: ["listening-main-idea"],
+  },
+  {
+    id: "tp-listening-39",
+    transcript: T.gym,
+    prompt: "What is the conversation mainly about?",
+    correct: "Deciding whether to join a gym",
+    wrong: [
+      "Comparing two sports",
+      "A student's exam results",
+      "Fixing a broken machine",
+    ],
+    why: "The speakers discuss the price, a student discount and whether to sign up.",
+    level: "easy",
+    tags: ["listening-main-idea"],
+  },
+  {
+    id: "tp-listening-40",
+    transcript: T.noise,
+    prompt: "What is the best title for the conversation?",
+    correct: "Noise from Building Work",
+    wrong: [
+      "A Sleepless Student",
+      "Calling the Manager",
+      "Moving to a New Flat",
+    ],
+    why: "The conversation is about the noise from renovation next door. The other options cover only one detail or are not discussed.",
+    level: "medium",
+    tags: ["listening-main-idea"],
+  },
+  {
+    id: "tp-listening-41",
+    transcript: T.waste,
+    prompt: "What is the best title for the lecture?",
+    correct: "Producing Less Waste",
+    wrong: [
+      "A Visit to the Landfill",
+      "Recycling Glass",
+      "Cities Around the World",
+    ],
+    why: "The lecture argues that reducing waste is the most effective step. Recycling is only one of the weaker options and 'cities' is too general.",
+    level: "medium",
+    tags: ["listening-main-idea"],
+  },
 ];
 
 export const TYPE_PRACTICE_LISTENING_QUESTIONS = buildQuestions(
@@ -787,7 +881,129 @@ export const TYPE_PRACTICE_GRAMMAR_QUESTIONS = buildQuestions(
   grammarSpecs,
 );
 
+/* ---------- Writing analysis: capitalization and punctuation ---------- */
+
+const writingSpecs: QuestionSpec[] = [
+  {
+    id: "tp-writing-1",
+    prompt: "Which sentence uses capital letters correctly?",
+    correct:
+      "Last summer, my cousin Omar travelled to Jeddah to study English at a language school.",
+    wrong: [
+      "Last Summer, my cousin Omar travelled to Jeddah to study English at a language school.",
+      "Last summer, my cousin Omar travelled to jeddah to study English at a language school.",
+      "Last summer, my cousin Omar travelled to Jeddah to study english at a language school.",
+    ],
+    why: "Seasons and general nouns stay lowercase; names of cities and languages take capitals.",
+    level: "easy",
+    tags: ["capitalization"],
+  },
+  {
+    id: "tp-writing-2",
+    prompt: "Which sentence uses capital letters correctly?",
+    correct:
+      "On Monday, Dr. Salem met the Egyptian ambassador at the Ministry of Education.",
+    wrong: [
+      "On monday, Dr. Salem met the Egyptian ambassador at the Ministry of Education.",
+      "On Monday, Dr. Salem met the egyptian ambassador at the Ministry of Education.",
+      "On Monday, Dr. Salem met the Egyptian Ambassador at the Ministry of Education.",
+    ],
+    why: "Days, titles before a name, nationalities and the full name of an institution take capitals. A job title used generally ('the ambassador') does not.",
+    level: "medium",
+    tags: ["capitalization"],
+  },
+  {
+    id: "tp-writing-3",
+    prompt: "Which sentence uses capital letters correctly?",
+    correct:
+      "Where is the library? It opens at nine, and my brother works there.",
+    wrong: [
+      "Where is the library? it opens at nine, and my brother works there.",
+      "where is the library? It opens at nine, and my brother works there.",
+      "Where is the Library? It opens at nine, and my Brother works there.",
+    ],
+    why: "A new sentence after a question mark begins with a capital; ordinary nouns such as library and brother stay lowercase.",
+    level: "easy",
+    tags: ["capitalization"],
+  },
+  {
+    id: "tp-writing-4",
+    prompt: "Which sentence uses capital letters correctly?",
+    correct:
+      "In winter, we drive north to visit my uncle, who teaches chemistry at King Fahd University.",
+    wrong: [
+      "In Winter, we drive north to visit my uncle, who teaches chemistry at King Fahd University.",
+      "In winter, we drive North to visit my uncle, who teaches chemistry at King Fahd University.",
+      "In winter, we drive north to visit my uncle, who teaches Chemistry at King Fahd University.",
+    ],
+    why: "Seasons, general directions and school subjects (other than languages) are lowercase; the full name of a university is capitalized.",
+    level: "medium",
+    tags: ["capitalization"],
+  },
+  {
+    id: "tp-writing-5",
+    prompt: "Which sentence is punctuated correctly?",
+    correct: "I wanted to go for a walk, but it started to rain.",
+    wrong: [
+      "I wanted to go for a walk but, it started to rain.",
+      "I wanted to go for a walk; but it started to rain.",
+      "I wanted to go for a walk: but it started to rain.",
+    ],
+    why: "A comma goes before a coordinating conjunction (but) that joins two complete clauses.",
+    level: "easy",
+    tags: ["punctuation"],
+  },
+  {
+    id: "tp-writing-6",
+    prompt:
+      "Several girls and one boy are mentioned. Which sentence is punctuated correctly?",
+    correct: "The girls' bags are next to the boy's coat.",
+    wrong: [
+      "The girl's bags are next to the boys coat.",
+      "The girls bags are next to the boys' coat.",
+      "The girls' bags are next to the boys coat.",
+    ],
+    why: "Plural possessive: girls' (apostrophe after the s). Singular possessive: boy's.",
+    level: "medium",
+    tags: ["punctuation", "possessives"],
+  },
+  {
+    id: "tp-writing-7",
+    prompt: "Which sentence is punctuated correctly?",
+    correct:
+      "Please bring the following items: a pen, a notebook and your ID card.",
+    wrong: [
+      "Please bring: the following items a pen, a notebook and your ID card.",
+      "Please bring the following items; a pen, a notebook and your ID card.",
+      "Please bring the following items, a pen: a notebook and your ID card.",
+    ],
+    why: "A colon follows a complete clause and introduces a list.",
+    level: "medium",
+    tags: ["punctuation"],
+  },
+  {
+    id: "tp-writing-8",
+    prompt: "Which sentence is punctuated correctly?",
+    correct: "The exam was difficult; however, most students passed.",
+    wrong: [
+      "The exam was difficult, however, most students passed.",
+      "The exam was difficult; however most, students passed.",
+      "The exam was difficult however; most students passed.",
+    ],
+    why: "Two related complete clauses joined by however take a semicolon before it and a comma after it. A comma alone creates a comma splice.",
+    level: "hard",
+    tags: ["punctuation"],
+  },
+];
+
+export const TYPE_PRACTICE_WRITING_QUESTIONS = buildQuestions(
+  "writingAnalysis",
+  "type-practice",
+  writingSpecs,
+);
+
 export const TYPE_PRACTICE_QUESTIONS = [
+  ...TYPE_PRACTICE_WRITING_QUESTIONS,
   ...TYPE_PRACTICE_LISTENING_QUESTIONS,
   ...TYPE_PRACTICE_READING_QUESTIONS,
   ...TYPE_PRACTICE_GRAMMAR_QUESTIONS,
