@@ -429,7 +429,18 @@
       "noData": "No data yet",
       "practice": "Practice now"
     },
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "dailySession": {
+      "title": "Today's session",
+      "subtitle": "About {minutes} minutes",
+      "reviewTitle": "Review due vocabulary",
+      "reviewDetail": "{count} words are waiting for review today",
+      "lessonWeak": "Your \"{skill}\" skill is at {percent}% — time to strengthen it",
+      "lessonNew": "New skill for you: \"{skill}\"",
+      "lessonDefault": "The next step in your journey",
+      "retryDetail": "Last score {score}% — raise it to 80% to master the skill",
+      "empty": "You are all done for today. Well done!"
+    }
   },
   "trackNames": {
     "grammar": "Grammar",
@@ -641,7 +652,8 @@
     "summaryTitle": "Exit card result",
     "summaryMastered": "You mastered this skill. Move on to the next lesson.",
     "summaryNeedsWork": "Review the explanation, then retake the exit card to reach mastery.",
-    "summaryPending": "Finish the exit card first to see your summary."
+    "summaryPending": "Finish the exit card first to see your summary.",
+    "aheadNotice": "This lesson comes later in your path. We recommend finishing your current lesson first, but you can continue here if you like."
   },
   "vocabulary": {
     "pageTitle": "Vocabulary",
