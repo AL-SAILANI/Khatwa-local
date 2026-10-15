@@ -21,8 +21,10 @@ import {
 import { cn } from "@/lib/utils/cn";
 import {
   buildLessonBlocks,
+  groupLessonStages,
   MASTERY_THRESHOLD,
   type LessonBlock,
+  type LessonStage,
 } from "@/lib/lesson-blocks";
 import type { Lesson } from "@/types/course";
 import type { Question, ReadingPassage } from "@/types/question";
@@ -160,12 +162,14 @@ function BlockBody({
   exitScore,
   onExitResult,
   onExitSkip,
+  onGuidedFinish,
 }: {
   block: LessonBlock;
   passages: Record<string, ReadingPassage>;
   exitScore: number | null;
   onExitResult: (score: number, mastered: boolean) => void;
   onExitSkip: (score: number) => void;
+  onGuidedFinish?: () => void;
 }) {
   const t = useTranslations("courses");
   const [guidedDone, setGuidedDone] = useState(false);
@@ -212,6 +216,7 @@ function BlockBody({
               retryMistakes
               onFinish={() => {
                 setGuidedDone(true);
+                onGuidedFinish?.();
               }}
             />
           )}
@@ -231,6 +236,42 @@ function BlockBody({
   }
 }
 
+function StageBody({
+  stage,
+  passages,
+  exitScore,
+  onExitResult,
+  onExitSkip,
+}: {
+  stage: LessonStage;
+  passages: Record<string, ReadingPassage>;
+  exitScore: number | null;
+  onExitResult: (score: number, mastered: boolean) => void;
+  onExitSkip: (score: number) => void;
+}) {
+  const hasGuided = stage.blocks.some((b) => b.kind === "guided");
+  const [guidedFinished, setGuidedFinished] = useState(!hasGuided);
+
+  return (
+    <div className="space-y-5">
+      {stage.blocks.map((block, i) => {
+        if (block.kind === "exit" && !guidedFinished) return null;
+        return (
+          <BlockBody
+            key={`${block.kind}-${i}`}
+            block={block}
+            passages={passages}
+            exitScore={exitScore}
+            onExitResult={onExitResult}
+            onExitSkip={onExitSkip}
+            onGuidedFinish={() => setGuidedFinished(true)}
+          />
+        );
+      })}
+    </div>
+  );
+}
+
 /** Step-by-step lesson: explain cards, example, guided practice, technique, exit card, review, summary. */
 export function LessonPlayer({
   lesson,
@@ -245,6 +286,7 @@ export function LessonPlayer({
     () => buildLessonBlocks({ ...lesson, notes }, questions),
     [lesson, notes, questions],
   );
+  const stages = useMemo(() => groupLessonStages(blocks), [blocks]);
   const [step, setStep] = useState(0);
   const [exitPassed, setExitPassed] = useState(false);
   const [exitScore, setExitScore] = useState<number | null>(null);
@@ -256,21 +298,22 @@ export function LessonPlayer({
       </Button>
     );
   }
-  const block = blocks[Math.min(step, blocks.length - 1)]!;
-  const isLast = step >= blocks.length - 1;
+  const stage = stages[Math.min(step, stages.length - 1)]!;
+  const isLast = step >= stages.length - 1;
   const hasExit = blocks.some((b) => b.kind === "exit");
-  const exitGate = block.kind === "exit" && !exitPassed && !isDone;
-  const progress = Math.round((step / Math.max(1, blocks.length - 1)) * 100);
+  const exitGate =
+    stage.blocks.some((b) => b.kind === "exit") && !exitPassed && !isDone;
+  const progress = Math.round((step / Math.max(1, stages.length - 1)) * 100);
 
   return (
     <div className="space-y-4">
       <div className="space-y-1.5">
         <div className="flex items-center justify-between text-xs">
           <span className="font-semibold text-ink-violet dark:text-primary-300">
-            {t(`block.${block.kind}`)}
+            {t(`stage.${stage.key}`)}
           </span>
           <span className="text-muted">
-            {t("stepOf", { current: step + 1, total: blocks.length })}
+            {t("stepOf", { current: step + 1, total: stages.length })}
           </span>
         </div>
         <div
@@ -288,9 +331,9 @@ export function LessonPlayer({
         </div>
       </div>
 
-      <BlockBody
+      <StageBody
         key={step}
-        block={block}
+        stage={stage}
         passages={passages}
         exitScore={exitScore}
         onExitResult={(score, mastered) => {

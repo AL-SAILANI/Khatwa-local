@@ -93,6 +93,40 @@ export function buildLessonBlocks(
   return blocks;
 }
 
+export type LessonStageKey = "learn" | "example" | "practice" | "wrap";
+
+export interface LessonStage {
+  key: LessonStageKey;
+  blocks: LessonBlock[];
+}
+
+const STAGE_OF_KIND: Record<LessonBlock["kind"], LessonStageKey> = {
+  explain: "learn",
+  video: "learn",
+  strategy: "learn",
+  example: "example",
+  guided: "practice",
+  exit: "practice",
+  review: "wrap",
+  summary: "wrap",
+};
+
+/**
+ * Groups the ordered blocks into at most four screens (learn, worked example,
+ * practice, wrap-up) so a student moves through a few focused pages instead of
+ * one page per card. Empty stages are dropped.
+ */
+export function groupLessonStages(blocks: LessonBlock[]): LessonStage[] {
+  const stages: LessonStage[] = [];
+  for (const block of blocks) {
+    const key = STAGE_OF_KIND[block.kind];
+    const last = stages[stages.length - 1];
+    if (last && last.key === key) last.blocks.push(block);
+    else stages.push({ key, blocks: [block] });
+  }
+  return stages;
+}
+
 export function scorePercent(
   questions: Question[],
   answers: Record<string, string>,

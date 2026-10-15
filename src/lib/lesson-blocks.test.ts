@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   buildLessonBlocks,
   explainCards,
+  groupLessonStages,
   scorePercent,
   splitNotes,
 } from "./lesson-blocks";
@@ -112,6 +113,26 @@ describe("lesson blocks", () => {
     ]);
     expect(explainCards("plain text")).toEqual(["plain text"]);
     expect(explainCards("")).toEqual([]);
+  });
+
+  it("groups blocks into at most four stages without losing any", () => {
+    for (const n of [0, 1, 2, 3, 6]) {
+      const blocks = buildLessonBlocks(
+        lesson("📌 A\n• x\n🧭 B\n• y\n🔄 C\n• z"),
+        Array.from({ length: n }, (_, i) => q(`q${i}`)),
+      );
+      const stages = groupLessonStages(blocks);
+      expect(stages.length).toBeLessThanOrEqual(4);
+      expect(stages.flatMap((s) => s.blocks)).toEqual(blocks);
+    }
+    expect(
+      groupLessonStages(
+        buildLessonBlocks(
+          lesson("📌 A\n🧭 B\n🔄 C"),
+          Array.from({ length: 6 }, (_, i) => q(`q${i}`)),
+        ),
+      ).map((s) => s.key),
+    ).toEqual(["learn", "example", "practice", "wrap"]);
   });
 
   it("scores answers", () => {

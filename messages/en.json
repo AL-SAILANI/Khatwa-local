@@ -734,7 +734,13 @@
     "summaryMastered": "You mastered this skill. Move on to the next lesson.",
     "summaryNeedsWork": "Review the explanation, then retake the exit card to reach mastery.",
     "summaryPending": "Finish the exit card first to see your summary.",
-    "aheadNotice": "This lesson comes later in your path. We recommend finishing your current lesson first, but you can continue here if you like."
+    "aheadNotice": "This lesson comes later in your path. We recommend finishing your current lesson first, but you can continue here if you like.",
+    "stage": {
+      "learn": "Learn",
+      "example": "See it solved",
+      "practice": "Practise",
+      "wrap": "Wrap-up"
+    }
   },
   "vocabulary": {
     "pageTitle": "Vocabulary",
