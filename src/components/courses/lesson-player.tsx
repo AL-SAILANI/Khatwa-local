@@ -22,7 +22,6 @@ import { cn } from "@/lib/utils/cn";
 import {
   buildLessonBlocks,
   MASTERY_THRESHOLD,
-  scorePercent,
   type LessonBlock,
 } from "@/lib/lesson-blocks";
 import type { Lesson } from "@/types/course";
