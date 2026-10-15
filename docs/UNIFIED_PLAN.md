@@ -1,7 +1,7 @@
 # Unified build plan (from the third-party course review)
 
-Status: PLAN ONLY. Nothing below is built. Build starts when the owner says "ابدأ". PR #35 is merged only when the
-owner says "ادمج". All content we write is original, aligned with the `step-prep-curriculum` skill; the third-party
+Status: Phases 1 to 5 are built (see the end of this file). Phase 6 is optional and not started. PR #35 is merged only
+when the owner says "ادمج". All content we write is original, aligned with the `step-prep-curriculum` skill; the third-party
 material is used for structure and gap-finding, never copied.
 
 ## What the course taught that the product lacks (the gaps)
@@ -84,3 +84,15 @@ item plugs into the same tags.
 4. Lessons in Arabic with English examples. Default: yes.
 5. Keep PR #35 as the docs-and-planning PR and open new PRs from fresh branches off the default branch.
    Default: yes, after "ادمج".
+
+## Build status
+- Phase 1 and 2 (types, skills, reports): done. `question-types.ts`, nine new skills, readable weak-skill chips.
+- Phase 3 (charts): done. `PassageChart` for bar, stacked, line, pie and table; 17 graph questions. Not done: numbered
+  paragraphs and a "locate the paragraph" review aid.
+- Phase 4 (lessons): done for 15 lessons (6 listening, 4 reading, 3 grammar, 2 writing analysis). Not done: author's
+  opinion and two-text linking lessons for reading (no course material was received; two-text also has no question
+  format yet). English translations of the new lessons are missing; the app falls back to the Arabic text.
+- Phase 5 (content): done for the thin skills, see CONTENT_GAPS.md.
+- Phase 6: not started.
+- Production data: `supabase/seed.sql` was regenerated but NOT applied to the live Supabase project; new lessons,
+  questions and passages appear in production only after the code is merged and the seed is applied.
