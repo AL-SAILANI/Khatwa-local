@@ -296,7 +296,7 @@ export function ExamRunner({
         className={cn(
           "flex min-h-0 flex-1 flex-col",
           phase === "running"
-            ? "overflow-y-auto lg:overflow-hidden"
+            ? "overflow-hidden"
             : "overflow-y-auto px-4 py-6 sm:px-8",
         )}
       >
