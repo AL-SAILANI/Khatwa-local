@@ -267,3 +267,94 @@ tiers, sub-types, golden rules, common mistakes, practice clips.
   game, and "which meaning fits this sentence" for multi-meaning words.
 - Truncation note: the opinions, inference and important-idea transcripts were cut off near their ends, and the
   main-idea file stopped in the last practice item.
+
+## Addendum: listening lessons 7 to 9 (third-party course, not official)
+
+This closes the nine-lesson listening course. Lessons 8 and 9 are the "advanced" tier: harder but, per the course,
+the least frequent in the exam. Advice given: master lessons 1 to 7 first, and only then spend spare time on 8 and 9.
+
+### Lesson 7: best title (suitable title)
+- Asks for a fitting title or topic of the recording. Wording: what is the topic of the discussion, what is the
+  main subject, what is the lecture about, what is a good title.
+- Steps: focus on the overall subject; weigh the introduction and conclusion; find what all the details share.
+- Tiers: easy (one clear subject), medium (several sub-topics), hard (many details, subject never stated).
+- Title vs main idea: a main idea is a full sentence carrying the message or argument; a title is a short noun
+  phrase naming the subject. Conversions seen: "renewable energy helps cut pollution" becomes "Renewable energy";
+  "marketing influences consumer behavior" becomes "Marketing effects"; "invasive species can harm ecosystems"
+  becomes "Invasive species".
+- Scope check: too narrow (one example or detail) and too general (fits dozens of recordings) are both wrong.
+- Rules: look for the common topic of all ideas; a title is a noun or short phrase, not a sentence; an option that
+  states an opinion or message is a main-idea answer, not a title; an option naming one example, case or event is
+  too narrow; an option covering dozens of topics is too general; if all details fit under one heading, that
+  heading wins.
+- Mistakes: too narrow; too general.
+- Practice patterns seen: renewable energy (solar and emission cuts are only parts); remote work (the "advantages
+  and disadvantages" sentence is a main idea, so the short-title option wins); nutrition and health (vitamins too
+  narrow, health and the human body too general); history of a tower (dates, wartime use, tourists all fall under
+  "history"); development of maps (past maps versus modern maps); volcanoes.
+
+### Lesson 8: reason for mentioning information (first advanced lesson)
+- Asks why the speaker said something, not what it says. Wording: why does the professor mention X, why does the
+  speaker give this example, why does the teacher mention this study.
+- Steps: identify the item and topic, listening to the whole recording and not only the moment it is said; ask what
+  the recording would lose without it (an example? a proof?); name its function: example, evidence, comparison,
+  explanation, objection, result.
+- Tiers: easy (clear function), medium (could serve more than one function), hard (indirect, needs deeper reading).
+- Reading the cue: the idea usually comes first and the example, story or proof follows. Typical fixed functions:
+  a story or example illustrates or explains; a study or statistic supports an idea (evidence); a lead-in such as
+  "to illustrate" or "consider" signals an example.
+- Common functions with samples seen:
+  - Illustrate an idea or give an example (a bird used as one of the seasonal migrants).
+  - Support an opinion with evidence (a study showing sleep helps memory).
+  - Show an effect or consequence (a factory closing and 2,000 workers losing jobs).
+  - Challenge an idea (screen addiction as the opposing view to "technology improves learning").
+  - Give background or history (a company that began as a small family firm, to show how far it has come).
+  - Compare or contrast (traditional medicine treats symptoms, preventive medicine treats root causes).
+  - Create interest or surprise (bees can recognize human faces).
+- Rules: always ask why the speaker said it; judge its function in the explanation, not just the content of the
+  example; link it to the idea that came just before.
+- Mistakes: choosing what the information means instead of why it was mentioned; chasing small details instead of
+  the general function.
+- Practice patterns seen: a study cited as evidence; legal risk (work visas) as an example of a business risk; a
+  traffic accident to show memory is unreliable; the fennec fox as a case of desert survival; local laws and
+  fines as a business risk; the course notes two of these items are also a "supporting evidence" lesson question.
+
+### Lesson 9: evidence, support and proof (last lesson)
+- Asks which statement backs up or proves an idea. Wording: which information supports the professor's opinion, what
+  is the evidence for the theory, what proves the claim, which fact confirms the idea.
+- Four elements of an argument: claim (the idea or opinion to prove, for example "regular exercise greatly improves
+  mental health"), evidence (a fact that directly proves it: numbers, a study, research results, such as "a 2020
+  study found exercise three times a week cut depression by 47 percent"), example (a case or story that illustrates
+  but does not prove, such as one person who felt better), and detail (extra information about the topic, such as
+  exercise including running, swimming and cycling).
+- Steps: read the question and identify the claim; look for the evidence, which usually follows cue words (because,
+  evidence shows, research confirms, statistics show, according to data); check it truly proves the claim and is not
+  just true and mentioned.
+- Tiers: easy (evidence stated clearly), medium (many related facts, unclear which proves), hard (indirect evidence
+  and several facts, only one proves the claim).
+- Quick test for "is this evidence?": (1) does it directly prove the claim rather than only relate to it, (2) does it
+  hold percentages, numbers, study results or trusted sources, (3) is it one person's story or single incident (then
+  it is an example), (4) is it part of the definition or description (then it is a detail).
+- Cue words and samples: "evidence suggests that early intervention cuts long-term costs by 60 percent", "according
+  to WHO data, hand washing reduces infection by 50 percent", "statistics show a 35 percent drop in crime".
+- Rules: numbers, statistics and studies are the strongest evidence; ask whether it makes the claim more credible;
+  one person's experience is usually an example; describing a study's sample or participants is usually just detail;
+  words such as shows and confirms usually precede the evidence.
+- Mistakes: picking a mentioned statement that is a detail or example; picking the claim itself rather than its proof.
+- Practice patterns seen: screens before bed (the 500-adult study with a 40 percent longer time to fall asleep is
+  the proof; personal feeling is an example; countries and groups are details); remote work (more tasks completed by
+  remote workers); sleep (students with eight hours scored higher in memory tests); a metro line (traffic delays
+  down 20 percent, while "the subway was expensive" is only a detail); self-assessment (about 30 percent of
+  engineers placed themselves in the top 5 percent as an example that people judge themselves badly; a review of over
+  100 projects backed the general claim).
+- Truncation note: this transcript ended in the middle of the last practice item.
+
+### Gaps this adds
+- Skill candidates: ls-best-title (title vs main-idea contrast), ls-reason-mention (functions: example, evidence,
+  consequence, objection, background, contrast, surprise), ls-evidence (claim, evidence, example, detail),
+  ls-evidence-test (four-question check).
+- Tags: add "function" metadata to listening items (example, evidence, comparison, objection, background, result,
+  surprise) and "scope" metadata for title and main-idea options (too narrow, too general, correct).
+- Priority hint from the course: types 8 and 9 are rare, so weight mock clips lower for them.
+- Coverage is now complete for the nine listening types: information, inference, terms, important idea, opinions,
+  main idea, best title, reason for mentioning, evidence.
