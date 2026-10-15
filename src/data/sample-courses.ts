@@ -2,8 +2,15 @@ import type { Course, CourseTrack, Lesson } from "@/types/course";
 import { ENGVID_LINKS } from "@/data/engvid-links";
 import { LESSON_PRACTICE_GRAMMAR_IDS } from "@/data/lesson-practice-grammar";
 import { LESSON_PRACTICE_WRITING_IDS } from "@/data/lesson-practice-writing";
+import { LESSON_PRACTICE_READING_IDS } from "@/data/lesson-practice-reading";
+import { LESSON_PRACTICE_LISTENING_IDS } from "@/data/lesson-practice-listening";
 
-const PRACTICE_IDS: Record<string, string[]> = { ...LESSON_PRACTICE_GRAMMAR_IDS, ...LESSON_PRACTICE_WRITING_IDS };
+const PRACTICE_IDS: Record<string, string[]> = {
+  ...LESSON_PRACTICE_GRAMMAR_IDS,
+  ...LESSON_PRACTICE_WRITING_IDS,
+  ...LESSON_PRACTICE_READING_IDS,
+  ...LESSON_PRACTICE_LISTENING_IDS,
+};
 
 /**
  * One starter course + lesson per track, enough to exercise the course

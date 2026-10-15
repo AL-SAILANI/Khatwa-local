@@ -36,6 +36,8 @@ import {
 import { GRAMMAR_EXTRA_QUESTIONS } from "../src/data/grammar-extra";
 import { LESSON_PRACTICE_GRAMMAR_QUESTIONS } from "../src/data/lesson-practice-grammar";
 import { LESSON_PRACTICE_WRITING_QUESTIONS } from "../src/data/lesson-practice-writing";
+import { LESSON_PRACTICE_READING_PASSAGES, LESSON_PRACTICE_READING_QUESTIONS } from "../src/data/lesson-practice-reading";
+import { LESSON_PRACTICE_LISTENING_QUESTIONS } from "../src/data/lesson-practice-listening";
 import { STEP_MOCK_LISTENING_QUESTIONS } from "../src/data/step-mock-listening";
 import { STEP_MOCK_2_READING_PASSAGES, STEP_MOCK_2_READING_QUESTIONS } from "../src/data/step-mock-2-reading";
 import { STEP_MOCK_2_LISTENING_QUESTIONS } from "../src/data/step-mock-2-listening";
@@ -116,12 +118,12 @@ for (const l of SAMPLE_LESSONS) {
     resources: json(l.resources), notes: str(l.notes), question_ids: arr(l.questionIds),
   }));
 }
-for (const p of [...SAMPLE_READING_PASSAGES, ...STEP_MOCK_READING_PASSAGES, ...STEP_MOCK_2_READING_PASSAGES, ...STEP_MOCK_3_READING_PASSAGES, ...STEP_MOCK_4_READING_PASSAGES, ...STEP_MOCK_5_READING_PASSAGES]) {
+for (const p of [...SAMPLE_READING_PASSAGES, ...STEP_MOCK_READING_PASSAGES, ...STEP_MOCK_2_READING_PASSAGES, ...STEP_MOCK_3_READING_PASSAGES, ...STEP_MOCK_4_READING_PASSAGES, ...STEP_MOCK_5_READING_PASSAGES, ...LESSON_PRACTICE_READING_PASSAGES]) {
   out.push(upsert("reading_passages", {
     id: str(p.id), title: str(p.title), body: str(p.body), question_ids: arr(p.questionIds),
   }));
 }
-for (const q of [...SAMPLE_QUESTIONS, ...GRAMMAR_EXTRA_QUESTIONS, ...LESSON_PRACTICE_GRAMMAR_QUESTIONS, ...LESSON_PRACTICE_WRITING_QUESTIONS, ...STEP_MOCK_QUESTIONS, ...STEP_MOCK_2_QUESTIONS, ...STEP_MOCK_3_QUESTIONS, ...STEP_MOCK_4_QUESTIONS, ...STEP_MOCK_5_QUESTIONS]) {
+for (const q of [...SAMPLE_QUESTIONS, ...GRAMMAR_EXTRA_QUESTIONS, ...LESSON_PRACTICE_GRAMMAR_QUESTIONS, ...LESSON_PRACTICE_WRITING_QUESTIONS, ...LESSON_PRACTICE_READING_QUESTIONS, ...LESSON_PRACTICE_LISTENING_QUESTIONS, ...STEP_MOCK_QUESTIONS, ...STEP_MOCK_2_QUESTIONS, ...STEP_MOCK_3_QUESTIONS, ...STEP_MOCK_4_QUESTIONS, ...STEP_MOCK_5_QUESTIONS]) {
   out.push(upsert("questions", {
     id: str(q.id), section: str(q.section), course_id: str(q.courseId),
     passage_id: str(q.passageId), audio_url: str(q.audioUrl), transcript: str(q.transcript),
