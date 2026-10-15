@@ -38,7 +38,7 @@ export function LessonViewer({
   lessonId: string;
 }) {
   const t = useTranslations("courses");
-  const { user, profile } = useUserProfile();
+  const { user } = useUserProfile();
   const { lessonTitle, lessonNotes } = useLocalizedContent();
   const router = useRouter();
   const [lesson, setLesson] = useState<Lesson | null>(null);
@@ -87,8 +87,7 @@ export function LessonViewer({
   const currentIndex = currentLessonId
     ? orderedLessonIds.indexOf(currentLessonId)
     : orderedLessonIds.length;
-  const isLocked =
-    inPath && index > currentIndex && profile?.planTier !== "premium";
+  const isAhead = inPath && index > currentIndex;
   const currentLesson = currentLessonId
     ? lessonById.get(currentLessonId)
     : undefined;
@@ -104,31 +103,6 @@ export function LessonViewer({
     return (
       <div className="flex flex-1 items-center justify-center">
         <div className="size-8 animate-spin rounded-full border-2 border-primary-500 border-t-transparent" />
-      </div>
-    );
-  }
-
-  if (isLocked) {
-    return (
-      <div className="mx-auto w-full max-w-3xl space-y-6 p-6 lg:p-8">
-        <Card className="flex flex-col items-center gap-3 py-12 text-center">
-          <span className="inline-flex size-12 items-center justify-center rounded-full bg-surface-muted text-muted">
-            <Lock className="size-5" />
-          </span>
-          <p className="font-medium">{t("lockedLessonNotice")}</p>
-          {currentLesson && (
-            <Button
-              onClick={() =>
-                router.push(
-                  `/courses/${currentLesson.courseId}/${currentLesson.id}`,
-                )
-              }
-            >
-              <Play className="size-4" />
-              {t("goToCurrentLesson")}
-            </Button>
-          )}
-        </Card>
       </div>
     );
   }
@@ -168,6 +142,25 @@ export function LessonViewer({
               style={{ width: `${lessonProgress}%` }}
             />
           </div>
+        </Card>
+      )}
+
+      {isAhead && currentLesson && (
+        <Card className="flex flex-wrap items-center justify-between gap-3 border-amber-400/40 bg-amber-50 p-4 dark:border-amber-500/30 dark:bg-amber-500/10">
+          <p className="flex items-center gap-2 text-sm">
+            <Lock className="size-4 shrink-0" />
+            {t("aheadNotice")}
+          </p>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() =>
+              router.push(`/courses/${currentLesson.courseId}/${currentLesson.id}`)
+            }
+          >
+            <Play className="size-4" />
+            {t("goToCurrentLesson")}
+          </Button>
         </Card>
       )}
 

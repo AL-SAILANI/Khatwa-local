@@ -135,3 +135,8 @@ export function getLessonTarget(lessonId: string): Lesson | null {
 export function suggestLessonForTag(tag: string, preferredTrack?: string): Lesson | null {
   return bestLessonForTag(tag, preferredTrack);
 }
+
+/** Resolves a seeded question by id (null for admin-authored questions). */
+export function getStaticQuestion(questionId: string): Question | null {
+  return QUESTION_BY_ID.get(questionId) ?? null;
+}

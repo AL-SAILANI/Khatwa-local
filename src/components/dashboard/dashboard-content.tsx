@@ -15,7 +15,7 @@ import { StartPlacementCta } from "@/components/dashboard/start-placement-cta";
 import { RetakePlacementLink } from "@/components/dashboard/retake-placement-link";
 import { StudyPathCard } from "@/components/dashboard/study-path-card";
 import { ContinueLearningCard } from "@/components/dashboard/continue-learning-card";
-import { StudyCoachCard } from "@/components/dashboard/study-coach-card";
+import { DailySessionCard } from "@/components/dashboard/daily-session-card";
 import { SectionPerformanceCard } from "@/components/dashboard/section-performance-card";
 import { DailyChallengeCard } from "@/components/dashboard/daily-challenge-card";
 import { LevelCard } from "@/components/gamification/level-card";
@@ -86,7 +86,7 @@ export function DashboardContent() {
 
             <DailyChallengeCard />
 
-            <StudyCoachCard uid={profile.uid} />
+            <DailySessionCard uid={profile.uid} />
 
             <SectionPerformanceCard uid={profile.uid} />
           </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { CalendarRange, Check, ChevronLeft, GraduationCap, Lock, Play } from "lucide-react";
+import { CalendarRange, Check, ChevronLeft, GraduationCap, Play } from "lucide-react";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { useStudyPath } from "@/hooks/use-study-path";
 import { useLocalizedContent } from "@/hooks/use-localized-content";
@@ -152,7 +152,7 @@ export function StudyPath() {
                   {status === "done" ? (
                     <Check className="size-3.5" />
                   ) : status === "locked" ? (
-                    <Lock className="size-3.5" />
+                    <span className="text-xs font-bold">{lessonIndex + 1}</span>
                   ) : (
                     <Play className="size-3 fill-current" />
                   )}
@@ -183,9 +183,7 @@ export function StudyPath() {
                   </div>
                 </div>
               </div>
-              {status !== "locked" && (
-                <ChevronLeft className="size-4 shrink-0 text-muted rtl:rotate-180" />
-              )}
+              <ChevronLeft className="size-4 shrink-0 text-muted rtl:rotate-180" />
             </div>
           );
 
@@ -200,24 +198,21 @@ export function StudyPath() {
                     status === "locked" && "border-border bg-surface-muted text-foreground/70",
                   )}
                 >
-                  {status === "done" ? <Check className="size-4" /> : status === "locked" ? <Lock className="size-3.5" /> : lessonIndex + 1}
+                  {status === "done" ? <Check className="size-4" /> : lessonIndex + 1}
                 </span>
                 {!isLast && <span className="mt-1 w-px flex-1 bg-border" />}
               </div>
 
               <div className="min-w-0 flex-1 pb-2">
-                {status === "locked" ? (
-                  <div className="rounded-xl border border-border bg-surface/40">
-                    {content}
-                  </div>
-                ) : (
-                  <Link
-                    href={`/courses/${lesson.courseId}/${lesson.id}`}
-                    className="block rounded-xl border border-border bg-surface transition-colors hover:border-primary-500"
-                  >
-                    {content}
-                  </Link>
-                )}
+                <Link
+                  href={`/courses/${lesson.courseId}/${lesson.id}`}
+                  className={cn(
+                    "block rounded-xl border border-border transition-colors hover:border-primary-500",
+                    status === "locked" ? "bg-surface/40" : "bg-surface",
+                  )}
+                >
+                  {content}
+                </Link>
               </div>
             </li>
           );
