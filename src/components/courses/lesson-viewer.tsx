@@ -2,23 +2,41 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { CheckCircle2, ChevronLeft, ChevronRight, ExternalLink, Lock, Play, Volume2 } from "lucide-react";
+import {
+  CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
+  Lock,
+  Play,
+  Volume2,
+} from "lucide-react";
 import { useRouter } from "@/i18n/navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { LessonNotes } from "@/components/courses/lesson-notes";
-import { LessonQuiz } from "@/components/courses/lesson-quiz";
+import { LessonPlayer } from "@/components/courses/lesson-player";
 import { useUserProfile } from "@/hooks/use-user-profile";
 import { useLocalizedContent } from "@/hooks/use-localized-content";
 import { useStudyPath } from "@/hooks/use-study-path";
 import { getLesson, getLessonsForCourse } from "@/lib/firestore/courses";
-import { getQuestionsByIds, getReadingPassages } from "@/lib/firestore/questions";
-import { getLessonProgress, markLessonComplete } from "@/lib/firestore/lesson-progress";
+import {
+  getQuestionsByIds,
+  getReadingPassages,
+} from "@/lib/firestore/questions";
+import {
+  getLessonProgress,
+  markLessonComplete,
+} from "@/lib/firestore/lesson-progress";
 import { PlanNextLesson } from "@/components/study-plan/plan-next-lesson";
 import type { Lesson } from "@/types/course";
 import type { Question, ReadingPassage } from "@/types/question";
 
-export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonId: string }) {
+export function LessonViewer({
+  courseId,
+  lessonId,
+}: {
+  courseId: string;
+  lessonId: string;
+}) {
   const t = useTranslations("courses");
   const { user, profile } = useUserProfile();
   const { lessonTitle, lessonNotes } = useLocalizedContent();
@@ -28,39 +46,57 @@ export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonI
   const [passages, setPassages] = useState<Record<string, ReadingPassage>>({});
   const [isDone, setIsDone] = useState(false);
   const [courseLessons, setCourseLessons] = useState<Lesson[]>([]);
-  const { plan, orderedLessonIds, currentLessonId, lessonById } = useStudyPath(user?.uid);
+  const { plan, orderedLessonIds, currentLessonId, lessonById } = useStudyPath(
+    user?.uid,
+  );
 
   useEffect(() => {
     getLesson(lessonId).then(async (fetchedLesson) => {
       setLesson(fetchedLesson);
       if (!fetchedLesson || fetchedLesson.questionIds.length === 0) return;
 
-      const fetchedQuestions = await getQuestionsByIds(fetchedLesson.questionIds);
+      const fetchedQuestions = await getQuestionsByIds(
+        fetchedLesson.questionIds,
+      );
       setQuestions(fetchedQuestions);
 
-      const passageIds = fetchedQuestions.map((q) => q.passageId).filter((id): id is string => Boolean(id));
+      const passageIds = fetchedQuestions
+        .map((q) => q.passageId)
+        .filter((id): id is string => Boolean(id));
       setPassages(await getReadingPassages(passageIds));
     });
     getLessonsForCourse(courseId).then(setCourseLessons);
     if (user) {
-      getLessonProgress(user.uid, lessonId).then((progress) => setIsDone(Boolean(progress?.completed)));
+      getLessonProgress(user.uid, lessonId).then((progress) =>
+        setIsDone(Boolean(progress?.completed)),
+      );
     }
   }, [lessonId, courseId, user]);
 
   const inPath = Boolean(plan) && orderedLessonIds.includes(lessonId);
-  const order = inPath ? orderedLessonIds : courseLessons.map((lesson) => lesson.id);
+  const order = inPath
+    ? orderedLessonIds
+    : courseLessons.map((lesson) => lesson.id);
   const index = order.indexOf(lessonId);
   const position = index >= 0 ? index + 1 : null;
   const total = order.length;
   const prevId = index > 0 ? order[index - 1] : null;
-  const nextId = index >= 0 && index < order.length - 1 ? order[index + 1] : null;
+  const nextId =
+    index >= 0 && index < order.length - 1 ? order[index + 1] : null;
 
-  const currentIndex = currentLessonId ? orderedLessonIds.indexOf(currentLessonId) : orderedLessonIds.length;
-  const isLocked = inPath && index > currentIndex && profile?.planTier !== "premium";
-  const currentLesson = currentLessonId ? lessonById.get(currentLessonId) : undefined;
+  const currentIndex = currentLessonId
+    ? orderedLessonIds.indexOf(currentLessonId)
+    : orderedLessonIds.length;
+  const isLocked =
+    inPath && index > currentIndex && profile?.planTier !== "premium";
+  const currentLesson = currentLessonId
+    ? lessonById.get(currentLessonId)
+    : undefined;
 
   const hrefOf = (id: string) => {
-    const target = inPath ? lessonById.get(id) : courseLessons.find((lesson) => lesson.id === id);
+    const target = inPath
+      ? lessonById.get(id)
+      : courseLessons.find((lesson) => lesson.id === id);
     return `/courses/${target?.courseId ?? courseId}/${id}`;
   };
 
@@ -81,7 +117,13 @@ export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonI
           </span>
           <p className="font-medium">{t("lockedLessonNotice")}</p>
           {currentLesson && (
-            <Button onClick={() => router.push(`/courses/${currentLesson.courseId}/${currentLesson.id}`)}>
+            <Button
+              onClick={() =>
+                router.push(
+                  `/courses/${currentLesson.courseId}/${currentLesson.id}`,
+                )
+              }
+            >
               <Play className="size-4" />
               {t("goToCurrentLesson")}
             </Button>
@@ -105,15 +147,20 @@ export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonI
     setIsDone(true);
   };
 
-  const lessonProgress = total > 0 ? Math.round((((position ?? 1) - 1) / total) * 100) : 0;
+  const lessonProgress =
+    total > 0 ? Math.round((((position ?? 1) - 1) / total) * 100) : 0;
 
   return (
     <div className="mx-auto w-full max-w-3xl space-y-6 p-6 lg:p-8">
       {position !== null && (
         <Card className="space-y-2 p-4">
           <div className="flex items-center justify-between gap-3">
-            <p className="text-xs font-medium text-muted">{t("lessonPosition", { position, total })}</p>
-            <span className="text-xs font-bold text-ink-violet dark:text-primary-400">{lessonProgress}%</span>
+            <p className="text-xs font-medium text-muted">
+              {t("lessonPosition", { position, total })}
+            </p>
+            <span className="text-xs font-bold text-ink-violet dark:text-primary-400">
+              {lessonProgress}%
+            </span>
           </div>
           <div className="h-1.5 w-full overflow-hidden rounded-none bg-surface-muted">
             <div
@@ -128,85 +175,39 @@ export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonI
         <h1 className="text-2xl font-bold">{lessonTitle(lesson)}</h1>
       </div>
 
-      {lesson.courseId === "course-listening" && listeningAudioUrls.length > 0 && (
-        <Card className="space-y-4">
-          <div className="flex items-center gap-2 text-sm font-semibold">
-            <Volume2 className="size-4 text-ink-violet dark:text-primary-300" />
-            {t("listenToDialogue")}
-          </div>
-          {listeningAudioUrls.map((url) => (
-            <audio key={url} controls preload="none" className="w-full" src={url} />
-          ))}
-        </Card>
-      )}
+      {lesson.courseId === "course-listening" &&
+        listeningAudioUrls.length > 0 && (
+          <Card className="space-y-4">
+            <div className="flex items-center gap-2 text-sm font-semibold">
+              <Volume2 className="size-4 text-ink-violet dark:text-primary-300" />
+              {t("listenToDialogue")}
+            </div>
+            {listeningAudioUrls.map((url) => (
+              <audio
+                key={url}
+                controls
+                preload="none"
+                className="w-full"
+                src={url}
+              />
+            ))}
+          </Card>
+        )}
 
-      <LessonNotes notes={lessonNotes(lesson)} />
-
-      {lesson.resources.length > 0 && (
-        <div className="space-y-4">
-          {lesson.resources.map((resource, resourceIndex) => (
-            <Card key={`${resource.url}-${resourceIndex}`} className="space-y-2">
-              <p className="text-sm font-medium">{resource.title}</p>
-              {resource.type === "video" && (
-                <video controls className="w-full rounded-xl" src={resource.url} />
-              )}
-              {resource.type === "audio" && <audio controls className="w-full" src={resource.url} />}
-              {resource.type === "youtube" && resource.youtubeId && (
-                <div className="space-y-2">
-                  <iframe
-                    className="aspect-video w-full rounded-xl border-0"
-                    src={`https://www.youtube-nocookie.com/embed/${resource.youtubeId}?rel=0`}
-                    title={resource.title}
-                    loading="lazy"
-                    allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
-                    allowFullScreen
-                    referrerPolicy="strict-origin-when-cross-origin"
-                  />
-                  <a
-                    href={resource.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs text-muted underline"
-                  >
-                    <ExternalLink className="size-3.5" />
-                    {t("videoSource", { provider: resource.provider ?? "" })}
-                  </a>
-                </div>
-              )}
-              {resource.type === "link" && (
-                <a
-                  href={resource.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-violet underline dark:text-primary-400"
-                >
-                  <ExternalLink className="size-4" />
-                  {t("extraVideoOn", { provider: resource.provider ?? "" })}
-                </a>
-              )}
-              {resource.type === "pdf" && (
-                <a
-                  href={resource.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block text-sm font-medium text-ink-violet underline dark:text-primary-400"
-                >
-                  {t("openPdf")}
-                </a>
-              )}
-            </Card>
-          ))}
+      {lesson.questionIds.length > 0 && questions.length === 0 ? (
+        <div className="flex justify-center py-8">
+          <div className="size-8 animate-spin rounded-full border-2 border-primary-500 border-t-transparent" />
         </div>
-      )}
-
-      {questions.length > 0 && (
-        <LessonQuiz questions={questions} passages={passages} onComplete={(score) => finish(score)} />
-      )}
-
-      {questions.length === 0 && !isDone && (
-        <Button size="lg" className="w-full" onClick={() => finish(null)}>
-          {t("finishLesson")}
-        </Button>
+      ) : (
+        <LessonPlayer
+          key={lessonId}
+          lesson={lesson}
+          notes={lessonNotes(lesson)}
+          questions={questions}
+          passages={passages}
+          isDone={isDone}
+          onComplete={(score) => finish(score)}
+        />
       )}
 
       {isDone && (
@@ -214,7 +215,11 @@ export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonI
           <Card className="flex flex-wrap items-center justify-center gap-2 border-success/30 bg-success/5 py-6 text-center">
             <CheckCircle2 className="size-5 text-success-600 dark:text-success-300" />
             <span className="font-medium">{t("lessonCompleted")}</span>
-            <Button size="sm" variant="outline" onClick={() => router.push(`/courses/${courseId}`)}>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => router.push(`/courses/${courseId}`)}
+            >
               {t("backToCourse")}
             </Button>
           </Card>
@@ -225,7 +230,10 @@ export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonI
       {(prevId || nextId) && (
         <div className="flex items-center justify-between gap-3 border-t border-border pt-4">
           {prevId ? (
-            <Button variant="outline" onClick={() => router.push(hrefOf(prevId))}>
+            <Button
+              variant="outline"
+              onClick={() => router.push(hrefOf(prevId))}
+            >
               <ChevronRight className="size-4 rtl:rotate-180" />
               {t("prevLesson")}
             </Button>
@@ -241,7 +249,9 @@ export function LessonViewer({ courseId, lessonId }: { courseId: string; lessonI
                 {t("nextLesson")}
                 <ChevronLeft className="size-4 rtl:rotate-180" />
               </Button>
-              {!isDone && <p className="text-xs text-muted">{t("completeToContinue")}</p>}
+              {!isDone && (
+                <p className="text-xs text-muted">{t("completeToContinue")}</p>
+              )}
             </div>
           ) : (
             <span />

@@ -44,7 +44,7 @@ Phases: diagnose, foundation, technique and speed, simulation, final review of w
 | Phase | Work | Status |
 |---|---|---|
 | A | Skill map in code + migration file | skill map done; migration written, not yet applied |
-| B | Lesson player with blocks (explain, example, video, practice, exit card) | next |
+| B | Lesson player with blocks (explain, video, worked example, guided practice, technique, exit card, review); blocks derived from existing notes and questions, no schema change | built; exit card needs 80% (retry or continue anyway) |
 | C | Session engine using mastery and due reviews | after B |
 | D | Re-tag lessons and questions to skills in the database | after A is applied |
 | E | Item analytics (difficulty, discrimination) and predicted score | after real usage |
